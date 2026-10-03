@@ -358,7 +358,7 @@
         async function fetchArticles() {
             const container = document.getElementById('news-feed-target');
             try {
-                const response = await fetch(`http://localhost:5000/api/blogs?category=${currentFilter}`);
+                const response = await fetch(`/api/blogs?category=${currentFilter}`);
                 const data = await response.json();
 
                 if (data.success) {

@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = document.getElementById('post-form-body').value;
 
         try {
-            const res = await fetch('http://localhost:5000/api/forum/posts', {
+            const res = await fetch('/api/forum/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         feedContainer.innerHTML = '<div style="text-align:center; padding: 40px;"><i class="fas fa-circle-notch fa-spin fa-2x" style="color:var(--fr-primary)"></i></div>';
         
         try {
-            let url = 'http://localhost:5000/api/forum/posts';
+            let url = '/api/forum/posts';
             if (subjectFilter !== 'all') {
                 url += `?subject=${subjectFilter}`;
             }
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.fetchComments = async (postId) => {
         const listContainer = document.getElementById(`comment-list-${postId}`);
         try {
-            const res = await fetch(`http://localhost:5000/api/forum/posts/${postId}/comments`);
+            const res = await fetch(`/api/forum/posts/${postId}/comments`);
             const comments = await res.json();
             
             listContainer.innerHTML = '';
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!text) return;
 
         try {
-            const res = await fetch(`http://localhost:5000/api/forum/posts/${postId}/comments`, {
+            const res = await fetch(`/api/forum/posts/${postId}/comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

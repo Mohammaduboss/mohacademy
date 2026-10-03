@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pastPapersGrid.innerHTML = '<p style="text-align:center; width:100%;"><i class="fas fa-spinner fa-spin"></i> Initializing Secure Database Connection...</p>';
         
         try {
-            const response = await fetch('http://localhost:5000/api/papers');
+            const response = await fetch('/api/papers');
             const data = await response.json();
             
             if (data.success) {

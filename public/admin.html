@@ -617,7 +617,7 @@
             icon.classList.add('fa-spin');
 
             try {
-                const response = await fetch('http://localhost:5000/api/admin/dashboard');
+                const response = await fetch('/api/admin/dashboard');
                 const data = await response.json();
 
                 if (data.success) {
@@ -717,7 +717,7 @@
             };
 
             try {
-                const res = await fetch('http://localhost:5000/api/admin/quizzes', {
+                const res = await fetch('/api/admin/quizzes', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -753,7 +753,7 @@
             };
 
             try {
-                const res = await fetch('http://localhost:5000/api/admin/blogs', {
+                const res = await fetch('/api/admin/blogs', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -784,7 +784,7 @@
             }
 
             try {
-                const res = await fetch('http://localhost:5000/api/admin/arena-schedule', {
+                const res = await fetch('/api/admin/arena-schedule', {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -863,7 +863,7 @@
             }
 
             try {
-                const res = await fetch('http://localhost:5000/api/papers/upload', {
+                const res = await fetch('/api/papers/upload', {
                     method: 'POST',
                     body: formData 
                 });

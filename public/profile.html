@@ -755,7 +755,7 @@
 
         async function fetchRealProfileData(token) {
             try {
-                const response = await fetch('http://localhost:5000/api/student/profile', {
+                const response = await fetch('/api/student/profile', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -769,7 +769,7 @@
 
                     let pricing = { yearlyPlan: 6500, originalYearlyPlan: 10000, currency: 'XAF' };
                     try {
-                        const pRes = await fetch('http://localhost:5000/api/config/pricing');
+                        const pRes = await fetch('/api/config/pricing');
                         if(pRes.ok) pricing = await pRes.json();
                     } catch(e) { console.warn("Using fallback pricing structure"); }
 
@@ -908,7 +908,7 @@
             if (password) updateData.password = password;
 
             try {
-                const response = await fetch('http://localhost:5000/api/student/profile', {
+                const response = await fetch('/api/student/profile', {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

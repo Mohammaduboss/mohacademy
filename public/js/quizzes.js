@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             // Fetch the exact topics that currently exist for this subject in the DB
-            const response = await fetch(`http://localhost:5000/api/quizzes/topics/${currentSubject}`, {
+            const response = await fetch(`/api/quizzes/topics/${currentSubject}`, {
                 headers: { 'x-auth-token': token }
             });
             
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         liveQuizWorkspaceEngine.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--text-muted);"><i class="fas fa-circle-notch fa-spin fa-2x"></i><p>Establishing secure link to database...</p></div>`;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/quizzes/${currentSubject}/${currentTopic}`, {
+            const response = await fetch(`/api/quizzes/${currentSubject}/${currentTopic}`, {
                 headers: { 'x-auth-token': token }
             });
 
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         liveQuizWorkspaceEngine.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--primary-color);"><i class="fas fa-cog fa-spin fa-3x"></i><p style="margin-top: 15px; font-weight: 700;">Transmitting vectors for server-side evaluation...</p></div>`;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/quizzes/grade`, {
+            const response = await fetch(`/api/quizzes/grade`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let arenaSubject = 'physics';
 
         try {
-            const res = await fetch('http://localhost:5000/api/quizzes/arena-schedule');
+            const res = await fetch('/api/quizzes/arena-schedule');
             const data = await res.json();
             if (data && data.deadline) {
                 deadlineTime = new Date(data.deadline).getTime();

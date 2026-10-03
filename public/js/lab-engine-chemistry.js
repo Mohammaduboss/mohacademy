@@ -1883,7 +1883,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadLabBlueprint(code) {
     try {
-        const res = await fetch(`http://localhost:5000/api/labs/${code}`);
+        const res = await fetch(`/api/labs/${code}`);
         
         if (!res.ok) throw new Error("Experiment not found in database.");
         
@@ -2482,7 +2482,7 @@ window.submitLabForGrading = async function() {
 
     try {
         const token = localStorage.getItem('mohacademy_token');
-        const response = await fetch(`http://localhost:5000/api/labs/${experimentCode}/submit`, {
+        const response = await fetch(`/api/labs/${experimentCode}/submit`, {
             method: 'POST', 
             headers: { 
                 'Content-Type': 'application/json',

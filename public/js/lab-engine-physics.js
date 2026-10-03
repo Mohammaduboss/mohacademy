@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadLabBlueprint(code) {
     try {
-        const res = await fetch(`http://localhost:5000/api/labs/${code}`);
+        const res = await fetch(`/api/labs/${code}`);
         globalExperimentBlueprint = await res.json();
         setupLabWorkspace();
     } catch (err) {
@@ -1584,7 +1584,7 @@ async function submitLabForGrading() {
 
     try {
         const token = localStorage.getItem('mohacademy_token');
-        const response = await fetch(`http://localhost:5000/api/labs/${experimentCode}/submit`, {
+        const response = await fetch(`/api/labs/${experimentCode}/submit`, {
             method: 'POST', 
             headers: { 
                 'Content-Type': 'application/json',

@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 3. Fetch the catalog to check this specific lab's status
-        const response = await fetch('http://localhost:5000/api/labs/catalog');
+        const response = await fetch('/api/labs/catalog');
         const labs = await response.json();
         const currentLab = labs.find(lab => lab.experimentCode === labId);
 

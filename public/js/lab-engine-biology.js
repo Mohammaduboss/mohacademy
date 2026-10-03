@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Fetch Lab Data from Backend API
     try {
-        const response = await fetch(`http://localhost:5000/api/labs/catalog`);
+        const response = await fetch(`/api/labs/catalog`);
         if (!response.ok) throw new Error('Failed to fetch catalog');
         
         const catalog = await response.json();
@@ -213,7 +213,7 @@ async function submitLabForGrading() {
     // 3. Send to your REAL backend route that uses geminiEvaluator
     try {
         const token = localStorage.getItem('mohacademy_token');
-        const response = await fetch(`http://localhost:5000/api/labs/${currentExperiment.experimentCode}/submit`, {
+        const response = await fetch(`/api/labs/${currentExperiment.experimentCode}/submit`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',

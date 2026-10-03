@@ -207,7 +207,7 @@
 
             try {
             // Send request to our backend payment route with both header variants
-            const response = await fetch('http://localhost:5000/api/payment/initialize', {
+            const response = await fetch('/api/payment/initialize', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

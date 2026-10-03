@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const requestHeaders = {};
             if (token) requestHeaders['Authorization'] = `Bearer ${token}`;
 
-            const response = await fetch('http://localhost:5000/api/chat', {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: requestHeaders,
                 body: dataPayload

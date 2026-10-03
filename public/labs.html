@@ -579,7 +579,7 @@
             container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-muted);"><i class="fas fa-circle-notch fa-spin fa-2x"></i><p>Synchronizing with MohAcademy Database...</p></div>';
 
             try {
-                const response = await fetch('http://localhost:5000/api/labs/catalog');
+                const response = await fetch('/api/labs/catalog');
                 if (!response.ok) throw new Error('Network response was not ok');
 
                 allRealLabs = await response.json();
