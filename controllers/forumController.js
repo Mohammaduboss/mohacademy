@@ -1,5 +1,5 @@
 const Post = require('../models/post');
-const Comment = require('../models/Comment');
+const Comment = require('../models/comment');
 const Student = require('../models/student');
 const { GoogleGenAI } = require('@google/genai'); 
 
