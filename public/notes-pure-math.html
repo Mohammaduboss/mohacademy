@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Mathematics A/L Study Notes - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/notes-subject.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle active">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html" class="active">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="notes-subject-hero-section pure-math-notes-hero" id="notes-subject-hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1>Pure Mathematics A/L Study Notes</h1>
+                <p>Conquer numbers, equations, and abstract concepts. Comprehensive, topic-wise notes for GCE A/L Pure Mathematics, designed for clarity and problem-solving mastery.</p>
+                <div class="hero-buttons animate-fade-in-up">
+                    <a href="#notes-content" class="btn btn-primary">Start Reading Notes</a>
+                    <a href="notes/pure-math/pure-math-notes.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-download"></i> Download Full Notes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-content-section section-padding">
+            <div class="container notes-container">
+                <!-- COMPREHENSIVE TABLE OF CONTENTS -->
+                <aside class="notes-sidebar reveal fade-left" id="mobile-toc-sidebar">
+                    <div class="sidebar-header" id="toc-toggle-btn" onclick="document.getElementById('mobile-toc-sidebar').classList.toggle('expanded')">
+                        <h3>GCE Pure Math Syllabus</h3>
+                        <i class="fas fa-chevron-down toc-icon"></i>
+                    </div>
+                    
+                    <div class="sidebar-collapsible-content" id="toc-collapsible">
+                        <ul class="toc-list" id="notes-toc" onclick="if(window.innerWidth <= 992) document.getElementById('mobile-toc-sidebar').classList.remove('expanded')">
+                            <li><a href="#module1">1. Algebra and Logic</a>
+                                <ul>
+                                    <li><a href="#quadratics">1.1 Quadratics & Inequalities</a></li>
+                                    <li><a href="#polynomials">1.2 Polynomials & Fractions</a></li>
+                                    <li><a href="#logic">1.3 Mathematical Logic</a></li>
+                                    <li><a href="#combinatorics">1.4 Permutations & Combinations</a></li>
+                                    <li><a href="#functions">1.5 Relations & Functions</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#module2">2. Numbers & Relationships</a>
+                                <ul>
+                                    <li><a href="#indices-surds">2.1 Indices, Surds & Logs</a></li>
+                                    <li><a href="#sequences">2.2 Sequences & Series</a></li>
+                                    <li><a href="#sets">2.3 Sets & Binary Relations</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#module3">3. Plane Geometry</a></li>
+                            <li><a href="#module4">4. Calculus</a></li>
+                        </ul>
+                        <div class="sidebar-links">
+                            <a href="study-notes.html" class="btn btn-tertiary-outline"><i class="fas fa-chevron-left"></i> All Study Notes</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- MASSIVE HIGH-DENSITY NOTES CONTENT -->
+                <div class="notes-main-content" id="notes-content">
+                    
+                    <h2 class="notes-section-title reveal fade-up" id="introduction">GCE A/L Pure Mathematics (LSS)</h2>
+                    <p class="reveal fade-up">Welcome to the Pure Mathematics framework. This module directly tracks the Harmonised National Syllabus, delivering the exact theorems, proofs, and algebraic manipulations required for absolute mastery of the Lower Sixth curriculum.</p>
+
+                    <!-- ==========================================
+                         MODULE 1: ALGEBRA AND LOGIC
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module1">1. Algebra and Logic</h2>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="quadratics">1.1 Theory of Quadratic Equations & Inequalities</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>Sum and Product of Roots:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For the quadratic equation $ax^2 + bx + c = 0$ with roots $\alpha$ and $\beta$:</span>
+                        $$ \alpha + \beta = -\frac{b}{a} \quad \text{and} \quad \alpha\beta = \frac{c}{a} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>Symmetric Properties (Highly Examined):</strong></span>
+                        $$ \alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta $$
+                        $$ \alpha^3 + \beta^3 = (\alpha + \beta)^3 - 3\alpha\beta(\alpha + \beta) $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>The Discriminant ($\Delta = b^2 - 4ac$):</strong> Determines the nature of the roots. If $\Delta > 0$, roots are real and distinct. If $\Delta = 0$, roots are real and repeated (the curve is tangent to the x-axis). If $\Delta < 0$, roots are complex conjugates.</li>
+                        <li><strong>Absolute Value Inequalities:</strong> The modulus $|x|$ represents the distance from zero. <br>
+                            - If $|x| < a$, then $-a < x < a$.<br>
+                            - If $|x| > a$, then $x < -a$ or $x > a$.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="polynomials">1.2 Polynomials, Remainder & Factor Theorems</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>The Remainder Theorem:</strong> If a polynomial $P(x)$ is divided by a linear divisor $(x - a)$, the remainder is simply $P(a)$. If divided by $(cx - d)$, the remainder is $P(\frac{d}{c})$.</li>
+                        <li><strong>The Factor Theorem:</strong> If $P(a) = 0$, then $(x - a)$ is a definitive factor of $P(x)$. Essential for factorizing cubics.</li>
+                        <li><strong>Partial Fractions:</strong> Used to decompose rational functions $\frac{P(x)}{Q(x)}$. The degree of the numerator <em>must</em> be less than the denominator. <br>
+                            - <em>Linear factors:</em> $\frac{A}{(x-a)} + \frac{B}{(x-b)}$<br>
+                            - <em>Repeated factors:</em> $\frac{A}{(x-a)} + \frac{B}{(x-a)^2}$<br>
+                            - <em>Irreducible quadratic:</em> $\frac{Ax+B}{(x^2+c)}$
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="logic">1.3 Mathematical Logic & Proofs</h3>
+                    <p class="reveal fade-up">A proposition is a declarative statement that is strictly either True (T) or False (F).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Logical Connectives:</strong> Conjunction ($p \land q$ "AND"), Disjunction ($p \lor q$ "OR"), Negation ($\sim p$ "NOT").</li>
+                        <li><strong>Implications ($p \implies q$):</strong> "If $p$, then $q$". <br>
+                            - <em>Converse:</em> $q \implies p$<br>
+                            - <em>Contrapositive:</em> $\sim q \implies \sim p$ (Logically equivalent to the original implication).
+                        </li>
+                        <li><strong>Proof by Contradiction:</strong> Assume the negation of the statement is true, and show this leads to a mathematical absurdity (e.g., proving $\sqrt{2}$ is irrational).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="combinatorics">1.4 Permutations and Combinations</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>The Fundamental Counting Principles:</strong>
+                        $$ ^nP_r = \frac{n!}{(n-r)!} \quad \text{(Arrangement matters)} $$
+                        $$ ^nC_r = \frac{n!}{r!(n-r)!} \quad \text{(Selection only, order does not matter)} $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Permutations with Repetition:</strong> To arrange $n$ objects where $p$ objects are identical, the total arrangements are $\frac{n!}{p!}$.</li>
+                        <li><strong>Circular Permutations:</strong> The number of ways to arrange $n$ distinct objects in a circle is $(n-1)!$.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="functions">1.5 Relations and Functions</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Injective (One-to-One):</strong> Every element in the range is mapped from at most one element in the domain. Proof: If $f(a) = f(b)$, then $a = b$.</li>
+                        <li><strong>Surjective (Onto):</strong> Every element in the codomain is mapped to by at least one element in the domain. (Range = Codomain).</li>
+                        <li><strong>Bijective:</strong> Both injective and surjective. <em>Only bijective functions possess an inverse function $f^{-1}(x)$.</em></li>
+                        <li><strong>Composite Functions:</strong> $f \circ g(x)$ means substituting function $g$ into function $f$. Note that $f(g(x)) \neq g(f(x))$.</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 2: NUMBERS AND RELATIONSHIPS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module2">2. Numbers, Operations & Relationships</h2>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="indices-surds">2.1 Indices, Surds, and Logarithms</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>Laws of Logarithms:</strong>
+                        $$ \log_a(xy) = \log_a x + \log_a y $$
+                        $$ \log_a\left(\frac{x}{y}\right) = \log_a x - \log_a y $$
+                        $$ \log_a(x^n) = n \log_a x $$
+                        $$ \log_a b = \frac{\log_c b}{\log_c a} \quad \text{(Change of Base)} $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Rationalizing Surds:</strong> To remove a surd from a denominator like $\frac{1}{a + \sqrt{b}}$, multiply both numerator and denominator by its conjugate, $(a - \sqrt{b})$.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="sequences">2.2 Sequences and Series</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Arithmetic Progression (AP):</strong> Features a common difference ($d$). <br>
+                            - $n$-th term: $U_n = a + (n-1)d$<br>
+                            - Sum of $n$ terms: $S_n = \frac{n}{2}[2a + (n-1)d]$
+                        </li>
+                        <li><strong>Geometric Progression (GP):</strong> Features a common ratio ($r$). <br>
+                            - $n$-th term: $U_n = ar^{n-1}$<br>
+                            - Sum of $n$ terms: $S_n = \frac{a(1-r^n)}{1-r}$ (for $r < 1$)<br>
+                            - Sum to infinity: $S_{\infty} = \frac{a}{1-r}$ (Only valid if the series converges, meaning $|r| < 1$).
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="sets">2.3 Sets and Binary Relations</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>De Morgan's Laws:</strong> <br>
+                            1. $(A \cup B)' = A' \cap B'$<br>
+                            2. $(A \cap B)' = A' \cup B'$
+                        </li>
+                        <li><strong>Equivalence Relations:</strong> A relation $R$ on a set is an equivalence relation if it is simultaneously:<br>
+                            - <em>Reflexive:</em> $aRa$ for all $a$.<br>
+                            - <em>Symmetric:</em> If $aRb$, then $bRa$.<br>
+                            - <em>Transitive:</em> If $aRb$ and $bRc$, then $aRc$.
+                        </li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 3: PLANE GEOMETRY & VECTORS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module3">3. Plane Geometry, Matrices & Vectors</h2>
+                    
+                    <h3 class="notes-sub-section-title reveal fade-up" id="circular-measure">3.1 Circular Measure & Trigonometry</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>Arc Length and Sector Area (in Radians):</strong>
+                        $$ s = r\theta \quad \text{and} \quad A = \frac{1}{2}r^2\theta $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>Pythagorean Identities:</strong></span>
+                        $$ \sin^2\theta + \cos^2\theta = 1 $$
+                        $$ 1 + \tan^2\theta = \sec^2\theta $$
+                        $$ 1 + \cot^2\theta = \csc^2\theta $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Compound Angle Formulas:</strong> Essential for finding exact values of non-standard angles. <br>
+                            - $\sin(A \pm B) = \sin A \cos B \pm \cos A \sin B$<br>
+                            - $\cos(A \pm B) = \cos A \cos B \mp \sin A \sin B$<br>
+                            - $\tan(A \pm B) = \frac{\tan A \pm \tan B}{1 \mp \tan A \tan B}$
+                        </li>
+                        <li><strong>Double Angle Formulas:</strong> Derived directly by setting $A = B$.<br>
+                            - $\sin(2A) = 2\sin A \cos A$<br>
+                            - $\cos(2A) = \cos^2 A - \sin^2 A = 2\cos^2 A - 1$<br>
+                            - $\tan(2A) = \frac{2\tan A}{1 - \tan^2 A}$
+                        </li>
+                        <li><strong>The R-Formula (Harmonic Form):</strong> Converts $a\sin\theta + b\cos\theta = c$ into $R\sin(\theta \pm \alpha)$ or $R\cos(\theta \pm \alpha)$, where $R = \sqrt{a^2 + b^2}$ and $\tan\alpha = \frac{b}{a}$.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="coordinate-geometry">3.2 Coordinate Geometry</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>The Straight Line:</strong> The equation of a line through point $(x_1, y_1)$ with gradient $m$ is $y - y_1 = m(x - x_1)$.</li>
+                        <li><strong>Parallel & Perpendicular Lines:</strong> Parallel if $m_1 = m_2$. Perpendicular if $m_1 \times m_2 = -1$.</li>
+                        <li><strong>Distance and Midpoint:</strong> <br>
+                            - Distance $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$<br>
+                            - Midpoint $M = \left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2} \right)$
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="matrices">3.3 Matrices and Transformations</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>2x2 Determinant and Inverse:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For a matrix $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$:</span>
+                        $$ \det(A) = |A| = ad - bc $$
+                        $$ A^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Matrix Transformations:</strong> A point $(x, y)$ can be transformed to a new point $(x', y')$ by multiplying it by a transformation matrix. <br>
+                            - <em>Reflection in x-axis:</em> $\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$<br>
+                            - <em>Rotation by $90^\circ$ anti-clockwise:</em> $\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}$
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="vectors">3.4 Vector Algebra</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Scalar (Dot) Product:</strong> Used to find the angle $\theta$ between two vectors. $\mathbf{a} \cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|\cos\theta$. If $\mathbf{a} \cdot \mathbf{b} = 0$, the vectors are perfectly perpendicular.</li>
+                        <li><strong>Vector (Cross) Product:</strong> $\mathbf{a} \times \mathbf{b}$ yields a new vector perpendicular to *both* original vectors. The magnitude $|\mathbf{a} \times \mathbf{b}|$ is the area of the parallelogram formed by $\mathbf{a}$ and $\mathbf{b}$.</li>
+                        <li><strong>Vector Equation of a Line:</strong> Defined by a position vector $\mathbf{a}$ and a direction vector $\mathbf{b}$. Equation: $\mathbf{r} = \mathbf{a} + \lambda\mathbf{b}$.</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 4: CALCULUS I
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module4">4. Calculus I</h2>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="differentiation">4.1 Differentiation & Its Applications</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>The Core Rules of Differentiation:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>Chain Rule:</strong> $\frac{dy}{dx} = \frac{dy}{du} \times \frac{du}{dx}$</span><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>Product Rule:</strong> $\frac{d}{dx}(uv) = u\frac{dv}{dx} + v\frac{du}{dx}$</span><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>Quotient Rule:</strong> $\frac{d}{dx}\left(\frac{u}{v}\right) = \frac{v\frac{du}{dx} - u\frac{dv}{dx}}{v^2}$</span>
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Standard Derivatives:</strong> $\frac{d}{dx}(\sin x) = \cos x$, $\frac{d}{dx}(\cos x) = -\sin x$, $\frac{d}{dx}(e^{kx}) = ke^{kx}$, $\frac{d}{dx}(\ln x) = \frac{1}{x}$.</li>
+                        <li><strong>Stationary Points (Optimization):</strong> Occur where $\frac{dy}{dx} = 0$. <br>
+                            - If $\frac{d^2y}{dx^2} > 0$, it is a <strong>Local Minimum</strong>.<br>
+                            - If $\frac{d^2y}{dx^2} < 0$, it is a <strong>Local Maximum</strong>.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="integration">4.2 Integration</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Indefinite Integration:</strong> The reverse process of differentiation. Always include $+ C$. <br>
+                            $\int x^n dx = \frac{x^{n+1}}{n+1} + C \quad (\text{for } n \neq -1)$.
+                        </li>
+                        <li><strong>Integration of $\frac{1}{x}$:</strong> $\int \frac{1}{x} dx = \ln|x| + C$. Furthermore, if the numerator is the exact derivative of the denominator, $\int \frac{f'(x)}{f(x)} dx = \ln|f(x)| + C$.</li>
+                        <li><strong>Definite Integrals (Area):</strong> Used to calculate the exact area bound between the curve $y = f(x)$ and the x-axis. Area = $\int_a^b f(x) dx = F(b) - F(a)$.</li>
+                    </ul>
+
+                    <h2 class="notes-section-title reveal fade-up" id="conclusion">Concluding Directives</h2>
+                    <p class="reveal fade-up">Pure Mathematics demands absolute precision. Memorizing formulas is not enough; you must understand the underlying proofs to manipulate complex GCE paper questions. Master your algebra, drill your calculus rules, and use the AI Assistant below if you get stuck!</p>
+                    <div class="note-end-buttons reveal fade-up">
+                        <a href="study-notes.html" class="btn btn-primary-outline"><i class="fas fa-book"></i> Back to All Notes</a>
+                        <a href="past-papers.html" class="btn btn-secondary-outline"><i class="fas fa-file-alt"></i> Execute Past Papers</a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="cta-section section-padding bg-image-cta reveal fade-up" style="background-image: url('images/cta-main-bg.jpg');">
+            <div class="cta-overlay"></div>
+            <div class="container cta-content">
+                <h2 class="section-title text-light">Ready to Master Pure Mathematics?</h2>
+                <p>Register with MohAcademy today for personalized guidance, expert insights, and a supportive learning community that helps you ace your A/L exams.</p>
+                <a href="signup.html" class="btn btn-lg-outline animate-fade-in-up">Register for Free Today!</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to the Pure Mathematics Vault. Need a theorem explained, or help visualizing a calculus problem?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Calculus & Limits')">Calculus & Limits</span>
+                <span class="preset-chip" onclick="triggerPreset('Trig Identities')">Trig Identities</span>
+            </div>
+
+            
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/notes-subject.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

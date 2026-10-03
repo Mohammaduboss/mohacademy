@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect with the Academy - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           CONTACT PAGE SPECIFIC STYLING & GLASSMORPHISM
+           ========================================================================== */
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --accent-ai: #8a2be2;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --neon-green: #2ecc71;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .contact-hero-banner {
+            text-align: center;
+            padding: 120px 24px 40px;
+        }
+
+        .contact-hero-banner h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin: 0 0 12px 0;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-hero-banner p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .contact-master-grid {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 40px;
+            box-sizing: border-box;
+        }
+
+        .premium-glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+            box-sizing: border-box;
+        }
+
+        .info-channel-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-channel-node {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+        .info-channel-node:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+
+        .info-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 123, 255, 0.1);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .info-detail-block h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0 0 4px 0;
+        }
+
+        .info-detail-block p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .live-response-ticker {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--neon-green);
+            background-color: #f0fdf4;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .live-response-ticker .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            animation: corePulse 1.8s infinite;
+        }
+
+        .contact-console-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .form-full-row { grid-column: span 2; }
+
+        .input-group-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+        }
+
+        .input-group-wrapper label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+        }
+
+        .input-control-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-control-container i {
+            position: absolute;
+            left: 16px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .input-control-container input, 
+        .input-control-container select, 
+        .input-control-container textarea {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.25s ease;
+        }
+
+        .input-control-container textarea {
+            padding: 16px 16px 16px 46px;
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .input-control-container input:focus,
+        .input-control-container select:focus,
+        .input-control-container textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.12);
+        }
+
+        .character-ticker-span {
+            align-self: flex-end;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .console-submit-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s;
+            width: 100%;
+        }
+
+        .console-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 123, 255, 0.3);
+        }
+
+        @keyframes corePulse {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        @media (max-width: 992px) {
+            .contact-master-grid { grid-template-columns: 1fr; gap: 30px; }
+            .info-channel-stack { flex-direction: row; flex-wrap: wrap; }
+            .info-channel-node { flex: 1; min-width: 250px; }
+        }
+
+        @media (max-width: 640px) {
+            .contact-console-form { grid-template-columns: 1fr; }
+            .form-full-row { grid-column: span 1; }
+            .premium-glass-card { padding: 25px 20px; }
+            .info-channel-stack { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="contact-hero-banner">
+        <h1>Connect With Our Team</h1>
+        <p>Have questions regarding GCE A-Level science modules, marking parameters, or virtual laboratory access? Embody precision and transmit your request directly into our system node.</p>
+    </div>
+
+    <main class="contact-master-grid">
+        <aside class="premium-glass-card info-channel-stack">
+            <div class="info-channel-node">
+                <div class="info-icon-wrapper"><i class="fas fa-envelope-open-text"></i></div>
+                <div class="info-detail-block">
+                    <h3>Inquiry Portal</h3>
+                    <p>support@mohacademy.com</p>
+                    <div class="live-response-ticker"><div class="pulse-dot"></div> &lt; 2 Hours Live</div>
+                </div>
+            </div>
+
+            <div class="info-channel-node">
+                <div class="info-icon-wrapper"><i class="fas fa-flask"></i></div>
+                <div class="info-detail-block">
+                    <h3>Laboratory Desk</h3>
+                    <p>For virtual labs & engine configuration bugs.</p>
+                    <div class="live-response-ticker" style="color: var(--accent-ai); background-color: #f3e8ff;"><div class="pulse-dot" style="background-color: var(--accent-ai);"></div> Systems Active</div>
+                </div>
+            </div>
+
+            <div class="info-channel-node">
+                <div class="info-icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-detail-block">
+                    <h3>Central Node</h3>
+                    <p>Bamenda, Northwest Region,<br>Cameroon</p>
+                </div>
+            </div>
+        </aside>
+
+        <section class="premium-glass-card" style="background: rgba(255, 255, 255, 0.95);">
+            <form id="contactMasterConsole" class="contact-console-form" onsubmit="executeConsoleTransmission(event)">
+                <div class="input-group-wrapper">
+                    <label>Student Full Name</label>
+                    <div class="input-control-container">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="e.g., Mohammadu Mustaphar" required id="cn_name">
+                    </div>
+                </div>
+
+                <div class="input-group-wrapper">
+                    <label>Active Email Address</label>
+                    <div class="input-control-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="student@domain.com" required id="cn_email">
+                    </div>
+                </div>
+
+                <div class="input-group-wrapper form-full-row">
+                    <label>Syllabus Area / Context Focus</label>
+                    <div class="input-control-container">
+                        <i class="fas fa-microscope"></i>
+                        <select required id="cn_subject">
+                            <option value="" disabled selected>Select relevant department...</option>
+                            <option value="Physics Module">Physics (Mechanics, Fields & Electronics)</option>
+                            <option value="Chemistry Module">Chemistry (Kinetics, Energetics & Organic)</option>
+                            <option value="Biology Module">Biology (Biochemistry & Cell Telemetry)</option>
+                            <option value="Mathematics Core">Mathematics & Further Math Core</option>
+                            <option value="Platform Support">Virtual Labs & Platform Accounts Support</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group-wrapper form-full-row">
+                    <label>Transmission Message Body</label>
+                    <div class="input-control-container">
+                        <i class="fas fa-pen-alt" style="top: 18px;"></i>
+                        <textarea placeholder="Formulate explicit query details here..." required id="cn_message" maxlength="1000" oninput="updateTickerCounter(this)"></textarea>
+                    </div>
+                    <span class="character-ticker-span" id="lbl_char_ticker">0 / 1000 Characters</span>
+                </div>
+
+                <div class="form-full-row">
+                    <button type="submit" class="console-submit-btn" id="btn_submit_node">
+                        <i class="fas fa-paper-plane"></i> Transmit Secure Message
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div class="moh-fab-container">
+    <div class="moh-chat-window-card" id="chatWindow">
+        <div class="moh-chat-header">
+            <div class="moh-chat-title-info">
+                <h4>MOH Assistant AI</h4>
+                <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+            </div>
+            <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="moh-chat-body" id="chatMessages">
+            <div class="system-intro-bubble">
+                Hello there! Welcome to MohAcademy. How can I facilitate your GCE A-Level Science inquiries today?
+            </div>
+        </div>
+
+        <!-- Dynamic inline UI wrapper previewing file attachments prior to upload -->
+        <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+            <div class="preview-thumbnail-wrapper">
+                <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+            </div>
+            <span id="attachmentFileNameDisplay">Worksheet.png</span>
+        </div>
+        
+        <div class="moh-chat-presets">
+            <span class="preset-chip" onclick="triggerPreset('Past Papers')">Past Papers</span>
+            <span class="preset-chip" onclick="triggerPreset('Subjects Menu')">Subjects Menu</span>
+            <span class="preset-chip" onclick="triggerPreset('Virtual Labs')">Virtual Labs</span>
+        </div>
+        
+        <div class="moh-chat-input-row">
+            <!-- Hidden input element handling multi-part file selection -->
+            <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+            
+            <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                <i class="fas fa-camera"></i>
+            </button>
+            
+            <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+            
+            <button id="moh-chat-send-btn" title="Send Message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+        <div class="online-indicator-dot"></div>
+        <i class="fas fa-robot"></i>
+        <span class="avatar-label-name">MOH</span>
+    </div>
+</div>
+
+    <footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-column footer-about">
+            <h3>MohAcademy</h3>
+            <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column footer-gallery">
+            <h3>Gallery</h3>
+            <div class="gallery-thumbs">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+            </div>
+        </div>
+
+        <div class="footer-column footer-creator">
+            <h3>Creator</h3>
+            <p>Developed with passion by Mohammadu Mustaphar.</p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+        </div>
+    </div>
+</footer>
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            window.updateTickerCounter = function(textareaRef) {
+                const count = textareaRef.value.length;
+                document.getElementById('lbl_char_ticker').innerText = `${count} / 1000 Characters`;
+            };
+
+            window.executeConsoleTransmission = async function(e) {
+                e.preventDefault();
+                const submitBtn = document.getElementById('btn_submit_node');
+                
+                // Read input fields safely
+                const name = document.getElementById('cn_name').value;
+                const email = document.getElementById('cn_email').value;
+                const subject = document.getElementById('cn_subject').value;
+                const message = document.getElementById('cn_message').value;
+
+                // UI Loading feedback loop
+                submitBtn.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> Encrypting & Transmitting...`;
+                submitBtn.style.pointerEvents = "none";
+                submitBtn.style.opacity = "0.8";
+
+                try {
+                    // Send data payload to backend over the local area loop
+                    const response = await fetch('http://localhost:5000/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name, email, subject, message })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert("Transmission Confirmed: Secure request has bypassed firewall nodes cleanly. Our scientific advisors will initialize a response thread shortly.");
+                        document.getElementById('contactMasterConsole').reset();
+                        document.getElementById('lbl_char_ticker').innerText = `0 / 1000 Characters`;
+                    } else {
+                        alert(data.error || "Transmission failed to clear server validation nodes.");
+                    }
+                } catch (error) {
+                    console.error("Transmission System Error:", error);
+                    alert("Network connection error. Unable to locate the MohAcademy backend servers.");
+                } finally {
+                    // Reset UI controllers back to baseline standard
+                    submitBtn.innerHTML = `<i class="fas fa-paper-plane"></i> Transmit Secure Message`;
+                    submitBtn.style.pointerEvents = "auto";
+                    submitBtn.style.opacity = "1";
+                }
+            };
+        });
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

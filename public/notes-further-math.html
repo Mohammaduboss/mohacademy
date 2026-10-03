@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Further Mathematics A/L Study Notes - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/notes-subject.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i
+                                class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects
+                                    Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle active">Resources <i
+                                class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html"
+                                    style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html" class="active">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="notes-subject-hero-section further-math-notes-hero" id="notes-subject-hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1>Further Mathematics A/L Study Notes</h1>
+                <p>Delve deeper into advanced mathematical concepts. Comprehensive, topic-wise notes for GCE A/L Further
+                    Mathematics, designed for rigorous understanding and application.</p>
+                <div class="hero-buttons animate-fade-in-up">
+                    <a href="#notes-content" class="btn btn-primary">Start Reading Notes</a>
+                    <a href="notes/further-math/further-math-notes.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-download"></i> Download Full Notes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container notes-container">
+    
+    <!-- ==========================================
+         COLLAPSIBLE MOBILE SIDEBAR (775 SYLLABUS)
+         ========================================== -->
+    <aside class="notes-sidebar reveal fade-left" id="mobile-toc-sidebar">
+        <!-- Mobile Toggle Button Header -->
+        <div class="sidebar-header" id="toc-toggle-btn">
+            <h3>GCE 775 Syllabus</h3>
+            <i class="fas fa-chevron-down toc-icon"></i>
+        </div>
+        
+        <!-- Collapsible Content Wrapper -->
+        <div class="sidebar-collapsible-content" id="toc-collapsible">
+            <ul class="toc-list" id="notes-toc">
+                <li><a href="#foundations">1. Logic, Continuity & Hyperbolic</a>
+                    <ul>
+                        <li><a href="#reasoning-proofs">1.1 Mathematical Reasoning & Proofs</a></li>
+                        <li><a href="#continuity">1.2 Further Continuity</a></li>
+                        <li><a href="#hyperbolic">1.3 Hyperbolic Functions</a></li>
+                    </ul>
+                </li>
+                <li><a href="#algebraic-structures">2. Algebraic Structures</a>
+                    <ul>
+                        <li><a href="#group-theory">2.1 Group Theory & Axioms</a></li>
+                        <li><a href="#isomorphisms">2.2 Permutations & Isomorphisms</a></li>
+                    </ul>
+                </li>
+                <li><a href="#number-theory">3. Number Theory</a>
+                    <ul>
+                        <li><a href="#euclidean">3.1 Euclidean Algorithms & GCD</a></li>
+                        <li><a href="#modular">3.2 Modular Arithmetic & Theorems</a></li>
+                    </ul>
+                </li>
+                <li><a href="#differential">4. Differential Equations</a></li>
+                <li><a href="#mechanics-1">5. Mechanics: Rotational Dynamics</a></li>
+                <li><a href="#mechanics-2">6. Mechanics: Vectors & Impact</a></li>
+            </ul>
+            <div class="sidebar-links">
+                <a href="study-notes.html" class="btn btn-tertiary-outline"><i class="fas fa-chevron-left"></i> All Study Notes</a>
+                <a href="further-math.html" class="btn btn-secondary-outline">Further Math Subject Page <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ==========================================
+         MAIN NOTES CONTENT
+         ========================================== -->
+    <div class="notes-main-content" id="notes-content">
+        
+        <!-- INTRODUCTION -->
+        <h2 class="notes-section-title reveal fade-up" id="introduction">Introduction to Further Mathematics</h2>
+        <p class="reveal fade-up">Welcome to the comprehensive study notes for GCE A/L Further Mathematics. These notes are structured to strictly follow the Cameroon GCE syllabus (Code 775), covering advanced concepts in pure mathematics, algebraic structures, and theoretical mechanics.</p>
+
+        <!-- ==========================================
+             SECTION 1: FOUNDATIONS
+             ========================================== -->
+        <h2 class="notes-section-title reveal fade-up" id="foundations">1. Logic, Continuity & Hyperbolic Functions</h2>
+        <p class="reveal fade-up">This section establishes the rigorous logical foundations required for advanced mathematical proofs, analyzes the behavior of continuous real-valued functions, and introduces hyperbolic trigonometry.</p>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="reasoning-proofs">1.1 Mathematical Reasoning and Proofs</h3>
+        <p class="reveal fade-up">Advanced mathematics relies on formal logic to establish absolute truths. Understanding propositions and how to manipulate them is critical.</p>
+        
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Propositions & Logical Operators:</strong> 
+                <ul>
+                    <li><em>Implication ($\Rightarrow$):</em> "If P, then Q".</li>
+                    <li><em>Converse ($\Leftarrow$):</em> "If Q, then P".</li>
+                    <li><em>Equivalence ($\Leftrightarrow$):</em> "P if and only if Q" (iff).</li>
+                    <li><em>Contrapositive:</em> The contrapositive of $P \Rightarrow Q$ is $\sim Q \Rightarrow \sim P$. They are logically equivalent.</li>
+                </ul>
+            </li>
+            <li><strong>Quantifiers:</strong> 
+                <ul>
+                    <li>Universal Quantifier ($\forall$): "For all" or "For every".</li>
+                    <li>Existential Quantifier ($\exists$): "There exists at least one".</li>
+                </ul>
+            </li>
+            <li><strong>Methods of Proof:</strong>
+                <ul>
+                    <li><em>Direct Proof:</em> Assuming P is true and deducing Q.</li>
+                    <li><em>Proof by Contradiction:</em> Assuming the statement is false and showing that this assumption leads to a mathematical impossibility.</li>
+                    <li><em>Proof by Mathematical Induction:</em> Proving a base case (usually $n=1$), assuming true for $n=k$, and proving true for $n=k+1$.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="continuity">1.2 Further Continuity of Real-Valued Functions</h3>
+        <p class="reveal fade-up">Building on basic limits, this topic formally defines continuity and its powerful consequences over intervals.</p>
+        
+        <div class="equation reveal fade-up">
+            <strong>The Intermediate Value Theorem (IVT):</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">If a function $f(x)$ is continuous on a closed interval $[a, b]$, and $f(a)$ and $f(b)$ have opposite signs, then there exists at least one root $c$ in the interval $(a, b)$ such that $f(c) = 0$.</span>
+        </div>
+
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Continuity Conditions:</strong> A function $f(x)$ is continuous at a point $x = a$ if $\lim_{x \to a} f(x) = f(a)$.</li>
+            <li><strong>Algebra of Continuous Functions:</strong> If $f(x)$ and $g(x)$ are continuous, then their sum, product, and quotient (where denominator $\neq 0$) are also continuous. The composite function $f(g(x))$ is also continuous.</li>
+            <li><strong>Discontinuity:</strong> Points where the graph breaks, jumps, or reaches a vertical asymptote (e.g., the greatest integer function).</li>
+        </ul>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="hyperbolic">1.3 Hyperbolic and Inverse Hyperbolic Functions</h3>
+        <p class="reveal fade-up">Hyperbolic functions are analogs of the standard trigonometric functions, but they are defined using exponential functions rather than the unit circle.</p>
+
+        <div class="equation reveal fade-up">
+            <strong>Core Definitions:</strong>
+            $$ \sinh x = \frac{e^x - e^{-x}}{2} $$
+            $$ \cosh x = \frac{e^x + e^{-x}}{2} $$
+            $$ \tanh x = \frac{\sinh x}{\cosh x} = \frac{e^x - e^{-x}}{e^x + e^{-x}} $$
+        </div>
+
+        <ul class="formula-list reveal fade-up">
+            <li><strong>Fundamental Identity:</strong> $\cosh^2 x - \sinh^2 x = 1$</li>
+            <li><strong>Derivatives:</strong> $\frac{d}{dx}(\sinh x) = \cosh x$ and $\frac{d}{dx}(\cosh x) = \sinh x$ <em>(Note: Unlike trig, there is no negative sign when differentiating $\cosh x$)</em>.</li>
+            <li><strong>Logarithmic Equivalents of Inverses:</strong> 
+                <br>$\cosh^{-1} x = \ln(x + \sqrt{x^2 - 1})$ for $x \geq 1$
+                <br>$\sinh^{-1} x = \ln(x + \sqrt{x^2 + 1})$
+            </li>
+        </ul>
+
+        <!-- END OF SECTION 1 -->
+        <!-- ==========================================
+             SECTION 2: ALGEBRAIC STRUCTURES
+             ========================================== -->
+        <h2 class="notes-section-title reveal fade-up" id="algebraic-structures">2. Algebraic Structures</h2>
+        <p class="reveal fade-up">This section introduces Abstract Algebra, focusing heavily on the concept of Groups. Group theory is the mathematical study of symmetry, structural patterns, and the fundamental rules that govern mathematical operations.</p>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="group-theory">2.1 Group Theory & Axioms</h3>
+        <p class="reveal fade-up">A group $(G, *)$ is a set of elements $G$ combined with a binary operation $*$ that strictly satisfies four fundamental axioms.</p>
+        
+        <div class="equation reveal fade-up">
+            <strong>The Four Group Axioms:</strong>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li><strong>Closure:</strong> For all $a, b \in G$, the result of $a * b$ is also in $G$.</li>
+                <li><strong>Associativity:</strong> For all $a, b, c \in G$, $(a * b) * c = a * (b * c)$.</li>
+                <li><strong>Identity:</strong> There exists a unique element $e \in G$ such that for all $a \in G$, $a * e = e * a = a$.</li>
+                <li><strong>Inverse:</strong> For every $a \in G$, there exists a unique element $a^{-1} \in G$ such that $a * a^{-1} = a^{-1} * a = e$.</li>
+            </ul>
+        </div>
+
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Abelian Groups:</strong> If a group also satisfies the Commutative property ($a * b = b * a$ for all elements), it is called an Abelian group.</li>
+            <li><strong>Standard Examples:</strong>
+                <ul>
+                    <li>The sets of integers ($\mathbb{Z}$), rationals ($\mathbb{Q}$), reals ($\mathbb{R}$), and complex numbers ($\mathbb{C}$) form groups under ordinary addition.</li>
+                    <li>The set of non-zero reals ($\mathbb{R} \setminus \{0\}$) forms a group under multiplication.</li>
+                    <li>Modular arithmetic ($\mathbb{Z}_n$) under addition modulo $n$.</li>
+                    <li>The set of $2 \times 2$ invertible matrices under matrix multiplication (Note: This forms a <em>non-Abelian</em> group because matrix multiplication is generally not commutative).</li>
+                </ul>
+            </li>
+            <li><strong>Cayley Tables:</strong> A grid used to display the results of a binary operation on a finite group. A valid group table acts like a Latin square (every element appears exactly once in each row and column).</li>
+        </ul>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="isomorphisms">2.2 Subgroups, Permutations & Isomorphisms</h3>
+        <p class="reveal fade-up">Groups often contain smaller groups within them, and completely different-looking sets of elements can share the exact same structural behavior.</p>
+
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Subgroups & Lagrange's Theorem:</strong> A subset $H$ of a group $G$ is a subgroup if it forms a group under the same operation. <strong>Lagrange's Theorem</strong> states that for any finite group $G$, the order (number of elements) of any subgroup $H$ must divide the order of $G$.</li>
+            <li><strong>Cyclic Groups:</strong> A group that can be completely generated by repeatedly applying the operation to a single element, called the <strong>generator</strong>. All cyclic groups are Abelian.</li>
+            <li><strong>Symmetries & Permutations:</strong>
+                <ul>
+                    <li><em>Symmetries of a shape:</em> The set of rotations and reflections that map a shape (like a rectangle or square) onto itself forms a group.</li>
+                    <li><em>Permutation Groups:</em> The set of all possible rearrangements (bijections) of a finite set of items forms a group under the operation of function composition.</li>
+                </ul>
+            </li>
+            <li><strong>Isomorphism:</strong> When two groups have a one-to-one mapping (bijection) between their elements that perfectly preserves the group structure and operation. If $f: G \to H$ is an isomorphism, then $f(a * b) = f(a) \circ f(b)$. Structurally, isomorphic groups are identical, even if their elements look different.</li>
+        </ul>
+        <!-- ==========================================
+             SECTION 3: NUMBER THEORY
+             ========================================== -->
+        <h2 class="notes-section-title reveal fade-up" id="number-theory">3. Number Theory</h2>
+        <p class="reveal fade-up">Number theory is the study of the properties of integers. This section covers divisibility, prime numbers, and the mechanics of modular arithmetic, which form the mathematical backbone of modern cryptography.</p>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="euclidean">3.1 Divisibility & Euclidean Algorithms</h3>
+        <p class="reveal fade-up">The foundation of integer arithmetic relies on the division algorithm and the fundamental building blocks of numbers: primes.</p>
+        
+        <div class="equation reveal fade-up">
+            <strong>The Division Algorithm:</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For any integers $a$ and $b$ (where $b \neq 0$), there exist unique integers $q$ (quotient) and $r$ (remainder) such that:</span>
+            $$ a = bq + r, \quad 0 \leq r < |b| $$
+        </div>
+
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Fundamental Theorem of Arithmetic:</strong> Every integer greater than $1$ can be represented uniquely as a product of prime powers, irrespective of the order of the factors.</li>
+            <li><strong>The Euclidean Algorithm:</strong> A highly efficient, step-by-step method for computing the Greatest Common Divisor (GCD) of two integers. It works by repeatedly applying the division algorithm until the remainder is zero. The last non-zero remainder is the GCD.</li>
+            <li><strong>Linear Diophantine Equations:</strong> Equations of the form $ax + by = c$ where we are only interested in <em>integer</em> solutions for $x$ and $y$. 
+                <br><em>Rule:</em> This equation has a solution if and only if $\text{GCD}(a, b)$ perfectly divides $c$.</li>
+        </ul>
+
+        <div class="code-example reveal fade-up">
+            <strong>Example: Solving a Diophantine Equation</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">Find a particular integer solution for $73x + 25y = 1$</span>
+            
+            <pre style="margin-top: 10px;"><code>
+Step 1: Forward Euclidean Algorithm (Find GCD of 73 and 25)
+73 = 2(25) + 23   =>   23 = 73 - 2(25)
+25 = 1(23) + 2    =>   2 = 25 - 1(23)
+23 = 11(2) + 1    =>   1 = 23 - 11(2)
+2 = 2(1) + 0      (GCD is 1. Since 1 divides 1, a solution exists).
+
+Step 2: Reverse the steps to express 1 as a linear combination
+1 = 23 - 11(2)
+1 = 23 - 11[25 - 1(23)]               (Substitute remainder 2)
+1 = 12(23) - 11(25)                   (Simplify)
+1 = 12[73 - 2(25)] - 11(25)           (Substitute remainder 23)
+1 = 12(73) - 24(25) - 11(25)          (Simplify)
+1 = 12(73) - 35(25)
+
+Result: x = 12, y = -35
+            </code></pre>
+        </div>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="modular">3.2 Modular Arithmetic & Theorems</h3>
+        <p class="reveal fade-up">Modular arithmetic (often called "clock arithmetic") deals with systems where numbers wrap around upon reaching a certain value, called the modulus.</p>
+
+        <ul class="formula-list reveal fade-up">
+            <li><strong>Congruence Definition:</strong> $a \equiv b \pmod{n}$ means that $n$ perfectly divides $(a - b)$. In practical terms, $a$ and $b$ leave the exact same remainder when divided by $n$.</li>
+            <li><strong>Fermat's Little Theorem:</strong> If $p$ is a prime number and $a$ is an integer not divisible by $p$, then:
+                $$ a^{p-1} \equiv 1 \pmod{p} $$
+            </li>
+            <li><strong>Chinese Remainder Theorem (CRT):</strong> A theorem used to find a unique solution (modulo the product of the moduli) to a system of simultaneous linear congruences, provided that all the moduli are pairwise relatively prime (they share no common factors other than 1).</li>
+        </ul>
+        <!-- ==========================================
+             SECTION 4: DIFFERENTIAL EQUATIONS & MODELLING
+             ========================================== -->
+        <h2 class="notes-section-title reveal fade-up" id="differential">4. Differential Equations</h2>
+        <p class="reveal fade-up">In Further Mathematics, differential equations are the primary tools used to model dynamic real-world systems. Solving these equations requires mastering a variety of integration techniques and structural rules.</p>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="formulating-models">4.1 Formulating Mathematical Models</h3>
+        <p class="reveal fade-up">A differential equation expresses the rate of change of a variable. In the GCE exam, you must translate physical descriptions into mathematical equations.</p>
+        
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Direct Proportionality:</strong> "The rate of growth of a population $P$ is proportional to its current size" translates to $\frac{dP}{dt} = kP$ (where $k > 0$).</li>
+            <li><strong>Newton's Law of Cooling:</strong> "The rate of heat loss of a body is proportional to the difference in temperatures between the body and its surroundings ($T_s$)" translates to $\frac{dT}{dt} = -k(T - T_s)$.</li>
+            <li><strong>Inflow/Outflow Models:</strong> "A tank is filled with a chemical at rate $A$ and leaks at a rate proportional to the amount $X$ present" translates to $\frac{dX}{dt} = A - kX$.</li>
+        </ul>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="solving-first-order">4.2 Solving First-Order Differential Equations</h3>
+        <p class="reveal fade-up">Beyond simple separation of variables, Further Mathematics introduces two advanced techniques for solving first-order equations of the form $\frac{dy}{dx} = f(x, y)$.</p>
+        
+        <div class="equation reveal fade-up">
+            <strong>1. The Integrating Factor (I.F.) Method:</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Used for linear equations in the standard form: $\frac{dy}{dx} + P(x)y = Q(x)$</span>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li><strong>Step 1:</strong> Calculate the Integrating Factor: $\text{I.F.} = e^{\int P(x) dx}$</li>
+                <li><strong>Step 2:</strong> Multiply the entire equation by the I.F. The left side simplifies to the exact derivative of the product: $\frac{d}{dx}(y \times \text{I.F.})$</li>
+                <li><strong>Step 3:</strong> Integrate both sides with respect to $x$:
+                $$ y \times e^{\int P(x) dx} = \int \left( Q(x) \times e^{\int P(x) dx} \right) dx $$
+                </li>
+            </ul>
+        </div>
+
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>2. Substitution Method (Homogeneous Equations):</strong> If an equation cannot be separated but every term has the same total degree in $x$ and $y$, use the substitution $y = vx$ (which implies $\frac{dy}{dx} = v + x\frac{dv}{dx}$). This transforms the equation into one where $v$ and $x$ can be separated.</li>
+        </ul>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="solving-second-order">4.3 Second-Order Linear Differential Equations</h3>
+        <p class="reveal fade-up">These equations take the form $a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + cy = f(x)$, where $a, b,$ and $c$ are constants. The general solution is always the sum of two parts: the <strong>Complementary Function (CF)</strong> and the <strong>Particular Integral (PI)</strong>.</p>
+        
+        <div class="code-example reveal fade-up">
+            <strong>Part 1: The Complementary Function (CF)</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">The CF solves the homogeneous equation $a\frac{d^2y}{dx^2} + b\frac{dy}{dx} + cy = 0$. Form the auxiliary equation $am^2 + bm + c = 0$ and find its roots:</span>
+            <ul style="text-align: left; margin-top: 10px; color: #334155;">
+                <li><strong>Real & Distinct Roots ($m_1 \neq m_2$):</strong> $y_c = Ae^{m_1x} + Be^{m_2x}$</li>
+                <li><strong>Real & Repeated Roots ($m_1 = m_2 = m$):</strong> $y_c = (A + Bx)e^{mx}$</li>
+                <li><strong>Complex Roots ($m = \alpha \pm i\beta$):</strong> $y_c = e^{\alpha x}(A\cos\beta x + B\sin\beta x)$</li>
+            </ul>
+        </div>
+
+        <div class="equation reveal fade-up">
+            <strong>Part 2: The Particular Integral (PI)</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">The PI is a specific solution based on the non-zero function $f(x)$. You must choose a trial function and substitute it into the original equation to solve for the constants.</span>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li>If $f(x) = k$ (a constant) $\implies$ Trial PI: $y = C$</li>
+                <li>If $f(x) = kx$ (linear) $\implies$ Trial PI: $y = Cx + D$</li>
+                <li>If $f(x) = ke^{px}$ (exponential) $\implies$ Trial PI: $y = Ce^{px}$ 
+                    <br><em>(Note: If $e^{px}$ is already in the CF, multiply the trial PI by $x$ to get $y = Cxe^{px}$)</em></li>
+                <li>If $f(x) = k\sin(qx)$ or $k\cos(qx)$ $\implies$ Trial PI: $y = C\cos(qx) + D\sin(qx)$</li>
+            </ul>
+        </div>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="coupled-equations">4.4 Coupled First-Order Differential Equations</h3>
+        <p class="reveal fade-up">Often used in predator-prey models or multi-stage chemical reactions, these involve two dependent variables (e.g., $x$ and $y$) changing with respect to time ($t$).</p>
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Solution Strategy:</strong> Differentiate one of the equations with respect to $t$, then substitute the other equation into it to eliminate one variable. This reduces the coupled system into a single second-order differential equation that can be solved using the CF and PI methods above.</li>
+        </ul>
+        <!-- ==========================================
+             SECTION 5: MECHANICS (ROTATIONAL DYNAMICS)
+             ========================================== -->
+        <h2 class="notes-section-title reveal fade-up" id="mechanics-1">5. Mechanics: Rotational Dynamics</h2>
+        <p class="reveal fade-up">In applied mathematics, we move beyond modeling objects as simple point masses and begin analyzing the motion of extended rigid bodies rotating about a fixed axis.</p>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="moment-of-inertia">5.1 Moment of Inertia & Theorems</h3>
+        <p class="reveal fade-up">The moment of inertia ($I$) is the rotational equivalent of mass; it measures a body's resistance to angular acceleration. It depends not only on the mass of the object but also on how that mass is distributed relative to the axis of rotation.</p>
+        
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Radius of Gyration ($k$):</strong> The distance from the axis of rotation at which the entire mass of the body could be theoretically concentrated without changing its moment of inertia. Formula: $I = mk^2$.</li>
+        </ul>
+
+        <div class="equation reveal fade-up">
+            <strong>The Axis Theorems:</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Used to find the moment of inertia about an offset axis when the moment of inertia about the center of mass ($I_G$) is known.</span>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li><strong>Parallel Axis Theorem:</strong> Applies to any 3D body. If $d$ is the perpendicular distance from the new axis to the parallel axis passing through the center of mass:
+                $$ I = I_G + md^2 $$
+                </li>
+                <li><strong>Perpendicular Axis Theorem:</strong> Applies <em>only</em> to flat, 2D plane laminae. The moment of inertia about a perpendicular axis ($z$) equals the sum of the moments of inertia about two mutually perpendicular axes ($x$ and $y$) in the plane of the lamina:
+                $$ I_z = I_x + I_y $$
+                </li>
+            </ul>
+        </div>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="rotational-equations">5.2 Rotational Kinematics, Energy & Momentum</h3>
+        <p class="reveal fade-up">The linear equations of motion translate directly into rotational equivalents by substituting mass with moment of inertia ($I$), force with torque ($G$ or $\tau$), and linear velocity ($v$) with angular velocity ($\omega$).</p>
+
+        <ul class="formula-list reveal fade-up">
+            <li><strong>Equation of Motion:</strong> Torque equals moment of inertia times angular acceleration ($\ddot{\theta}$).
+                $$ G = I\ddot{\theta} $$
+            </li>
+            <li><strong>Rotational Kinetic Energy:</strong>
+                $$ E_k = \frac{1}{2}I\omega^2 $$
+                <em>Note: If a body is rolling without slipping, its total kinetic energy is the sum of its translational energy ($\frac{1}{2}mv^2$) and rotational energy ($\frac{1}{2}I\omega^2$).</em>
+            </li>
+            <li><strong>Moment of Momentum (Angular Momentum):</strong> 
+                $$ L = I\omega $$
+                <em>Principle of Conservation:</em> If no net external torque acts on a system, its total angular momentum remains constant.
+            </li>
+            <li><strong>Work Done:</strong> Work done by a constant torque rotating through an angle $\theta$.
+                $$ W = G\theta $$
+            </li>
+        </ul>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="compound-pendulum">5.3 The Compound Pendulum</h3>
+        <p class="reveal fade-up">Unlike a simple pendulum (a point mass on a string), a compound pendulum is a rigid body swinging freely about a fixed horizontal axis under the influence of gravity.</p>
+        <div class="equation reveal fade-up">
+            <strong>Period of Small Oscillations:</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For small amplitude swings, the motion approximates Simple Harmonic Motion (SHM).</span>
+            $$ T = 2\pi\sqrt{\frac{I}{mgh}} $$
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $I$ is the moment of inertia about the pivot axis, $m$ is the total mass, and $h$ is the distance from the pivot to the center of mass.</span>
+        </div>
+        <!-- ==========================================
+             SECTION 6: MECHANICS (VECTORS & IMPACT)
+             ========================================== -->
+        <h2 class="notes-section-title reveal fade-up" id="mechanics-2">6. Mechanics: Vectors & Oblique Impact</h2>
+        <p class="reveal fade-up">The final section expands mechanics into three-dimensional vector space and analyzes complex collisions in two dimensions.</p>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="vector-products">6.1 Applications of Scalar and Vector Products</h3>
+        <p class="reveal fade-up">Vectors are essential for modeling forces and motion in 3D space. The dot (scalar) product and cross (vector) product have specific physical interpretations.</p>
+        
+        <ul class="formula-list reveal fade-up">
+            <li><strong>Work Done (Scalar Product):</strong> The work done by a constant force $\mathbf{F}$ moving an object through a displacement $\mathbf{d}$ is:
+                $$ W = \mathbf{F} \cdot \mathbf{d} $$
+            </li>
+            <li><strong>Moment of a Force (Vector Product):</strong> The turning effect (torque) of a force $\mathbf{F}$ applied at a position vector $\mathbf{r}$ relative to a pivot point is:
+                $$ \mathbf{G} = \mathbf{r} \times \mathbf{F} $$
+            </li>
+            <li><strong>Moment of a Couple:</strong> A system of forces whose vector sum is zero but which produces a net turning effect. The moment is independent of the point about which it is calculated.</li>
+        </ul>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="polar-kinematics">6.2 Motion in Two Dimensions (Polar Coordinates)</h3>
+        <p class="reveal fade-up">While Cartesian coordinates $(x, y)$ are standard, many mechanical systems (like orbits or pendulums) are better modeled using polar coordinates $(r, \theta)$.</p>
+
+        <div class="equation reveal fade-up">
+            <strong>Velocity & Acceleration in Polar Coordinates:</strong><br>
+            <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Motion is broken down into radial (along the radius string) and transverse (perpendicular to the radius) components.</span>
+            <ul style="text-align: left; margin-top: 10px;">
+                <li><strong>Velocity:</strong> 
+                    <br>Radial: $\dot{r}$
+                    <br>Transverse: $r\dot{\theta}$
+                </li>
+                <li><strong>Acceleration:</strong> 
+                    <br>Radial: $\ddot{r} - r\dot{\theta}^2$
+                    <br>Transverse: $r\ddot{\theta} + 2\dot{r}\dot{\theta} = \frac{1}{r} \frac{d}{dt}(r^2\dot{\theta})$
+                </li>
+            </ul>
+        </div>
+
+        <h3 class="notes-sub-section-title reveal fade-up" id="oblique-impact">6.3 Oblique Impact of Elastic Bodies</h3>
+        <p class="reveal fade-up">Oblique impact occurs when two smooth spheres collide, or a sphere strikes a fixed plane, at an angle not parallel to their line of centers.</p>
+        
+        <ul class="key-points-list reveal fade-up">
+            <li><strong>Line of Impact (Line of Centers):</strong> The imaginary line connecting the centers of the two spheres at the exact moment of collision.
+                <ul>
+                    <li><em>Along the line of impact:</em> The standard rules of 1D collisions apply. Apply the Principle of Conservation of Linear Momentum (if no external forces act) and Newton's Experimental Law of Restitution (NEL): $v_2 - v_1 = -e(u_2 - u_1)$.</li>
+                    <li><em>Perpendicular to the line of impact:</em> Because the spheres are perfectly smooth, no impulse acts perpendicular to the line of centers. Therefore, the perpendicular velocity components of each sphere remain completely unchanged.</li>
+                </ul>
+            </li>
+            <li><strong>Loss of Kinetic Energy:</strong> In perfectly elastic collisions ($e=1$), kinetic energy is conserved. In inelastic collisions ($0 \leq e < 1$), some kinetic energy is lost as heat or sound.
+                $$ \Delta E_k = \text{Total Initial } E_k - \text{Total Final } E_k $$
+            </li>
+        </ul>
+
+        <!-- CONCLUSION -->
+        <h2 class="notes-section-title reveal fade-up" id="conclusion">Conclusion & Further Study</h2>
+        <p class="reveal fade-up">These notes aim to provide a comprehensive guide to GCE A/L Further Mathematics. Success in this subject comes from a combination of deep theoretical understanding, diligent practice of complex problems, and the ability to apply various techniques. Embrace the challenge and enjoy the elegance of advanced mathematics!</p>
+        <div class="note-end-buttons reveal fade-up">
+            <a href="study-notes.html" class="btn btn-primary-outline"><i class="fas fa-book"></i> Back to All Notes</a>
+            <a href="past-papers.html" class="btn btn-secondary-outline"><i class="fas fa-file-alt"></i> Practice with Past Papers</a>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always
+                        Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to the Further Mathematics Notes Vault. Need help visualizing an Argand diagram
+                    or solving a second-order differential equation?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Eigenvectors')">Eigenvectors</span>
+                <span class="preset-chip" onclick="triggerPreset('Maclaurin Series')">Maclaurin Series</span>
+            </div>
+
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart"
+                        style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/notes-subject.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Laboratories - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="css/labs.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Lab Hub Specific Styles - Upgraded Hero */
+        .lab-hub-wrapper {
+            max-width: 1250px;
+            margin: 120px auto 60px;
+            /* Better spacing below the fixed navbar */
+            padding: 0 24px;
+            min-height: 60vh;
+        }
+
+        .lab-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 24px;
+            padding: 60px 40px;
+            color: #ffffff;
+            margin-bottom: 50px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        /* Glowing Tech Orb Effect Behind Text */
+        .lab-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .lab-header h1 {
+            font-family: 'Orbitron', 'Poppins', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            margin: 0 0 20px 0;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .lab-header p {
+            color: #cbd5e1;
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lab-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+        }
+
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+            gap: 30px;
+        }
+
+        .lab-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .lab-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary-color);
+        }
+
+        .lab-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .lab-code {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: var(--background-light-grey);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .lab-xp {
+            color: #d97706;
+            font-size: 0.85rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lab-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+        }
+
+        .lab-category {
+            display: inline-block;
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .launch-btn {
+            margin-top: auto;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .launch-btn:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+        }
+
+        /* PRO & Free Badges */
+        .badge-free {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .badge-pro {
+            background: #fef3c7;
+            color: #b45309;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Locked Card Style */
+        .lab-card.locked {
+            border-color: #cbd5e1;
+            opacity: 0.95;
+        }
+
+        .launch-btn.locked-btn {
+            background: #f1f5f9;
+            color: #64748b;
+            border-color: #cbd5e1;
+        }
+
+        .launch-btn.locked-btn:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        /* Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .pro-features-list {
+            text-align: left;
+            margin: 20px 0 30px 0;
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .pro-features-list div {
+            font-size: 0.9rem;
+            color: #334155;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pro-features-list i {
+            color: #10b981;
+        }
+
+        .modal-action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-upgrade-now {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-maybe-later {
+            background: transparent;
+            border: none;
+            color: #64748b;
+            padding: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @media (max-width: 576px) {
+            .lab-hub-wrapper {
+                margin-top: 100px;
+                padding: 0 16px;
+            }
+
+            .lab-header {
+                padding: 40px 20px;
+            }
+
+            .lab-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .lab-filters {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                flex: 1 1 calc(50% - 10px);
+                padding: 10px;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i
+                                class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects
+                                    Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i
+                                class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html"
+                                    style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="labs.html" class="nav-link active">Virtual Labs</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="lab-hub-wrapper">
+        <div class="lab-header">
+            <h1>Virtual Practicals Simulator</h1>
+            <p>Perform highly accurate, syllabus-aligned scientific experiments. Collect data, plot graphs, and receive
+                instant automated AI evaluation against GCE marking schemes.</p>
+        </div>
+
+        <div class="lab-filters">
+            <button class="filter-btn active" onclick="filterLabs('all', this)">All Practicals</button>
+            <button class="filter-btn" onclick="filterLabs('physics', this)">Physics A/L</button>
+            <button class="filter-btn" onclick="filterLabs('chemistry', this)">Chemistry A/L</button>
+            <button class="filter-btn" onclick="filterLabs('biology', this)">Biology A/L</button>
+        </div>
+
+        <div class="lab-grid" id="lab-catalog-container">
+            <div
+                style="grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-muted); font-size: 1.1rem;">
+                <i class="fas fa-circle-notch fa-spin"></i> Initializing Laboratory Catalog...
+            </div>
+        </div>
+    </div>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Lab Guide
+                        Online</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Welcome to the Virtual Labs hub! I will be your lab assistant. Select an experiment above when
+                    you're ready to begin.
+                </div>
+            </div>
+
+            <!-- Dynamic inline UI wrapper previewing file attachments prior to upload -->
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Lab Rules')">Lab Rules</span>
+                <span class="preset-chip" onclick="triggerPreset('Report Error')">Report Error</span>
+            </div>
+
+            <div class="moh-chat-input-row">
+                <!-- Hidden input element handling multi-part file selection -->
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80"
+                        alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart"
+                        style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- PRO Tier Subscription Modal -->
+    <div id="subscriptionModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeSubscriptionModal()">&times;</button>
+            <div class="modal-header-icon">
+                <i class="fas fa-crown" style="color: #f59e0b; font-size: 3rem;"></i>
+            </div>
+            <h2>Unlock MohAcademy PRO</h2>
+            <p>The experiment <strong id="modalLabTitle" style="color: var(--primary-color);"></strong> is a premium
+                virtual lab.</p>
+
+            <div class="pro-features-list">
+                <div><i class="fas fa-check-circle"></i> Unlimited access to all A-Level Virtual Labs</div>
+                <div><i class="fas fa-check-circle"></i> Instant automated AI evaluation against GCE marking schemes
+                </div>
+                <div><i class="fas fa-check-circle"></i> Full past-paper step-by-step solutions</div>
+            </div>
+
+            <div class="modal-action-buttons">
+                <a href="pricing.html" class="btn-upgrade-now">Upgrade to PRO</a>
+                <button onclick="closeSubscriptionModal()" class="btn-maybe-later">Continue Free</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allRealLabs = [];
+
+        // Get the logged-in student's data from localStorage. If they aren't logged in, assume free tier (false).
+        // Pull the correct auth key used by your login and payment systems
+        const storedUser = localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
+        const currentUser = storedUser ? JSON.parse(storedUser) : { isPremium: false };
+
+        // 1. Fetch Real Data from your Backend
+        async function fetchRealLabs() {
+            const container = document.getElementById('lab-catalog-container');
+            container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-muted);"><i class="fas fa-circle-notch fa-spin fa-2x"></i><p>Synchronizing with MohAcademy Database...</p></div>';
+
+            try {
+                const response = await fetch('http://localhost:5000/api/labs/catalog');
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                allRealLabs = await response.json();
+                renderLabs(allRealLabs);
+            } catch (error) {
+                console.error("Error fetching labs:", error);
+                container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #ef4444; padding: 40px;"><i class="fas fa-exclamation-triangle fa-2x"></i><p>Database connection failed. Ensure server is running.</p></div>';
+            }
+        }
+
+        // 2. Render the Cards Dynamically with Freemium Logic
+        function renderLabs(labsArray) {
+            const container = document.getElementById('lab-catalog-container');
+            container.innerHTML = '';
+
+            if (labsArray.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #64748b; font-size: 1.1rem; padding: 40px;">No experiments found for this filter.</div>';
+                return;
+            }
+
+            labsArray.forEach(lab => {
+                const engineLink = `lab-${lab.subject.toLowerCase()}.html?id=${lab.experimentCode}`;
+
+                // CRUCIAL LOGIC: Lock the lab ONLY if the database says it's premium AND the student is not PRO
+                const isLocked = lab.isPremium && !currentUser.isPremium;
+
+                // Create the badges (FREE vs PRO)
+                const badgeHTML = lab.isPremium
+                    ? `<span class="badge-pro"><i class="fas fa-crown"></i> PRO</span>`
+                    : `<span class="badge-free"><i class="fas fa-unlock"></i> FREE</span>`;
+
+                // If locked, show a button that triggers the modal. If unlocked, show the real link.
+                const actionButtonHTML = isLocked
+                    ? `<button onclick="openSubscriptionModal('${lab.title.replace(/'/g, "\\'")}')" class="launch-btn locked-btn"><i class="fas fa-lock"></i> Unlock Practical</button>`
+                    : `<a href="${engineLink}" class="launch-btn">Enter Simulator <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>`;
+
+                container.innerHTML += `
+                    <div class="lab-card ${isLocked ? 'locked' : ''}">
+                        <div class="lab-meta">
+                            <span class="lab-code">${lab.experimentCode}</span>
+                            <div style="display: flex; gap: 6px; align-items: center;">
+                                ${badgeHTML}
+                                <span class="lab-xp"><i class="fas fa-star" style="color: #fbbf24;"></i> ${lab.xpReward} XP</span>
+                            </div>
+                        </div>
+                        <h2 class="lab-title">${lab.title}</h2>
+                        <div><span class="lab-category"><i class="fas fa-microscope"></i> ${lab.category}</span></div>
+                        ${actionButtonHTML}
+                    </div>
+                `;
+            });
+        }
+
+        // 3. Subscription Modal Controls
+        function openSubscriptionModal(title) {
+            document.getElementById('modalLabTitle').innerText = title;
+            document.getElementById('subscriptionModal').style.display = 'flex';
+        }
+
+        function closeSubscriptionModal() {
+            document.getElementById('subscriptionModal').style.display = 'none';
+        }
+
+        // 4. Filter System
+        function filterLabs(subject, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            if (subject === 'all') {
+                renderLabs(allRealLabs);
+            } else {
+                const filtered = allRealLabs.filter(lab => lab.subject.toLowerCase() === subject);
+                renderLabs(filtered);
+            }
+        }
+
+        // Boot up the fetch process when page loads
+        document.addEventListener('DOMContentLoaded', fetchRealLabs);
+    </script>
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>

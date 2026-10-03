@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum - MohAcademy: Interactive A/L Science Discussion</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forum.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link active">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="forum-main-wrapper">
+        <div class="forum-hero-banner">
+            <div class="container forum-hero-content">
+                <div class="hero-text-block">
+                    <h1>MohAcademy Science Forum</h1>
+                    <p>Connect with Cameroon's top educators and ambitious peers to master your GCE Advanced Level syllabus.</p>
+                </div>
+                <button class="btn-ask-question" id="action-ask-btn">
+                    <i class="fas fa-plus-circle"></i> Ask a Question
+                </button>
+            </div>
+        </div>
+
+        <div class="container forum-layout-grid">
+            <aside class="forum-sidebar-left">
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-layer-group"></i> Discussion Scopes</h3>
+                    <ul class="category-menu-list">
+                        <li><button class="category-btn active" data-subject="all"><i class="fas fa-globe"></i> All Discussions</button></li>
+                        <li><button class="category-btn" data-subject="Physics"><i class="fas fa-bolt"></i> Physics A/L</button></li>
+                        <li><button class="category-btn" data-subject="Chemistry"><i class="fas fa-flask"></i> Chemistry A/L</button></li>
+                        <li><button class="category-btn" data-subject="Biology"><i class="fas fa-dna"></i> Biology A/L</button></li>
+                        <li><button class="category-btn" data-subject="Pure Math"><i class="fas fa-calculator"></i> Pure Mathematics</button></li>
+                        <li><button class="category-btn" data-subject="Further Math"><i class="fas fa-infinity"></i> Further Maths</button></li>
+                        <li><button class="category-btn" data-subject="Computer Science"><i class="fas fa-code"></i> Computer Science</button></li>
+                    </ul>
+                </div>
+                <div class="sidebar-card honor-card">
+                    <h3><i class="fas fa-gavel"></i> Honor Code</h3>
+                    <p>Be descriptive! When tracking formulas or proofs, explain each step clearly so peers and our instructors can assist efficiently.</p>
+                </div>
+            </aside>
+
+            <section class="forum-feed-center">
+                <div class="forum-control-bar">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="forum-search-field" placeholder="Search mechanisms, proofs, equations...">
+                    </div>
+                </div>
+
+                <div class="posts-feed-container" id="posts-feed">
+                    </div>
+            </section>
+
+            <aside class="forum-sidebar-right">
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-award" style="color: #ffb703;"></i> Top Contributors</h3>
+                    <ul class="leaderboard-list">
+                        <li class="leaderboard-item">
+                            <div class="user-info">
+                                <span class="rank-num">1</span>
+                                <div>
+                                    <span class="user-title">Mohammadu M.</span><br>
+                                    <small style="color: var(--fr-text-muted)">Founder</small>
+                                </div>
+                            </div>
+                            <span class="points-badge">9,999 XP</span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <div class="forum-modal-overlay layout-hidden" id="auth-gateway-modal">
+        <div class="forum-modal-card auth-modal-limit">
+            <div class="modal-card-header">
+                <h2 style="color: #ef4444;"><i class="fas fa-lock"></i> Verification Required</h2>
+                <button class="close-modal-btn" id="close-auth-modal-btn">&times;</button>
+            </div>
+            <div style="text-align: center; padding: 10px 0;">
+                <p style="color: var(--fr-text-dark); font-weight: 500; margin-bottom: 20px;">You must have an authenticated student account to publish questions or interact with answers.</p>
+                <a href="login.html" class="full-width-btn" style="background-color: var(--fr-primary); color: #ffffff;">Log In to Your Account</a>
+                <a href="signup.html" class="full-width-btn" style="background-color: #e2e8f0; color: var(--fr-text-dark); margin-top: 10px;">Create an Account</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="forum-modal-overlay layout-hidden" id="ask-question-modal">
+        <div class="forum-modal-card">
+            <div class="modal-card-header">
+                <h2>Ask a Syllabus Question</h2>
+                <button class="close-modal-btn" id="close-post-modal-btn">&times;</button>
+            </div>
+            <form id="new-post-form">
+                <div class="form-group">
+                    <label>Clear Question Headline</label>
+                    <input type="text" id="post-form-title" placeholder="e.g., Integration by parts proof derivation issue" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject Domain</label>
+                    <select id="post-form-subject" required>
+                        <option value="Physics">Physics A/L</option>
+                        <option value="Chemistry">Chemistry A/L</option>
+                        <option value="Biology">Biology A/L</option>
+                        <option value="Pure Math">Pure Mathematics A/L</option>
+                        <option value="Further Math">Further Mathematics A/L</option>
+                        <option value="Computer Science">Computer Science A/L</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Context, Equations or Attempt Data</label>
+                    <textarea id="post-form-body" rows="6" placeholder="Provide details on where you are stuck, references to past papers, or specific values..." required></textarea>
+                </div>
+                <div class="modal-action-footer">
+                    <button type="button" class="btn-secondary" id="cancel-post-modal-btn">Cancel</button>
+                    <button type="submit" class="btn-primary" style="border:none;">Publish to Feed</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to MohAcademy. How can I facilitate your GCE A-Level Science inquiries today?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Past Papers')">Past Papers</span>
+                <span class="preset-chip" onclick="triggerPreset('Subjects Menu')">Subjects Menu</span>
+                <span class="preset-chip" onclick="triggerPreset('Virtual Labs')">Virtual Labs</span>
+            </div>
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/forum.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

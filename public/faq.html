@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Knowledge Base - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .faq-layout-container { max-width: 900px; margin: 120px auto 100px; padding: 0 24px; box-sizing: border-box; min-height: 60vh; }
+        .faq-header-center { text-align: center; margin-bottom: 50px; }
+        .faq-header-center h1 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3rem); margin: 0 0 15px 0; color: var(--text-dark); letter-spacing: -0.5px; }
+        .faq-header-center p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .filter-ribbon-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+        .filter-pill-trigger { padding: 10px 24px; border-radius: 30px; background-color: #ffffff; border: 1px solid var(--border-color); font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .filter-pill-trigger:hover { background-color: #f8fafc; color: var(--text-dark); transform: translateY(-2px); }
+        .filter-pill-trigger.active-pill { background-color: var(--primary-color); border-color: var(--primary-color); color: #ffffff; box-shadow: 0 6px 15px rgba(0, 123, 255, 0.25); }
+
+        .faq-accordion-stack { display: flex; flex-direction: column; gap: 16px; }
+        .faq-item-wrapper { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .faq-item-wrapper:hover { border-color: #cbd5e1; box-shadow: 0 8px 25px rgba(0,0,0,0.04); }
+        .faq-item-wrapper.item-expanded { border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(0, 123, 255, 0.08); }
+
+        .faq-header-trigger { width: 100%; padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; background: transparent; border: none; text-align: left; cursor: pointer; outline: none; }
+        .faq-header-trigger h3 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.15rem; margin: 0; color: var(--text-dark); transition: color 0.2s; line-height: 1.4; }
+        .faq-item-wrapper:hover .faq-header-trigger h3 { color: var(--primary-color); }
+        
+        .faq-icon-indicator { width: 36px; height: 36px; border-radius: 50%; background-color: #f1f5f9; color: var(--text-dark); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); flex-shrink: 0; }
+        .faq-item-wrapper.item-expanded .faq-icon-indicator { background-color: var(--primary-color); color: #ffffff; transform: rotate(180deg); }
+
+        .faq-content-drawer { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .faq-inner-body-text { padding: 0 30px 30px 30px; color: #475569; font-size: 1rem; line-height: 1.7; }
+        .faq-inner-body-text strong { color: var(--text-dark); }
+        .faq-inner-body-text ul { margin: 15px 0 0 0; padding-left: 20px; }
+        .faq-inner-body-text li { margin-bottom: 8px; }
+
+        @media (max-width: 768px) {
+            .faq-layout-container { margin-top: 100px; }
+            .faq-header-trigger { padding: 20px; }
+            .faq-inner-body-text { padding: 0 20px 20px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+    <main class="faq-layout-container">
+        <div class="faq-header-center">
+            <h1>Knowledge Base & FAQ</h1>
+            <p>Instant clarity regarding platform access, structural syllabus parameters, and virtual laboratory operations.</p>
+        </div>
+
+        <div class="filter-ribbon-row">
+            <button class="filter-pill-trigger active-pill" onclick="executeFaqFiltering('all', this)">All Inquiries</button>
+            <button class="filter-pill-trigger" onclick="executeFaqFiltering('general', this)">General Access</button>
+            <button class="filter-pill-trigger" onclick="executeFaqFiltering('academic', this)">Academic Structure</button>
+            <button class="filter-pill-trigger" onclick="executeFaqFiltering('labs', this)">Virtual Labs</button>
+        </div>
+
+        <div class="faq-accordion-stack">
+            
+            <div class="faq-item-wrapper" data-category="general">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>Is MohAcademy completely free to use?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        Yes. Core resources including syllabuses, standard study notes, and the past paper vault are freely accessible. We believe every dedicated science student deserves the structural support necessary to secure perfect grades.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item-wrapper" data-category="academic">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>Do the materials align with the latest Cameroon GCE Board syllabus?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        Absolutely. The system core mirrors complete GCE Advanced Level criteria specs. Every tracking parameter, theoretical vector, and grading matrix is updated to reflect the latest officially published examination standards for maximum relevance.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item-wrapper" data-category="academic">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>How are Organic Chemistry and Physics derivations organized?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        Subject materials are structured via interactive, modular network nodes rather than heavy, continuous text. Students can analyze mechanisms down to exact radical shifts and test mathematical proofs natively inside specific evaluation slots.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item-wrapper" data-category="labs">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>Are auxiliary downloads required to operate the virtual lab simulator?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        No auxiliary configurations or extensions are necessary. Every simulation engine (including titration trackers, wave interference visualizers, and mechanics pendulums) is rendered natively inside your browser framework via HTML5 canvas protocols.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item-wrapper" data-category="general">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>How does the performance monitoring XP score engine work?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        Profile scaling parameters evaluate your accuracy thresholds, completion durations, and complexity levels across science quizzes. Achieving master milestones unlocks advanced dashboard badges visible across tracking channels and the community forum.
+                    </div>
+                </div>
+            </div>
+            <!-- NEW QUESTION 1: Past Papers (Academic) -->
+            <div class="faq-item-wrapper" data-category="academic">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>How far back does the Past Paper Vault go?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        Our vault currently hosts over a decade of GCE Advanced Level past papers for Physics, Chemistry, Biology, Mathematics, and Computer Science. More importantly, each paper comes paired with detailed, step-by-step marking guides so you understand exactly how examiners allocate points.
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW QUESTION 2: Mobile Access (General) -->
+            <div class="faq-item-wrapper" data-category="general">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>Can I use MohAcademy on my smartphone?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        Yes! The entire MohAcademy platform, including the virtual laboratories and the interactive quiz engines, is 100% responsive. You get the exact same premium experience whether you are studying on a laptop at home or reviewing notes on your phone between classes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW QUESTION 3: Forum/Mentorship (General/Academic) -->
+            <div class="faq-item-wrapper" data-category="general">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>Who answers the questions in the community forum?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        The forum operates on community synergy. Questions are answered by top-performing peers and frequently reviewed by our system mentors. This ensures that all mathematical proofs and scientific explanations provided align strictly with official grading matrices.
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW QUESTION 4: Account Recovery (General) -->
+            <div class="faq-item-wrapper" data-category="general">
+                <button class="faq-header-trigger" onclick="toggleFaqAccordionNode(this)">
+                    <h3>What happens if I forget my account password?</h3>
+                    <div class="faq-icon-indicator"><i class="fas fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-content-drawer">
+                    <div class="faq-inner-body-text">
+                        Account recovery is fully automated. Simply navigate to the Login portal and click "Forgot Password." The system will transmit a secure reset link directly to your registered email address so you can regain access to your dashboard and tracking metrics instantly.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="moh-fab-container">
+    <div class="moh-chat-window-card" id="chatWindow">
+        <div class="moh-chat-header">
+            <div class="moh-chat-title-info">
+                <h4>MOH Assistant AI</h4>
+                <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+            </div>
+            <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="moh-chat-body" id="chatMessages">
+            <div class="system-intro-bubble">
+                Hello there! Welcome to MohAcademy. How can I facilitate your GCE A-Level Science inquiries today?
+            </div>
+        </div>
+
+        <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+            <div class="preview-thumbnail-wrapper">
+                <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+            </div>
+            <span id="attachmentFileNameDisplay">Worksheet.png</span>
+        </div>
+        
+        <div class="moh-chat-presets">
+            <span class="preset-chip" onclick="triggerPreset('Past Papers')">Past Papers</span>
+            <span class="preset-chip" onclick="triggerPreset('Subjects Menu')">Subjects Menu</span>
+            <span class="preset-chip" onclick="triggerPreset('Virtual Labs')">Virtual Labs</span>
+        </div>
+        
+        <div class="moh-chat-input-row">
+            <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+            <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                <i class="fas fa-camera"></i>
+            </button>
+            <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+            <button id="moh-chat-send-btn" title="Send Message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+        <div class="online-indicator-dot"></div>
+        <i class="fas fa-robot"></i>
+        <span class="avatar-label-name">MOH</span>
+    </div>
+</div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                </div>
+            </div>
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // --- Accordion Engine ---
+        function toggleFaqAccordionNode(triggerRef) {
+            const currentWrapper = triggerRef.parentElement;
+            const currentDrawer = triggerRef.nextElementSibling;
+            const isCurrentlyExpanded = currentWrapper.classList.contains('item-expanded');
+
+            document.querySelectorAll('.faq-item-wrapper').forEach(item => {
+                item.classList.remove('item-expanded');
+                item.querySelector('.faq-content-drawer').style.maxHeight = null;
+            });
+
+            if (!isCurrentlyExpanded) {
+                currentWrapper.classList.add('item-expanded');
+                currentDrawer.style.maxHeight = currentDrawer.scrollHeight + "px";
+            }
+        }
+
+        // --- Filter Engine ---
+        function executeFaqFiltering(categoryTag, pillRef) {
+            document.querySelectorAll('.filter-pill-trigger').forEach(pill => pill.classList.remove('active-pill'));
+            pillRef.classList.add('active-pill');
+
+            document.querySelectorAll('.faq-item-wrapper').forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                if (categoryTag === 'all' || itemCategory === categoryTag) {
+                    item.style.display = "block";
+                    setTimeout(() => { item.style.opacity = "1"; item.style.transform = "translateY(0)"; }, 50);
+                } else {
+                    item.style.opacity = "0"; item.style.transform = "translateY(10px)";
+                    setTimeout(() => { item.style.display = "none"; }, 300);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

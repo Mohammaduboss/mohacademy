@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade to PRO - MohAcademy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { background-color: #f8fafc; font-family: 'Lato', sans-serif; color: #0f172a; margin: 0; padding: 0; }
+        .pricing-container { max-width: 900px; margin: 120px auto 80px; padding: 0 24px; text-align: center; }
+        .pricing-header h1 { font-family: 'Poppins', sans-serif; font-size: 2.2rem; color: #0f172a; margin-bottom: 10px; }
+        .pricing-header p { font-size: 1.1rem; color: #64748b; margin-bottom: 40px; }
+        
+        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 40px; }
+        
+        .price-card {
+            background: #fff; border: 2px solid #e2e8f0; border-radius: 20px; padding: 40px 30px;
+            position: relative; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .price-card:hover { border-color: #ffb703; transform: translateY(-5px); box-shadow: 0 12px 25px rgba(255, 183, 3, 0.15); }
+        .price-card.selected { border-color: #ffb703; background: #fffdf5; box-shadow: 0 0 0 4px rgba(255, 183, 3, 0.2); }
+        
+        .best-value-badge {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: #2ecc71; color: white; padding: 5px 15px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        }
+        
+        .tier-name { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: #0f172a; margin-bottom: 15px; }
+        .tier-price { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 800; color: #0f172a; margin-bottom: 5px; }
+        .tier-price span { font-size: 1rem; color: #64748b; font-weight: 500; }
+        .tier-features { list-style: none; padding: 0; margin: 25px 0 0 0; text-align: left; }
+        .tier-features li { margin-bottom: 12px; font-size: 0.95rem; color: #475569; display: flex; align-items: center; gap: 10px; }
+        .tier-features li i { color: #2ecc71; }
+
+        .checkout-panel {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px;
+            max-width: 500px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .payment-methods { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .momo-badge { background: #ffcc00; color: #000; padding: 8px 15px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; }
+        .orange-badge { background: #ff6600; color: #fff; padding: 8px 15px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; }
+        
+        .input-group { text-align: left; margin-bottom: 25px; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #334155; }
+        .input-group input { 
+            width: 100%; padding: 15px; border: 2px solid #e2e8f0; border-radius: 10px; 
+            font-size: 1.1rem; outline: none; box-sizing: border-box; transition: border-color 0.2s;
+        }
+        .input-group input:focus { border-color: #ffb703; }
+        
+        .btn-pay {
+            width: 100%; background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
+            color: #000; border: none; padding: 16px; border-radius: 10px;
+            font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(251, 133, 0, 0.3); }
+        .btn-pay:disabled { background: #cbd5e1; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="pricing-container">
+        <div class="pricing-header">
+            <h1>Unlock MohAcademy PRO</h1>
+            <p>Choose the plan that fits your study schedule and instantly unlock all premium features.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Monthly Card -->
+            <div class="price-card" id="card-monthly" onclick="selectPlan('monthly', 2500)">
+                <div class="tier-name">Monthly Pass</div>
+                <div class="tier-price">2,500 XAF<span> / month</span></div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check-circle"></i> Full access to Virtual Labs</li>
+                    <li><i class="fas fa-check-circle"></i> All Official Marking Schemes</li>
+                    <li><i class="fas fa-check-circle"></i> Unlimited AI Chatbot</li>
+                </ul>
+            </div>
+
+            <!-- Academic Year Card -->
+            <div class="price-card selected" id="card-yearly" onclick="selectPlan('yearly', 6500)">
+                <div class="best-value-badge">Best Value</div>
+                <div class="tier-name">Full Academic Year</div>
+                <div class="tier-price">6,500 XAF<span> / year</span></div>
+                <ul class="tier-features">
+                    <li><i class="fas fa-check-circle"></i> Full access to Virtual Labs</li>
+                    <li><i class="fas fa-check-circle"></i> All Official Marking Schemes</li>
+                    <li><i class="fas fa-check-circle"></i> Unlimited AI Chatbot</li>
+                    <li><i class="fas fa-check-circle"></i> VIP WhatsApp Group Access</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="checkout-panel">
+            <h3 style="margin-top: 0; font-family: 'Poppins', sans-serif;">Complete Your Payment</h3>
+            <div class="payment-methods">
+                <button type="button" id="mtn-toggle" class="momo-badge" style="cursor: pointer; border: none; transition: 0.3s;">MTN MoMo</button>
+                <button type="button" id="orange-toggle" class="orange-badge" style="cursor: pointer; border: none; opacity: 0.5; transition: 0.3s;">Orange Money</button>
+            </div>
+            
+            <form id="paymentForm" onsubmit="processPayment(event)">
+                <div class="input-group">
+                    <label>Mobile Money Number</label>
+                    <input type="tel" id="phoneNumber" placeholder="e.g. 670000000" required pattern="[0-9]{9}" title="Enter a valid 9-digit phone number">
+                </div>
+                
+                <button type="submit" class="btn-pay" id="payButton">
+                    Pay <span id="btnAmount">6,500</span> XAF Now
+                </button>
+            </form>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 15px;">
+                <i class="fas fa-lock"></i> Secured via 256-bit encryption
+            </p>
+        </div>
+    </main>
+
+    <script>
+        let selectedPlan = 'yearly';
+        let amountToPay = 6500;
+        let selectedNetwork = 'MTN'; // Track chosen network
+
+        // Toggle visual active state and update placeholder
+        function switchNetwork(network) {
+            selectedNetwork = network;
+            const mtnBtn = document.getElementById('mtn-toggle');
+            const orangeBtn = document.getElementById('orange-toggle');
+            const phoneInput = document.getElementById('phoneNumber');
+
+            if (network === 'MTN') {
+                mtnBtn.style.opacity = '1';
+                orangeBtn.style.opacity = '0.5';
+                phoneInput.placeholder = "e.g. 670000000";
+            } else {
+                orangeBtn.style.opacity = '1';
+                mtnBtn.style.opacity = '0.5';
+                phoneInput.placeholder = "e.g. 690000000";
+            }
+        }
+
+        // Initialize button clicks on load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('mtn-toggle').addEventListener('click', () => switchNetwork('MTN'));
+            document.getElementById('orange-toggle').addEventListener('click', () => switchNetwork('Orange'));
+        });
+
+       // Validate exactly against Cameroon prefixes
+        function validateCameroonNumber(number, network) {
+            const cleanNumber = number.replace(/\s+/g, '');
+            
+            // 1. Must be exactly 9 digits
+            if (cleanNumber.length !== 9) return false;
+
+            // 2. Check the starting digits based on the network
+            if (network === 'MTN') {
+                return /^(67|68|650|651|652|653|654)/.test(cleanNumber);
+            } else if (network === 'Orange') {
+                return /^(69|655|656|657|658|659)/.test(cleanNumber);
+            }
+            return false;
+        }
+
+        function selectPlan(plan, amount) {
+            // Update UI Selection
+            document.getElementById('card-monthly').classList.remove('selected');
+            document.getElementById('card-yearly').classList.remove('selected');
+            document.getElementById(`card-${plan}`).classList.add('selected');
+            
+            // Update State & Button
+            selectedPlan = plan;
+            amountToPay = amount;
+            document.getElementById('btnAmount').innerText = amount.toLocaleString();
+        }
+
+        async function processPayment(e) {
+            e.preventDefault();
+            const phoneInput = document.getElementById('phoneNumber');
+            const phone = phoneInput.value;
+            const btn = document.getElementById('payButton');
+
+            // --- NEW: Block execution if the prefix is wrong ---
+            if (!validateCameroonNumber(phone, selectedNetwork)) {
+                alert(`Invalid number! Please enter a valid 9-digit ${selectedNetwork} number.`);
+                phoneInput.style.borderColor = 'red';
+                return;
+            }
+            phoneInput.style.borderColor = '#e2e8f0'; // Reset border if successful
+
+            const token = localStorage.getItem('mohacademy_token');
+
+            if(!token) {
+                alert("Please log in to upgrade your account.");
+                window.location.href = 'login.html';
+                return;
+            }
+
+            btn.innerText = "Initiating Payment...";
+            btn.disabled = true;
+
+            try {
+            // Send request to our backend payment route with both header variants
+            const response = await fetch('http://localhost:5000/api/payment/initialize', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    'x-auth-token': token  // Resolves backend middleware header check
+                },
+                body: JSON.stringify({
+                    plan: selectedPlan,
+                    amount: amountToPay,
+                    phone: phone
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                btn.innerText = "Awaiting MoMo Confirmation...";
+                
+                setTimeout(() => {
+                    alert("Payment Successful! Welcome to MohAcademy PRO.");
+                    
+                    // Safely fetch or initialize the user object to prevent crashes
+                    let userData = localStorage.getItem('mohacademy_user');
+                    let currentUser = userData ? JSON.parse(userData) : { name: "Student", isPremium: false };
+                    
+                    // Apply the premium upgrade
+                    currentUser.isPremium = true;
+                    
+                    // Save to BOTH keys to guarantee it works across all your pages
+                    localStorage.setItem('mohacademy_user', JSON.stringify(currentUser));
+                    localStorage.setItem('user', JSON.stringify(currentUser));
+                    
+                    // Redirect back to dashboard
+                    window.location.href = 'profile.html';
+                }, 1500);
+            } else {
+                alert(`Payment Error: ${data.message}`);
+                btn.innerHTML = `Pay <span id="btnAmount">${amountToPay.toLocaleString()}</span> XAF Now`;
+                btn.disabled = false;
+            }
+        } catch (error) {
+            console.error("Payment failed:", error);
+            alert("Network error connecting to payment server.");
+            btn.innerHTML = `Pay <span id="btnAmount">${amountToPay.toLocaleString()}</span> XAF Now`;
+            btn.disabled = false;
+        }
+        }
+    </script>
+</body>
+</html>

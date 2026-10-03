@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/L Past Papers - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/past-papers.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- PREMIUM PAYWALL MODAL -->
+    <div id="premium-modal" class="premium-modal-overlay" style="display: none;">
+        <div class="premium-modal-content">
+            <span class="close-modal-btn" onclick="closePremiumModal()">&times;</span>
+            <div class="modal-icon"><i class="fas fa-crown" style="color: #ffb703; font-size: 3rem;"></i></div>
+            <h2>Unlock Premium Access</h2>
+            <p>You have discovered a <strong>PRO Solution</strong>! Upgrade to MohAcademy Premium to instantly unlock:</p>
+            <ul style="text-align: left; margin: 15px auto; max-width: 300px; line-height: 1.6;">
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> All Official Marking Schemes & Solutions</li>
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Unlimited MOH Assistant AI Chatbot</li>
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Full Access to Virtual Science Labs</li>
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> VIP WhatsApp Group Access</li>
+            </ul>
+            <div class="pricing-options">
+                <p style="font-size: 0.9rem; color: #666;"><del>10,000 XAF</del> <strong style="color: #e74c3c; font-size: 1.2rem;">6,500 XAF / Year</strong> (Promo!)</p>
+                <p style="font-size: 0.8rem; color: #888;">or 2,500 XAF / Month</p>
+            </div>
+            <a href="profile.html" class="btn btn-primary" style="background-color: #ffb703; border-color: #ffb703; color: #000; margin-top: 15px; width: 100%;">Upgrade Now</a>
+        </div>
+    </div>
+
+    <!-- Add this quick CSS for the modal right above your </head> tag or inside past-papers.css -->
+    <style>
+        .premium-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .premium-modal-content { background: #fff; padding: 40px; border-radius: 15px; text-align: center; max-width: 400px; position: relative; animation: slideUp 0.3s ease-out; }
+        .close-modal-btn { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #666; transition: 0.2s; }
+        .close-modal-btn:hover { color: #e74c3c; }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle active">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="past-papers.html" class="active">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="past-papers-hero-section" id="past-papers-hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container text-center">
+                <h1 class="animate-fade-in-up">The Document Vault</h1>
+                <p class="animate-fade-in-up delay-1">Sharpen your execution speed. Access over a decade of official GCE A/L Science papers, complete with detailed marking schemes and examiner reports.</p>
+                <div class="hero-buttons animate-fade-in-up delay-2">
+                    <a href="#past-papers-filters" class="btn btn-primary">Initialize Database</a>
+                    <a href="study-notes.html" class="btn btn-outline-light">Review Study Notes</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="importance-section section-padding bg-light">
+            <div class="container text-center">
+                <h2 class="section-title reveal fade-up">The Tactical Advantage</h2>
+                <p class="section-subtitle reveal fade-up">Executing past papers is the ultimate diagnostic tool to isolate weak points and guarantee A* performance boundaries.</p>
+                
+                <div class="feature-highlights">
+                    <div class="highlight-item premium-glass-card reveal fade-up">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Pattern Recognition</h3>
+                        <p>Decode recurring question structures, keyword demands, and official grading logic matrices.</p>
+                    </div>
+                    <div class="highlight-item premium-glass-card reveal fade-up delay-1">
+                        <i class="fas fa-stopwatch"></i>
+                        <h3>Time Optimization</h3>
+                        <p>Train under strict physiological constraints to ensure flawless execution speed during the actual exam.</p>
+                    </div>
+                    <div class="highlight-item premium-glass-card reveal fade-up delay-2">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Error Isolation</h3>
+                        <p>Expose hidden knowledge gaps and correct them using our integrated step-by-step marking schemes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="past-papers-listing-section section-padding" id="past-papers-filters">
+            <div class="container">
+                <h2 class="section-title text-center reveal fade-up">Query The Archives</h2>
+                <p class="section-subtitle text-center reveal fade-up">Utilize the parametric filters below to isolate specific yearly arrays, subject parameters, or paper categories.</p>
+
+                <div class="filter-controls premium-glass-card reveal fade-up">
+                    <div class="filter-group">
+                        <label for="subject-filter"><i class="fas fa-microscope"></i> Domain</label>
+                        <select id="subject-filter" class="filter-dropdown">
+                            <option value="all">All Sciences</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="pure-mathematics">Pure Mathematics</option>
+                            <option value="further-mathematics">Further Mathematics</option>
+                            <option value="computer-science">Computer Science</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="paper-type-filter"><i class="fas fa-file-signature"></i> Tier</label>
+                        <select id="paper-type-filter" class="filter-dropdown">
+                            <option value="all">All Papers</option>
+                            <option value="paper-1">Paper 1 (MCQ)</option>
+                            <option value="paper-2">Paper 2 (Structural)</option>
+                            <option value="paper-3">Paper 3 (Practical/Lab)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="year-filter"><i class="fas fa-calendar-alt"></i> Session</label>
+                        <select id="year-filter" class="filter-dropdown">
+                            <option value="all">All Years</option>
+                            </select>
+                    </div>
+
+                    <div class="filter-group search-group">
+                        <label for="search-bar"><i class="fas fa-search"></i> Target Query</label>
+                        <input type="text" id="search-bar" class="filter-search" placeholder="e.g., '2024 Mechanics'">
+                        <button id="clear-filters-btn" class="btn filter-clear-btn"><i class="fas fa-times-circle"></i> Clear</button>
+                    </div>
+                </div>
+
+                <div class="past-papers-grid" id="past-papers-grid">
+                    <p class="no-results-message" id="no-results-message" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i> No document fragments found matching your operational criteria.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to the Document Vault. Are you searching for a specific year, subject, or marking scheme?
+                </div>
+            </div>
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('2025 Physics Papers')">2025 Physics</span>
+                <span class="preset-chip" onclick="triggerPreset('Chemistry Mark Schemes')">Chemistry Schemes</span>
+                <span class="preset-chip" onclick="triggerPreset('How to use this vault')">How to use</span>
+            </div>
+            <div class="moh-chat-input-row">
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+    <!-- PREMIUM PAYWALL MODAL -->
+    <div id="premium-modal" class="premium-modal-overlay" style="display: none;">
+        <div class="premium-modal-content">
+            <span class="close-modal-btn" onclick="closePremiumModal()">&times;</span>
+            <div class="modal-icon"><i class="fas fa-crown" style="color: #ffb703; font-size: 3rem;"></i></div>
+            <h2>Unlock Premium Access</h2>
+            <p>You have discovered a <strong>PRO Solution</strong>! Upgrade to MohAcademy Premium to instantly unlock:</p>
+            <ul style="text-align: left; margin: 15px auto; max-width: 300px; line-height: 1.6;">
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> All Official Marking Schemes & Solutions</li>
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Unlimited MOH Assistant AI Chatbot</li>
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Full Access to Virtual Science Labs</li>
+                <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> VIP WhatsApp Group Access</li>
+            </ul>
+            <div class="pricing-options">
+                <p style="font-size: 0.9rem; color: #666;"><del>10,000 XAF</del> <strong style="color: #e74c3c; font-size: 1.2rem;">6,500 XAF / Year</strong> (Promo!)</p>
+                <p style="font-size: 0.8rem; color: #888;">or 2,500 XAF / Month</p>
+            </div>
+            <a href="profile.html" class="btn btn-primary" style="background-color: #ffb703; border-color: #ffb703; color: #000; margin-top: 15px; width: 100%;">Upgrade Now</a>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/past-papers.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

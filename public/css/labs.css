@@ -1,0 +1,155 @@
+/* Simulator Specific UI - Dark Mode Focused */
+:root {
+    --sim-bg: #0f172a;
+    --sim-panel: #1e293b;
+    --sim-border: #334155;
+    --sim-text: #f8fafc;
+    --sim-muted: #94a3b8;
+    --sim-accent: #38bdf8;
+    --sim-chem-accent: #2ecc71;
+    --sim-bio-accent: #f43f5e;
+    --sim-success: #2ecc71;
+    --sim-submit: #3b82f6;
+    --sim-warning: #f59e0b;
+}
+
+body.simulator-active {
+    background-color: var(--sim-bg);
+    color: var(--sim-text);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+
+.header.sim-header { position: relative; z-index: 100; border-bottom: 1px solid var(--sim-border); background-color: var(--sim-bg); }
+
+.workspace-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    grid-template-rows: 55% 45%;
+    flex: 1;
+    overflow: hidden;
+    background-color: var(--sim-bg);
+}
+
+.sim-panel {
+    background-color: var(--sim-panel);
+    border: 1px solid var(--sim-border);
+    margin: 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.panel-header {
+    background-color: rgba(0,0,0,0.2);
+    padding: 12px 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--sim-border);
+}
+
+/* Left Column: Manual & Instructions */
+.manual-panel { grid-column: 1; grid-row: 1 / 3; overflow-y: auto; }
+.manual-content { padding: 20px; font-size: 0.95rem; line-height: 1.6; color: #cbd5e1; }
+.manual-content h3 { color: #ffffff; font-family: 'Poppins', sans-serif; margin-top: 0; border-bottom: 1px solid var(--sim-border); padding-bottom: 8px; }
+
+/* Top Right: Canvas Engine */
+.canvas-panel { grid-column: 2; grid-row: 1; position: relative; }
+.canvas-workspace {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(45deg, #1e293b, #1e293b 10px, #192231 10px, #192231 20px); 
+}
+
+/* Tools Rack (Chemistry) */
+.tools-rack {
+    position: absolute; right: 20px; top: 20px;
+    background: rgba(0,0,0,0.4); border: 1px solid var(--sim-border);
+    border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 10px;
+}
+.tool-btn {
+    background: var(--sim-panel); color: var(--sim-text); border: 1px solid var(--sim-border);
+    border-radius: 6px; width: 40px; height: 40px; display: flex;
+    align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;
+}
+
+/* Bottom Right: Analytical Engine */
+.data-panel { grid-column: 2; grid-row: 2; display: flex; flex-direction: column; }
+.analytical-tabs {
+    display: flex; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--sim-border);
+    overflow-x: auto; white-space: nowrap;
+}
+.tab-btn {
+    background: transparent; border: none; color: var(--sim-muted); padding: 12px 24px;
+    font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s;
+}
+.tab-btn.active, .tab-btn:hover { background: rgba(255,255,255,0.02); }
+
+/* Subject Specific Tab Colors */
+.tab-btn.phys-tab.active, .tab-btn.phys-tab:hover { color: var(--sim-accent); border-bottom-color: var(--sim-accent); }
+.tab-btn.chem-tab.active, .tab-btn.chem-tab:hover { color: var(--sim-chem-accent); border-bottom-color: var(--sim-chem-accent); }
+.tab-btn.bio-tab.active, .tab-btn.bio-tab:hover { color: var(--sim-bio-accent); border-bottom-color: var(--sim-bio-accent); }
+
+.tab-content { display: none; padding: 20px; flex: 1; overflow-y: auto; }
+.tab-content.active { display: block; }
+
+/* Table Styling */
+.table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.sim-table { width: 100%; min-width: 600px; border-collapse: collapse; font-family: 'Lato', sans-serif; margin-bottom: 20px; }
+.sim-table th, .sim-table td { border: 1px solid var(--sim-border); padding: 6px; text-align: center; }
+.sim-table th { background: rgba(0,0,0,0.3); font-size: 0.85rem; color: var(--sim-muted); }
+.sim-table input, .sim-table textarea {
+    width: 100%; box-sizing: border-box; background: transparent; border: none; color: #ffffff;
+    text-align: center; font-family: 'Poppins', sans-serif; font-size: 0.95rem; outline: none; resize: none;
+}
+.sim-table input:focus, .sim-table textarea:focus { background: rgba(255,255,255,0.05); }
+
+/* Qualitative Analysis Matrix */
+.qual-matrix th:nth-child(1) { width: 15%; }
+.qual-matrix th:nth-child(2) { width: 45%; }
+.qual-matrix th:nth-child(3) { width: 40%; }
+.qual-matrix textarea { text-align: left; padding: 8px; font-family: 'Lato', sans-serif; font-size: 0.9rem; }
+
+/* Calculations Styling */
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group label { display: block; font-size: 0.85rem; color: var(--sim-muted); margin-bottom: 6px; font-family: 'Poppins', sans-serif; }
+.form-group input, .form-group textarea {
+    width: 100%; padding: 10px; background: #0f172a; border: 1px solid var(--sim-border);
+    border-radius: 6px; color: #ffffff; font-family: 'Lato', sans-serif; box-sizing: border-box; outline: none;
+}
+.form-group input:focus, .form-group textarea:focus { border-color: var(--sim-accent); }
+
+/* Graphing Area Styling */
+.graph-workspace {
+    width: 100%; height: 100%; min-height: 250px; background: #ffffff;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #0f172a;
+}
+
+.btn-submit-lab {
+    background: var(--sim-success); color: #ffffff; border: none; padding: 8px 16px;
+    border-radius: 6px; font-family: 'Poppins', sans-serif; font-weight: 700; cursor: pointer; transition: opacity 0.2s; font-size: 0.85rem;
+}
+.btn-submit-lab:hover { opacity: 0.9; }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 992px) {
+    body.simulator-active { overflow-y: auto; height: auto; }
+    .workspace-grid { display: flex; flex-direction: column; }
+    .manual-panel { order: 3; min-height: 350px; }
+    .canvas-panel { order: 1; height: 400px; }
+    .data-panel { order: 2; height: auto; min-height: 500px; }
+    .calc-grid { grid-template-columns: 1fr; }
+}

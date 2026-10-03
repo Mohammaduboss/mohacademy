@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Verification - MohAcademy</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --neon-green: #2ecc71;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f4f7fc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-container-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .auth-glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 520px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            text-align: center;
+            box-sizing: border-box;
+            animation: formFadeIn 0.5s ease-out;
+        }
+
+        .shield-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        .auth-header-node h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .auth-header-node p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .email-highlight-span {
+            color: var(--text-dark);
+            font-weight: 700;
+            display: inline-block;
+            background-color: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .otp-digits-flex-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .otp-input-node {
+            width: 56px;
+            height: 64px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background-color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            text-align: center;
+            color: var(--text-dark);
+            outline: none;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .otp-input-node:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.12);
+            background-color: #fafafa;
+        }
+
+        .auth-action-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+            transition: all 0.25s;
+        }
+
+        .auth-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 123, 255, 0.3);
+        }
+
+        .countdown-timer-lbl-node {
+            margin-top: 25px;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .resend-action-anchor {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            pointer-events: none;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        
+        .resend-action-anchor.active-trigger {
+            pointer-events: auto;
+            opacity: 1;
+            cursor: pointer;
+        }
+        .resend-action-anchor.active-trigger:hover { text-decoration: underline; }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 576px) {
+            .auth-glass-card { padding: 35px 16px; }
+            .otp-input-node { width: 42px; height: 54px; font-size: 1.3rem; }
+            .auth-header-node h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header style="background-color: #0f172a; padding: 18px 30px; width: 100%; box-sizing: border-box;">
+        <a href="index.html" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
+            <i class="fas fa-atom" style="color: #2ecc71; margin-right: 10px;"></i> MohAcademy
+        </a>
+    </header>
+
+    <main class="auth-container-wrapper">
+        <div class="auth-glass-card">
+            <div class="shield-icon-wrapper">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            
+            <div class="auth-header-node">
+                <h1>Verify Identity</h1>
+                <p>We've dispatched a 6-digit verification sequence to <span class="email-highlight-span" id="lbl_injected_email">your email channel</span>. Enter the system matrix parameters below.</p>
+            </div>
+
+            <form id="otpVerificationMasterForm" onsubmit="handleTokenValidation(event)">
+                
+                <div class="otp-digits-flex-row" id="otp_inputs_wrapper">
+                    <input type="text" maxlength="1" class="otp-input-node" required pattern="[0-9]">
+                    <input type="text" maxlength="1" class="otp-input-node" required pattern="[0-9]">
+                    <input type="text" maxlength="1" class="otp-input-node" required pattern="[0-9]">
+                    <input type="text" maxlength="1" class="otp-input-node" required pattern="[0-9]">
+                    <input type="text" maxlength="1" class="otp-input-node" required pattern="[0-9]">
+                    <input type="text" maxlength="1" class="otp-input-node" required pattern="[0-9]">
+                </div>
+
+                <button type="submit" class="auth-action-btn">Verify Security Profile</button>
+            </form>
+
+            <div class="countdown-timer-lbl-node">
+                Didn't receive the email token? <br style="margin-bottom: 6px;">
+                <span id="timer_clock_display">Resend option will activate in <strong>59s</strong></span>
+                <a href="#" class="resend-action-anchor" id="btn_resend_trigger" onclick="triggerOtpResendSequence(event)">Resend Code</a>
+            </div>
+        </div>
+    </main>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const targetMail = localStorage.getItem('verification_email');
+            if (targetMail) {
+                document.getElementById('lbl_injected_email').innerText = targetMail;
+            } else {
+                alert("Email session missing. Please restart signup.");
+                window.location.href = "signup.html";
+            }
+
+            const inputContainer = document.getElementById('otp_inputs_wrapper');
+            const fields = inputContainer.querySelectorAll('.otp-input-node');
+
+            fields.forEach((field, index) => {
+                field.addEventListener('input', (e) => {
+                    if (field.value.length >= 1 && index < fields.length - 1) {
+                        fields[index + 1].focus();
+                    }
+                });
+
+                field.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && field.value.length === 0 && index > 0) {
+                        fields[index - 1].focus();
+                    }
+                });
+            });
+
+            runClockCountdownEngine(59);
+        });
+
+        function runClockCountdownEngine(secondsRemaining) {
+            const clockLbl = document.getElementById('timer_clock_display');
+            const resendBtn = document.getElementById('btn_resend_trigger');
+            
+            resendBtn.classList.remove('active-trigger');
+            clockLbl.style.display = "inline";
+
+            const interval = setInterval(() => {
+                secondsRemaining--;
+                clockLbl.innerHTML = `Resend option will activate in <strong>${secondsRemaining}s</strong>`;
+                
+                if (secondsRemaining <= 0) {
+                    clearInterval(interval);
+                    clockLbl.style.display = "none";
+                    resendBtn.classList.add('active-trigger');
+                }
+            }, 1000);
+        }
+
+        function triggerOtpResendSequence(e) {
+            e.preventDefault();
+            // In a production environment, this would call a /resend-otp backend route
+            alert("Security Notification: A clean authentication token has been emitted to your inbox.");
+            runClockCountdownEngine(60);
+        }
+
+        async function handleTokenValidation(e) {
+            e.preventDefault();
+            
+            const inputs = document.querySelectorAll('.otp-input-node');
+            let otpCode = "";
+            inputs.forEach(input => otpCode += input.value);
+
+            const email = localStorage.getItem('verification_email');
+
+            const btn = e.target.querySelector('.auth-action-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Verifying Security Profile...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/verify-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, otp: otpCode })
+                });
+
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    localStorage.setItem('mohacademy_token', data.token);
+                    localStorage.setItem('mohacademy_user', JSON.stringify(data.student));
+                    
+                    alert("Identity Confirmed! Welcome to the Academy.");
+                    window.location.href = "profile.html"; 
+                } else {
+                    alert(`Verification Error: ${data.message}`);
+                }
+            } catch (error) {
+                console.error("Server connection failed:", error);
+                alert("Fatal Error: Could not reach the MohAcademy server.");
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamified Interactive Quizzes - MohAcademy</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    
+    <!-- Unified External Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quizzes.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link active">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="quizzes-hero-banner">
+            <div class="container">
+                <h1>GCE A-Level Science Quiz Grand Prix</h1>
+                <p>Test your knowledge, review core syllabus criteria, track live score indicators, and unlock global premium academic XP benchmarks across major scientific fields.</p>
+            </div>
+        </section>
+
+        <section class="container" style="position: relative; z-index: 5;">
+            <div class="grand-prix-event-wrapper premium-glass-card" id="grandPrixTargetCountdown" data-deadline-timestamp="2026-12-31T23:59:59">
+                <h3><i class="fas fa-bolt" style="color: var(--xp-gold);"></i> Next Live Evaluation Arena Ends In</h3>
+                <div class="grand-prix-countdown-container">
+                    <div class="time-node-box">
+                        <span id="lblDays">00</span>
+                        <label>Days</label>
+                    </div>
+                    <div class="time-node-box">
+                        <span id="lblHours">00</span>
+                        <label>Hrs</label>
+                    </div>
+                    <div class="time-node-box">
+                        <span id="lblMinutes">00</span>
+                        <label>Mins</label>
+                    </div>
+                    <div class="time-node-box">
+                        <span id="lblSeconds">00</span>
+                        <label>Secs</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-center-container">
+            <div class="quiz-dashboard-layout">
+                <aside class="quiz-sidebar-nav premium-glass-card">
+                    <h4>Core Subjects</h4>
+                    <button class="subject-selection-btn active-subject" onclick="loadSelectedSubjectTopics('physics', this)">
+                        <span><i class="fas fa-atom sub-icon"></i> Physics</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="subject-selection-btn" onclick="loadSelectedSubjectTopics('chemistry', this)">
+                        <span><i class="fas fa-vial sub-icon"></i> Chemistry</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="subject-selection-btn" onclick="loadSelectedSubjectTopics('biology', this)">
+                        <span><i class="fas fa-dna sub-icon"></i> Biology</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="subject-selection-btn" onclick="loadSelectedSubjectTopics('mathematics', this)">
+                        <span><i class="fas fa-calculator sub-icon"></i> Mathematics</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="subject-selection-btn" onclick="loadSelectedSubjectTopics('computer_science', this)">
+                        <span><i class="fas fa-laptop sub-icon"></i> Computer Science</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <button class="subject-selection-btn" onclick="loadSelectedSubjectTopics('further_mathematics', this)">
+                        <span><i class="fas fa-square-root-variable sub-icon"></i> Further Math</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </aside>
+
+                <div class="quiz-main-stage premium-glass-card">
+                    <div class="topic-selector-header" id="subjectTopicsContainerBox"></div>
+                    <div class="active-quiz-engine" id="liveQuizWorkspaceEngine"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                </div>
+            </div>
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to the Quizzes Arena. Select any science topic to begin your evaluation journey!
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Grand Prix Rules')">Grand Prix Rules</span>
+                <span class="preset-chip" onclick="triggerPreset('Report Error')">Report Error</span>
+                <span class="preset-chip" onclick="triggerPreset('Study Strategy')">Study Strategy</span>
+            </div>
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <!-- Unified External Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/quizzes.js"></script>
+</body>
+</html>

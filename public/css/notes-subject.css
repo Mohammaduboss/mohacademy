@@ -1,0 +1,355 @@
+/* ==========================================================================
+   MOHACADEMY UNIVERSAL SUBJECT NOTES STYLING ENGINE
+   ========================================================================== */
+
+/* Universal Hero Section (Fluid & Responsive) */
+.notes-subject-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 480px; /* Replaced fixed 550px height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: calc(var(--header-height, 80px) + 40px) 24px 60px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+.notes-subject-hero-section .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(0, 86, 179, 0.65) 100%);
+    z-index: 1;
+}
+
+.notes-subject-hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.notes-subject-hero-section .hero-content h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    line-height: 1.15;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.notes-subject-hero-section .hero-content p {
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    margin-bottom: 35px;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.hero-buttons .btn { min-width: 220px; margin: 0; }
+
+/* Dynamic Background Bindings */
+.physics-notes-hero { background-image: url('../images/notes-physics-hero-bg.jpg'); }
+.chemistry-notes-hero { background-image: url('../images/notes-chemistry-hero-bg.jpg'); }
+.biology-notes-hero { background-image: url('../images/notes-biology-hero-bg.jpg'); }
+.pure-math-notes-hero { background-image: url('../images/notes-pure-math-hero-bg.jpg'); }
+.further-math-notes-hero { background-image: url('../images/notes-further-math-hero-bg.jpg'); }
+.computer-science-notes-hero { background-image: url('../images/notes-computer-science-hero-bg.jpg'); }
+
+/* ==========================================================================
+   MAIN CONTENT & GLASSMORPHISM SIDEBAR
+   ========================================================================== */
+.notes-content-section {
+    background-color: #f8fafc;
+    min-height: 80vh;
+}
+
+.notes-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.notes-sidebar {
+    position: sticky;
+    top: calc(var(--header-height, 80px) + 25px);
+    width: 300px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    padding: 30px 25px;
+    overflow-y: auto;
+    max-height: calc(100vh - var(--header-height, 80px) - 50px);
+    border-top: 5px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.notes-sidebar h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.toc-list { list-style: none; padding: 0; margin: 0; }
+.toc-list li { margin-bottom: 8px; }
+.toc-list li a {
+    display: block;
+    padding: 10px 14px;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.toc-list li a:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+}
+
+.toc-list li a.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+.toc-list ul { padding-left: 15px; margin-top: 5px; }
+.toc-list ul li a { font-size: 0.88rem; font-weight: 500; color: var(--text-muted); }
+.toc-list ul li a.active { background-color: rgba(0, 123, 255, 0.1); color: var(--primary-color); box-shadow: none; }
+
+.sidebar-links {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notes-main-content {
+    flex-grow: 1;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 50px;
+}
+
+.notes-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-top: 50px;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border-color);
+}
+.notes-section-title:first-child { margin-top: 0; }
+
+.notes-sub-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.notes-main-content p { font-size: 1.05rem; line-height: 1.7; color: #334155; margin-bottom: 18px; }
+.notes-main-content ul { margin-left: 20px; margin-bottom: 20px; }
+.notes-main-content ul li { font-size: 1.05rem; line-height: 1.6; color: #334155; margin-bottom: 8px; }
+
+/* Mathematical & Code Formatting */
+.equation, .code-example pre {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    border-left: 4px solid var(--primary-color);
+    overflow-x: auto;
+}
+
+.formula-list li {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f0fdf4;
+    color: #155724;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    border-left: 4px solid #2ecc71;
+    overflow-x: auto;
+}
+
+.key-points-list { list-style-type: none; padding: 0; margin-left: 0; }
+.key-points-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 1.05rem; line-height: 1.6; }
+.key-points-list li::before {
+    content: "\f058";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    top: 3px;
+}
+
+.note-image {
+    text-align: center;
+    margin: 35px auto;
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+.note-image img { max-width: 100%; height: auto; border-radius: 8px; }
+.image-caption { font-size: 0.9rem; color: var(--text-muted); margin-top: 12px; font-style: italic; }
+
+/* ==========================================================================
+   CHATBOT STYLING MODULE
+   ========================================================================== */
+.moh-fab-container { position: fixed; bottom: 25px; right: 25px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; pointer-events: none; }
+.moh-chat-window-card { width: 370px; max-width: calc(100vw - 40px); height: 500px; background-color: #ffffff; border-radius: 20px; box-shadow: 0 15px 45px rgba(0,0,0,0.2); border: 1px solid rgba(138, 43, 226, 0.2); display: flex; flex-direction: column; overflow: hidden; pointer-events: auto; transform: scale(0.85) translateY(30px); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); transform-origin: bottom right; }
+.moh-chat-window-card.active { transform: scale(1) translateY(0); opacity: 1; visibility: visible; }
+.moh-chat-header { background: linear-gradient(90deg, #8a2be2, #007bff); color: #ffffff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+.moh-chat-title-info h4 { font-size: 1rem; font-family: 'Poppins', sans-serif; font-weight: 600; margin: 0; }
+.moh-chat-title-info small { font-size: 0.75rem; display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+#moh-close-panel-btn { background: none; border: none; color: #ffffff; font-size: 1.4rem; cursor: pointer; opacity: 0.8; }
+.moh-chat-body { flex: 1; padding: 18px; overflow-y: auto; background-color: #f8fafc; display: flex; flex-direction: column; gap: 14px; }
+.system-intro-bubble, .bot-chat-bubble { background-color: #ffffff; color: #2c3e50; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 0 16px 16px 16px; font-size: 0.9rem; line-height: 1.5; align-self: flex-start; max-width: 85%; }
+.user-chat-bubble { background-color: #8a2be2; color: #ffffff; padding: 12px 16px; border-radius: 16px 16px 0 16px; font-size: 0.9rem; max-width: 85%; align-self: flex-end; }
+.moh-chat-presets { display: flex; gap: 6px; padding: 12px 18px; background-color: #ffffff; flex-wrap: wrap; border-top: 1px solid #e2e8f0; }
+.preset-chip { background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+.preset-chip:hover { background-color: #8a2be2; color: #ffffff; border-color: #8a2be2; }
+.moh-chat-input-row { display: flex; padding: 14px 18px; background-color: #ffffff; border-top: 1px solid #e2e8f0; gap: 10px; }
+#moh-chat-input-field { flex: 1; padding: 12px 16px; border-radius: 24px; border: 1px solid #e2e8f0; font-size: 0.92rem; outline: none; }
+#moh-chat-send-btn { background-color: #8a2be2; color: #ffffff; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.moh-avatar-badge { width: 68px; height: 68px; background: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%); border-radius: 50%; box-shadow: 0 6px 25px rgba(138, 43, 226, 0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; cursor: grab; pointer-events: auto; position: relative; user-select: none; }
+.moh-avatar-badge:hover { transform: scale(1.05); }
+.moh-avatar-badge i { font-size: 1.5rem; margin-top: 2px; }
+.avatar-label-name { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 1px; }
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 992px) {
+    .notes-container { flex-direction: column; }
+    .notes-sidebar { position: static; width: 100%; max-height: none; border-top: 5px solid var(--primary-color); padding: 25px; }
+    .sidebar-links { flex-direction: row; flex-wrap: wrap; }
+    .sidebar-links .btn { flex: 1; }
+    .notes-main-content { padding: 35px 25px; }
+}
+
+@media (max-width: 768px) {
+    .notes-subject-hero-section { min-height: 420px; padding-top: 100px; padding-bottom: 40px; }
+    .hero-buttons { flex-direction: column; gap: 15px; }
+    .hero-buttons .btn { width: 100%; max-width: 280px; }
+    
+    .notes-section-title { font-size: 1.8rem; }
+    .notes-sub-section-title { font-size: 1.3rem; }
+    
+
+}
+
+/* ==========================================================================
+   MOBILE TABLE OF CONTENTS (TOC) TOGGLE MECHANICS
+   ========================================================================== */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+}
+.toc-icon {
+    display: none; /* Hidden on desktop */
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .sidebar-header {
+        cursor: pointer; /* Clickable on mobile */
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    .sidebar-header h3 {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .toc-icon {
+        display: block;
+    }
+    .sidebar-collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease;
+        opacity: 0;
+    }
+    /* When expanded via JavaScript */
+    .notes-sidebar.expanded .sidebar-collapsible-content {
+        max-height: 1200px;
+        opacity: 1;
+        margin-top: 20px;
+    }
+    .notes-sidebar.expanded .sidebar-header {
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 12px;
+    }
+    .notes-sidebar.expanded .toc-icon {
+        transform: rotate(180deg);
+    }
+}
+
+/* ==========================================================================
+   ANTI-WOBBLE & HORIZONTAL OVERFLOW LOCK
+   ========================================================================== */
+html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Forces the main container to respect the screen width */
+.notes-main-content {
+    min-width: 0; /* Critical flexbox fix to stop children from stretching the parent */
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Forces the long math equations to stay inside their boxes and scroll sideways */
+.equation, .code-example pre {
+    max-width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch; /* Smooth sideways scrolling on iPhones */
+    box-sizing: border-box;
+}
+
+mjx-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}

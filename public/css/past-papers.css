@@ -1,0 +1,364 @@
+/* ==========================================================================
+   MOHACADEMY PAST PAPERS VAULT STYLING
+   ========================================================================== */
+
+/* Specialized Hero Section */
+.past-papers-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 550px; /* Changed from fixed height for responsiveness */
+    background: url('../images/past-papers-hero-bg.jpg') no-repeat center center/cover;
+    background-color: #0f172a; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: calc(var(--header-height, 80px) + 40px) 24px 60px;
+    overflow: hidden;
+}
+
+.past-papers-hero-section .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(0, 86, 179, 0.75) 100%);
+    z-index: 1;
+}
+
+.past-papers-hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.past-papers-hero-section h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    line-height: 1.15;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+}
+
+.past-papers-hero-section p {
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    margin-bottom: 35px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+/* Perfected Hero Button Layout */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.hero-buttons .btn {
+    min-width: 220px;
+    margin: 0;
+}
+
+.btn-outline-light {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+}
+
+.btn-outline-light:hover {
+    background: #ffffff;
+    color: #0056b3;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+/* Reusable Glassmorphism Card */
+.premium-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 16px;
+}
+
+.importance-section {
+    background-color: #f8fafc;
+}
+
+/* Feature Highlights Refinement */
+.feature-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.highlight-item {
+    padding: 35px 25px;
+    transition: transform 0.3s ease;
+    border-bottom: 4px solid #007bff;
+}
+
+.highlight-item:hover {
+    transform: translateY(-8px);
+}
+
+.highlight-item i {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   ADVANCED FILTERING CONTROL DASHBOARD
+   ========================================================================== */
+.past-papers-listing-section {
+    background-color: var(--card-background);
+}
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 30px;
+    margin: 40px auto;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    font-size: 0.95rem;
+    color: #0f172a;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.filter-group label i {
+    color: #007bff;
+    margin-right: 5px;
+}
+
+.filter-dropdown,
+.filter-search {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Lato', sans-serif;
+    color: #334155;
+    background-color: #ffffff;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.filter-dropdown:focus,
+.filter-search:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.12);
+}
+
+.search-group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 15px;
+    flex-grow: 2;
+}
+
+.search-group .filter-search {
+    margin-bottom: 0;
+}
+
+.filter-clear-btn {
+    padding: 14px 20px;
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.filter-clear-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    border-color: #94a3b8;
+}
+
+/* ==========================================================================
+   DOCUMENT GRID & CARD PHYSICS
+   ========================================================================== */
+.past-papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.paper-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid #007bff;
+}
+
+.paper-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.paper-card-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.paper-card-header .subject-icon {
+    font-size: 2.5rem;
+    background: rgba(0, 123, 255, 0.1);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.paper-info h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.paper-info p {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.meta-info {
+    display: inline-flex;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.paper-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.paper-card-actions .btn {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.paper-card-actions .btn-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.paper-card-actions .btn-secondary-outline {
+    background-color: transparent;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+}
+
+.paper-card-actions .btn-secondary-outline:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* No results message */
+.no-results-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #dc3545;
+    background: #f8d7da;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #f5c6cb;
+    font-weight: 600;
+}
+
+/* Entry Animation Class appended via JS */
+.fade-in-card {
+    animation: cardFadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 992px) {
+    .filter-controls { padding: 25px; }
+    .search-group { flex-direction: column; align-items: stretch; width: 100%; }
+    .filter-clear-btn { width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .past-papers-hero-section { min-height: 480px; padding-top: 100px; padding-bottom: 30px; }
+    .hero-buttons { flex-direction: column; gap: 15px; }
+    .hero-buttons .btn { width: 100%; max-width: 280px; }
+    
+    .filter-controls { flex-direction: column; }
+    .filter-group { width: 100%; }
+    
+    .past-papers-grid { grid-template-columns: 1fr; }
+    .paper-card { padding: 20px; }
+    
+    
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Virtual Lab Engine - MohAcademy</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/labs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Orbitron:wght@400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body.simulator-active {
+            overflow-y: auto !important;
+            overflow-x: hidden;
+            height: auto !important;
+            background: #010409;
+        }
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 20px;
+            padding: 20px;
+            min-height: calc(100vh - 70px);
+            align-items: start;
+        }
+        .manual-panel {
+            position: sticky;
+            top: 90px;
+            max-height: calc(100vh - 110px);
+            overflow-y: auto;
+            border-radius: 8px;
+            margin: 0 !important;
+            border: 1px solid #047857; /* Biology Green Border */
+        }
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            min-width: 0;
+        }
+        .canvas-panel, .data-panel {
+            width: 100%;
+            height: auto !important;
+            margin: 0 !important;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #047857;
+        }
+        .canvas-workspace {
+            background: #1e293b !important;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            min-height: auto;
+            height: auto;
+            border-radius: 0 0 8px 8px;
+        }
+        .analytical-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            background: #0f172a;
+            padding: 5px;
+            align-items: center;
+            border-bottom: 2px solid #047857;
+        }
+        .tab-content {
+            padding: 20px;
+            display: none;
+            height: auto !important;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+        }
+        .sim-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-family: 'Lato', sans-serif;
+        }
+        .sim-table th {
+            background: #1e293b;
+            color: #10b981;
+            padding: 14px;
+            text-align: center;
+            border-bottom: 2px solid #334155;
+            border-right: 1px solid #334155;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .sim-table td {
+            padding: 12px;
+            border-bottom: 1px solid #334155;
+            border-right: 1px solid #334155;
+            text-align: center;
+            color: #fff;
+        }
+        .sim-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            background: #161b22;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 4px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        .sim-input:focus {
+            border-color: #10b981;
+            outline: none;
+            background: #1e293b;
+        }
+        @media (max-width: 992px) {
+            .workspace-grid { display: flex !important; flex-direction: column !important; padding: 10px; }
+            .manual-panel { position: static; max-height: none; order: 3; margin-bottom: 40px !important; }
+            .right-column { order: 1; }
+        }
+    </style>
+</head>
+<body class="simulator-active">
+    <header class="header sim-header" id="main-header" style="height: 70px;">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon" style="color: #10b981;"></i> <span class="site-name" style="color: #ffffff;">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="labs.html" class="nav-link" style="color: #10b981;"><i class="fas fa-arrow-left"></i> Save & Exit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="workspace-grid">
+        <aside class="sim-panel manual-panel">
+            <div class="panel-header" style="color: #10b981;">
+                <span><i class="fas fa-book-open"></i> Standard Procedure Manual</span>
+            </div>
+            <div class="manual-content" id="dynamic-instructions-container">
+                <div style="text-align: center; margin-top: 50px; color: var(--sim-muted);">
+                    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                    <p>Loading biological parameters from core database...</p>
+                </div>
+            </div>
+        </aside>
+
+        <div class="right-column">
+            <section class="sim-panel canvas-panel">
+                <div class="panel-header" style="color: #10b981;">
+                    <span><i class="fas fa-microscope"></i> Interactive Biological Workspace</span>
+                    <span style="color: var(--sim-muted); font-size: 0.8rem;"><i class="fas fa-eye"></i> Observe physiological changes</span>
+                </div>
+                <div class="canvas-workspace" id="simulation-render-target">
+                    <!-- Javascript Engine targets this -->
+                </div>
+            </section>
+
+            <section class="sim-panel data-panel">
+                <div class="analytical-tabs">
+                    <button id="btn-tab-data" class="tab-btn bio-tab active" onclick="switchTab('data-tab')"><i class="fas fa-table"></i> Official Lab Report</button>
+                    <div style="margin-left: auto; padding: 6px 15px;">
+                        <button class="btn-submit-lab" onclick="submitLabForGrading()" style="background: #10b981; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                            <i class="fas fa-brain"></i> Request AI Evaluation
+                        </button>
+                    </div>
+                </div>
+                <div id="data-tab" class="tab-content active">
+                    <div id="dynamic-data-table-container">
+                        <!-- Dynamic report inputs injected here by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- AI Grading Report Modal -->
+    <div id="ai-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(6px);">
+        <div style="background: #0f172a; border: 2px solid #10b981; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 90vh; display: flex; flex-direction: column; text-align: center; box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2);">
+            <h3 style="color: #fff; margin-bottom: 20px; font-family: 'Poppins'; flex-shrink: 0;"><i class="fas fa-brain" style="color: #10b981;"></i> Chief Examiner AI Report</h3>
+            <div id="ai-feedback-content" style="margin-bottom: 25px; color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; overflow-y: auto; text-align: left; padding-right: 10px;"></div>
+            <button onclick="document.getElementById('ai-modal').style.display = 'none'" style="background: #10b981; color: #fff; border: none; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; font-family: 'Poppins'; flex-shrink: 0; width: fit-content; margin: 0 auto;">Acknowledge & Close</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/lab-ui.js"></script>
+    <script src="js/lab-engine-biology.js"></script>
+</body>
+</html>

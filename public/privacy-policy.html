@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Architecture - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .legal-frame-layout-grid { max-width: 1100px; margin: 120px auto 100px; padding: 0 24px; display: grid; grid-template-columns: 280px 1fr; gap: 40px; box-sizing: border-box; }
+        .legal-sticky-nav { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 10px; align-self: start; }
+        .legal-nav-anchor { padding: 12px 18px; border-radius: 8px; color: var(--text-muted); text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.95rem; transition: all 0.2s ease; border-left: 3px solid transparent; }
+        .legal-nav-anchor:hover { background-color: #f1f5f9; color: var(--text-dark); border-color: #cbd5e1; }
+        .legal-nav-anchor.active-anchor-node { background-color: #e0f2fe; color: var(--primary-dark); border-color: var(--primary-color); box-shadow: 0 4px 10px rgba(0, 123, 255, 0.05); }
+
+        .legal-document-card { background-color: #ffffff; border: 1px solid var(--border-color); border-radius: 20px; padding: 55px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03); }
+        .legal-document-card h1 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 2.6rem; margin: 0 0 10px 0; letter-spacing: -0.5px; }
+        .meta-timestamp-lbl { font-size: 0.9rem; color: var(--primary-color); display: block; margin-bottom: 40px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .legal-section-block { margin-bottom: 45px; }
+        .legal-section-block h2 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0 0 16px 0; color: var(--text-dark); scroll-margin-top: 100px; }
+        .legal-section-block p { font-size: 1.05rem; line-height: 1.7; color: #475569; margin: 0 0 16px 0; }
+        .legal-section-block ul { padding-left: 24px; margin: 16px 0; }
+        .legal-section-block li { margin-bottom: 10px; line-height: 1.6; color: #475569; font-size: 1.05rem; }
+
+        @media (max-width: 992px) {
+            .legal-frame-layout-grid { grid-template-columns: 220px 1fr; gap: 30px; }
+        }
+        @media (max-width: 768px) {
+            .legal-frame-layout-grid { grid-template-columns: 1fr; margin-top: 100px; }
+            .legal-sticky-nav { display: none; }
+            .legal-document-card { padding: 30px 20px; }
+            .legal-document-card h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container legal-frame-layout-grid">
+        
+        <aside class="legal-sticky-nav">
+            <a href="#collection" class="legal-nav-anchor active-anchor-node">1. Data Architecture</a>
+            <a href="#processing" class="legal-nav-anchor">2. Processing & Utilization</a>
+            <a href="#sharing" class="legal-nav-anchor">3. Third-Party Transmission</a>
+            <a href="#security" class="legal-nav-anchor">4. Cryptographic Security</a>
+            <a href="#retention" class="legal-nav-anchor">5. Data Retention Limits</a>
+            <a href="#rights" class="legal-nav-anchor">6. Student Authority</a>
+            <a href="#telemetry" class="legal-nav-anchor">7. Telemetry & Cookies</a>
+        </aside>
+
+        <main class="legal-document-card">
+            <h1>Privacy Architecture</h1>
+            <span class="meta-timestamp-lbl"><i class="fas fa-clock"></i> System Engine Revision Node: Last Updated August 2026</span>
+
+            <section class="legal-section-block" id="collection">
+                <h2>1. Information Collection Architecture</h2>
+                <p>MohAcademy operates on a principle of data minimization. We extract and process only the discrete data matrices explicitly required to map your GCE Advanced Level progress and secure your session authentications. The nodes collected include:</p>
+                <ul>
+                    <li><strong>Identity Vectors:</strong> Your registered full name, validated email channel, and securely hashed cryptographic passwords utilized during account initialization.</li>
+                    <li><strong>Academic Telemetry:</strong> Precision tracking of your performance matrices, including completed evaluation quizzes, selected subject domains (e.g., Physics vs. Biology), XP scores, and virtual laboratory configurations.</li>
+                    <li><strong>Diagnostic Metadata:</strong> Non-personally identifiable server-side telemetry, including your browser architecture, IP connection node, and interface response times to debug rendering errors.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section-block" id="processing">
+                <h2>2. Processing Channels & Utilization</h2>
+                <p>Your data is processed strictly within isolated computational pipelines to construct a superior academic environment. The engine utilizes this information to:</p>
+                <ul>
+                    <li>Render personalized, real-time dashboard analytics tracking your syllabus mastery.</li>
+                    <li>Generate specific study recommendations based on detected knowledge gaps in past-paper execution.</li>
+                    <li>Facilitate the community forum by attaching your identity node and XP ranking to your published inquiries and answers.</li>
+                    <li>Deploy essential system notifications, OTP validation tokens, and security alerts to your registered email channel.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section-block" id="sharing">
+                <h2>3. Third-Party Transmission Policy</h2>
+                <p><strong>MohAcademy enforces an absolute zero-tolerance policy regarding data commoditization.</strong> We explicitly guarantee that your identity parameters, academic performance, and telemetry logs will never be sold, rented, or licensed to external advertising networks, marketers, or data brokers.</p>
+                <p>Data transmission is strictly limited to heavily audited, secure infrastructure partners required to keep the academy operational. This includes our encrypted cloud database hosts (e.g., MongoDB Atlas) and automated email dispatch servers. These entities are bound by strict processing agreements preventing independent data usage.</p>
+            </section>
+
+            <section class="legal-section-block" id="security">
+                <h2>4. Cryptographic Security Standards</h2>
+                <p>Your academic and personal profiles are shielded by enterprise-grade digital defenses. All data in transit between your browser and our server engine is routed through high-tier TLS 1.3 encryption protocols, preventing packet interception.</p>
+                <p>Data at rest within our core database is protected utilizing AES-256 encryption frameworks. Authentication passwords are never stored in plain text; they are salted and hashed using advanced cryptographic algorithms before reaching our storage arrays.</p>
+            </section>
+
+            <section class="legal-section-block" id="retention">
+                <h2>5. Data Retention & System Purges</h2>
+                <p>We maintain your profile matrices only for the duration required to fulfill your academic objectives. Active student accounts retain their data to track long-term GCE progression.</p>
+                <p>If an account registers zero system interactions for a continuous period of 24 months, the profile is flagged as dormant. Following a final email notification, dormant profiles undergo an automated database purge, permanently erasing all associated academic and identity data to prevent unnecessary server bloat.</p>
+            </section>
+
+            <section class="legal-section-block" id="rights">
+                <h2>6. Student Authority & Integrity Controls</h2>
+                <p>We recognize and enforce your complete sovereignty over your digital footprint. In alignment with global data protection frameworks, you possess the immediate right to:</p>
+                <ul>
+                    <li><strong>Extraction:</strong> Request a complete, machine-readable export of all your academic and profile data logs.</li>
+                    <li><strong>Rectification:</strong> Overwrite or modify any inaccurate biographical or subject parameters via your dashboard terminal.</li>
+                    <li><strong>Termination (Right to Erasure):</strong> Execute a permanent deletion command from your settings panel. This initiates a hard-delete sequence, stripping your identity, forum posts, and quiz scores from our servers within 72 hours.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section-block" id="telemetry">
+                <h2>7. Telemetry & Local Cookies</h2>
+                <p>The MohAcademy interface relies on localized session cookies solely to maintain your authentication state across different subject domains (preventing you from logging in repeatedly). We utilize local storage architecture (e.g., `localStorage`) to cache temporary assets like your dark-mode preferences or unsaved forum drafts.</p>
+                <p>We do not deploy invasive cross-site tracking scripts, tracking pixels, or third-party behavioral cookies designed to monitor your activity outside of the MohAcademy domain.</p>
+            </section>
+        </main>
+    </div>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Secure Line</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello. I am the Data Security Assistant. Do you have questions regarding how we process your quiz metrics or store your login nodes?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Delete My Data')">Delete My Data</span>
+                <span class="preset-chip" onclick="triggerPreset('Who sees my scores?')">Who sees my scores?</span>
+            </div>
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-user-shield"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        // --- Scroll Spy Navigation ---
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.legal-section-block');
+            const navAnchors = document.querySelectorAll('.legal-nav-anchor');
+            let currentActiveId = "";
+
+            sections.forEach(sec => {
+                const sectionTop = sec.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    currentActiveId = sec.getAttribute('id');
+                }
+            });
+
+            navAnchors.forEach(anchor => {
+                anchor.classList.remove('active-anchor-node');
+                if (anchor.getAttribute('href') === `#${currentActiveId}`) {
+                    anchor.classList.add('active-anchor-node');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

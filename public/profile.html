@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Control Center - MohAcademy</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --accent-ai: #8a2be2;
+            --xp-gold: #ffb703;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --neon-green: #2ecc71;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f4f6f9;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-main-container {
+            max-width: 1250px;
+            margin: 120px auto 80px;
+            padding: 0 24px;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .premium-glass-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            padding: 35px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-sidebar-card {
+            text-align: center;
+            border-top: 6px solid var(--primary-color);
+        }
+
+        .avatar-upload-frame {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+        }
+
+        .avatar-upload-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1), 0 10px 25px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-light);
+        }
+
+        .student-title-identity h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin: 0 0 6px 0;
+            color: var(--text-dark);
+        }
+
+        .student-title-identity span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .global-honor-rank-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: var(--xp-gold);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+            transition: transform 0.3s;
+        }
+        .global-honor-rank-badge:hover { transform: translateY(-2px); }
+
+        .sidebar-nav-tabs-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 25px;
+        }
+
+        .tab-trigger-button {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .tab-trigger-button i { font-size: 1.1rem; width: 20px; text-align: center; }
+
+        .tab-trigger-button:hover {
+            background-color: #f8fafc;
+            color: var(--text-dark);
+        }
+
+        .tab-trigger-button.active-tab-node {
+            background-color: rgba(0, 123, 255, 0.08);
+            color: var(--primary-color);
+        }
+
+        .metrics-grid-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .metric-analytics-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .metric-analytics-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
+            border-color: #cbd5e1;
+        }
+
+        .metric-icon-box {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .metric-data-info label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            margin-bottom: 2px;
+        }
+
+        .metric-data-info span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .section-headline-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 0 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .syllabus-mastery-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .achievement-badges-grid-cabinet {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .badge-cabinet-node {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .badge-cabinet-node:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+        }
+
+        .badge-icon-shield {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .badge-cabinet-node h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0 0 6px 0;
+            color: var(--text-dark);
+        }
+
+        .badge-cabinet-node p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .dashboard-content-window-view {
+            display: none;
+            animation: paneFadeIn 0.3s ease forwards;
+        }
+
+        .dashboard-content-window-view.active-view-pane {
+            display: block;
+        }
+
+        /* Edit Profile Details */
+        .edit-profile-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 35px;
+            border-radius: 20px;
+        }
+
+        .form-full-width-node { grid-column: span 2; }
+
+        .edit-profile-form-grid input,
+        .edit-profile-form-grid select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            outline: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+            margin-top: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .edit-profile-form-grid input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .save-settings-action-btn {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 8px 20px rgba(0,123,255,0.25);
+            transition: transform 0.2s;
+        }
+        .save-settings-action-btn:hover { transform: translateY(-2px); }
+
+        /* PRO Badges & Upgrade Banner Styles */
+        .pro-badge {
+            background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
+            color: #000;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 0 12px rgba(255, 183, 3, 0.4);
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .free-tier-badge {
+            background: #e2e8f0;
+            color: #64748b;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .upgrade-promo-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border: 1px solid rgba(255, 183, 3, 0.3);
+            border-left: 6px solid #ffb703;
+            border-radius: 20px;
+            padding: 28px 35px;
+            margin-bottom: 40px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .promo-content h3 {
+            margin: 0 0 8px 0;
+            font-family: 'Poppins', sans-serif;
+            color: #ffb703;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .promo-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .promo-price-tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #2ecc71;
+            margin-top: 8px;
+        }
+
+        .promo-price-tag span.strikethrough {
+            text-decoration: line-through;
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-right: 8px;
+            font-weight: 500;
+        }
+
+        .btn-upgrade-now {
+            background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
+            color: #0f172a;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-upgrade-now:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(251, 133, 0, 0.35);
+        }
+
+        /* NEW: VIP WHATSAPP CARD STYLES */
+        .vip-whatsapp-card {
+            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+            border-radius: 20px;
+            padding: 28px 35px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 35px rgba(18, 140, 126, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vip-whatsapp-card::after {
+            content: '\f232';
+            font-family: 'Font Awesome 5 Brands';
+            font-size: 160px;
+            position: absolute;
+            right: -20px;
+            top: -30px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .vip-content h3 {
+            margin: 0 0 8px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .vip-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            max-width: 480px;
+            line-height: 1.6;
+        }
+
+        .btn-join-whatsapp {
+            background: #ffffff;
+            color: #075E54;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+
+        .btn-join-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background: #f8fafc;
+        }
+
+        @keyframes paneFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 992px) {
+            .dashboard-main-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 100px;
+            }
+            .metrics-grid-row { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-main-container { padding: 0 15px; }
+            .metrics-grid-row { grid-template-columns: 1fr; }
+            .achievement-badges-grid-cabinet { grid-template-columns: 1fr; }
+            .premium-glass-panel { padding: 25px 20px; }
+            .edit-profile-form-grid { grid-template-columns: 1fr; padding: 25px 20px; }
+            .form-full-width-node { grid-column: span 1; }
+
+            .upgrade-promo-banner, .vip-whatsapp-card {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                gap: 20px;
+                padding: 24px 20px;
+            }
+            .promo-content h3, .vip-content h3 { justify-content: center; }
+            .btn-upgrade-now, .btn-join-whatsapp {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i
+                                class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i
+                                class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container dashboard-main-container">
+
+        <aside class="premium-glass-panel profile-sidebar-card">
+            <div class="avatar-upload-frame">
+                <img src="" alt="Student Portrait" id="profile_avatar_display">
+            </div>
+
+            <div class="student-title-identity">
+                <h2><span id="lbl_student_name">Loading Profile...</span> <span id="user_tier_badge"></span></h2>
+                <span>GCE Advanced Level Science Track</span>
+                <div class="global-honor-rank-badge">
+                    <i class="fas fa-medal"></i> Rank: Quantum Pioneer
+                </div>
+            </div>
+
+            <nav class="sidebar-nav-tabs-stack">
+                <button class="tab-trigger-button active-tab-node"
+                    onclick="switchDashboardTabPane('overview_pane', this)">
+                    <i class="fas fa-chart-pie"></i> Academic Overview
+                </button>
+                <button class="tab-trigger-button" onclick="switchDashboardTabPane('settings_pane', this)">
+                    <i class="fas fa-sliders-h"></i> Configuration Settings
+                </button>
+                <button class="tab-trigger-button" style="color: #ef4444;" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Disconnect
+                </button>
+            </nav>
+        </aside>
+
+        <div class="premium-glass-panel">
+            <section class="dashboard-content-window-view active-view-pane" id="overview_pane">
+                
+                <!-- Dynamic Promo / VIP Banner Placeholder -->
+                <div id="upgrade_banner_container"></div>
+
+                <div class="metrics-grid-row">
+                    <div class="metric-analytics-card">
+                        <div class="metric-icon-box" style="background-color: #fef3c7; color: #d97706;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="metric-data-info">
+                            <label>Total Score</label>
+                            <span id="metric_xp">-- XP</span>
+                        </div>
+                    </div>
+                    <div class="metric-analytics-card">
+                        <div class="metric-icon-box" style="background-color: #dcfce7; color: #16a34a;">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="metric-data-info">
+                            <label>Avg Accuracy</label>
+                            <span id="metric_accuracy">--%</span>
+                        </div>
+                    </div>
+                    <div class="metric-analytics-card">
+                        <div class="metric-icon-box" style="background-color: #e0f2fe; color: #0284c7;">
+                            <i class="fas fa-graduationcap"></i>
+                        </div>
+                        <div class="metric-data-info">
+                            <label>Tasks Resolved</label>
+                            <span id="metric_tasks">-- Units</span>
+                        </div>
+                    </div>
+                    <div class="metric-analytics-card">
+                        <div class="metric-icon-box" style="background-color: #f3e8ff; color: #7c3aed;">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="metric-data-info">
+                            <label>Active Streak</label>
+                            <span id="metric_streak">-- Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="section-headline-title"><i class="fas fa-atom" style="color: var(--primary-color);"></i>
+                    Registered Active Syllabuses</h3>
+                <div class="syllabus-mastery-card" id="enrolled_subjects_container">
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Fetching subject parameters...</p>
+                </div>
+
+                <h3 class="section-headline-title"><i class="fas fa-trophy" style="color: var(--xp-gold);"></i> Unlocked Honor Shields</h3>
+                <div class="achievement-badges-grid-cabinet" id="badge_cabinet_container">
+                    <!-- Badges populated by JS -->
+                </div>
+            </section>
+
+            <section class="dashboard-content-window-view" id="settings_pane">
+                <h3 class="section-headline-title"><i class="fas fa-user-cog" style="color: var(--primary-color);"></i>
+                    Edit Student Configuration Details</h3>
+
+                <form onsubmit="handleSettingsUpdateEvent(event)">
+                    <div class="edit-profile-form-grid">
+                        <div>
+                            <label style="font-weight: 600; font-size: 0.9rem;">Full Name Identity</label>
+                            <input type="text" id="form_input_name" required>
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; font-size: 0.9rem;">Registered Email Channel</label>
+                            <input type="email" id="form_input_email" required disabled
+                                style="background-color: #f1f5f9; cursor: not-allowed;"
+                                title="Email cannot be changed directly">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; font-size: 0.9rem;">Change Password</label>
+                            <input type="password" placeholder="Leave blank to preserve current string"
+                                id="form_input_pwd">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; font-size: 0.9rem;">Current Academic Track</label>
+                            <select id="form_input_track">
+                                <option value="gce_a_level" selected>GCE Advanced Level Only</option>
+                            </select>
+                        </div>
+                        <div class="form-full-width-node">
+                            <button type="submit" class="save-settings-action-btn">Commit Updates</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let token = localStorage.getItem('mohacademy_token');
+
+            if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
+                localStorage.removeItem('mohacademy_token');
+                alert("Session expired or invalid token. Please log in again.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            fetchRealProfileData(token);
+        });
+
+        async function fetchRealProfileData(token) {
+            try {
+                const response = await fetch('http://localhost:5000/api/student/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                        'x-auth-token': token
+                    }
+                });
+
+                if (response.ok) {
+                    const student = await response.json();
+
+                    let pricing = { yearlyPlan: 6500, originalYearlyPlan: 10000, currency: 'XAF' };
+                    try {
+                        const pRes = await fetch('http://localhost:5000/api/config/pricing');
+                        if(pRes.ok) pricing = await pRes.json();
+                    } catch(e) { console.warn("Using fallback pricing structure"); }
+
+                    document.getElementById('lbl_student_name').innerText = student.name;
+                    document.getElementById('form_input_name').value = student.name;
+                    document.getElementById('form_input_email').value = student.email;
+                    
+                    const badgeElem = document.getElementById('user_tier_badge');
+                    const bannerElem = document.getElementById('upgrade_banner_container');
+
+                    if (student.isPremium) {
+                        badgeElem.className = 'pro-badge';
+                        badgeElem.innerHTML = '<i class="fas fa-crown"></i> PRO';
+                        
+                        // VIP WhatsApp Invite for PRO Users
+                        bannerElem.innerHTML = `
+                            <div class="vip-whatsapp-card">
+                                <div class="vip-content">
+                                    <h3><i class="fab fa-whatsapp"></i> VIP Mastermind Group</h3>
+                                    <p>Connect directly with top instructors and elite peers. Get 24/7 syllabus support, fast-tracked answers, and exclusive exam strategies.</p>
+                                </div>
+                                <a href="https://chat.whatsapp.com/YOUR_GROUP_ID_HERE" target="_blank" class="btn-join-whatsapp">
+                                    Join Group <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        `;
+                    } else {
+                        badgeElem.className = 'free-tier-badge';
+                        badgeElem.innerText = 'FREE TIER';
+
+                        bannerElem.innerHTML = `
+                            <div class="upgrade-promo-banner">
+                                <div class="promo-content">
+                                    <h3><i class="fas fa-bolt"></i> Unlock MohAcademy PRO</h3>
+                                    <p>Get unlimited solution PDFs, full access to all Virtual Labs, daily AI tutoring, and access to our private WhatsApp VIP study group.</p>
+                                    <div class="promo-price-tag">
+                                        <span class="strikethrough">${pricing.originalYearlyPlan} ${pricing.currency}</span> 
+                                        ${pricing.yearlyPlan} ${pricing.currency} <small style="font-size:0.75rem; color:#cbd5e1;">/ full academic year</small>
+                                    </div>
+                                </div>
+                                <button class="btn-upgrade-now" onclick="window.location.href='pricing.html'">
+                                    <i class="fas fa-crown"></i> Upgrade Now
+                                </button>
+                            </div>
+                        `;
+                    }
+
+                    document.getElementById('metric_xp').innerText = `${student.xpScore || 0} XP`;
+                    document.getElementById('metric_tasks').innerText = `${student.tasksResolved || 0} Units`;
+                    document.getElementById('metric_streak').innerText = `${student.activeStreak || 0} Days`;
+
+                    let accuracy = 0;
+                    if (student.totalQuizQuestions > 0) {
+                        accuracy = Math.round((student.correctQuizAnswers / student.totalQuizQuestions) * 100);
+                    }
+                    document.getElementById('metric_accuracy').innerText = `${accuracy}%`;
+
+                    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(student.name)}&background=007bff&color=fff&size=150&bold=true`;
+                    document.getElementById('profile_avatar_display').src = avatarUrl;
+
+                    const subjectsContainer = document.getElementById('enrolled_subjects_container');
+                    subjectsContainer.innerHTML = '';
+
+                    if (student.subjects && student.subjects.length > 0) {
+                        student.subjects.forEach(subject => {
+                            const colors = { 'Physics': 'var(--primary-color)', 'Chemistry': 'var(--accent-ai)', 'Biology': 'var(--neon-green)', 'Mathematics': '#f97316' };
+                            subjectsContainer.innerHTML += `
+                                <div class="subject-progress-node-item">
+                                    <div class="progress-label-meta-row"><span>${subject} A/Level</span> <span>Enrolled Track</span></div>
+                                    <div class="mastery-rail-track"><div class="mastery-fill-indicator" style="width: 10%; background-color: ${colors[subject] || 'var(--primary-color)'};"></div></div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        subjectsContainer.innerHTML = '<p style="color: var(--text-muted);">No specific subjects selected yet.</p>';
+                    }
+
+                    const badgeContainer = document.getElementById('badge_cabinet_container');
+                    const allAvailableBadges = [
+                        { name: "Lab Explorer", desc: "Completed your first virtual lab.", icon: "fa-microscope", color: "#38bdf8" },
+                        { name: "Forum Contributor", desc: "Answered 5 questions in the community forum.", icon: "fa-comments", color: "#a855f7" },
+                        { name: "Quiz Ace", desc: "Scored 100% on a past paper quiz.", icon: "fa-check-double", color: "#2ecc71" }
+                    ];
+
+                    badgeContainer.innerHTML = '';
+                    allAvailableBadges.forEach(badge => {
+                        const isUnlocked = student.unlockedBadges && student.unlockedBadges.includes(badge.name);
+                        badgeContainer.innerHTML += `
+                            <div class="badge-cabinet-node" style="opacity: ${isUnlocked ? '1' : '0.6'}; border-color: ${isUnlocked ? badge.color : 'var(--border-color)'};">
+                                <div class="badge-icon-shield" style="background-color: ${isUnlocked ? badge.color + '20' : '#f8fafc'}; color: ${isUnlocked ? badge.color : '#94a3b8'};">
+                                    <i class="fas ${isUnlocked ? badge.icon : 'fa-lock'}"></i>
+                                </div>
+                                <h4 style="color: ${isUnlocked ? 'var(--text-dark)' : '#94a3b8'};">${isUnlocked ? badge.name : 'Locked'}</h4>
+                                <p>${badge.desc}</p>
+                            </div>
+                        `;
+                    });
+
+                } else {
+                    const errorText = await response.text();
+                    alert(`STOP! Backend rejected you. Status: ${response.status}. Error: ${errorText}`);
+                    console.error("Backend Error Details:", errorText);
+                }
+            } catch (err) {
+                alert("Fatal Error: Frontend could not reach backend.");
+                console.error("Fatal Server Connection Error", err);
+            }
+        }
+
+        function switchDashboardTabPane(paneId, buttonRef) {
+            document.querySelectorAll('.dashboard-content-window-view').forEach(pane => pane.classList.remove('active-view-pane'));
+            document.querySelectorAll('.tab-trigger-button').forEach(btn => btn.classList.remove('active-tab-node'));
+
+            document.getElementById(paneId).classList.add('active-view-pane');
+            buttonRef.classList.add('active-tab-node');
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('mohacademy_token');
+            localStorage.removeItem('mohacademy_user');
+            window.location.href = "login.html";
+        }
+
+        async function handleSettingsUpdateEvent(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('form_input_name').value;
+            const password = document.getElementById('form_input_pwd').value;
+            const token = localStorage.getItem('mohacademy_token');
+
+            const btn = e.target.querySelector('.save-settings-action-btn');
+            btn.innerText = "Commiting Updates...";
+            btn.disabled = true;
+
+            const updateData = { name };
+            if (password) updateData.password = password;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/student/profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                        'x-auth-token': token
+                    },
+                    body: JSON.stringify(updateData)
+                });
+
+                if (response.ok) {
+                    alert("Profile updated securely in the database!");
+                    document.getElementById('lbl_student_name').innerText = name;
+                    document.getElementById('form_input_pwd').value = "";
+                } else {
+                    const data = await response.json();
+                    alert(`Error updating profile: ${data.message}`);
+                }
+            } catch (err) {
+                alert("Connection to server failed.");
+            } finally {
+                btn.innerText = "Commit Updates";
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

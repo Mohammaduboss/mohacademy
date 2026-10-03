@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Virtual Lab Engine - MohAcademy</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/labs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Orbitron:wght@400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body.simulator-active {
+            overflow-y: auto !important;
+            overflow-x: hidden; 
+            height: auto !important;
+            background: #010409;
+        }
+
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 20px;
+            padding: 20px;
+            min-height: calc(100vh - 70px);
+            align-items: start; 
+        }
+
+        .manual-panel {
+            position: sticky;
+            top: 90px; 
+            max-height: calc(100vh - 110px);
+            overflow-y: auto;
+            border-radius: 8px;
+            margin: 0 !important;
+            border: 1px solid #14532d;
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            min-width: 0; 
+        }
+
+        .canvas-panel, .data-panel {
+            width: 100%;
+            height: auto !important;
+            margin: 0 !important;
+            border-radius: 8px;
+            overflow: hidden; 
+            border: 1px solid #14532d;
+        }
+
+        .canvas-workspace {
+            background: #1e293b !important;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            min-height: auto; 
+            height: auto; 
+            border-radius: 0 0 8px 8px;
+        }
+
+        .analytical-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            background: #0f172a;
+            padding: 5px;
+            align-items: center;
+            border-bottom: 2px solid #14532d;
+        }
+
+        .tab-content {
+            padding: 20px;
+            display: none;
+            height: auto !important;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        .lcd-screen { 
+            background: #000; color: #2ecc71; font-family: 'Orbitron', sans-serif; 
+            font-size: clamp(2rem, 8vw, 3.5rem); 
+            padding: 1rem; text-align: center; border-radius: 8px; border: 2px solid #30363d; 
+            text-shadow: 0 0 20px rgba(46, 204, 113, 0.5); font-weight: bold; width: 100%; margin-bottom: 10px;
+        }
+
+        /* --- RESPONSIVE LAYOUT CLASSES --- */
+        .sim-container-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            background: #0d1117;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            box-sizing: border-box;
+        }
+
+        .sim-controls-col {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sim-canvas-col {
+            flex: 2;
+            min-width: 280px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 2px solid #0f172a;
+            overflow: hidden;
+        }
+
+        .sim-canvas-col canvas {
+            max-width: 100%;
+            height: auto !important;
+            display: block;
+        }
+
+        /* --- EXPLICIT TABLE STYLING --- */
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+        }
+
+        .sim-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .sim-table th {
+            background: #1e293b;
+            color: #2ecc71;
+            padding: 14px;
+            text-align: center;
+            border-bottom: 2px solid #334155;
+            border-right: 1px solid #334155;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .sim-table td {
+            padding: 12px;
+            border-bottom: 1px solid #334155;
+            border-right: 1px solid #334155;
+            text-align: center;
+            color: #fff;
+        }
+
+        .sim-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            background: #161b22;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 4px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .sim-input:focus {
+            border-color: #2ecc71;
+            outline: none;
+            background: #1e293b;
+        }
+
+        /* MOBILE MEDIA QUERIES */
+        @media (max-width: 992px) {
+            .workspace-grid { display: flex !important; flex-direction: column !important; padding: 10px; }
+            .manual-panel { position: static; max-height: none; order: 3; margin-bottom: 40px !important; }
+            .right-column { order: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .sim-controls-col, .sim-canvas-col { flex: 1 1 100%; min-width: 100%; }
+            .sim-container-row { padding: 1rem; }
+        }
+    </style>
+</head>
+<body class="simulator-active">
+
+    <!-- SIMPLIFIED HEADER EXACTLY LIKE PHYSICS -->
+    <header class="header sim-header" id="main-header" style="height: 70px;">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon" style="color: #2ecc71;"></i> <span class="site-name" style="color: #ffffff;">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="labs.html" class="nav-link" style="color: #2ecc71;"><i class="fas fa-arrow-left"></i> Save & Exit</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="workspace-grid">
+        
+        <aside class="sim-panel manual-panel">
+            <div class="panel-header" style="color: #2ecc71;">
+                <span><i class="fas fa-book-open"></i> Standard Procedure Manual</span>
+            </div>
+            <div class="manual-content" id="dynamic-instructions-container">
+                <div style="text-align: center; margin-top: 50px; color: var(--sim-muted);">
+                    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                    <p>Loading chemical parameters from core database...</p>
+                </div>
+            </div>
+        </aside>
+
+        <div class="right-column">
+            
+            <section class="sim-panel canvas-panel">
+                <div class="panel-header" style="color: #2ecc71;">
+                    <span><i class="fas fa-flask"></i> Interactive Chemical Reactor</span>
+                    <span style="color: var(--sim-muted); font-size: 0.8rem;"><i class="fas fa-eye"></i> Observe color transitions</span>
+                </div>
+                <div class="canvas-workspace" id="simulation-render-target">
+                    <!-- Javascript Engine targets this -->
+                </div>
+            </section>
+
+            <section class="sim-panel data-panel">
+                <div class="analytical-tabs">
+                    <button id="btn-tab-data" class="tab-btn chem-tab active" onclick="switchTab('data-tab')"><i class="fas fa-table"></i> Official Lab Report</button>
+                    <div style="margin-left: auto; padding: 6px 15px;">
+                        <button class="btn-submit-lab" onclick="submitLabForGrading()" style="background: #2ecc71; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                            <i class="fas fa-brain"></i> Request AI Evaluation
+                        </button>
+                    </div>
+                </div>
+
+                <div id="data-tab" class="tab-content active">
+                    <div id="dynamic-data-table-container">
+                        <!-- Dynamic report inputs injected here -->
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- AI Grading Report Modal -->
+    <div id="ai-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(6px);">
+        <div style="background: #0f172a; border: 2px solid #2ecc71; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 90vh; display: flex; flex-direction: column; text-align: center; box-shadow: 0 10px 40px rgba(46, 204, 113, 0.2);">
+            <h3 style="color: #fff; margin-bottom: 20px; font-family: 'Poppins'; flex-shrink: 0;"><i class="fas fa-brain" style="color: #2ecc71;"></i> Chief Examiner AI Report</h3>
+            <div id="ai-feedback-content" style="margin-bottom: 25px; color: #cbd5e1; line-height: 1.6; font-size: 0.95rem; overflow-y: auto; text-align: left; padding-right: 10px;"></div>
+            <button onclick="document.getElementById('ai-modal').style.display = 'none'" style="background: #2ecc71; color: #fff; border: none; padding: 10px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; font-family: 'Poppins'; flex-shrink: 0; width: fit-content; margin: 0 auto;">Acknowledge & Close</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/lab-ui.js"></script>
+    <script src="js/lab-engine-chemistry.js"></script>
+</body>
+</html>

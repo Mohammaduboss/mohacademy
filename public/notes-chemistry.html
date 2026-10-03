@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry A/L Study Notes - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/notes-subject.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle active">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html" class="active">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="notes-subject-hero-section chemistry-notes-hero" id="notes-subject-hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1>Chemistry A/L Study Notes</h1>
+                <p>Unravel the building blocks of matter. Comprehensive, topic-wise notes for GCE A/L Chemistry, simplifying complex reactions and concepts.</p>
+                <div class="hero-buttons animate-fade-in-up">
+                    <a href="#notes-content" class="btn btn-primary">Start Reading Notes</a>
+                    <a href="notes/chemistry/chemistry-notes.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-download"></i> Download Full Notes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-content-section section-padding">
+            <div class="container notes-container">
+                <!-- Comprehensive Table of Contents -->
+                <aside class="notes-sidebar reveal fade-left" id="mobile-toc-sidebar">
+                    <!-- Mobile Toggle Button Header -->
+                    <div class="sidebar-header" id="toc-toggle-btn" onclick="document.getElementById('mobile-toc-sidebar').classList.toggle('expanded')">
+                        <h3>GCE Chemistry Syllabus</h3>
+                        <i class="fas fa-chevron-down toc-icon"></i>
+                    </div>
+                    
+                    <div class="sidebar-collapsible-content" id="toc-collapsible">
+                        <ul class="toc-list" id="notes-toc" onclick="if(window.innerWidth <= 992) document.getElementById('mobile-toc-sidebar').classList.remove('expanded')">
+                            <li><a href="#topic1">1. Matter & Measurement</a></li>
+                            <li><a href="#topic2">2. Atomic Structure</a></li>
+                            <li><a href="#topic3">3. Bonding & Structure</a></li>
+                            <li><a href="#topic4">4. Organic Fundamentals</a></li>
+                            <li><a href="#topic5">5. Thermodynamics</a></li>
+                            <li><a href="#topic6">6. Descriptive Inorganic</a></li>
+                            <li><a href="#topic7">7. Chemical Equilibria</a></li>
+                            <li><a href="#topic8">8. Redox Equilibria</a></li>
+                            <li><a href="#topic9">9. Acid-Base Equilibria</a></li>
+                            <li><a href="#topic10">10. Organic Derivatives</a></li>
+                            <li><a href="#topic11">11. Reaction Kinetics</a></li>
+                            <li><a href="#topic12">12. Environmental Chem</a></li>
+                        </ul>
+                        <div class="sidebar-links">
+                            <a href="study-notes.html" class="btn btn-tertiary-outline"><i class="fas fa-chevron-left"></i> All Study Notes</a>
+                            <a href="chemistry.html" class="btn btn-secondary-outline">Chemistry Subject Page <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Massive High-Density Notes Content -->
+                <div class="notes-main-content" id="notes-content">
+                    
+                    <!-- INTRODUCTION -->
+                    <h2 class="notes-section-title reveal fade-up" id="introduction">GCE A/L Chemistry Vault</h2>
+                    <p class="reveal fade-up">Welcome to the definitive breakdown for Advanced Level Chemistry. These modules are strictly aligned with the Harmonised National Scheme of Work for Cameroon, stripping away basic textbook rhetoric to focus entirely on reaction mechanisms, thermochemical calculations, and electronic structures required for elite GCE grades.</p>
+
+                    <!-- ==========================================
+                         SECTION 1: MATTER & MEASUREMENT (A-LEVEL DEPTH)
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic1">1. Matter, Properties and Measurement</h2>
+                    <p class="reveal fade-up">At the Advanced Level, stoichiometry moves beyond simple ratios. It requires a rigorous understanding of the Ideal Gas Law, limiting reagents, the principles of green chemistry, and complex multi-step volumetric analyses (titrations).</p>
+                    
+                    <h3 class="notes-sub-section-title reveal fade-up" id="ideal-gases">1.1 The Mole and The Ideal Gas Equation</h3>
+                    <p class="reveal fade-up">While standard molar volume (24.0 dm³) is used at room temperature and pressure (r.t.p), gases under varying conditions must be evaluated using the Ideal Gas Equation. An ideal gas assumes zero intermolecular forces and negligible particle volume.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>The Ideal Gas Equation:</strong>
+                        $$ pV = nRT $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;"><strong>Crucial Units:</strong> Pressure ($p$) MUST be in Pascals (Pa), Volume ($V$) MUST be in cubic meters (m³), Temperature ($T$) MUST be in Kelvin (K). The gas constant $R$ is 8.31 J K⁻¹ mol⁻¹.</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="green-chem">1.2 Stoichiometry, Yield, and Atom Economy</h3>
+                    <p class="reveal fade-up">Modern chemical manufacturing (and the GCE syllabus) heavily emphasizes the efficiency of reactions. High percentage yield does not always mean a reaction is environmentally or economically efficient if it produces massive amounts of waste by-products.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Limiting Reagents:</strong> The reactant that is completely consumed first. It entirely dictates the maximum theoretical mass of the product.</li>
+                        <li><strong>Percentage Yield:</strong> The ratio of the actual experimental mass obtained to the theoretical maximum mass, converted to a percentage.</li>
+                        <li><strong>Atom Economy:</strong> A measure of the proportion of reactant atoms that become part of the desired product. Addition reactions always have <strong>100%</strong> atom economy. Substitution and elimination reactions have lower atom economies due to by-products.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Efficiency Equations:</strong>
+                        $$ \text{Atom Economy} = \left( \frac{\text{Molar mass of desired product}}{\text{Sum of molar masses of all reactants}} \right) \times 100 $$
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="back-titrations">1.3 Advanced Volumetric Analysis (Back Titrations)</h3>
+                    <p class="reveal fade-up">Direct titrations are impossible for insoluble bases (like chalk/calcium carbonate) or volatile substances. In a <strong>Back Titration</strong>, a known excess of a standard reagent (usually an acid) is added to the analyte. The unreacted excess is then titrated to determine how much was consumed by the original substance.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Primary Standards:</strong> A substance used to make a standard solution. It must have a high molar mass (to minimize weighing errors), be extremely pure, and not absorb moisture from the air (non-hygroscopic). Example: Anhydrous Sodium Carbonate.</li>
+                        <li><strong>Back Titration Logic:</strong> <br>Moles of initial acid $-$ Moles of unreacted acid (found via titration) $=$ Moles of acid that reacted with the solid.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="redox-titrations">1.4 Redox Titrimetry</h3>
+                    <p class="reveal fade-up">Redox titrations use oxidizing or reducing agents to determine concentrations. Unlike acid-base titrations, these often do not require an external indicator.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Manganate(VII) Titrations:</strong> Potassium manganate(VII) is a powerful oxidizing agent. In acidic conditions (dilute sulfuric acid is used; HCl would be oxidized to chlorine gas), it is self-indicating. The end-point is a permanent pale pink color.
+                            <br><strong>Half-equation:</strong> $$ MnO_4^- + 8H^+ + 5e^- \rightarrow Mn^{2+} + 4H_2O $$
+                        </li>
+                        <li><strong>Iodometric (Thiosulfate) Titrations:</strong> Used to determine the concentration of oxidizing agents (which liberate iodine from potassium iodide). The liberated iodine is then titrated against standard sodium thiosulfate using starch as an indicator (turns from blue-black to colorless at the end-point).
+                            <br><strong>Half-equation:</strong> $$ I_2 + 2S_2O_3^{2-} \rightarrow 2I^- + S_4O_6^{2-} $$
+                        </li>
+                    </ul>
+                    <h3 class="notes-sub-section-title reveal fade-up" id="double-indicator">1.5 Double Indicator Titrations (Mixture Analysis)</h3>
+                    <p class="reveal fade-up">A classic GCE trap is analyzing a mixture of two bases (e.g., $NaOH$ and $Na_2CO_3$, or $Na_2CO_3$ and $NaHCO_3$) using two different indicators in the same flask.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Stage 1 (Phenolphthalein Endpoint):</strong> Phenolphthalein works at a high pH (approx. 8.3 - 10). It changes from pink to colorless when all the strong base ($NaOH$) is neutralized, and the carbonate ($CO_3^{2-}$) has only been half-neutralized to hydrogencarbonate ($HCO_3^-$).<br>
+                        <em>Reaction:</em> $Na_2CO_3 + HCl \rightarrow NaHCO_3 + NaCl$</li>
+                        <li><strong>Stage 2 (Methyl Orange Endpoint):</strong> Methyl orange is then added to the same flask. It works at a lower pH (approx. 3.1 - 4.4). It changes from yellow to red when the remaining hydrogencarbonate is completely neutralized.<br>
+                        <em>Reaction:</em> $NaHCO_3 + HCl \rightarrow NaCl + H_2O + CO_2$</li>
+                        <li><strong>Analytical Logic:</strong> The volume of acid used in Stage 2 represents exactly half of the carbonate present. You use this to deduce the exact composition of the original mixture.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="titration-errors">1.6 Titrimetric Precision & Percentage Error</h3>
+                    <p class="reveal fade-up">A-Level chemistry requires strict adherence to significant figures and error margins during practical calculations.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Calculating Percentage Uncertainty:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">A standard burette has a resolution of $0.10 \text{ cm}^3$, but because a titre requires two readings (initial and final), the maximum error is $\pm 0.05 \times 2 = \pm 0.10 \text{ cm}^3$.</span>
+                        $$ \text{\% Error} = \left( \frac{\text{Absolute Uncertainty}}{\text{Measured Value}} \right) \times 100 $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">To minimize percentage error, larger titre volumes (e.g., $25.00 \text{ cm}^3$) should be targeted by diluting the analyte if necessary. Titres are only considered "concordant" if they fall within $0.10 \text{ cm}^3$ of each other.</span>
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION 2: ATOMIC STRUCTURE
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic2">2. Atomic Structure & Periodic Table</h2>
+                    <p class="reveal fade-up">Understanding the subatomic nature of matter, quantum mechanics, and the periodic trends that govern chemical reactivity.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="quantum-model">2.1 Quantum Mechanics and Electron Configuration</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Quantum Numbers:</strong> The principal quantum number ($n$) indicates the main energy level. The azimuthal quantum number ($l$) indicates the subshell (s, p, d, f).</li>
+                        <li><strong>Aufbau Principle:</strong> Electrons fill lower energy orbitals first before filling higher ones.</li>
+                        <li><strong>Hund's Rule of Maximum Multiplicity:</strong> Degenerate orbitals (like the three 2p orbitals) are singly occupied with parallel spins before any pairing occurs.</li>
+                        <li><strong>Anomalous Configurations:</strong> Chromium (Cr) is $[\text{Ar}] 4s^1 3d^5$ and Copper (Cu) is $[\text{Ar}] 4s^1 3d^{10}$. An electron is promoted from the 4s to the 3d orbital to achieve the extra stability of a half-filled or fully-filled d-subshell.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Atomic Emission Spectra (Hydrogen):</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">When an excited electron falls to a lower energy level, it emits a photon of specific energy.</span>
+                        $$ \Delta E = hf = \frac{hc}{\lambda} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Transitions falling back to $n=1$ form the Lyman series (UV region). Transitions to $n=2$ form the Balmer series (Visible region). Transitions to $n=3$ form the Paschen series (IR region).</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="ionization">2.2 Ionization Energy & Periodicity</h3>
+                    <p class="reveal fade-up">The First Ionization Energy (IE) is the minimum energy required to remove one mole of electrons from one mole of gaseous atoms to form one mole of gaseous $1^+$ ions.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>First Ionization Equation:</strong>
+                        $$ X(g) \rightarrow X^+(g) + e^- \quad \Delta H = +\text{IE}_1 $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>General Trend across a Period:</strong> IE generally increases because the nuclear charge increases, drawing the electron cloud closer, while shielding remains relatively constant across the same principal quantum shell.</li>
+                        <li><strong>The Group 2/13 Anomaly (e.g., Mg to Al):</strong> The IE drops from Mg to Al because Aluminium's outermost electron is in a 3p orbital, which is slightly higher in energy and more shielded than the 3s electrons in Magnesium.</li>
+                        <li><strong>The Group 15/16 Anomaly (e.g., N to O):</strong> The IE drops from Nitrogen to Oxygen because Oxygen has a paired electron in one of its 2p orbitals. The mutual repulsion between these two paired electrons makes it easier to remove one of them.</li>
+                    </ul>
+                    <!-- ==========================================
+                         SECTION 3: BONDING & STRUCTURE
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic3">3. Bonding, Structure and Intermolecular Forces</h2>
+                    <p class="reveal fade-up">Chemical bonding dictates the physical and chemical properties of all matter. At the Advanced Level, we move beyond simple "electron sharing or stealing" to understand orbital overlaps, electronegativity gradients, and lattice energetics.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="ionic-bonding">3.1 Ionic Bonding & Polarization (Fajans' Rules)</h3>
+                    <p class="reveal fade-up">Ionic bonding is the strong electrostatic attraction between oppositely charged ions in a giant crystal lattice.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Lattice Energy ($\Delta H^\ominus_{latt}$):</strong> The energy released when one mole of a solid ionic crystal is formed from its widely separated gaseous ions. (e.g., $Na^+(g) + Cl^-(g) \rightarrow NaCl(s)$). It increases with smaller, highly charged ions.</li>
+                        <li><strong>Polarization (Fajans' Rules):</strong> No bond is 100% ionic. A small, highly charged cation (like $Al^{3+}$) has a high <em>charge density</em> and will distort (polarize) the electron cloud of a large anion (like $I^-$). This introduces <strong>covalent character</strong> into the ionic bond, lowering its melting point.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="covalent-bonding">3.2 Covalent & Dative (Coordinate) Bonding</h3>
+                    <p class="reveal fade-up">Covalent bonds form via the localized overlap of atomic orbitals, sharing electron pairs.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Sigma ($\sigma$) vs Pi ($\pi$) Bonds:</strong> A $\sigma$ bond is the direct, head-on overlap of orbitals (strongest). A $\pi$ bond is the sideways overlap of unhybridized p-orbitals (weaker, restricts rotation, found in double/triple bonds).</li>
+                        <li><strong>Dative (Coordinate) Bonds:</strong> A covalent bond where <em>both</em> shared electrons come from the same atom (e.g., the lone pair on $NH_3$ donating to an empty orbital on $H^+$ to form $NH_4^+$).</li>
+                        <li><strong>Bond Polarity & Dipole Moments:</strong> If bonded atoms have different electronegativities (e.g., $H-Cl$), the bond is polar. If the overall molecule is asymmetrical, these individual dipoles do not cancel out, creating a permanent dipole moment.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="vsepr-hybridization">3.3 VSEPR Theory & Orbital Hybridization</h3>
+                    <p class="reveal fade-up">Valence Shell Electron Pair Repulsion (VSEPR) dictates molecular shape by minimizing electrostatic repulsion between electron pairs. <strong>Repulsion order:</strong> Lone Pair-Lone Pair $>$ Lone Pair-Bond Pair $>$ Bond Pair-Bond Pair.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Hybridization and Shapes:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>$sp^3$ (4 domains):</strong> Tetrahedral ($109.5^\circ$, e.g., $CH_4$), Trigonal Pyramidal ($107^\circ$, e.g., $NH_3$), Bent ($104.5^\circ$, e.g., $H_2O$).</span><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>$sp^2$ (3 domains):</strong> Trigonal Planar ($120^\circ$, e.g., $BF_3$, $C_2H_4$).</span><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>$sp$ (2 domains):</strong> Linear ($180^\circ$, e.g., $CO_2$, $C_2H_2$).</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="imf-lattices">3.4 Intermolecular Forces & Solid Structures</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>London Dispersion Forces:</strong> Present in all molecules. Induced by temporary, fluctuating dipoles. Strength increases with more electrons (surface area).</li>
+                        <li><strong>Hydrogen Bonding:</strong> Strongest IMF. Occurs only when $H$ is directly covalently bonded to $N, O,$ or $F$, creating a massive partial charge attracted to a lone pair on a neighboring molecule.</li>
+                        <li><strong>Giant Covalent (Macromolecular) Lattices:</strong> Diamond (each C bonded to 4 others, extremely hard, non-conductor). Graphite (each C bonded to 3 others in flat sheets, delocalized electrons allow electrical conductivity, weak van der Waals forces between layers make it slippery).</li>
+                        <li><strong>Giant Metallic Lattices:</strong> A regular lattice of positive metal ions immersed in a "sea" of delocalized valence electrons. Highly conductive and malleable.</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         SECTION 4: ORGANIC CHEMISTRY - COMPLETE
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic4">4. Organic Chemistry: The Functional Groups</h2>
+                    <p class="reveal fade-up">Organic chemistry is the study of carbon compounds. Success here requires mastering how different functional groups interact, the mechanisms they undergo, and how to synthesize one from another.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="hydrocarbons">4.1 Hydrocarbons (Alkanes, Alkenes, Alkynes)</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Alkanes (Free Radical Substitution):</strong> React with halogens under UV light via Homolytic fission. Steps: Initiation (creating radicals), Propagation (chain reaction), Termination.</li>
+                        <li><strong>Alkenes (Electrophilic Addition):</strong> The $C=C$ double bond attracts electrophiles. When $HBr$ adds to propene, <strong>Markovnikov’s Rule</strong> applies: the $H$ adds to the carbon with the most hydrogens to form the most stable secondary carbocation intermediate ($CH_3C^+HCH_3$).</li>
+                        <li><strong>Alkynes:</strong> Terminal alkynes (e.g., propyne) have acidic hydrogens. They react with ammoniacal silver nitrate (Tollens' reagent) to form a white precipitate of silver acetylide.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="halogenoalkanes">4.2 Halogenoalkanes (Alkyl Halides)</h3>
+                    <p class="reveal fade-up">The polar $C-X$ bond makes the carbon susceptible to attack by <strong>Nucleophiles</strong> (electron-pair donors like $OH^-$, $CN^-$, $NH_3$).</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Nucleophilic Substitution Mechanisms:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>$S_N1$ (Tertiary Halogenoalkanes):</strong> A two-step process. The halogen leaves first, forming a stable tertiary carbocation, followed by nucleophilic attack.</span><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>$S_N2$ (Primary Halogenoalkanes):</strong> A single-step process. The nucleophile attacks from the back simultaneously as the halogen leaves, passing through a transition state.</span>
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Elimination:</strong> If heated under reflux with <em>ethanolic</em> $KOH$ (instead of aqueous), the $OH^-$ acts as a base rather than a nucleophile, removing an $H^+$ and an $X^-$ to form an <strong>Alkene</strong>.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="alcohols">4.3 Alcohols</h3>
+                    <p class="reveal fade-up">Characterized by the hydroxyl ($-OH$) group, resulting in hydrogen bonding, which gives them much higher boiling points than corresponding alkanes.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Oxidation (using acidified $K_2Cr_2O_7$):</strong><br>
+                            - <em>Primary Alcohols:</em> Oxidize first to <strong>Aldehydes</strong> (distill immediately), and further to <strong>Carboxylic Acids</strong> (heat under reflux).<br>
+                            - <em>Secondary Alcohols:</em> Oxidize to <strong>Ketones</strong>.<br>
+                            - <em>Tertiary Alcohols:</em> Do not oxidize under normal conditions.
+                        </li>
+                        <li><strong>Dehydration:</strong> Heating an alcohol with concentrated $H_2SO_4$ at $170^\circ C$ removes water to form an alkene (Elimination reaction).</li>
+                        <li><strong>Esterification:</strong> Reacting an alcohol with a carboxylic acid (with a conc. $H_2SO_4$ catalyst) forms an ester and water.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="carbonyls">4.4 Carbonyl Compounds (Aldehydes & Ketones)</h3>
+                    <p class="reveal fade-up">Contain the polar $C=O$ group. Aldehydes have the group at the end of the chain, ketones in the middle.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Nucleophilic Addition:</strong> React with $HCN$ (using $KCN$ as a catalyst) to form hydroxynitriles. This mechanism is crucial as it extends the carbon chain by one atom.</li>
+                        <li><strong>Identification Tests:</strong><br>
+                            - <em>Brady's Reagent (2,4-DNPH):</em> Forms an orange/yellow precipitate with BOTH aldehydes and ketones.<br>
+                            - <em>Tollens' Reagent:</em> Aldehydes are oxidized to carboxylic acids, reducing $Ag^+$ to form a <strong>Silver Mirror</strong>. Ketones do not react.<br>
+                            - <em>Fehling's Solution:</em> Aldehydes reduce the blue $Cu^{2+}$ complex to a red precipitate of $Cu_2O$. Ketones do not react.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="carboxylic-esters">4.5 Carboxylic Acids & Esters</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Acidity:</strong> Carboxylic acids are weak acids. Their conjugate base (the carboxylate ion, $R-COO^-$) is stabilized by the delocalization of the negative charge across the two oxygen atoms. Adding electron-withdrawing groups (like Chlorine) increases acidity.</li>
+                        <li><strong>Esters:</strong> Formed via esterification. They are volatile, sweet-smelling compounds used as solvents and flavorings.</li>
+                        <li><strong>Hydrolysis of Esters:</strong> <br>
+                            - <em>Acidic Hydrolysis:</em> Reversible; yields the original carboxylic acid and alcohol.<br>
+                            - <em>Alkaline Hydrolysis (Saponification):</em> Irreversible; yields the alcohol and the sodium/potassium <em>salt</em> of the carboxylic acid (soap).
+                        </li>
+                    </ul>
+                    <!-- ==========================================
+                         SECTION 5: THERMODYNAMICS & ENERGETICS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic5">5. Thermodynamics & Energetics</h2>
+                    <p class="reveal fade-up">Thermodynamics determines whether a chemical reaction is energetically feasible and calculates the exact amount of heat transferred. All standard enthalpy changes ($\Delta H^\ominus$) are measured under standard conditions: $298\text{ K}$, $100\text{ kPa}$ ($1\text{ atm}$), and $1.0\text{ mol dm}^{-3}$ concentrations.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="enthalpy-calorimetry">5.1 Enthalpy Definitions & Calorimetry</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Standard Enthalpy of Formation ($\Delta H_f^\ominus$):</strong> The enthalpy change when <em>one mole</em> of a compound is formed from its constituent elements in their standard states. (Note: $\Delta H_f^\ominus$ of any element in its standard state is exactly zero).</li>
+                        <li><strong>Standard Enthalpy of Combustion ($\Delta H_c^\ominus$):</strong> The enthalpy change when <em>one mole</em> of a substance is completely burned in excess oxygen.</li>
+                        <li><strong>Standard Enthalpy of Neutralization ($\Delta H_{neut}^\ominus$):</strong> The enthalpy change when an acid and a base react to form <em>one mole of water</em>. For all strong acid/strong base reactions, this value is constant at approximately $-57.1\text{ kJ mol}^{-1}$ because the ionic equation is always $H^+(aq) + OH^-(aq) \rightarrow H_2O(l)$.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Calorimetry Equation:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Used to calculate enthalpy change from experimental temperature changes (e.g., in a polystyrene cup).</span>
+                        $$ q = mc\Delta T $$
+                        $$ \Delta H = -\frac{q}{n} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $q$ is heat exchanged (in Joules), $m$ is the mass of the <em>surroundings</em> (usually the water/solution in grams), $c$ is the specific heat capacity (4.18 J g⁻¹ K⁻¹ for water), $\Delta T$ is the temperature change, and $n$ is the moles of the limiting reactant.</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="hess-born-haber">5.2 Hess's Law & Born-Haber Cycles</h3>
+                    <p class="reveal fade-up">Hess's Law states that the total enthalpy change of a reaction is independent of the route taken, provided the initial and final conditions are identical. This is a direct application of the First Law of Thermodynamics (Conservation of Energy).</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Hess's Law Calculations:</strong>
+                        $$ \Delta H_{reaction} = \sum \Delta H_f^\ominus(\text{Products}) - \sum \Delta H_f^\ominus(\text{Reactants}) $$
+                        $$ \Delta H_{reaction} = \sum \Delta H_c^\ominus(\text{Reactants}) - \sum \Delta H_c^\ominus(\text{Products}) $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Note the reversal in the combustion formula. When using bond enthalpies, it is $\Sigma(\text{Bonds Broken}) - \Sigma(\text{Bonds Made})$.</span>
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Born-Haber Cycles:</strong> An application of Hess's Law used specifically to calculate the <strong>Lattice Enthalpy</strong> of ionic solids. The cycle connects the Enthalpy of Formation to:</li>
+                        <li><strong>1. Atomization ($\Delta H_{at}^\ominus$):</strong> Converting elements into gaseous atoms (endothermic).</li>
+                        <li><strong>2. Ionization Energy (IE):</strong> Removing electrons from gaseous metal atoms (endothermic).</li>
+                        <li><strong>3. Electron Affinity (EA):</strong> Adding electrons to gaseous non-metal atoms. The 1st EA is exothermic, but the 2nd EA is always <em>endothermic</em> due to repulsion between the negative ion and the incoming electron.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="entropy-gibbs">5.3 Entropy ($S$) & Gibbs Free Energy ($G$)</h3>
+                    <p class="reveal fade-up">Enthalpy alone cannot predict if a reaction will happen. Spontaneity is driven by the universe's tendency toward maximum disorder (Entropy, $S$).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Entropy ($S$):</strong> A measure of the dispersal of energy and disorder. Gases have vastly higher entropy than liquids, which have higher entropy than solids. A reaction where solid $\rightarrow$ gas will have a highly positive $\Delta S$.</li>
+                        <li><strong>Gibbs Free Energy ($\Delta G$):</strong> The ultimate determinant of thermodynamic feasibility. For a reaction to be spontaneous (feasible), $\Delta G$ must be less than or equal to zero.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>The Gibbs Free Energy Equation:</strong>
+                        $$ \Delta G = \Delta H - T\Delta S $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;"><strong>CRITICAL EXAM TRAP:</strong> $\Delta H$ is usually given in $\text{kJ mol}^{-1}$, but $\Delta S$ is usually given in $\text{J K}^{-1}\text{ mol}^{-1}$. You MUST divide $\Delta S$ by 1000 before subtracting. Temperature ($T$) must be in Kelvin. To find the exact temperature a reaction becomes feasible, set $\Delta G = 0$ and rearrange to $T = \frac{\Delta H}{\Delta S}$.</span>
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION 6: DESCRIPTIVE INORGANIC CHEMISTRY
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic6">6. Descriptive Inorganic Chemistry</h2>
+                    <p class="reveal fade-up">Inorganic chemistry is heavily pattern-based. The GCE syllabus tests your ability to predict chemical behavior based on periodic trends, charge density, and oxidation states.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="period3">6.1 Period 3 Elements & Their Oxides</h3>
+                    <p class="reveal fade-up">Moving across Period 3 (Na to Ar), bonding transitions from giant metallic (Na, Mg, Al) to giant covalent (Si) to simple molecular (P, S, Cl) and finally monatomic (Ar). This directly dictates their melting points and reactivity.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Reactions with Water:</strong> Sodium reacts violently with cold water to form $NaOH$ and $H_2$. Magnesium reacts very slowly with cold water but rapidly with <em>steam</em> to form $MgO$ and $H_2$. Chlorine reacts with water to form a mixture of hydrochloric acid ($HCl$) and chloric(I) acid ($HClO$, bleach).</li>
+                        <li><strong>Acid-Base Nature of Oxides:</strong><br>
+                            - <em>Basic Oxides:</em> $Na_2O$ and $MgO$ (contain $O^{2-}$ ions which accept protons).<br>
+                            - <em>Amphoteric Oxide:</em> $Al_2O_3$ (reacts with both acids and bases. Example with base: $Al_2O_3 + 2NaOH + 3H_2O \rightarrow 2NaAl(OH)_4$).<br>
+                            - <em>Acidic Oxides:</em> $SiO_2, P_4O_{10}, SO_2, SO_3$ (Covalently bonded. $SO_3$ dissolves in water to form highly acidic $H_2SO_4$).
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="group2">6.2 Group 2: The Alkaline Earth Metals</h3>
+                    <p class="reveal fade-up">Reactivity increases down Group 2 because the atomic radius increases and shielding increases, making it easier to lose the two valence electrons (lower ionization energy).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Solubility of Hydroxides:</strong> Increases down the group. $Mg(OH)_2$ is sparingly soluble (used as antacid "Milk of Magnesia"). $Ba(OH)_2$ is highly soluble.</li>
+                        <li><strong>Solubility of Sulfates:</strong> Decreases down the group. $MgSO_4$ is highly soluble. $BaSO_4$ is completely insoluble (used as a "Barium meal" for X-rays because it is opaque to X-rays and won't dissolve in the bloodstream).</li>
+                        <li><strong>Thermal Stability of Carbonates ($MCO_3$):</strong> Increases down the group. The smaller $Mg^{2+}$ ion has a higher charge density, highly polarizing the carbonate ion and weakening the $C-O$ bond, causing it to decompose into $MgO$ and $CO_2$ at lower temperatures than $BaCO_3$.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="group17">6.3 Group 17: The Halogens</h3>
+                    <p class="reveal fade-up">Halogens exist as diatomic molecules ($X_2$). Their boiling points increase down the group due to stronger van der Waals forces (more electrons). However, their oxidizing ability <em>decreases</em> down the group.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Disproportionation Reactions:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">A reaction where the same element is both oxidized and reduced simultaneously. When chlorine gas is bubbled into cold, dilute $NaOH$:</span>
+                        $$ Cl_2 + 2NaOH \rightarrow NaCl + NaClO + H_2O $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Chlorine goes from an oxidation state of $0$ in $Cl_2$, to $-1$ in $NaCl$ (reduction), and $+1$ in $NaClO$ (oxidation). If HOT, concentrated $NaOH$ is used, the chlorate(V) ion ($ClO_3^-$) is formed instead.</span>
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Halide Ion Testing:</strong> Add dilute nitric acid (to remove carbonate impurities) followed by Silver Nitrate ($AgNO_3$).<br>
+                            - $Cl^-$ forms a <strong>white</strong> precipitate ($AgCl$) which dissolves in <em>dilute</em> ammonia.<br>
+                            - $Br^-$ forms a <strong>cream</strong> precipitate ($AgBr$) which dissolves in <em>concentrated</em> ammonia.<br>
+                            - $I^-$ forms a <strong>yellow</strong> precipitate ($AgI$) which is insoluble in all ammonia.
+                        </li>
+                    </ul>
+                    <!-- ==========================================
+                         SECTION 7: CHEMICAL EQUILIBRIA
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic7">7. Chemical Equilibria</h2>
+                    <p class="reveal fade-up">Reversible reactions in a closed system eventually reach a state of dynamic equilibrium, where the rate of the forward reaction perfectly equals the rate of the backward reaction, and macroscopic properties (like color and pressure) remain constant.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="le-chatelier">7.1 Le Chatelier's Principle & Industrial Compromises</h3>
+                    <p class="reveal fade-up">Le Chatelier's Principle states that if a system at dynamic equilibrium is subjected to a change in conditions (concentration, pressure, or temperature), the position of equilibrium will shift to oppose that change.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Concentration:</strong> Adding reactant shifts equilibrium to the right (making more product).</li>
+                        <li><strong>Pressure:</strong> Increasing pressure shifts equilibrium to the side with <em>fewer</em> moles of gas.</li>
+                        <li><strong>Temperature:</strong> Increasing temperature favors the <em>endothermic</em> direction. Decreasing temperature favors the <em>exothermic</em> direction. <strong>Note:</strong> Temperature is the <em>only</em> factor that changes the actual numerical value of the equilibrium constant ($K$).</li>
+                        <li><strong>Catalysts:</strong> Do not shift the equilibrium position or change the yield. They only increase the rate at which equilibrium is achieved by lowering activation energy for both forward and backward reactions equally.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="kc-kp">7.2 Equilibrium Constants ($K_c$ and $K_p$)</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>Concentration Constant ($K_c$):</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For the general reaction $aA + bB \rightleftharpoons cC + dD$</span>
+                        $$ K_c = \frac{[C]^c [D]^d}{[A]^a [B]^b} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Solids and pure liquids are omitted from the $K_c$ expression because their concentrations are constant.</span>
+                    </div>
+                    <div class="equation reveal fade-up">
+                        <strong>Partial Pressure Constant ($K_p$):</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Used exclusively for gaseous equilibria. To find $K_p$, you must first calculate the mole fraction of each gas, then its partial pressure.</span>
+                        $$ \text{Mole Fraction } (\chi_A) = \frac{\text{Moles of } A}{\text{Total Moles of Gas}} $$
+                        $$ \text{Partial Pressure } (P_A) = \chi_A \times P_{total} $$
+                        $$ K_p = \frac{(P_C)^c (P_D)^d}{(P_A)^a (P_B)^b} $$
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION 8: REDOX EQUILIBRIA
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic8">8. Redox Equilibria & Electrochemistry</h2>
+                    <p class="reveal fade-up">Electrochemistry links chemical reactions to the generation of electricity. It relies on comparing the tendency of different substances to gain or lose electrons.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="electrode-potentials">8.1 Standard Electrode Potentials ($E^\ominus$)</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Standard Hydrogen Electrode (SHE):</strong> The universal reference half-cell, assigned a potential of exactly $0.00\text{ V}$. It consists of $H_2$ gas at $1\text{ atm}$, bubbled over a Platinum electrode in a $1.0\text{ mol dm}^{-3}$ $H^+$ solution at $298\text{ K}$.</li>
+                        <li><strong>More Positive $E^\ominus$:</strong> Stronger oxidizing agent (wants to be reduced / gain electrons). Will act as the positive terminal (Cathode).</li>
+                        <li><strong>More Negative $E^\ominus$:</strong> Stronger reducing agent (wants to be oxidized / lose electrons). Will act as the negative terminal (Anode).</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Calculating Cell Potential:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For a reaction to be thermodynamically feasible, the standard cell potential must be positive ($> 0\text{ V}$).</span>
+                        $$ E^\ominus_{cell} = E^\ominus_{Reduction (Cathode)} - E^\ominus_{Oxidation (Anode)} $$
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION 9: ACID-BASE EQUILIBRIA
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic9">9. Acid-Base Equilibria</h2>
+                    <p class="reveal fade-up">A rigorous mathematical approach to Brønsted-Lowry acids/bases, focusing heavily on pH, $K_a$, and buffer solutions.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="ph-ka">9.1 Strong vs Weak Acids & pH</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Strong Acids (e.g., $HCl, HNO_3$):</strong> Fully dissociate in water. $[H^+] = [\text{Acid}]$.</li>
+                        <li><strong>Weak Acids (e.g., $CH_3COOH$):</strong> Partially dissociate in water. Requires the Acid Dissociation Constant ($K_a$) to find $[H^+]$.</li>
+                        <li><strong>The Ionic Product of Water ($K_w$):</strong> Water auto-ionizes. At $298\text{ K}$, $K_w = [H^+][OH^-] = 1.0 \times 10^{-14}\text{ mol}^2\text{ dm}^{-6}$. This equation is vital for finding the pH of strong bases.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>The pH Equations:</strong>
+                        $$ pH = -\log_{10}[H^+] \quad \implies \quad [H^+] = 10^{-pH} $$
+                        $$ K_a = \frac{[H^+][A^-]}{[HA]} \quad \implies \quad [H^+] = \sqrt{K_a \times [HA]} \quad \text{(For weak acids only)} $$
+                        $$ pK_a = -\log_{10}(K_a) $$
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="buffers">9.2 Buffer Solutions & Titration Curves</h3>
+                    <p class="reveal fade-up">A buffer solution resists large changes in pH upon the addition of small amounts of strong acid or strong base. An acidic buffer is made of a weak acid and the salt of its conjugate base (e.g., Ethanoic acid + Sodium ethanoate).</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Calculating Buffer pH:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Because the salt fully dissociates, we assume $[A^-]$ comes entirely from the salt, and $[HA]$ remains the initial acid concentration.</span>
+                        $$ [H^+] = K_a \times \frac{[\text{Weak Acid}]}{[\text{Salt}]} $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Titration Curves & Indicators:</strong> The choice of indicator depends on the sharp vertical region of the titration pH curve.<br>
+                        - <em>Strong Acid/Strong Base:</em> Vertical from pH 3 to 10. (Use Methyl Orange or Phenolphthalein).<br>
+                        - <em>Weak Acid/Strong Base:</em> Vertical from pH 7 to 10. (Use Phenolphthalein).<br>
+                        - <em>Strong Acid/Weak Base:</em> Vertical from pH 3 to 7. (Use Methyl Orange).
+                        </li>
+                    </ul>
+
+                    <!-- ==========================================
+                         SECTION 11: REACTION KINETICS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic11">11. Reaction Kinetics</h2>
+                    <p class="reveal fade-up">Kinetics determines <em>how fast</em> a feasible reaction will occur, and reveals the invisible step-by-step mechanism (the pathway) the molecules take.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="rate-laws">11.1 Rate Equations & Orders of Reaction</h3>
+                    <p class="reveal fade-up">The rate equation connects the rate of reaction to the concentrations of reactants. The "order" with respect to a reactant tells you exactly how changing its concentration affects the speed.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>The Rate Law:</strong>
+                        $$ \text{Rate} = k[A]^m [B]^n $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $k$ is the rate constant, $m$ is the order with respect to $A$, and $n$ is the order with respect to $B$. The <strong>Overall Order</strong> $= m + n$. Orders can ONLY be determined by experimental data, never by looking at the stoichiometric equation.</span>
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Zero Order ($m=0$):</strong> Changing concentration has no effect on rate. Concentration-time graph is a straight descending line.</li>
+                        <li><strong>First Order ($m=1$):</strong> Rate is directly proportional to concentration. It has a <strong>constant half-life</strong> ($t_{1/2} = \frac{\ln 2}{k}$).</li>
+                        <li><strong>Second Order ($m=2$):</strong> Doubling concentration quadruples the rate.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="rds-arrhenius">11.2 Rate-Determining Step & The Arrhenius Equation</h3>
+                    <p class="reveal fade-up">The Rate-Determining Step (RDS) is the slowest step in a multi-step reaction mechanism. <strong>Crucial Rule:</strong> Only species that appear in the rate equation take part in the mechanism up to and including the RDS.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>The Arrhenius Equation:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Shows the mathematical link between the rate constant ($k$), temperature ($T$), and activation energy ($E_a$).</span>
+                        $$ k = A e^{-\frac{E_a}{RT}} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Taking the natural log gives the linear graph equation ($y = mx + c$):</span>
+                        $$ \ln k = -\frac{E_a}{R}\left(\frac{1}{T}\right) + \ln A $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Plotting $\ln k$ against $1/T$ yields a straight line with a gradient of $-\frac{E_a}{R}$, allowing you to calculate the exact activation energy.</span>
+                    </div>
+                    <!-- ==========================================
+                         SECTION 10: ORGANIC NITROGEN, POLYMERS & SYNTHESIS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic10">10. Organic Nitrogen Compounds, Polymers & Synthesis</h2>
+                    <p class="reveal fade-up">Nitrogen-containing compounds form the backbone of biochemistry (amino acids, DNA) and synthetic materials (nylons). This section requires mastery of base strengths, condensation reactions, and multi-step synthetic pathways.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="amines-amides">10.1 Amines and Amides</h3>
+                    <p class="reveal fade-up">Amines are derivatives of ammonia where one or more hydrogen atoms are replaced by alkyl or aryl groups. They act as Brønsted-Lowry bases (proton acceptors) and Lewis bases (nucleophiles) due to the lone pair on the nitrogen atom.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Base Strength Hierarchy:</strong> Secondary Alkylamines $>$ Primary Alkylamines $>$ Ammonia $>$ Phenylamine (Aniline).<br>
+                        <em>Reasoning:</em> Alkyl groups exert a <strong>positive inductive effect</strong>, pushing electron density onto the nitrogen, making the lone pair more available to accept a proton. In phenylamine, the nitrogen lone pair delocalizes into the benzene $\pi$-ring, making it <em>less</em> available.</li>
+                        <li><strong>Preparation of Amines:</strong><br>
+                            - <em>Aliphatic:</em> Nucleophilic substitution of a halogenoalkane with excess, hot, ethanolic ammonia (excess prevents multiple substitutions).<br>
+                            - <em>Aromatic:</em> Reduction of nitrobenzene using <strong>Tin (Sn) and concentrated HCl</strong> heated under reflux, followed by adding NaOH to liberate the free amine.
+                        </li>
+                        <li><strong>Amides ($-CONH_2$):</strong> Formed by reacting acyl chlorides with ammonia or amines. Unlike amines, amides are <strong>neutral</strong> because the nitrogen lone pair delocalizes into the highly electronegative carbonyl ($C=O$) group.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="diazonium-dyes">10.2 Diazonium Salts & Azo Dyes</h3>
+                    <p class="reveal fade-up">This is a highly tested GCE synthesis pathway used to manufacture vivid artificial colorants.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Diazotization Reaction:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Phenylamine reacts with nitrous acid ($HNO_2$). Because nitrous acid is unstable, it is generated <em>in situ</em> using Sodium Nitrite and cold HCl. The temperature <strong>must be kept below $5^\circ\text{C}$</strong>, otherwise the diazonium salt violently decomposes into phenol and nitrogen gas.</span>
+                        $$ C_6H_5NH_2 + HNO_2 + HCl \xrightarrow{<5^\circ\text{C}} C_6H_5N_2^+Cl^- + 2H_2O $$
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Coupling (Forming the Azo Dye):</strong> The benzenediazonium ion ($C_6H_5N_2^+$) acts as an electrophile. It attacks an alkaline solution of phenol at the 4-position, creating a massive highly delocalized $\pi$-system linked by an azo bridge ($-N=N-$). This extensive delocalization absorbs specific visible light frequencies, resulting in bright yellow/orange/red dyes.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="amino-acids">10.3 Amino Acids & Proteins</h3>
+                    <p class="reveal fade-up">$\alpha$-amino acids contain both a basic amine group ($-NH_2$) and an acidic carboxyl group ($-COOH$) attached to the same central chiral carbon.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Zwitterions:</strong> In the solid state and in neutral aqueous solution, amino acids exist as dipolar ions (Zwitterions) where the proton transfers from the carboxyl group to the amine group: $H_3N^+ - CH(R) - COO^-$. This ionic nature gives them surprisingly high melting points.</li>
+                        <li><strong>Isoelectric Point:</strong> The specific pH at which the amino acid has no net electrical charge. In acidic conditions (low pH), it acts as a base ($H_3N^+ - CH(R) - COOH$). In alkaline conditions (high pH), it acts as an acid ($H_2N - CH(R) - COO^-$).</li>
+                        <li><strong>Peptide Bonds:</strong> Amino acids link together via condensation reactions (eliminating $H_2O$) to form a secondary amide link ($-CONH-$), creating dipeptides, polypeptides, and ultimately proteins.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="polymers">10.4 Polymerization (Addition vs Condensation)</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Addition Polymers:</strong> Formed from alkene monomers by breaking the $\pi$-bond. No by-products are formed. They have a 100% atom economy but are incredibly difficult to biodegrade due to the inert $C-C$ backbone. (Examples: Polyethene, PVC, PTFE/Teflon).</li>
+                        <li><strong>Condensation Polymers:</strong> Formed when monomers with two functional groups react, linking together while eliminating a small molecule (usually $H_2O$ or $HCl$). Because they contain polar bonds (ester or amide links), they can be broken down by hydrolysis (biodegradable).<br>
+                            - <em>Polyesters (e.g., Terylene):</em> Made from a dicarboxylic acid + a diol.<br>
+                            - <em>Polyamides (e.g., Nylon 6,6):</em> Made from a dicarboxylic acid + a diamine (e.g., hexanedioic acid and 1,6-diaminohexane).
+                        </li>
+                    </ul>
+
+                    <!-- ==========================================
+                         SECTION 12: ENVIRONMENTAL CHEMISTRY
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="topic12">12. Environmental & Green Chemistry</h2>
+                    <p class="reveal fade-up">Modern chemistry mandates an understanding of how industrial chemicals interact with global ecosystems, focusing heavily on atmospheric pollution mechanisms and sustainable (green) practices.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="atmosphere">12.1 Atmospheric Pollution & Ozone Depletion</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Acid Rain:</strong> Caused by non-metal oxides ($SO_2$ from burning fossil fuels, and $NO_x$ from high-temperature car engines). They dissolve in atmospheric water to form strong acids.<br>
+                        <em>Reaction:</em> $SO_2 + \frac{1}{2}O_2 + H_2O \rightarrow H_2SO_4$</li>
+                        <li><strong>Global Warming:</strong> Greenhouse gases ($CO_2$, $CH_4$, $H_2O$ vapor) absorb outgoing infrared radiation emitted by the Earth's surface. The bonds in these molecules vibrate more energetically, re-radiating heat back toward the surface.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Ozone Depletion Mechanism (Free Radical Catalysis):</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Chlorofluorocarbons (CFCs) are highly stable in the lower atmosphere but undergo homolytic fission in the stratosphere due to intense UV light.</span>
+                        $$ CCl_2F_2 \xrightarrow{UV} ^\bullet CClF_2 + Cl^\bullet $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">The highly reactive chlorine radical catalyzes the breakdown of ozone ($O_3$) into oxygen gas without being consumed, meaning one $Cl^\bullet$ can destroy 100,000 ozone molecules:</span>
+                        $$ Cl^\bullet + O_3 \rightarrow ClO^\bullet + O_2 $$
+                        $$ ClO^\bullet + O \rightarrow Cl^\bullet + O_2 $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;"><em>Overall Equation:</em> $O_3 + O \rightarrow 2O_2$</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="water-treatment">12.2 Water Treatment & Eutrophication</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Eutrophication:</strong> The artificial over-enrichment of water bodies, usually caused by fertilizer run-off containing Nitrates ($NO_3^-$) and Phosphates ($PO_4^{3-}$). This causes massive algal blooms, which block sunlight. When the algae die, aerobic bacteria decompose them, severely depleting the dissolved oxygen (high BOD - Biochemical Oxygen Demand), leading to the death of aquatic life.</li>
+                        <li><strong>Municipal Water Treatment:</strong><br>
+                            1. <em>Coagulation/Flocculation:</em> Addition of Aluminium Sulfate ($Al_2(SO_4)_3$) to cause fine suspended particles to clump together.<br>
+                            2. <em>Sedimentation & Filtration:</em> Heavy flocs sink, and water is passed through sand beds.<br>
+                            3. <em>Chlorination:</em> Chlorine gas is added to kill bacteria. It forms chloric(I) acid ($HClO$), a powerful oxidizing agent that destroys bacterial cell walls.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="green-chem-principles">12.3 The Principles of Green Chemistry</h3>
+                    <p class="reveal fade-up">Green chemistry aims to design chemical processes that reduce or eliminate the use and generation of hazardous substances. The GCE board requires you to evaluate processes based on these key tenets:</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Prevention over Remediation:</strong> It is better to prevent waste than to treat or clean up waste after it has been created.</li>
+                        <li><strong>Maximize Atom Economy:</strong> Synthetic methods should be designed to maximize the incorporation of all materials used into the final product (favoring Addition reactions over Substitution).</li>
+                        <li><strong>Use of Catalysts:</strong> Catalytic reagents (as selective as possible) are vastly superior to stoichiometric reagents because they are not consumed and reduce energy requirements (by lowering the required temperature/pressure).</li>
+                        <li><strong>Use of Renewable Feedstocks:</strong> Raw materials should be renewable (e.g., plant-based ethanol) rather than depleting (e.g., petrochemicals).</li>
+                        <li><strong>Design for Degradation:</strong> Chemical products should be designed so that at the end of their function they break down into innocuous degradation products and do not persist in the environment.</li>
+                    </ul>
+
+                    <!-- CONCLUSION -->
+                    <h2 class="notes-section-title reveal fade-up" id="conclusion">Concluding Directives</h2>
+                    <p class="reveal fade-up">A-Level Chemistry demands rigorous application of logic over simple memorization. Ensure you can draw curly arrows for all organic mechanisms precisely and track your units during thermodynamic calculations. Utilize the AI Assistant below to instantly verify any formula or bonding structure.</p>
+                    
+                    <div class="note-end-buttons reveal fade-up">
+                        <a href="study-notes.html" class="btn btn-primary-outline"><i class="fas fa-book"></i> Back to All Notes</a>
+                        <a href="past-papers.html" class="btn btn-secondary-outline"><i class="fas fa-file-alt"></i> Execute Past Papers</a>
+                    </div>
+            </div>
+        </section>
+
+        <section class="cta-section section-padding bg-image-cta reveal fade-up" style="background-image: url('images/cta-main-bg.jpg');">
+            <div class="cta-overlay"></div>
+            <div class="container cta-content">
+                <h2 class="section-title text-light">Ready to Conquer Chemistry?</h2>
+                <p>Register with MohAcademy today for personalized guidance, expert insights, and a supportive learning community that helps you ace your A/L exams.</p>
+                <a href="signup.html" class="btn btn-lg-outline animate-fade-in-up">Register for Free Today!</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to the Chemistry Notes Vault. Need a mechanism explained, like Friedel-Crafts Acylation or Hess's Law?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Organic Mechanisms')">Organic Mechanisms</span>
+                <span class="preset-chip" onclick="triggerPreset('Thermodynamics')">Thermodynamics</span>
+            </div>
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/notes-subject.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

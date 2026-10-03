@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Authentication - MohAcademy</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f4f7fc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-container-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .auth-glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            text-align: center;
+            box-sizing: border-box;
+            animation: formFadeIn 0.5s ease-out;
+        }
+
+        .auth-header-node h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .auth-header-node p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .auth-input-group {
+            text-align: left;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .auth-input-group label {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .input-field-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-field-icon-wrapper i.field-icon {
+            position: absolute;
+            left: 16px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .input-field-icon-wrapper input {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+        }
+
+        .input-field-icon-wrapper input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.12);
+        }
+
+        .toggle-password-visibility {
+            position: absolute;
+            right: 16px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .auth-utility-flex-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.88rem;
+        }
+
+        .checkbox-container-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .forgot-password-anchor {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .forgot-password-anchor:hover { text-decoration: underline; }
+
+        .auth-action-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+            transition: all 0.25s;
+        }
+
+        .auth-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 123, 255, 0.3);
+        }
+
+        .auth-redirect-footer-lbl {
+            margin-top: 25px;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .auth-redirect-footer-lbl a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .auth-redirect-footer-lbl a:hover { text-decoration: underline; }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 576px) {
+            .auth-glass-card { padding: 30px 20px; }
+            .auth-utility-flex-row { flex-direction: column; gap: 12px; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <header style="background-color: #0f172a; padding: 18px 30px; width: 100%; box-sizing: border-box;">
+        <a href="index.html" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
+            <i class="fas fa-atom" style="color: #2ecc71; margin-right: 10px;"></i> MohAcademy
+        </a>
+    </header>
+
+    <main class="auth-container-wrapper">
+        <div class="auth-glass-card">
+            <div class="auth-header-node">
+                <h1>Welcome Back</h1>
+                <p>Log in to access your custom tracking metrics and saved resources.</p>
+            </div>
+
+            <form id="loginMasterForm" onsubmit="handleLoginEvent(event)">
+                <div class="auth-input-group">
+                    <label>Email Address</label>
+                    <div class="input-field-icon-wrapper">
+                        <i class="fas fa-envelope field-icon"></i>
+                        <input type="email" placeholder="student@domain.com" required id="log_email">
+                    </div>
+                </div>
+
+                <div class="auth-input-group">
+                    <label>Password</label>
+                    <div class="input-field-icon-wrapper">
+                        <i class="fas fa-lock field-icon"></i>
+                        <input type="password" placeholder="••••••••" required id="log_password">
+                        <i class="fas fa-eye toggle-password-visibility" onclick="toggleFieldMask('log_password', this)"></i>
+                    </div>
+                </div>
+
+                <div class="auth-utility-flex-row">
+                    <label class="checkbox-container-label">
+                        <input type="checkbox" id="chk_remember"> Keep me logged in
+                    </label>
+                    <a href="forgot-password.html" class="forgot-password-anchor">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="auth-action-btn">Authenticate Entry</button>
+            </form>
+
+            <div class="auth-redirect-footer-lbl">
+                New to the Academy? <a href="signup.html">Create a Free Account</a>
+            </div>
+        </div>
+    </main>
+
+    
+
+    <script>
+        function toggleFieldMask(targetId, iconRef) {
+            const field = document.getElementById(targetId);
+            if(field.type === "password") {
+                field.type = "text";
+                iconRef.className = "fas fa-eye-slash toggle-password-visibility";
+            } else {
+                field.type = "password";
+                iconRef.className = "fas fa-eye toggle-password-visibility";
+            }
+        }
+
+        async function handleLoginEvent(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('log_email').value;
+            const password = document.getElementById('log_password').value;
+            
+            const btn = e.target.querySelector('.auth-action-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Authenticating Entry...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    localStorage.setItem('mohacademy_token', data.token);
+                    localStorage.setItem('mohacademy_user', JSON.stringify(data.student));
+                    
+                    window.location.href = "profile.html";
+                } else {
+                    alert(`Authentication Denied: ${data.message}`);
+                }
+            } catch (error) {
+                console.error("Server connection failed:", error);
+                alert("Fatal Error: Could not reach the MohAcademy server.");
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

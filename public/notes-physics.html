@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics A/L Study Notes - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/notes-subject.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle active">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html" class="active">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="notes-subject-hero-section physics-notes-hero" id="notes-subject-hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1>Physics A/L Study Notes</h1>
+                <p>Unlock the mysteries of the universe. Comprehensive, topic-wise notes for GCE A/L Physics, designed for clarity and success.</p>
+                <div class="hero-buttons animate-fade-in-up">
+                    <a href="#notes-content" class="btn btn-primary">Start Reading Notes</a>
+                    <a href="notes/physics/physics-notes.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-download"></i> Download Full Notes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-content-section section-padding">
+            <div class="container notes-container">
+                <aside class="notes-sidebar reveal fade-left" id="mobile-toc-sidebar">
+                    <!-- Mobile Toggle Button Header -->
+                    <div class="sidebar-header" id="toc-toggle-btn">
+                        <h3>GCE 780 Syllabus</h3>
+                        <i class="fas fa-chevron-down toc-icon"></i>
+                    </div>
+                    
+                    <!-- Collapsible Content Wrapper -->
+                    <div class="sidebar-collapsible-content" id="toc-collapsible">
+                        <ul class="toc-list" id="notes-toc">
+                            <li><a href="#quantities">1. Physical Quantities & Measurement</a></li>
+                            <li><a href="#mechanics">2. Mechanics</a>
+                                <ul>
+                                    <li><a href="#kinematics">2.1 Kinematics & Dynamics</a></li>
+                                    <li><a href="#circular-motion">2.2 Circular Motion</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#shm-waves">3. SHM & Mechanical Waves</a></li>
+                            <li><a href="#thermal">4. Thermal Physics & Thermodynamics</a>
+                                <ul>
+                                    <li><a href="#heating">4.1 Heating Matter & Gases</a></li>
+                                    <li><a href="#thermodynamics">4.2 Laws of Thermodynamics</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#fields">5. Fields (Gravitational, Electric, Magnetic)</a></li>
+                            <li><a href="#capacitors">6. Capacitors</a></li>
+                            <li><a href="#electricity">7. Current Electricity (DC)</a></li>
+                            <li><a href="#em-induction">8. Electromagnetic Induction & AC</a></li>
+                            <li><a href="#wave-optics">9. Wave Phenomena & Optics</a></li>
+                            <li><a href="#quantum">10. Quantum & Nuclear Physics</a></li>
+                            <li><a href="#options">11. Paper 2 Options</a>
+                                <ul>
+                                    <li><a href="#opt-medical">Option 4: Medical Physics</a></li>
+                                    <li><a href="#opt-electronics">Option 3: Electronics</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="sidebar-links">
+                            <a href="study-notes.html" class="btn btn-tertiary-outline"><i class="fas fa-chevron-left"></i> All Study Notes</a>
+                            <a href="physics.html" class="btn btn-secondary-outline">Physics Subject Page <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="notes-main-content" id="notes-content">
+                    
+                    <!-- INTRODUCTION -->
+                    <h2 class="notes-section-title reveal fade-up" id="introduction">Introduction to Physics Notes</h2>
+                    <p class="reveal fade-up">Welcome to the comprehensive study notes for GCE A/L Physics. These notes are structured to strictly follow the Cameroon GCE syllabus (Code 780), providing clear explanations, essential formulas, and illustrative diagrams. Use this resource to deepen your understanding and prepare effectively for your examinations.</p>
+                    <p class="reveal fade-up">Physics is the natural science that studies matter, its fundamental constituents, its motion and behavior through space and time, and the related entities of energy and force. It is one of the most fundamental scientific disciplines, with its main goal being to understand how the universe behaves.</p>
+
+                    <!-- ==========================================
+                         SECTION 1: PHYSICAL QUANTITIES & EXPERIMENTAL PHYSICS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="quantities">1. Physical Quantities & Experimental Physics</h2>
+                    <p class="reveal fade-up">A physical quantity is a property of a material or system that can be quantified by measurement. It is always expressed as the product of a numerical magnitude and a unit.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="base-units">1.1 SI Base and Derived Units</h3>
+                    <p class="reveal fade-up">The SI system is built upon fundamental base units that form the minimum set necessary to define all other physical quantities (luminous intensity is explicitly excluded for this syllabus).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Mass:</strong> kilogram (kg)</li>
+                        <li><strong>Length:</strong> meter (m)</li>
+                        <li><strong>Time:</strong> second (s)</li>
+                        <li><strong>Electric Current:</strong> Ampere (A) <em>(Note: The Ampere is defined based on the force between two parallel current-carrying conductors, which implies a fixed exact value for the permeability of free space, $\mu_0$.)</em></li>
+                        <li><strong>Thermodynamic Temperature:</strong> Kelvin (K)</li>
+                        <li><strong>Amount of Substance:</strong> mole (mol)</li>
+                    </ul>
+                    <p class="reveal fade-up"><strong>Derived Units</strong> are expressed as products or quotients of the base units. For example, Force ($F = ma$) is measured in Newtons (N), which is a derived unit equivalent to $kg\ m\ s^{-2}$.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="homogeneity">1.2 Homogeneity of Physical Equations</h3>
+                    <p class="reveal fade-up">An equation is dimensionally homogeneous if the fundamental dimensions (or base units) on the left-hand side are identical to those on the right-hand side. While homogeneity is a necessary condition for a physical equation to be correct, it is not sufficient—it cannot verify dimensionless constants like $\frac{1}{2}$ or $\pi$.</p>
+                    <p class="equation reveal fade-up">Example: Proving $s = ut + \frac{1}{2}at^2$ is homogeneous:</p>
+                    $$ [s] = L $$
+                    $$ [ut] = (LT^{-1})(T) = L $$
+                    $$ [at^2] = (LT^{-2})(T^2) = L $$
+                    <p class="reveal fade-up">Since every independent term has the dimension of Length ($L$), the equation is homogeneous.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="scalars-vectors">1.3 Scalar and Vector Quantities</h3>
+                    <p class="reveal fade-up">Physical quantities are classified based on whether they possess direction in space.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Scalars:</strong> Possess magnitude only (e.g., Mass, Temperature, Speed, Energy, Pressure).</li>
+                        <li><strong>Vectors:</strong> Possess both magnitude and a specific direction (e.g., Displacement, Velocity, Force, Momentum).</li>
+                    </ul>
+                    <p class="reveal fade-up"><strong>Resolving Vectors:</strong> Any coplanar vector can be resolved into two perpendicular components. For a force $F$ acting at an angle $\theta$ to the horizontal axis:</p>
+                    $$ F_x = F \cos\theta $$
+                    $$ F_y = F \sin\theta $$
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="experimental-physics">1.4 Experimental Physics, Errors & CRO</h3>
+                    <p class="reveal fade-up">Measurements are never perfectly exact. Understanding errors and reading instruments like the Cathode Ray Oscilloscope (CRO) is a core component of experimental physics.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Random Errors:</strong> Cause readings to scatter unpredictably around the true value (e.g., human reaction time). These are reduced by taking multiple readings and calculating an average.</li>
+                        <li><strong>Systematic Errors:</strong> Cause readings to consistently deviate in one specific direction (e.g., a zero error on a micrometer). These cannot be reduced by averaging; the instrument must be recalibrated.</li>
+                        <li><strong>Precision:</strong> How close the measured values are to each other (indicates a small random error).</li>
+                        <li><strong>Accuracy:</strong> How close the measured average value is to the true or accepted value (indicates a small systematic error).</li>
+                    </ul>
+                    <p class="equation reveal fade-up">Extracting Data from a CRO:</p>
+                    <p class="reveal fade-up">The CRO displays voltage variations over time. To extract values from the screen's grid (graticule):</p>
+                    $$ \text{Peak Voltage } (V_0) = (\text{y-axis displacement}) \times (\text{Y-gain setting}) $$
+                    $$ \text{Time Period } (T) = (\text{x-axis displacement for one wave}) \times (\text{Time-base setting}) $$
+                    <!-- ==========================================
+                         SECTION 2: MECHANICS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="mechanics">2. Mechanics</h2>
+                    <p class="reveal fade-up">Mechanics is the study of the motion of macroscopic objects and the forces that govern their interactions. It is divided into kinematics (the geometry of motion) and dynamics (the causes of motion).</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="rectilinear-motion">2.1 Rectilinear Motion</h3>
+                    <p class="reveal fade-up">Rectilinear motion deals with objects moving in a straight line under uniform (constant) acceleration.</p>
+                    <p class="equation reveal fade-up">The Equations of Motion (for constant acceleration):</p>
+                    $$ v = u + at $$
+                    $$ s = ut + \frac{1}{2}at^2 $$
+                    $$ v^2 = u^2 + 2as $$
+                    $$ s = \frac{1}{2}(u + v)t $$
+                    <p class="reveal fade-up">Where $u$ is initial velocity, $v$ is final velocity, $a$ is acceleration, $t$ is time, and $s$ is displacement. Note that the acceleration due to gravity ($g = 9.81 \ m\ s^{-2}$) is a specific case of constant acceleration for freely falling bodies.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="circular-motion">2.2 Circular Motion</h3>
+                    <p class="reveal fade-up">An object moving in a circular path at a constant speed is still accelerating because its direction (and thus velocity) is constantly changing. This requires a net force directed toward the center of the circle.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Angular Velocity ($\omega$):</strong> The rate of change of angular displacement. Measured in $rad\ s^{-1}$.</li>
+                        <li><strong>Relationship to Linear Speed:</strong> $v = r\omega$</li>
+                    </ul>
+                    <p class="equation reveal fade-up">Centripetal Acceleration ($a$) and Centripetal Force ($F$):</p>
+                    $$ a = \frac{v^2}{r} = r\omega^2 = v\omega $$
+                    $$ F = \frac{mv^2}{r} = mr\omega^2 $$
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="forces-equilibrium">2.3 Forces and Equilibrium</h3>
+                    <p class="reveal fade-up">A force is a push or pull that can cause an object to change its velocity or deform. Turning effects occur when forces act at a distance from a pivot.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Moment of a Force:</strong> The product of the force and the perpendicular distance from the pivot ($Moment = F \times d$).</li>
+                        <li><strong>Couple:</strong> A pair of equal and opposite coplanar forces that produce rotation only. The torque of a couple is the product of one of the forces and the perpendicular distance between them.</li>
+                    </ul>
+                    <p class="reveal fade-up"><strong>Conditions for Equilibrium:</strong> For a rigid body to be in total static equilibrium, two conditions must be met:</p>
+                    $$ \sum F = 0 \quad \text{(Zero net force in any direction)} $$
+                    $$ \sum \tau = 0 \quad \text{(Zero net moment about any point)} $$
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="newtons-laws">2.4 Newton's Laws of Motion & Momentum</h3>
+                    <p class="reveal fade-up">Isaac Newton's three laws form the foundation of classical mechanics. In advanced physics, the Second Law is defined in terms of momentum rather than just acceleration.</p>
+                    <p class="equation reveal fade-up">Newton's Second Law (Momentum definition):</p>
+                    <p class="reveal fade-up">The rate of change of momentum of a body is directly proportional to the net external force acting on it, and takes place in the direction of that force.</p>
+                    $$ F_{net} = \frac{dp}{dt} = \frac{d(mv)}{dt} $$
+                    <p class="reveal fade-up"><strong>Conservation of Linear Momentum:</strong> In a closed system with no external forces, the total momentum remains constant during collisions.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Elastic Collisions:</strong> Both momentum and total kinetic energy are conserved.</li>
+                        <li><strong>Inelastic Collisions:</strong> Momentum is conserved, but kinetic energy is not (some is lost as heat or sound).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="work-energy">2.5 Work, Energy, and Power</h3>
+                    <p class="reveal fade-up">Energy represents the capacity to do work, and power represents how fast that work is done.</p>
+                    <p class="equation reveal fade-up">Core Energy Equations:</p>
+                    $$ \text{Work Done } (W) = F \cdot d \cos\theta $$
+                    $$ \text{Kinetic Energy } (E_k) = \frac{1}{2}mv^2 $$
+                    $$ \text{Gravitational Potential Energy } (E_p) = mgh $$
+                    $$ \text{Elastic Potential Energy } = \frac{1}{2}kx^2 \quad \text{(where } k \text{ is the force constant)} $$
+                    <p class="equation reveal fade-up">Power ($P$):</p>
+                    $$ P = \frac{dW}{dt} = Fv $$
+                    <!-- ==========================================
+                         SECTION 3: SHM & MECHANICAL WAVES
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="shm-waves">3. Simple Harmonic Motion & Mechanical Waves</h2>
+                    <p class="reveal fade-up">This section explores the physics of periodic periodic motion—systems that repeat their behavior in regular time intervals—and how that energy propagates through space as waves.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="shm">3.1 Simple Harmonic Motion (SHM)</h3>
+                    <p class="reveal fade-up">Simple Harmonic Motion is a specific type of oscillatory motion where the restoring force (and therefore the acceleration) is directly proportional to the displacement from the equilibrium position, and always directed towards that equilibrium.</p>
+                    <p class="equation reveal fade-up">Defining Equation of SHM:</p>
+                    $$ a = -\omega^2 x $$
+                    <p class="reveal fade-up">Where \(a\) is acceleration, \(\omega\) is the angular frequency, and \(x\) is displacement. The negative sign indicates that acceleration is always opposite to the direction of displacement.</p>
+                    
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Displacement Equation:</strong> \( x = A \sin(\omega t) \) or \( x = A \cos(\omega t) \), where \(A\) is the maximum amplitude.</li>
+                        <li><strong>Simple Pendulum Period:</strong> \( T = 2\pi \sqrt{\frac{l}{g}} \) (depends only on length \(l\) and gravity \(g\)).</li>
+                        <li><strong>Mass on a Spring Period:</strong> \( T = 2\pi \sqrt{\frac{m}{k}} \) (depends on mass \(m\) and spring constant \(k\)).</li>
+                    </ul>
+
+                    <p class="equation reveal fade-up">Energy in SHM:</p>
+                    <p class="reveal fade-up">In an undamped system, energy continuously transfers between kinetic (\(E_k\)) and potential (\(E_p\)), but the total mechanical energy remains constant.</p>
+                    $$ E_{Total} = E_k + E_p = \frac{1}{2}m\omega^2 A^2 $$
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="resonance">3.2 Damping and Resonance</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Free Oscillations:</strong> A system oscillating at its natural frequency with no external forces.</li>
+                        <li><strong>Damped Oscillations:</strong> Resistive forces (like air resistance) cause the amplitude to decrease exponentially over time.</li>
+                        <li><strong>Forced Oscillations & Resonance:</strong> When a periodic driving force is applied. If the driving frequency matches the system's natural frequency, resonance occurs, resulting in maximum amplitude and maximum energy transfer.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="mechanical-waves">3.3 Mechanical Waves</h3>
+                    <p class="reveal fade-up">Waves transfer energy from one point to another without the net transfer of matter. They are characterized by their wavelength (\(\lambda\)), frequency (\(f\)), and amplitude (\(A\)).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Transverse Waves:</strong> Particle oscillation is perpendicular to the direction of energy propagation (e.g., water waves, waves on a string).</li>
+                        <li><strong>Longitudinal Waves:</strong> Particle oscillation is parallel to the direction of energy propagation, creating compressions and rarefactions (e.g., sound waves).</li>
+                        <li><strong>Phase Difference (\(\phi\)):</strong> A measure of how much one wave is shifted relative to another, usually measured in radians.</li>
+                    </ul>
+                    <p class="equation reveal fade-up">The Universal Wave Equation:</p>
+                    $$ v = f\lambda $$
+                    <!-- ==========================================
+                         SECTION 4: THERMAL PHYSICS & THERMODYNAMICS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="thermal">4. Thermal Physics & Thermodynamics</h2>
+                    <p class="reveal fade-up">Thermal physics examines the concepts of temperature and heat transfer, while thermodynamics studies the relationship between heat, work, and the internal energy of systems.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="heating">4.1 Heating Matter & Heat Transfer</h3>
+                    <p class="reveal fade-up">Heat always flows spontaneously from a region of higher temperature to a region of lower temperature until thermal equilibrium is reached.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Conduction:</strong> Heat transfer through molecular collisions (mostly in solids). Metals are excellent conductors due to free electrons.</li>
+                        <li><strong>Convection:</strong> Heat transfer by the bulk movement of fluids (liquids and gases) due to density differences.</li>
+                        <li><strong>Radiation:</strong> Heat transfer via electromagnetic waves (infrared). Requires no medium and can travel through a vacuum.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Specific Heat Capacity ($c$) & Specific Latent Heat ($l$):</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Used to calculate the energy required to change an object's temperature, or change its physical state (melting/boiling) without changing its temperature.</span>
+                        $$ Q = mc\Delta\theta $$
+                        $$ Q = ml $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $Q$ is heat energy, $m$ is mass, $\Delta\theta$ is temperature change, $c$ is specific heat capacity, and $l$ is specific latent heat of fusion/vaporization.</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="ideal-gases">4.2 Ideal Gases & Kinetic Theory</h3>
+                    <p class="reveal fade-up">An ideal gas is a theoretical gas composed of randomly moving point particles that only interact through perfectly elastic collisions. The kinetic theory links the macroscopic properties of a gas (pressure, volume, temperature) to the microscopic motion of its molecules.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Brownian Motion:</strong> The random, zigzag motion of particles suspended in a fluid, providing evidence for the continuous, random motion of molecules.</li>
+                        <li><strong>Absolute Zero (0 K):</strong> The temperature at which all random molecular kinetic energy ceases. ($T(K) = \theta(^\circ C) + 273.15$)</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>The Ideal Gas Equation & Kinetic Theory Equations:</strong>
+                        $$ pV = nRT \quad \text{or} \quad pV = NkT $$
+                        $$ p = \frac{1}{3}\rho \langle c^2 \rangle $$
+                        $$ E_k = \frac{3}{2}kT $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $p$ is pressure, $V$ is volume, $n$ is number of moles, $R$ is the molar gas constant, $N$ is total molecules, $k$ is the Boltzmann constant, $\rho$ is density, $\langle c^2 \rangle$ is the mean square speed, and $E_k$ is the average translational kinetic energy of a single molecule.</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="thermodynamics">4.3 The Laws of Thermodynamics</h3>
+                    <p class="reveal fade-up">Thermodynamics governs the principles of energy conservation and the direction in which physical processes can naturally occur.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>First Law of Thermodynamics:</strong> A statement of the conservation of energy. The heat supplied to a system is equal to the increase in its internal energy plus the work done <em>by</em> the system on its surroundings.</li>
+                        <li><strong>Second Law of Thermodynamics:</strong> Heat cannot spontaneously flow from a colder body to a hotter body. In a closed system, the total entropy (degree of disorder) always increases over time.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>First Law Equation:</strong>
+                        $$ Q = \Delta U + W $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $Q$ is heat supplied <em>to</em> the system, $\Delta U$ is the increase in internal energy, and $W$ is the work done <em>by</em> the gas expanding against an external pressure ($W = p\Delta V$).</span>
+                    </div>
+                    <!-- ==========================================
+                         SECTION 5: FIELDS (GRAVITATIONAL, ELECTRIC, MAGNETIC)
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="fields">5. Fields: Gravitational, Electric, & Magnetic</h2>
+                    <p class="reveal fade-up">In physics, a "field" is a region of space where a specific property (like mass or charge) experiences a non-contact force. The GCE A-Level syllabus requires a deep comparative understanding of how gravitational forces interact with mass, how electric forces interact with charge, and how magnetic forces interact with moving charges.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="gravitational-fields">5.1 Gravitational Fields</h3>
+                    <p class="reveal fade-up">A gravitational field is a region of space where a mass experiences an attractive force. It is universally attractive and acts over infinite distances, though it weakens following an inverse-square law.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Newton's Law of Universal Gravitation:</strong> The attractive force between two point masses is directly proportional to the product of their masses and inversely proportional to the square of the distance between their centers.</li>
+                        <li><strong>Gravitational Field Strength ($g$):</strong> Defined as the gravitational force exerted per unit mass placed at that point in the field. It is a vector quantity, directed toward the center of the mass creating the field.</li>
+                        <li><strong>Gravitational Potential ($\phi$):</strong> The work done per unit mass in bringing a small test mass from infinity to a specific point in the field. It is a scalar quantity and is always <em>negative</em> because gravity is an attractive force (work is done <em>by</em> the field, not against it).</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Core Gravitational Equations:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For a radial field created by a point mass $M$:</span>
+                        $$ F = -\frac{GMm}{r^2} $$
+                        $$ g = \frac{F}{m} = -\frac{GM}{r^2} $$
+                        $$ \phi = -\frac{GM}{r} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $G$ is the Universal Gravitational Constant ($6.67 \times 10^{-11} \ N\ m^2\ kg^{-2}$), $M$ is the mass creating the field, $m$ is the test mass, and $r$ is the distance between their centers.</span>
+                    </div>
+
+                    <div class="equation reveal fade-up">
+                        <strong>Deriving Kepler's Third Law (Orbital Motion):</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For a satellite in a circular orbit, the gravitational force provides the centripetal force ($F_g = F_c$):</span>
+                        $$ \frac{GMm}{r^2} = \frac{mv^2}{r} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Substituting $v = \frac{2\pi r}{T}$ (where $T$ is the orbital period):</span>
+                        $$ \frac{GM}{r^2} = \frac{4\pi^2 r}{T^2} \implies T^2 = \left(\frac{4\pi^2}{GM}\right)r^3 $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">This proves that the square of the orbital period is directly proportional to the cube of the orbital radius ($T^2 \propto r^3$).</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="electric-fields">5.2 Electric Fields</h3>
+                    <p class="reveal fade-up">An electric field is a region where a stationary electric charge experiences a force. Unlike gravity, electric forces can be both attractive (between opposite charges) and repulsive (between like charges).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Coulomb's Law:</strong> The electric force between two point charges is directly proportional to the product of their charges and inversely proportional to the square of their separation distance.</li>
+                        <li><strong>Electric Field Strength ($E$):</strong> The electric force exerted per unit positive charge placed at that point. It is a vector quantity. The direction of the field lines shows the path a positive test charge would take.</li>
+                        <li><strong>Uniform Electric Fields:</strong> Created between two parallel charged plates. The field strength is constant everywhere between the plates, which is distinctly different from the radial field of a point charge.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Radial vs. Uniform Electric Fields:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For a radial field (Point Charge $Q$):</span>
+                        $$ F = \frac{1}{4\pi\varepsilon_0} \frac{Qq}{r^2} \quad \text{and} \quad E = \frac{1}{4\pi\varepsilon_0} \frac{Q}{r^2} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">For a uniform field (Parallel Plates separated by distance $d$ with voltage $V$):</span>
+                        $$ E = \frac{V}{d} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $\varepsilon_0$ is the permittivity of free space ($8.85 \times 10^{-12} \ F\ m^{-1}$).</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="magnetic-fields">5.3 Magnetic Fields & Electromagnetism</h3>
+                    <p class="reveal fade-up">Magnetic fields are generated by moving charges (currents) and only exert forces on <em>other</em> moving charges or magnetic materials. A stationary charge in a magnetic field experiences zero magnetic force.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Magnetic Flux Density ($B$):</strong> Also known as magnetic field strength. It is defined as the force acting per unit length on a straight wire carrying a unit current, placed perpendicular to the magnetic field. Unit: Tesla (T).</li>
+                        <li><strong>Fleming's Left-Hand Rule:</strong> Used to determine the direction of the magnetic force on a current-carrying wire or a moving positive charge. (Thumb = Force, First Finger = Magnetic Field, Second Finger = Current/Velocity).</li>
+                        <li><strong>Charges in a Magnetic Field:</strong> Because the magnetic force is always perpendicular to the velocity of the charge, it acts as a centripetal force, causing the charged particle to move in a circular path.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Magnetic Force Equations:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Force on a straight current-carrying wire of length $l$:</span>
+                        $$ F = BIl \sin\theta $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Force on a single particle with charge $q$ moving at velocity $v$:</span>
+                        $$ F = Bqv \sin\theta $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $\theta$ is the angle between the field ($B$) and the current/velocity. If they are perpendicular, $\sin(90^\circ) = 1$.</span>
+                    </div>
+                    <!-- ==========================================
+                         SECTION 6: CAPACITORS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="capacitors">6. Capacitors</h2>
+                    <p class="reveal fade-up">A capacitor is an electrical component that stores electric charge and electrical potential energy. It consists of two conducting plates separated by an insulator (dielectric).</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="capacitance-energy">6.1 Capacitance and Energy Stored</h3>
+                    <p class="reveal fade-up">Capacitance ($C$) is defined as the charge stored per unit potential difference across the plates. The unit of capacitance is the Farad (F), which is equivalent to one Coulomb per Volt ($C\ V^{-1}$).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Parallel Plate Capacitor:</strong> The capacitance depends entirely on the physical dimensions of the capacitor and the insulating material between them. Adding a dielectric material increases the capacitance by a factor of its relative permittivity ($\varepsilon_r$).</li>
+                        <li><strong>Energy Stored:</strong> The energy stored in a capacitor represents the work done by the battery to push electrons onto the negative plate against the electrostatic repulsion of the charge already there. This is equal to the area under a Charge-Voltage ($Q-V$) graph.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Capacitance Equations:</strong>
+                        $$ C = \frac{Q}{V} \quad \text{and} \quad C = \frac{\varepsilon_0 \varepsilon_r A}{d} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $A$ is the area of overlap of the plates and $d$ is the separation distance.</span>
+                        <br><br>
+                        <strong>Energy Stored ($W$):</strong>
+                        $$ W = \frac{1}{2}QV = \frac{1}{2}CV^2 = \frac{Q^2}{2C} $$
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="capacitor-circuits">6.2 Capacitor Networks and Discharging</h3>
+                    <p class="reveal fade-up">When capacitors are connected in circuits, their combined capacitance behaves oppositely to that of resistors.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Capacitors in Series:</strong> The charge ($Q$) on each capacitor is the same. Total capacitance decreases: $\frac{1}{C_{total}} = \frac{1}{C_1} + \frac{1}{C_2} + \dots$</li>
+                        <li><strong>Capacitors in Parallel:</strong> The voltage ($V$) across each capacitor is the same. Total capacitance increases: $C_{total} = C_1 + C_2 + \dots$</li>
+                        <li><strong>Time Constant ($\tau$):</strong> When a capacitor discharges through a resistor, the rate of discharge depends on the Time Constant ($\tau = RC$). It is the time taken for the charge to fall to approximately $37\%$ ($1/e$) of its initial value.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Exponential Discharge Equation:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">The charge, voltage, and current all decay exponentially over time ($t$):</span>
+                        $$ Q = Q_0 e^{-\frac{t}{RC}} \quad \text{and} \quad V = V_0 e^{-\frac{t}{RC}} $$
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION 7: CURRENT ELECTRICITY (DC)
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="electricity">7. Current Electricity (DC)</h2>
+                    <p class="reveal fade-up">Current electricity deals with the continuous flow of electric charge through a conductor. To maintain this flow, a complete circuit and a source of electromotive force are required.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="current-resistance">7.1 Current, Drift Velocity, and Resistivity</h3>
+                    <p class="reveal fade-up">Electric current is the rate of flow of charge. In metallic conductors, this charge is carried by free electrons moving against the electric field. Because electrons constantly collide with vibrating metal lattice ions, they travel at a slow average speed called the <strong>drift velocity</strong>.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Ohm's Law:</strong> For a metallic conductor at a constant temperature, the current is directly proportional to the potential difference across its ends. ($V = IR$)</li>
+                        <li><strong>Resistivity ($\rho$):</strong> An intrinsic property of a material measuring how strongly it resists electric current. Unlike resistance, resistivity does not depend on the shape or size of the wire, only the material and temperature.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Microscopic Current (Drift Velocity):</strong>
+                        $$ I = nAqv $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $I$ is current, $n$ is the number density of free electrons, $A$ is cross-sectional area, $q$ is the charge of an electron, and $v$ is drift velocity.</span>
+                        <br><br>
+                        <strong>Resistivity Equation:</strong>
+                        $$ R = \frac{\rho L}{A} $$
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="emf-kirchhoff">7.2 EMF, Internal Resistance, & Kirchhoff's Laws</h3>
+                    <p class="reveal fade-up">No power source is perfectly efficient. Every real battery has internal resistance which causes a voltage drop ("lost volts") when current flows.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Electromotive Force (EMF, $E$):</strong> The total energy converted from chemical to electrical energy per unit charge flowing through the entire circuit.</li>
+                        <li><strong>Potential Difference (PD, $V$):</strong> The electrical energy converted into other forms (heat, light) per unit charge flowing between two points in the external circuit.</li>
+                        <li><strong>Terminal PD:</strong> The actual voltage delivered to the circuit ($V = E - Ir$, where $r$ is internal resistance).</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Kirchhoff's Circuit Laws:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>1st Law (Conservation of Charge):</strong> The sum of currents entering a junction equals the sum of currents leaving it. ($\sum I_{in} = \sum I_{out}$)</span><br><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>2nd Law (Conservation of Energy):</strong> In any closed loop, the sum of the EMFs is equal to the sum of the potential drops ($IR$).</span>
+                        $$ \sum E = \sum IR $$
+                    </div>
+                    <!-- ==========================================
+                         SECTION 8: ELECTROMAGNETIC INDUCTION & AC
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="em-induction">8. Electromagnetic Induction & AC</h2>
+                    <p class="reveal fade-up">Electromagnetic induction is the process of generating an electromotive force (EMF) by moving a conductor through a magnetic field or by changing the magnetic flux linking a circuit. This principle is the foundation of modern electrical generation and transformers.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="magnetic-flux">8.1 Magnetic Flux and Faraday's Law</h3>
+                    <p class="reveal fade-up">To understand induction, we must measure the total magnetic field passing through a given area, known as magnetic flux ($\Phi$).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Magnetic Flux ($\Phi$):</strong> The product of the magnetic flux density ($B$) and the area ($A$) perpendicular to the field. Unit: Weber (Wb).</li>
+                        <li><strong>Magnetic Flux Linkage ($N\Phi$):</strong> For a coil with $N$ turns, the total flux linking the coil is $N \times \Phi$.</li>
+                        <li><strong>Faraday's Law of Induction:</strong> The magnitude of the induced EMF is directly proportional to the rate of change of magnetic flux linkage.</li>
+                        <li><strong>Lenz's Law:</strong> The direction of the induced EMF (and any resulting current) is always such as to oppose the change in magnetic flux that causes it. This is a direct consequence of the conservation of energy.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Faraday's and Lenz's Laws Combined:</strong>
+                        $$ \mathcal{E} = -N \frac{d\Phi}{dt} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $\mathcal{E}$ is the induced EMF, $N$ is the number of turns, and $\frac{d\Phi}{dt}$ is the rate of change of magnetic flux. The negative sign mathematically represents Lenz's Law.</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="alternating-current">8.2 Alternating Current (AC)</h3>
+                    <p class="reveal fade-up">Unlike DC, alternating current continuously changes direction and magnitude, typically following a sinusoidal wave. Because its average value over a full cycle is zero, we use Root Mean Square (r.m.s.) values to compare AC power to DC power.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Peak Value ($I_0$, $V_0$):</strong> The maximum displacement of the current or voltage from zero.</li>
+                        <li><strong>Root Mean Square (r.m.s.):</strong> The value of direct current that would produce the same heating effect in a given resistor as the alternating current.</li>
+                        <li><strong>Transformers:</strong> Devices that step-up or step-down AC voltages using electromagnetic induction between two coils (primary and secondary) linked by a laminated iron core.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>AC Equations & Transformer Ratio:</strong>
+                        $$ I_{rms} = \frac{I_0}{\sqrt{2}} \quad \text{and} \quad V_{rms} = \frac{V_0}{\sqrt{2}} $$
+                        $$ \text{Mean Power } = I_{rms} V_{rms} = \frac{1}{2} I_0 V_0 $$
+                        $$ \frac{V_s}{V_p} = \frac{N_s}{N_p} = \frac{I_p}{I_s} \quad \text{(For an ideal 100% efficient transformer)} $$
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION 9: WAVE PHENOMENA & OPTICS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="wave-optics">9. Wave Phenomena & Optics</h2>
+                    <p class="reveal fade-up">This section explores the behavior of light and other waves as they interact with boundaries and obstacles, specifically focusing on superposition, interference, and refraction.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="superposition">9.1 Superposition and Interference</h3>
+                    <p class="reveal fade-up">When two or more waves meet at a point, they interact. To create a stable, observable interference pattern, the waves must be <strong>coherent</strong> (having a constant phase difference and the same frequency).</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Principle of Superposition:</strong> When two waves meet, the resultant displacement is the vector sum of the individual displacements at that point.</li>
+                        <li><strong>Constructive Interference:</strong> Occurs when waves meet in phase (path difference $= n\lambda$), creating a maximum amplitude (bright fringe).</li>
+                        <li><strong>Destructive Interference:</strong> Occurs when waves meet completely out of phase (path difference $= (n + \frac{1}{2})\lambda$), cancelling each other out to create a minimum amplitude (dark fringe).</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Young's Double Slit Equation:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Used to calculate the wavelength of light or the fringe separation on a screen:</span>
+                        $$ \lambda = \frac{ay}{D} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $\lambda$ is wavelength, $a$ is the distance between the two slits, $y$ is the fringe separation, and $D$ is the perpendicular distance from the slits to the screen.</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="diffraction">9.2 Diffraction and Gratings</h3>
+                    <p class="reveal fade-up">Diffraction is the spreading out of a wave as it passes through a gap or around an obstacle. It is most noticeable when the gap width is roughly equal to the wavelength of the wave.</p>
+                    <div class="equation reveal fade-up">
+                        <strong>Diffraction Grating Equation:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">A diffraction grating has thousands of slits per millimeter, producing much sharper and brighter interference patterns than a double slit.</span>
+                        $$ d \sin\theta = n\lambda $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $d$ is the grating spacing ($1 / \text{lines per meter}$), $\theta$ is the angle of the maximum, and $n$ is the order number (0, 1, 2, ...).</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="refraction">9.3 Refraction and Total Internal Reflection</h3>
+                    <p class="reveal fade-up">Refraction is the change in direction of a wave as it crosses a boundary between two mediums of different optical densities, caused by a change in wave speed.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Snell's Law:</strong> The ratio of the sine of the angle of incidence to the sine of the angle of refraction is a constant for a given boundary.</li>
+                        <li><strong>Total Internal Reflection (TIR):</strong> Occurs when light attempts to travel from a denser to a less dense medium, and the angle of incidence is greater than the critical angle ($C$). This is the principle behind optic fibres.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Snell's Law and Critical Angle:</strong>
+                        $$ n_1 \sin\theta_1 = n_2 \sin\theta_2 $$
+                        $$ \sin C = \frac{1}{n} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $n$ is the refractive index of the denser medium, and $C$ is the critical angle.</span>
+                    </div>
+                    <!-- ==========================================
+                         SECTION 10: QUANTUM & NUCLEAR PHYSICS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="quantum">10. Quantum & Nuclear Physics</h2>
+                    <p class="reveal fade-up">At the atomic and subatomic levels, classical physics completely breaks down. Energy is not continuous, but rather arrives in discrete packets (quanta), and mass and energy become interchangeable.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="photoelectric">10.1 Quantum Theory & The Photoelectric Effect</h3>
+                    <p class="reveal fade-up">The photoelectric effect is the emission of electrons from a metal surface when electromagnetic radiation of a high enough frequency shines on it. This phenomenon proved that light can behave as a particle (a photon) rather than just a wave.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Photon:</strong> A discrete packet (quantum) of electromagnetic energy.</li>
+                        <li><strong>Work Function ($\Phi$):</strong> The minimum energy required to release an electron from the surface of a specific metal.</li>
+                        <li><strong>Threshold Frequency ($f_0$):</strong> The minimum frequency of incident light required to cause photoelectric emission.</li>
+                        <li><strong>Wave-Particle Duality:</strong> De Broglie proposed that moving particles (like electrons) also exhibit wave-like properties, which can be observed through electron diffraction.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Einstein's Photoelectric Equation & De Broglie Wavelength:</strong>
+                        $$ E = hf = \frac{hc}{\lambda} $$
+                        $$ hf = \Phi + E_{k(max)} $$
+                        $$ \lambda = \frac{h}{p} = \frac{h}{mv} $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $h$ is Planck's constant ($6.63 \times 10^{-34} \ J\ s$), $E$ is photon energy, $E_{k(max)}$ is the maximum kinetic energy of the emitted photoelectron, and $p$ is momentum.</span>
+                    </div>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="nuclear-decay">10.2 Radioactivity & Mass-Energy Equivalence</h3>
+                    <p class="reveal fade-up">Radioactivity is the spontaneous and random decay of an unstable nucleus into a more stable one by the emission of alpha ($\alpha$), beta ($\beta$), or gamma ($\gamma$) radiation.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Decay Constant ($\lambda$):</strong> The probability of decay of a nucleus per unit time.</li>
+                        <li><strong>Half-Life ($T_{1/2}$):</strong> The time taken for the number of undecayed nuclei (or the activity) of a radioactive sample to halve.</li>
+                        <li><strong>Mass Defect ($\Delta m$):</strong> The difference between the total mass of the individual, separated nucleons and the mass of the intact nucleus. This "missing" mass is converted into the Binding Energy that holds the nucleus together.</li>
+                    </ul>
+                    <div class="equation reveal fade-up">
+                        <strong>Radioactive Decay Law & Mass-Energy Equivalence:</strong>
+                        $$ N = N_0 e^{-\lambda t} \quad \text{and} \quad A = A_0 e^{-\lambda t} $$
+                        $$ T_{1/2} = \frac{\ln 2}{\lambda} \approx \frac{0.693}{\lambda} $$
+                        $$ \Delta E = \Delta m c^2 $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $N$ is the number of undecayed nuclei, $A$ is activity (decays per second, measured in Becquerels), and $c$ is the speed of light in a vacuum ($3 \times 10^8 \ m\ s^{-1}$).</span>
+                    </div>
+
+                    <!-- ==========================================
+                         SECTION 11: PAPER 2 OPTIONS
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="options">11. Paper 2 Elective Options</h2>
+                    <p class="reveal fade-up">For Section 3 of the GCE A-Level Physics Paper 2, candidates must answer questions from one of the following applied physics options. Below are brief overviews of the elective branches.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="opt-medical">Option 4: Medical Physics</h3>
+                    <p class="reveal fade-up">Applies physics principles to healthcare. It covers the physics of the human eye (myopia, hypermetropia) and ear (decibel scale, hearing loss). It dives heavily into biological measurement (ECG) and non-ionising/ionising imaging techniques, including Ultrasound (A-scan and B-scan), X-ray production, CT Scanners, and MRI principles.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="opt-electronics">Option 3: Electronics</h3>
+                    <p class="reveal fade-up">Explores the operation and circuitry of semiconductor devices. Topics include intrinsic/extrinsic semiconductors, P-N junction diodes, rectification, Zener diodes, Transistors (NPN/PNP as switches and amplifiers), and the use of Operational Amplifiers (Op-amps) and logic gates in digital electronics.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="opt-communications">Option 2: Communication</h3>
+                    <p class="reveal fade-up">Focuses on the transmission of information. It covers Radio Systems (AM and FM modulation, bandwidth, sidebands), transmission via Optical Fibres (attenuation, core-cladding advantages), and the structural network of Mobile Phone Systems (cellular exchange, base stations).</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="opt-energy">Option 1: Energy Resources</h3>
+                    <p class="reveal fade-up">Analyzes the generation and consumption of energy. It compares primary/secondary and renewable/non-renewable sources, focusing on the efficiency and environmental impact of Hydroelectric power, Solar energy, Wind power, and Nuclear energy (fission reactors).</p>
+                    <!-- CONCLUSION -->
+                    <h2 class="notes-section-title reveal fade-up" id="conclusion">Conclusion & Further Study</h2>
+                    <p class="reveal fade-up">These notes provide a solid foundation for your A/L Physics studies. Remember to supplement them with active problem-solving, past paper practice, and clarification of doubts. Consistent revision is key to success!</p>
+                    <div class="note-end-buttons reveal fade-up">
+                        <a href="study-notes.html" class="btn btn-primary-outline"><i class="fas fa-book"></i> Back to All Notes</a>
+                        <a href="past-papers.html" class="btn btn-secondary-outline"><i class="fas fa-file-alt"></i> Practice with Past Papers</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section section-padding bg-image-cta reveal fade-up" style="background-image: url('images/cta-main-bg.jpg');">
+            <div class="cta-overlay"></div>
+            <div class="container cta-content">
+                <h2 class="section-title text-light">Ready to Elevate Your Physics Performance?</h2>
+                <p>Register with MohAcademy today for personalized guidance, expert insights, and a supportive learning community that helps you ace your A/L exams.</p>
+                <a href="signup.html" class="btn btn-lg-outline animate-fade-in-up">Register for Free Today!</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to the Chemistry Notes Vault. Need a mechanism explained, like Friedel-Crafts Acylation or Hess's Law?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Organic Mechanisms')">Organic Mechanisms</span>
+                <span class="preset-chip" onclick="triggerPreset('Thermodynamics')">Thermodynamics</span>
+            </div>
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/notes-subject.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

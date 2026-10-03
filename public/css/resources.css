@@ -1,0 +1,308 @@
+/* ==========================================================================
+   MOHACADEMY RESOURCE CONSOLE STYLING ENGINE (HIGH CONTRAST & RESPONSIVE)
+   ========================================================================== */
+
+/* Resources Dedicated Hero Section */
+.resources-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: url('../images/resources-hero-bg.jpg') no-repeat center center/cover;
+    background-color: #0b132b; /* Deep Slate Fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    padding-top: calc(var(--header-height) + 40px);
+    padding-bottom: 40px;
+    overflow: hidden;
+}
+
+.resources-hero-section .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(11, 19, 43, 0.92) 0%, rgba(28, 37, 65, 0.75) 100%);
+    z-index: 1;
+}
+
+.resources-hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.resources-hero-section h1 {
+    font-size: 4.2em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right, #ffffff, #e2e8f0);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.resources-hero-section p {
+    font-size: 1.45em;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    color: #cbd5e1;
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Domain Filtering Control Interface */
+.resource-filter-wrapper {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 16px 24px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 100%;
+}
+
+.filter-label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #38bdf8; /* Soft Cyan */
+    white-space: nowrap;
+}
+
+.filter-buttons-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f1f5f9;
+    padding: 8px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+}
+
+.filter-btn.active {
+    background: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+/* Master Resource Hub Grid Architecture */
+.resource-showcase-section {
+    background-color: var(--background-very-light);
+}
+
+.resource-master-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.resource-node-card {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    padding: 35px 30px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+}
+
+.resource-node-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    border-color: rgba(0, 123, 255, 0.4);
+}
+
+/* Card Badges Overlays */
+.node-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #f1f5f9;
+    color: #475569;
+    padding: 4px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.node-badge.high-yield { background-color: #fef3c7; color: #d97706; }
+.node-badge.interactive { background-color: #e0f2fe; color: #0369a1; }
+.node-badge.regulation { background-color: #fee2e2; color: #b91c1c; }
+.node-badge.active-learning { background-color: #f3e8ff; color: #6b21a8; }
+
+/* Node Content Layout elements */
+.node-icon-frame {
+    width: 65px;
+    height: 65px;
+    background-color: var(--background-soft-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.resource-node-card h3 {
+    font-size: 1.45rem;
+    color: var(--heading-color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.resource-node-card p {
+    font-size: 0.98rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.node-meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.node-meta-tags span {
+    font-size: 0.8rem;
+    background-color: var(--background-soft-blue);
+    color: #0369a1;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Block Button Refinements */
+.btn-primary-block {
+    background-color: var(--primary-color);
+    color: var(--text-light) !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-primary-block:hover {
+    background-color: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.25);
+}
+
+/* Paradigm Methodology Matrix Layout */
+.paradigm-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.paradigm-box {
+    background-color: var(--card-background);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    text-align: center;
+}
+
+.p-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(0, 123, 255, 0.15);
+    line-height: 1;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.paradigm-box h4 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--heading-color);
+    font-weight: 700;
+}
+
+.paradigm-box p {
+    font-size: 0.94rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   ADVANCED RESPONSIVE MEDIA BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .resources-hero-section h1 { font-size: 3.4em; }
+    .resources-hero-section p { font-size: 1.25em; }
+    .resource-master-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    .resources-hero-section { min-height: auto; padding-top: calc(var(--header-height) + 20px); }
+    .resources-hero-section h1 { font-size: 2.6em; }
+    .resources-hero-section p { font-size: 1.1em; margin-bottom: 25px; }
+    
+    .resource-filter-wrapper {
+        flex-direction: column;
+        border-radius: 16px;
+        width: 100%;
+        padding: 15px;
+    }
+    .filter-buttons-container { justify-content: center; }
+    .resource-master-grid { grid-template-columns: 1fr; gap: 20px; }
+    .resource-node-card { padding: 25px; }
+    
+    
+}
+
+@media (max-width: 480px) {
+    .resources-hero-section h1 { font-size: 2.1em; }
+    .filter-btn { padding: 6px 14px; font-size: 0.82rem; }
+    .paradigm-row { grid-template-columns: 1fr; }
+}

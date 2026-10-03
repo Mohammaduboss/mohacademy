@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - MohAcademy</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .legal-frame-layout-grid { max-width: 1100px; margin: 120px auto 100px; padding: 0 24px; display: grid; grid-template-columns: 280px 1fr; gap: 40px; box-sizing: border-box; }
+        .legal-sticky-nav { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 10px; align-self: start; }
+        .legal-nav-anchor { padding: 12px 18px; border-radius: 8px; color: var(--text-muted); text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.95rem; transition: all 0.2s ease; border-left: 3px solid transparent; }
+        .legal-nav-anchor:hover { background-color: #f1f5f9; color: var(--text-dark); border-color: #cbd5e1; }
+        .legal-nav-anchor.active-anchor-node { background-color: #e0f2fe; color: var(--primary-dark); border-color: var(--primary-color); box-shadow: 0 4px 10px rgba(0, 123, 255, 0.05); }
+
+        .legal-document-card { background-color: #ffffff; border: 1px solid var(--border-color); border-radius: 20px; padding: 55px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03); }
+        .legal-document-card h1 { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 2.6rem; margin: 0 0 10px 0; letter-spacing: -0.5px; }
+        .meta-timestamp-lbl { font-size: 0.9rem; color: var(--primary-color); display: block; margin-bottom: 40px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .legal-section-block { margin-bottom: 45px; }
+        .legal-section-block h2 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0 0 16px 0; color: var(--text-dark); scroll-margin-top: 100px; }
+        .legal-section-block p { font-size: 1.05rem; line-height: 1.7; color: #475569; margin: 0 0 16px 0; }
+        .legal-section-block ul { padding-left: 24px; margin: 16px 0; }
+        .legal-section-block li { margin-bottom: 10px; line-height: 1.6; color: #475569; font-size: 1.05rem; }
+
+        /* Unified Chatbot Overlay */
+        .moh-fab-container { position: fixed; bottom: 25px; right: 25px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 15px; pointer-events: none; }
+        .moh-chat-window-card { width: 370px; max-width: calc(100vw - 40px); height: 500px; background-color: #ffffff; border-radius: 20px; box-shadow: 0 15px 45px rgba(0,0,0,0.2); border: 1px solid rgba(138, 43, 226, 0.2); display: flex; flex-direction: column; overflow: hidden; pointer-events: auto; transform: scale(0.85) translateY(30px); opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); transform-origin: bottom right; }
+        .moh-chat-window-card.active { transform: scale(1) translateY(0); opacity: 1; visibility: visible; }
+        .moh-chat-header { background: linear-gradient(90deg, #8a2be2, #007bff); color: #ffffff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .moh-chat-body { flex: 1; padding: 18px; overflow-y: auto; background-color: #f8fafc; display: flex; flex-direction: column; gap: 14px; }
+        .bot-chat-bubble { background-color: #ffffff; color: #2c3e50; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 0 16px 16px 16px; font-size: 0.9rem; line-height: 1.5; align-self: flex-start; max-width: 85%; }
+        .user-chat-bubble { background-color: #8a2be2; color: #ffffff; padding: 12px 16px; border-radius: 16px 16px 0 16px; font-size: 0.9rem; max-width: 85%; align-self: flex-end; }
+        .moh-chat-presets { display: flex; gap: 6px; padding: 12px 18px; background-color: #ffffff; flex-wrap: wrap; border-top: 1px solid #e2e8f0; }
+        .preset-chip { background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; font-weight: 600; }
+        .moh-chat-input-row { display: flex; padding: 14px 18px; background-color: #ffffff; border-top: 1px solid #e2e8f0; gap: 10px; }
+        .moh-chat-input-row input { flex: 1; padding: 12px 16px; border-radius: 24px; border: 1px solid #e2e8f0; font-size: 0.92rem; outline: none; }
+        .moh-chat-input-row button { background-color: #8a2be2; color: #ffffff; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .moh-avatar-badge { width: 68px; height: 68px; background: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%); border-radius: 50%; box-shadow: 0 6px 25px rgba(138, 43, 226, 0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; cursor: pointer; pointer-events: auto; position: relative; user-select: none; }
+
+        @media (max-width: 992px) {
+            .legal-frame-layout-grid { grid-template-columns: 220px 1fr; gap: 30px; }
+        }
+        @media (max-width: 768px) {
+            .legal-frame-layout-grid { grid-template-columns: 1fr; margin-top: 100px; }
+            .legal-sticky-nav { display: none; }
+            .legal-document-card { padding: 30px 20px; }
+            .legal-document-card h1 { font-size: 2rem; }
+            .moh-chat-window-card { position: fixed !important; bottom: 0 !important; right: 0 !important; left: 0 !important; width: 100vw !important; height: 75vh !important; max-width: 100vw !important; border-radius: 24px 24px 0 0 !important; transform: translateY(100%) scale(1) !important; margin: 0 !important; z-index: 100000 !important; }
+            .moh-chat-window-card.active { transform: translateY(0) scale(1) !important; }
+            .moh-fab-container { transform: none !important; }
+            .moh-avatar-badge { position: fixed !important; bottom: 20px !important; right: 20px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container legal-frame-layout-grid">
+        
+        <aside class="legal-sticky-nav">
+            <a href="#section_identity" class="legal-nav-anchor active-anchor-node">1. Platform Parameters</a>
+            <a href="#section_integrity" class="legal-nav-anchor">2. Academic Integrity</a>
+            <a href="#section_telemetry" class="legal-nav-anchor">3. Laboratory Fair Use</a>
+            <a href="#section_ip" class="legal-nav-anchor">4. Intellectual Property</a>
+            <a href="#section_liability" class="legal-nav-anchor">5. Liability Boundaries</a>
+        </aside>
+
+        <main class="legal-document-card">
+            <h1>Terms of Service</h1>
+            <span class="meta-timestamp-lbl"><i class="fas fa-file-contract"></i> System Engine Revision Node: Last Updated June 2026</span>
+
+            <section class="legal-section-block" id="section_identity">
+                <h2>1. Platform Parameters & Registration</h2>
+                <p>By establishing a profile matrix on MohAcademy, you explicitly guarantee complete compliance with these operational guidelines. Access is strictly constrained exclusively to students preparing for GCE Advanced Level science tracks.</p>
+                <p>Users must provide verified credentials during registration events. Profiles found hosting anomalous actions or mass-shared logins face immediate validation locks by our server security nodes.</p>
+            </section>
+
+            <section class="legal-section-block" id="section_integrity">
+                <h2>2. Academic Integrity & Evaluation Protocols</h2>
+                <p>Every structural quiz module, exam trace, and laboratory calculation worksheet hosted natively through our data systems must represent entirely independent student configurations. We enforce strict academic honesty.</p>
+                <p>Cheating behavior configurations—including but not limited to automated bots, scraping routines, or script injections across live evaluation systems—will lead to permanent profile bans and deletion of accumulated XP records.</p>
+            </section>
+
+            <section class="legal-section-block" id="section_telemetry">
+                <h2>3. Laboratory Simulation Fair Use</h2>
+                <p>The interactive physics vector engines and chemical balancing matrix calculations are proprietary tools built natively for student learning. To protect server integrity, you may not:</p>
+                <ul>
+                    <li>Reverse-engineer Javascript canvas physics frameworks or attempt to download raw simulation source codes.</li>
+                    <li>Extract past-paper resource structures into third-party databases or mirrored sites.</li>
+                    <li>Inject malicious parameter loads (e.g., infinite loops) to alter live accuracy scoring channels or crash rendering engines.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section-block" id="section_ip">
+                <h2>4. Intellectual Property</h2>
+                <p>All study notes, diagrams, and structural derivations hosted on MohAcademy remain the intellectual property of the platform creators. While you may download PDF nodes for personal revision, redistributing these assets commercially or masking the MohAcademy watermark violates these terms.</p>
+            </section>
+
+            <section class="legal-section-block" id="section_liability">
+                <h2>5. Liability & Syllabus Boundaries</h2>
+                <p>While MohAcademy utilizes meticulous data parsing routines aligned precisely with Advanced Level science evaluation codes, materials are presented as auxiliary guidance assets. The platform implies no absolute warranty regarding performance outcomes inside physical public exam testing nodes. Success ultimately depends on student execution.</p>
+            </section>
+        </main>
+
+    </div>
+
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4 style="margin:0;"><i class="fas fa-balance-scale"></i> MOH Legal Bot</h4>
+                    <small style="opacity:0.9; margin-top:2px;"><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> System Live</small>
+                </div>
+                <button id="moh-close-panel-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="bot-chat-bubble">
+                    Hello. Do you require clarification regarding acceptable use parameters or academic integrity protocols on the platform?
+                </div>
+            </div>
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Can I share my account?')">Account Sharing</span>
+                <span class="preset-chip" onclick="triggerPreset('Can I print notes?')">Printing Notes</span>
+            </div>
+            <div class="moh-chat-input-row">
+                <input type="text" id="moh-chat-input-field" placeholder="Ask about terms...">
+                <button id="moh-chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="moh-avatar-badge" id="chatToggle">
+            <i class="fas fa-gavel" style="font-size:1.6rem;"></i>
+            <div class="online-indicator-dot"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery">
+                </div>
+            </div>
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // --- Scroll Spy Navigation ---
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.legal-section-block');
+            const navAnchors = document.querySelectorAll('.legal-nav-anchor');
+            let currentActiveId = "";
+
+            sections.forEach(sec => {
+                const sectionTop = sec.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    currentActiveId = sec.getAttribute('id');
+                }
+            });
+
+            navAnchors.forEach(anchor => {
+                anchor.classList.remove('active-anchor-node');
+                if (anchor.getAttribute('href') === `#${currentActiveId}`) {
+                    anchor.classList.add('active-anchor-node');
+                }
+            });
+        });
+
+        // --- Chatbot Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatToggle = document.getElementById('chatToggle');
+            const chatWindow = document.getElementById('chatWindow');
+            const closeChatBtn = document.getElementById('moh-close-panel-btn');
+            const chatInputField = document.getElementById('moh-chat-input-field');
+            const sendChatBtn = document.getElementById('moh-chat-send-btn');
+            const chatMessagesContainer = document.getElementById('chatMessages');
+
+            chatToggle.addEventListener('click', () => chatWindow.classList.toggle('active'));
+            closeChatBtn.addEventListener('click', () => chatWindow.classList.remove('active'));
+
+            function appendChatMessage(text, owner) {
+                const bubble = document.createElement('div');
+                bubble.className = owner === 'user' ? 'user-chat-bubble' : 'bot-chat-bubble';
+                bubble.innerText = text;
+                chatMessagesContainer.appendChild(bubble);
+                chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            }
+
+            function triggerBotReply(userMsg) {
+                setTimeout(() => {
+                    let response = "I am processing your query regarding our terms. Please read the document panel for full legal context.";
+                    const query = userMsg.toLowerCase();
+                    if (query.includes('share') || query.includes('account')) {
+                        response = "No. Profiles found hosting mass-shared logins face immediate validation locks by our server security nodes.";
+                    } else if (query.includes('print') || query.includes('download')) {
+                        response = "Yes, you may download PDF nodes for personal revision. However, redistributing these assets commercially violates the intellectual property terms.";
+                    }
+                    appendChatMessage(response, 'bot');
+                }, 1000);
+            }
+
+            window.triggerPreset = function(presetText) {
+                appendChatMessage(presetText, 'user');
+                triggerBotReply(presetText);
+            };
+
+            sendChatBtn.addEventListener('click', () => {
+                const msg = chatInputField.value.trim();
+                if (msg) { appendChatMessage(msg, 'user'); chatInputField.value = ''; triggerBotReply(msg); }
+            });
+            chatInputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendChatBtn.click(); });
+        });
+    </script>
+</body>
+</html>

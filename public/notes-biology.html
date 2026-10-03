@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology A/L Study Notes - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/notes-subject.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="subjects.html" style="font-weight: 700; color: var(--primary-color);">Subjects Overview</a></li>
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle active">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="resources.html" style="font-weight: 700; color: var(--primary-color);">Resources Overview</a></li>
+                            <li><a href="past-papers.html">Past Papers</a></li>
+                            <li><a href="study-notes.html" class="active">Study Notes</a></li>
+                            <li><a href="syllabuses.html">Syllabuses</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="notes-subject-hero-section biology-notes-hero" id="notes-subject-hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1>Biology A/L Study Notes</h1>
+                <p>Explore the wonders of life. Comprehensive, topic-wise notes for GCE A/L Biology, simplifying complex biological processes and systems.</p>
+                <div class="hero-buttons animate-fade-in-up">
+                    <a href="#notes-content" class="btn btn-primary">Start Reading Notes</a>
+                    <a href="notes/biology/biology-notes.pdf" class="btn btn-secondary" download>
+                        <i class="fas fa-download"></i> Download Full Notes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="notes-content-section section-padding">
+            <div class="container notes-container">
+                <!-- Comprehensive Table of Contents -->
+                <aside class="notes-sidebar reveal fade-left" id="mobile-toc-sidebar">
+                    <!-- Mobile Toggle Button Header -->
+                    <div class="sidebar-header" id="toc-toggle-btn" onclick="document.getElementById('mobile-toc-sidebar').classList.toggle('expanded')">
+                        <h3>GCE 710 Bio Syllabus</h3>
+                        <i class="fas fa-chevron-down toc-icon"></i>
+                    </div>
+                    
+                    <div class="sidebar-collapsible-content" id="toc-collapsible">
+                        <ul class="toc-list" id="notes-toc" onclick="if(window.innerWidth <= 992) document.getElementById('mobile-toc-sidebar').classList.remove('expanded')">
+                            <li><a href="#module1">1. Cell & Variety of Life</a></li>
+                            <li><a href="#module2">2. Metabolism</a></li>
+                            <li><a href="#module3">3. Exchange & Transport</a></li>
+                            <li><a href="#module4">4. Control & Co-ordination</a></li>
+                            <li><a href="#module5">5. Continuity of Life</a></li>
+                            <li><a href="#module6">6. Population & Ecology</a></li>
+                            <li><a href="#module7">7. Biotechnology</a></li>
+                        </ul>
+                        <div class="sidebar-links">
+                            <a href="study-notes.html" class="btn btn-tertiary-outline"><i class="fas fa-chevron-left"></i> All Study Notes</a>
+                            <a href="biology.html" class="btn btn-secondary-outline">Biology Subject Page <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Massive High-Density Notes Content -->
+                <div class="notes-main-content" id="notes-content">
+                    
+                    <!-- INTRODUCTION -->
+                    <h2 class="notes-section-title reveal fade-up" id="introduction">GCE A/L Biology Vault</h2>
+                    <p class="reveal fade-up">Welcome to the ultimate conceptual breakdown for Advanced Level Biology. This vault is engineered to strip away textbook fluff and deliver the high-yield facts, biochemical pathways, and structural adaptations required by the Cameroon GCE 710 syllabus.</p>
+
+                    <!-- ==========================================
+                         MODULE 1: THE CELL & VARIETY OF LIFE
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module1">1. The Cell and Variety of Life</h2>
+                    <p class="reveal fade-up">This module establishes the biochemical and structural foundations of all living organisms, spanning from simple monosaccharides to the complex classification of the five kingdoms.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="molecules">1.1 Biological Molecules</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Carbohydrates:</strong> Have the general formula C<sub>x</sub>(H<sub>2</sub>O)<sub>y</sub>. <br>
+                            - <em>Monosaccharides:</em> Hexoses like glucose (the primary respiratory substrate) and fructose. Pentoses like ribose and deoxyribose are structural components of nucleic acids.<br>
+                            - <em>Disaccharides:</em> Formed via condensation reactions creating <strong>glycosidic bonds</strong> (e.g., Sucrose = glucose + fructose; Maltose = glucose + glucose).<br>
+                            - <em>Polysaccharides:</em> <strong>Starch</strong> is the plant storage form (amylose is unbranched &alpha;-1,4 bonds; amylopectin is branched with &alpha;-1,6 bonds). <strong>Glycogen</strong> is the animal storage equivalent (highly branched for rapid hydrolysis in muscle/liver). <strong>Cellulose</strong> uses &beta;-glucose; alternate monomers invert by 180&deg;, forming straight chains cross-linked by hydrogen bonds into immensely strong microfibrils (plant cell walls).
+                        </li>
+                        <li><strong>Lipids:</strong> Non-polar, hydrophobic macromolecules. <em>Triglycerides</em> consist of one glycerol backbone and three fatty acid tails bonded via <strong>ester bonds</strong>, yielding highly reduced, dense energy storage. <em>Phospholipids</em> substitute one fatty acid for a phosphate group, creating an amphipathic molecule (hydrophilic head, hydrophobic tail) essential for forming the lipid bilayer of cell membranes.</li>
+                        <li><strong>Proteins:</strong> Polymers of amino acids linked by <strong>peptide bonds</strong>. <br>
+                            - <em>Primary:</em> The specific sequence of amino acids.<br>
+                            - <em>Secondary:</em> &alpha;-helices and &beta;-pleated sheets formed by hydrogen bonds in the polypeptide backbone.<br>
+                            - <em>Tertiary:</em> Precise 3D folding driven by R-group interactions (disulfide bridges, ionic bonds, hydrophobic interactions).<br>
+                            - <em>Quaternary:</em> Multiple polypeptides interacting (e.g., Hemoglobin).<br>
+                            - <em>Fibrous vs Globular:</em> Fibrous proteins (like collagen) provide structural tensile strength and are insoluble; globular proteins (enzymes, hemoglobin) are folded compactly, metabolically active, and soluble.
+                        </li>
+                        <li><strong>Nucleotides & Nucleic Acids:</strong> Composed of a pentose sugar, a phosphate group, and a nitrogenous base. <strong>ATP</strong> (Adenosine Triphosphate) is the universal energy currency. <strong>DNA</strong> is a double helix held by complementary hydrogen base pairing (Adenine=Thymine, Cytosine&equiv;Guanine). <strong>RNA</strong> is single-stranded, contains Uracil instead of Thymine, and functions heavily in protein synthesis (mRNA, tRNA, rRNA).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="cells">1.2 Cells and Organelles</h3>
+                    <p class="reveal fade-up">The ultrastructure of cells differs fundamentally between prokaryotes and eukaryotes, as revealed by electron microscopy.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Prokaryotes (Bacteria):</strong> Lack a true nucleus and membrane-bound organelles. They contain 70S ribosomes, circular naked DNA (plasmids), and a cell wall made of peptidoglycan (murein).</li>
+                        <li><strong>Eukaryotes:</strong> Contain a membrane-bound nucleus and 80S ribosomes. <br>
+                            - <em>Nucleus:</em> Contains chromatin and a nucleolus (responsible for rRNA synthesis).<br>
+                            - <em>Endoplasmic Reticulum (ER):</em> Rough ER is studded with ribosomes for protein synthesis; Smooth ER is responsible for lipid synthesis and detoxification.<br>
+                            - <em>Golgi Apparatus:</em> Modifies, sorts, and packages proteins into vesicles for exocytosis.<br>
+                            - <em>Mitochondria:</em> The site of aerobic respiration (ATP production). Contains folded inner membranes called cristae.<br>
+                            - <em>Chloroplasts:</em> The site of photosynthesis in plants, containing membranous thylakoids stacked into grana.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="tissues">1.3 Tissues and Organs</h3>
+                    <p class="reveal fade-up">Cells differentiate and group together to perform specific functions.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Plant Tissues:</strong> <em>Parenchyma</em> (packing and storage), <em>Collenchyma</em> (flexible support for growing regions), <em>Sclerenchyma</em> (lignified, dead tissue for rigid structural support), <em>Xylem</em> (water transport), and <em>Phloem</em> (sucrose translocation).</li>
+                        <li><strong>Animal Tissues:</strong> Epithelial tissues cover surfaces. <em>Squamous</em> (flat, thin cells for rapid diffusion in alveoli), <em>Cuboidal</em> (lining kidney tubules for secretion/absorption), and <em>Columnar/Ciliated</em> (lining the trachea to sweep mucus).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="variety">1.4 Organisms and Variety of Life</h3>
+                    <p class="reveal fade-up">Classification uses phylogenetic taxonomy to group organisms based on evolutionary relationships, utilizing the binomial nomenclature system.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Viruses:</strong> Acellular obligate parasites. They consist of a nucleic acid core (e.g., RNA in HIV) surrounded by a protein capsid, and can only replicate inside a living host cell.</li>
+                        <li><strong>Prokaryotae (Monera):</strong> Unicellular bacteria. Can be autotrophic or heterotrophic. Key shapes include cocci (spherical), bacilli (rod), and spirilla (spiral).</li>
+                        <li><strong>Protoctista:</strong> Eukaryotic, mostly unicellular organisms that do not fit into other kingdoms. Includes <em>Amoeba</em>, <em>Plasmodium</em> (malaria parasite), and filamentous algae.</li>
+                        <li><strong>Fungi:</strong> Eukaryotic, heterotrophic (saprotrophic) organisms. Cell walls are made of chitin. Includes <em>Rhizopus</em> (bread mould), yeast, and mushrooms.</li>
+                        <li><strong>Plantae:</strong> Multicellular photoautotrophs. <br>
+                            - <em>Bryophyta:</em> Mosses; lack vascular tissue and rely on water for reproduction.<br>
+                            - <em>Filicinophyta:</em> Ferns; possess vascular tissue but reproduce via spores.<br>
+                            - <em>Coniferophyta:</em> Gymnosperms; possess naked seeds (e.g., pines).<br>
+                            - <em>Angiospermophyta:</em> Flowering plants (divided into monocotyledons and dicotyledons).
+                        </li>
+                        <li><strong>Animalia:</strong> Multicellular heterotrophs. Spans from simple invertebrates (<em>Cnidaria</em> like jellyfish, <em>Platyhelminthes</em> like flatworms, <em>Annelida</em> like earthworms, <em>Arthropoda</em> like insects/spiders) to complex <em>Chordata</em> (Fishes, Amphibia, Reptilia, Aves, Mammalia).</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 2: METABOLISM
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module2">2. Metabolism</h2>
+                    <p class="reveal fade-up">Metabolism represents the chemical balance of the whole organism, encompassing the anabolic synthesis of complex molecules (requiring energy) and the catabolic breakdown of larger molecules (yielding energy).</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="enzymes">2.1 Enzymes & Metabolic Pathways</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Mechanism of Action:</strong> Enzymes are globular proteins acting as biological catalysts. They lower the activation energy of reactions. The <strong>Induced Fit Hypothesis</strong> explains that the active site undergoes a slight conformational change to closely bind and strain the substrate.</li>
+                        <li><strong>Location & Specificity:</strong> Enzymes can be intracellular (in solution within the cytoplasm or fixed to membranes like ATP synthase) or extracellular (secreted externally, e.g., digestive hydrolases). They possess extreme specificity due to their precise tertiary structure.</li>
+                        <li><strong>Inhibition & Control:</strong> <br>
+                            - <em>Competitive:</em> The inhibitor resembles the substrate and competes for the active site. This can be overcome by increasing substrate concentration.<br>
+                            - <em>Non-Competitive:</em> The inhibitor binds to an allosteric site, altering the active site's shape permanently. Increasing substrate has no effect on this inhibition.<br>
+                            - <em>End-Product Inhibition:</em> A form of negative feedback where the final product of a metabolic pathway acts as an allosteric inhibitor to the first enzyme in the pathway, preventing metabolic overproduction.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="photosynthesis">2.2 Photosynthesis</h3>
+                    <p class="reveal fade-up">The anabolism of carbohydrates from inorganic carbon dioxide and water using light energy, entirely dependent on the ultrastructure of the chloroplast.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Pigments & Spectra:</strong> Chlorophyll <em>a</em> and <em>b</em> alongside carotenoids absorb specific wavelengths of light. The <strong>Absorption Spectrum</strong> plots wavelengths absorbed by pigments; the <strong>Action Spectrum</strong> plots the rate of photosynthesis at those wavelengths. Their nearly identical shapes prove these pigments drive the process.</li>
+                        <li><strong>Light-Dependent Reaction (Thylakoids/Lamellae):</strong> Light energy excites electrons in photosystems. The photolysis of water provides replacement electrons, protons ($H^+$), and releases $O_2$. Electrons flow through an electron carrier chain, actively pumping protons to generate a gradient. ATP and reduced NADP are produced.</li>
+                        <li><strong>Light-Independent Reaction / Dark Reaction (Stroma):</strong> Carbon fixation occurs as $CO_2$ is attached to a 5C sugar (RuBP) by the enzyme <em>Rubisco</em>. The resulting 6C compound splits into two 3C compounds (PGA/GP). ATP and reduced NADP from the light reaction are used to reduce GP into Triose Phosphate (TP). TP is then used to regenerate RuBP and synthesize hexose carbohydrates.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="respiration">2.3 Cellular Respiration</h3>
+                    <p class="reveal fade-up">The catabolism of large food molecules to extract ATP, heavily utilizing dehydrogenase enzymes and coenzymes like NAD and FAD as hydrogen acceptors.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Glycolysis (Cytoplasm):</strong> Glucose is phosphorylated and split into two molecules of pyruvate. Yields a net 2 ATP and reduced NAD. Can proceed anaerobically by converting pyruvate to lactic acid (in mammalian muscle, creating an oxygen debt) or ethanol and $CO_2$ (fermentation in yeast) to regenerate NAD for continued glycolysis.</li>
+                        <li><strong>TCA / Krebs Cycle (Mitochondrial Matrix):</strong> Pyruvate is converted to a 2C Acetyl-CoA. Acetyl-CoA joins a 4C compound to form a 6C citrate. Through a cyclic sequence of decarboxylation (loss of $CO_2$) and dehydrogenation (loss of H), large amounts of reduced NAD and reduced FAD are generated.</li>
+                        <li><strong>Electron Transport System (Inner Membrane/Cristae):</strong> Reduced coenzymes donate electrons to cytochromes embedded in the cristae. As electrons move down energy levels, protons are pumped into the intermembrane space. Protons flow back through ATP synthase (oxidative phosphorylation) to generate massive amounts of ATP. Oxygen acts as the final, essential electron acceptor, forming water.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up" id="biosynthesis-waste">2.4 Biosynthesis & Waste Products</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Nitrogen Assimilation & Proteins:</strong> Plants absorb nitrates, which undergo reduction (requiring reducing power) to form amino acids. Leguminous plants can undergo direct nitrogen fixation via <em>Rhizobium</em> bacteria in root nodules. These amino acids are assembled into proteins via transcription (DNA to mRNA) and translation (mRNA read by ribosomes and tRNA).</li>
+                        <li><strong>Excretion & Detoxification:</strong> Metabolic waste must be removed. In the mammalian liver, excess amino acids are deaminated (the amine group is removed to form ammonia). Because ammonia is highly toxic, it is rapidly converted to urea via the <strong>Ornithine Cycle</strong> for safe excretion by the kidneys. The liver also detoxifies ethanol and other foreign compounds.</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 3: EXCHANGE AND TRANSPORT
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module3">3. Exchange and Transport</h2>
+                    <p class="reveal fade-up">As organisms evolve to become larger and more complex, their surface-area-to-volume ratio decreases drastically. This necessitates highly specialized exchange surfaces and internal mass transport systems to maintain cellular metabolism.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">3.1 Cellular Exchange & Plant Nutrition</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Water Potential ($\Psi$):</strong> The measure of free energy of water molecules. Water always moves via osmosis from a less negative (higher) $\Psi$ to a more negative (lower) $\Psi$. 
+                        <br>$$ \Psi = \Psi_s \text{ (Solute Potential)} + \Psi_p \text{ (Pressure Potential)} $$
+                        When water enters a plant cell, it pushes against the cell wall, generating a positive pressure potential ($\Psi_p$) until the cell is fully <strong>turgid</strong>. If water leaves, the cell becomes <strong>flaccid</strong>, and eventually undergoes <strong>plasmolysis</strong> (the membrane pulls away from the cell wall).</li>
+                        <li><strong>Transmembrane Transport:</strong> Includes passive <em>Diffusion</em> (down a gradient), <em>Facilitated Diffusion</em> (via channel/carrier proteins for polar/large molecules), <em>Active Transport</em> (against a gradient using ATP), and bulk transport via <em>Endocytosis/Exocytosis</em>.</li>
+                        <li><strong>Mineral Nutrition in Plants:</strong> Plants require inorganic ions for biosynthesis. <strong>Nitrates</strong> (amino acids/nucleic acids), <strong>Phosphates</strong> (ATP/phospholipids), <strong>Magnesium</strong> (central atom of the chlorophyll porphyrin ring), <strong>Calcium</strong> (calcium pectate in the middle lamella for cell adhesion), and <strong>Iron</strong> (enzyme co-factor).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">3.2 Heterotrophic Nutrition</h3>
+                    <p class="reveal fade-up">Animals, fungi, and certain plants must acquire organic compounds from their environment.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Holozoic Nutrition (Mammals):</strong> The multi-step process of ingestion, physical/chemical digestion, absorption, and egestion. Relies on mastication (chewing) and peristalsis (muscular gut contractions) to move food, accompanied by specific digestive secretions (amylases, proteases, lipases) acting sequentially along the gut.</li>
+                        <li><strong>Essential Nutrients:</strong> Mammals require specific dietary components they cannot synthesize. These include essential amino acids, fatty acids, and vitamins (e.g., Vitamin A for retinal health, C for collagen synthesis, D for calcium absorption, K for blood clotting, and B-complex vitamins serving as crucial respiratory coenzymes).</li>
+                        <li><strong>Saprophytic vs Parasitic:</strong> <em>Saprophytes</em> (like Mucor and mushrooms) secrete extracellular enzymes onto dead matter and absorb the soluble products. <em>Parasites</em> derive nutrients from a living host, causing harm. They can be <em>obligate</em> (must live parasitically, e.g., Tapeworms or the plant Dodder) or <em>facultative</em>, and can live internally (endoparasites) or externally (ectoparasites like lice).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">3.3 Gaseous Exchange & Ventilation</h3>
+                    <p class="reveal fade-up">Efficient respiratory surfaces must possess a massive surface area, a minimal diffusion distance (thin epithelium), and a steep concentration gradient maintained by ventilation mechanisms.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Mammals:</strong> Ventilation relies on the antagonistic action of intercostal muscles and the diaphragm to alter thoracic volume and pressure. Alveoli are one-cell thick (squamous epithelium) and surrounded by dense capillary networks.</li>
+                        <li><strong>Fishes:</strong> Utilize a <strong>Counter-Current Flow</strong> mechanism. Water flows over the gill lamellae in the opposite direction to blood flow within the capillaries. This ensures that a concentration gradient for oxygen diffusion is maintained across the <em>entire</em> length of the lamella, never reaching equilibrium.</li>
+                        <li><strong>Terrestrial Insects:</strong> Gas exchange occurs directly at the tissues via a network of highly branched, fluid-filled tubes called <strong>tracheoles</strong>, which connect to the outside air through pores called <strong>spiracles</strong>.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">3.4 Water Output & Osmoregulation</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Plant Transpiration:</strong> The inevitable loss of water vapor via stomata during $CO_2$ uptake. Measured using a potometer. Regulated by guard cells.</li>
+                        <li><strong>Mammalian Kidney (Excretion & Osmoregulation):</strong><br>
+                            - <em>Ultrafiltration:</em> High hydrostatic pressure in the glomerulus forces water and small solutes into the Bowman's capsule.<br>
+                            - <em>Selective Reabsorption:</em> 100% of glucose and most ions are actively reabsorbed in the Proximal Convoluted Tubule (PCT).<br>
+                            - <em>Loop of Henle:</em> Acts as a counter-current multiplier, actively pumping out $Na^+$ and $Cl^-$ to create a highly hypertonic (salty) medulla environment.<br>
+                            - <em>ADH (Antidiuretic Hormone):</em> Secreted by the pituitary when dehydrated, causing the Collecting Duct to become highly permeable to water via aquaporins, concentrating the urine and conserving water.
+                        </li>
+                        <li><strong>Animal Adaptations:</strong> Freshwater fish actively absorb salts and excrete dilute urine. Marine fish actively secrete salts and excrete concentrated urine. Terrestrial animals conserve water via complex kidneys and behavioral adaptations.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">3.5 Transport Systems (Vascular & Cardiovascular)</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Plant Xylem (Water & Salts):</strong> Water enters root hairs and travels via the <strong>apoplastic</strong> (cell walls) or <strong>symplastic</strong> (cytoplasm) pathway until forced into the symplast by the Casparian strip at the endodermis. Water ascends the xylem vessels primarily via the <strong>Cohesion-Tension Theory</strong> (evaporation at leaves creates tension; water molecules stick together via H-bonds and adhere to lignin walls).</li>
+                        <li><strong>Plant Phloem (Organic Solutes):</strong> The <strong>Mass Flow Hypothesis</strong> states that sucrose is actively loaded into sieve tubes at source tissues. This lowers water potential, causing water to enter by osmosis. The resulting high hydrostatic pressure forces the sap to flow toward the sink tissues. (Evidence: Radioactive tracers and aphid stylet experiments).</li>
+                        <li><strong>Mammalian Heart (Myogenic Control):</strong> The heartbeat originates in the cardiac muscle itself. The <strong>Sinoatrial Node (SAN)</strong> generates an electrical impulse causing atrial systole. The impulse hits the <strong>Atrioventricular Node (AVN)</strong>, is delayed (allowing ventricles to fill), and then travels down the Bundle of His to cause ventricular systole from the apex upwards. Heart rate is modified by nervous (medulla) and hormonal (adrenaline) inputs.</li>
+                        <li><strong>Mammalian Blood & Tissue Fluid:</strong> High hydrostatic pressure at the arterial end of a capillary bed forces fluid and small molecules out of the blood plasma, bathing cells in <strong>Tissue Fluid</strong>. At the venous end, lower hydrostatic pressure and higher blood oncotic pressure (due to plasma proteins) draw fluid back in. Excess tissue fluid is drained by the <strong>Lymphatic System</strong>.</li>
+                        <li><strong>Oxygen Transport & The Bohr Effect:</strong> Hemoglobin has a sigmoid (S-shaped) dissociation curve due to cooperative binding. In rapidly respiring tissues, high $CO_2$ lowers the pH, altering hemoglobin's tertiary structure. This shifts the dissociation curve to the right (the Bohr Effect), dramatically decreasing hemoglobin's affinity for oxygen, ensuring more $O_2$ is unloaded exactly where it is needed.</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 4: CONTROL, CO-ORDINATION & RESPONSE
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module4">4. Control, Co-ordination & Response</h2>
+                    <p class="reveal fade-up">Organisms must continuously monitor their internal and external environments and orchestrate precise responses to maintain stability (homeostasis) and ensure survival.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">4.1 Nervous Co-ordination in Mammals</h3>
+                    <p class="reveal fade-up">The nervous system provides rapid, highly targeted electrochemical communication.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Resting Potential (-70mV):</strong> The membrane is polarized. The $Na^+/K^+$ pump actively transports 3 $Na^+$ out of the axon for every 2 $K^+$ pumped in. The membrane is also highly permeable to $K^+$ (leaky channels), allowing $K^+$ to diffuse back out, maintaining a negative interior relative to the exterior.</li>
+                        <li><strong>Action Potential (Depolarization):</strong> A stimulus causes voltage-gated $Na^+$ channels to open. If the threshold potential (-55mV) is reached, an "all-or-nothing" response occurs. $Na^+$ floods into the axon, reversing the charge to +40mV.</li>
+                        <li><strong>Repolarization & Refractory Period:</strong> $Na^+$ channels close and voltage-gated $K^+$ channels open. $K^+$ floods out, repolarizing the membrane. It briefly hyperpolarizes (overshoots) before the $Na^+/K^+$ pump restores the resting potential. This refractory period ensures impulses are unidirectional and discrete.</li>
+                        <li><strong>Synaptic Transmission:</strong> The arrival of an action potential opens voltage-gated $Ca^{2+}$ channels in the presynaptic knob. The influx of $Ca^{2+}$ causes synaptic vesicles to fuse with the presynaptic membrane, releasing neurotransmitters (e.g., acetylcholine in cholinergic synapses) into the synaptic cleft. These bind to complementary receptors on the postsynaptic membrane, opening $Na^+$ channels and generating an Excitatory Postsynaptic Potential (EPSP).</li>
+                        <li><strong>Central Nervous System (CNS) Organization:</strong> <br>
+                            - <em>Cerebrum:</em> Conscious thought, voluntary movement, memory.<br>
+                            - <em>Hypothalamus:</em> Autonomic control, temperature regulation, osmoregulation.<br>
+                            - <em>Cerebellum:</em> Posture, balance, and coordination of fine motor movement.<br>
+                            - <em>Medulla Oblongata:</em> Involuntary reflex centers (heart rate, ventilation rate).
+                        </li>
+                        <li><strong>Receptors as Transducers:</strong> Receptors (e.g., rods and cones in the eye) convert physical stimuli (light energy) into electrical impulses (generator potentials).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">4.2 Endocrine Control, Homeostasis & Temperature</h3>
+                    <p class="reveal fade-up">The endocrine system utilizes hormones (chemical messengers secreted into the blood) for slower, widespread, and longer-lasting responses, operating primarily on <strong>negative feedback</strong> loops.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Blood Sugar Regulation:</strong> Controlled by the Islets of Langerhans in the pancreas. <br>
+                            - <em>High Glucose:</em> $\beta$-cells secrete <strong>Insulin</strong>. Causes liver and muscle cells to increase glucose uptake and convert glucose to glycogen (glycogenesis).<br>
+                            - <em>Low Glucose:</em> $\alpha$-cells secrete <strong>Glucagon</strong>. Causes the liver to break down glycogen into glucose (glycogenolysis) and synthesize glucose from non-carbohydrates like amino acids (gluconeogenesis).
+                        </li>
+                        <li><strong>Temperature Regulation (Endotherms):</strong> Monitored by thermoreceptors in the hypothalamus and skin. <br>
+                            - <em>Hyperthermia response:</em> Vasodilation of skin arterioles (shunting blood to the surface for heat loss via radiation), increased sweating (evaporative cooling), and behavioral changes.<br>
+                            - <em>Hypothermia response:</em> Vasoconstriction of skin arterioles, shivering (exothermic muscle contractions), and erection of hairs to trap an insulating layer of air.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">4.3 Defence Mechanisms & Immunology</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Non-Specific Defense (Phagocytosis):</strong> Macrophages and neutrophils engulf pathogens into a phagosome. Lysosomes fuse with the phagosome, releasing hydrolytic enzymes (lysozymes) to destroy the pathogen.</li>
+                        <li><strong>Specific Immunity (Humoral):</strong> B-lymphocytes (B-cells) possess specific surface receptors. Upon binding a complementary antigen and receiving cytokine signals from T-helper cells, they undergo clonal expansion. They differentiate into <strong>Plasma cells</strong> (which secrete massive amounts of complementary antibodies that agglutinate and opsonize pathogens) and <strong>Memory B-cells</strong> (for rapid secondary response).</li>
+                        <li><strong>Specific Immunity (Cell-Mediated):</strong> Cytotoxic T-cells attach to antigens presented on the surface of infected host cells and secrete perforins, which punch holes in the infected cell's membrane, causing lysis.</li>
+                        <li><strong>Blood Clotting:</strong> Platelets release thromboplastin, which (with $Ca^{2+}$ and Vitamin K) catalyzes the conversion of prothrombin to thrombin. Thrombin acts as an enzyme to convert soluble fibrinogen into an insoluble fibrin mesh, trapping RBCs to form a clot.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">4.4 Support and Movement in Animals</h3>
+                    <p class="reveal fade-up">Movement requires rigid structural support (skeletons) and the contractile force of muscles acting as antagonistic pairs across joints.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>The Synovial Joint:</strong> A freely movable joint consisting of articular cartilage (reduces friction/absorbs shock), synovial fluid (lubrication), ligaments (bone to bone stability), and tendons (muscle to bone).</li>
+                        <li><strong>Ultrastructure of Striated Muscle:</strong> Muscle fibers consist of myofibrils, which are divided into repeating contractile units called <strong>sarcomeres</strong>. A sarcomere contains thin actin filaments and thick myosin filaments.</li>
+                        <li><strong>The Sliding Filament Theory:</strong><br>
+                            1. An action potential spreads down T-tubules, causing the sarcoplasmic reticulum to release $Ca^{2+}$ into the sarcoplasm.<br>
+                            2. $Ca^{2+}$ binds to troponin, which shifts tropomyosin, exposing the myosin-binding sites on the actin filament.<br>
+                            3. Myosin heads (with ADP + Pi attached) bind to actin, forming a cross-bridge.<br>
+                            4. The myosin head pivots (the "power stroke"), pulling the actin filament toward the center of the sarcomere (shortening the I-band and H-zone).<br>
+                            5. ATP binds to the myosin head, breaking the cross-bridge. ATP hydrolysis provides the energy to recock the myosin head for the next cycle.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">4.5 Control and Response in Flowering Plants</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Tropisms (Auxins):</strong> Indoleacetic acid (IAA) controls directional growth. In <em>phototropism</em> (shoots), IAA actively accumulates on the shaded side, stimulating cell elongation and causing the shoot to bend toward the light. In <em>geotropism</em> (roots), IAA accumulates on the lower side due to gravity, but in roots, high concentrations of IAA <em>inhibit</em> elongation, causing the root to bend downwards.</li>
+                        <li><strong>Photoperiodism (Phytochromes):</strong> The response to the relative length of day and night, controlling flowering. Phytochromes exist in two forms: $P_R$ (absorbs red light, converted to $P_{FR}$ during the day) and $P_{FR}$ (absorbs far-red light, slowly converted back to $P_R$ in the dark). The ratio of $P_R$ to $P_{FR}$ acts as the plant's biological clock.</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 5: THE CONTINUITY OF LIFE
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module5">5. The Continuity of Life</h2>
+                    <p class="reveal fade-up">Life relies on the accurate transmission of genetic information from one generation to the next, allowing for both the preservation of species and the introduction of evolutionary variation.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">5.1 Cell Division & Chromosomes</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Structure of Chromosomes:</strong> DNA is tightly wound around histone proteins to form chromatin. During cell division, chromatin condenses into visible chromosomes, each consisting of two identical sister chromatids joined at a centromere.</li>
+                        <li><strong>Mitosis (Growth & Repair):</strong> Produces two genetically identical diploid ($2n$) daughter cells. <br>
+                            - <em>Prophase:</em> Chromosomes condense, nuclear envelope disintegrates.<br>
+                            - <em>Metaphase:</em> Chromosomes align at the cellular equator via spindle fibers.<br>
+                            - <em>Anaphase:</em> Centromeres split; sister chromatids are pulled to opposite poles.<br>
+                            - <em>Telophase/Cytokinesis:</em> Nuclei reform, and the cytoplasm divides.
+                        </li>
+                        <li><strong>Meiosis (The Variation Engine):</strong> Produces four genetically distinct haploid ($n$) gametes. Variation is strictly introduced by: <br>
+                            1. <strong>Crossing Over (Prophase I):</strong> Non-sister chromatids of homologous pairs exchange genetic material at junctions called <em>chiasmata</em>.<br>
+                            2. <strong>Independent Assortment (Metaphase I):</strong> Homologous bivalents align randomly at the equator, creating $2^n$ possible chromosomal combinations in gametes.
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">5.2 Growth, Development & Life Cycles</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Growth Curves:</strong> Best measured using <strong>Dry Mass</strong> (which requires killing the organism to remove water content but provides the most accurate measure of biological material) rather than Fresh Mass (which fluctuates with water intake).</li>
+                        <li><strong>Plant Meristems:</strong> Plants exhibit localized growth at apical meristems (primary growth/length) and lateral meristems or cambium (secondary growth/girth).</li>
+                        <li><strong>Alternation of Generations:</strong> <br>
+                            - <em>Mosses (Bryophytes):</em> The haploid Gametophyte is the dominant stage.<br>
+                            - <em>Ferns (Filicinophytes):</em> The diploid Sporophyte is dominant, but the gametophyte (prothallus) is independent.<br>
+                            - <em>Flowering Plants (Angiosperms):</em> The Sporophyte is dominant; the gametophyte is entirely dependent and microscopic (pollen grain and embryo sac).
+                        </li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">5.3 Human Reproduction & Viral Replication</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Human Fertilization:</strong> The sperm undergoes the <strong>acrosome reaction</strong>, releasing hydrolytic enzymes to digest the zona pellucida of the secondary oocyte. Fusion triggers the <strong>cortical reaction</strong>, hardening the zona pellucida to prevent polyspermy.</li>
+                        <li><strong>Hormonal Control of the Menstrual Cycle:</strong> <br>
+                            - <em>FSH (Pituitary):</em> Stimulates follicle development in the ovary.<br>
+                            - <em>Estrogen (Follicle):</em> Repairs the endometrium and triggers an LH surge.<br>
+                            - <em>LH (Pituitary):</em> The surge causes ovulation (release of the oocyte) and corpus luteum formation.<br>
+                            - <em>Progesterone (Corpus Luteum):</em> Maintains the highly vascularized endometrium for implantation.
+                        </li>
+                        <li><strong>The Placenta:</strong> Facilitates the exchange of $O_2$, glucose, antibodies (IgG), and urea without the maternal and fetal blood directly mixing (which would cause immune rejection and high-pressure damage).</li>
+                        <li><strong>Viral Replication (HIV):</strong> HIV is a retrovirus. It binds to CD4 receptors on T-helper cells. It uses the enzyme <strong>Reverse Transcriptase</strong> to convert its viral RNA into DNA. <strong>Integrase</strong> inserts this DNA into the host's genome, forcing the host to synthesize new viral proteins.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">5.4 Genes, Gene Expression & Inheritance</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>The Central Dogma & Gene Expression:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;"><strong>One Gene-One Polypeptide Hypothesis:</strong> A specific sequence of DNA bases codes for a specific sequence of amino acids.</span><br><br>
+                        1. <strong>Transcription (Nucleus):</strong> DNA helicase unzips the gene. RNA polymerase builds a single-stranded messenger RNA (mRNA) complementary to the DNA template strand.<br>
+                        2. <strong>Translation (Ribosomes):</strong> mRNA binds to a ribosome. Transfer RNA (tRNA) molecules carry specific amino acids. The tRNA <em>anticodon</em> binds to the mRNA <em>codon</em> via complementary base pairing. Peptide bonds form between amino acids, building the polypeptide.
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Mendelian Inheritance:</strong> <br>
+                            - <em>Monohybrid:</em> Inheritance of one gene (Heterozygous cross yields a 3:1 phenotypic ratio).<br>
+                            - <em>Dihybrid:</em> Inheritance of two unlinked genes (Heterozygous cross yields a 9:3:3:1 ratio).
+                        </li>
+                        <li><strong>Non-Mendelian Genetics:</strong> <br>
+                            - <em>Codominance:</em> Both alleles are fully expressed in the phenotype (e.g., AB Blood type).<br>
+                            - <em>Epistasis:</em> The allele of one gene masks or modifies the phenotypic expression of a completely different gene.<br>
+                            - <em>Sex Linkage:</em> Genes carried on the X-chromosome (e.g., Hemophilia, Color-blindness). Males ($XY$) are disproportionately affected because they cannot be heterozygous carriers.
+                        </li>
+                        <li><strong>Mutations:</strong> Random changes in DNA. <em>Gene mutations</em> include substitutions, insertions, and deletions (which cause disastrous frame-shifts). <em>Chromosome mutations</em> include non-disjunction during meiosis (e.g., Trisomy 21 / Down Syndrome).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">5.5 Genetic Change in a Population</h3>
+                    <div class="equation reveal fade-up">
+                        <strong>Hardy-Weinberg Equilibrium:</strong><br>
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.95rem;">Used to calculate allele and genotype frequencies in a large, randomly mating population with no mutations, no migration, and no selection pressures.</span>
+                        $$ p + q = 1 $$
+                        $$ p^2 + 2pq + q^2 = 1 $$
+                        <span style="font-family: 'Lato', sans-serif; font-size: 0.85rem;">Where $p$ = dominant allele frequency, $q$ = recessive allele frequency, $p^2$ = homozygous dominant frequency, $2pq$ = heterozygous frequency, $q^2$ = homozygous recessive frequency.</span>
+                    </div>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Speciation:</strong> The evolutionary formation of a new species. <br>
+                            - <em>Allopatric Speciation:</em> A physical geographic barrier separates a population. Different selection pressures and genetic drift lead to reproductive isolation.<br>
+                            - <em>Sympatric Speciation:</em> Reproductive isolation occurs without a geographic barrier (e.g., due to behavioral differences, temporal mating shifts, or polyploidy in plants).
+                        </li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 6: POPULATION BIOLOGY & ECOLOGY
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module6">6. Population Biology & Ecology</h2>
+                    <p class="reveal fade-up">Ecology studies the complex interactions between organisms (biotic factors) and their physical environment (abiotic factors), focusing on the flow of energy and the recycling of finite matter.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">6.1 Populations and Species</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Population Growth Curves:</strong> When a species colonizes a new environment, its population follows a sigmoid (S-shaped) curve: <br>
+                            - <em>Lag Phase:</em> Slow growth as organisms acclimatize, synthesize enzymes, and reach sexual maturity.<br>
+                            - <em>Log (Exponential) Phase:</em> Rapid reproduction with minimal environmental resistance.<br>
+                            - <em>Stationary Phase:</em> The population reaches the <strong>Carrying Capacity (K)</strong> of the environment. Birth rate equals death rate due to limiting factors (food, space, disease).<br>
+                            - <em>Decline Phase:</em> Death rate exceeds birth rate, often due to toxic waste accumulation or resource depletion.
+                        </li>
+                        <li><strong>Environmental Resistance:</strong> Factors that limit population growth. Can be <em>Density-Dependent</em> (disease, competition, predation) or <em>Density-Independent</em> (natural disasters, climate change).</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">6.2 Communities and Ecosystems</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Energy Flow & Ecological Pyramids:</strong> Energy enters via photoautotrophs (producers). Only about 10% of energy is passed to the next trophic level; the rest is lost via respiration, heat, feces, and inedible parts. This explains why <strong>Pyramids of Energy</strong> are *always* upright, whereas Pyramids of Numbers or Biomass can be inverted (e.g., one large oak tree feeding thousands of caterpillars).</li>
+                        <li><strong>The Nitrogen Cycle:</strong> Nitrogen is essential for amino acids and nucleic acids, but atmospheric $N_2$ is unreactive. <br>
+                            - <em>Nitrogen Fixation:</em> <strong>Rhizobium</strong> (in leguminous root nodules) or <strong>Azotobacter</strong> (free-living in soil) convert $N_2$ to ammonia.<br>
+                            - <em>Nitrification:</em> Aerobic oxidation of ammonia to nitrites by <strong>Nitrosomonas</strong>, then to nitrates by <strong>Nitrobacter</strong>.<br>
+                            - <em>Denitrification:</em> In waterlogged, anaerobic soils, <strong>Pseudomonas</strong> converts nitrates back into $N_2$ gas, depleting soil fertility.<br>
+                            - <em>Putrefaction/Ammonification:</em> Saprobiotic fungi and bacteria break down dead organic matter into ammonia.
+                        </li>
+                        <li><strong>Ecological Succession:</strong> The gradual directional change in a community over time. <em>Primary succession</em> starts on bare rock (pioneer species like lichens weather the rock into soil). <em>Secondary succession</em> occurs on previously colonized soil (e.g., after a forest fire). Both progress until a stable <strong>Climax Community</strong> is reached.</li>
+                        <li><strong>Human Impact:</strong> Includes eutrophication (leaching of agricultural nitrate fertilizers causing algal blooms, blocking light, and leading to oxygen depletion by aerobic decomposing bacteria), deforestation, and the enhanced greenhouse effect.</li>
+                    </ul>
+
+                    <!-- ==========================================
+                         MODULE 7: BIOTECHNOLOGY
+                         ========================================== -->
+                    <h2 class="notes-section-title reveal fade-up" id="module7">7. Biotechnology</h2>
+                    <p class="reveal fade-up">Biotechnology harnesses biological processes for industrial and medical purposes. Traditional biotechnology uses intact microorganisms (like yeast in brewing), while modern biotechnology manipulates DNA at the molecular level.</p>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">7.1 Genetic Engineering Tools</h3>
+                    <p class="reveal fade-up">Recombinant DNA technology involves isolating a target gene and inserting it into a host organism (making a Genetically Modified Organism, or GMO) so it can express the desired protein.</p>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Restriction Endonucleases:</strong> Enzymes (originally bacterial defense mechanisms against viruses) that cut DNA at specific palindromic recognition sequences. They often make staggered cuts, leaving unpaired bases called <strong>"sticky ends"</strong>.</li>
+                        <li><strong>Reverse Transcriptase:</strong> Used to synthesize single-stranded complementary DNA (cDNA) from an mRNA template. This is highly advantageous because mRNA has already had the non-coding introns spliced out.</li>
+                        <li><strong>Vectors:</strong> Carriers used to transfer the DNA into the host cell. The most common are <strong>Plasmids</strong> (small circular bacterial DNA) and harmless viruses.</li>
+                        <li><strong>DNA Ligase:</strong> The enzyme that catalyzes the formation of phosphodiester bonds, sealing the sugar-phosphate backbone between the target gene and the plasmid vector.</li>
+                    </ul>
+
+                    <h3 class="notes-sub-section-title reveal fade-up">7.2 Transformation & Applications</h3>
+                    <ul class="key-points-list reveal fade-up">
+                        <li><strong>Transformation & Marker Genes:</strong> The recombinant plasmid is reintroduced into the host bacteria (often using heat shock and calcium ions). Because transformation is highly inefficient, plasmids contain <strong>marker genes</strong> (like antibiotic resistance or fluorescence). By growing the bacteria on agar containing the antibiotic, only the successfully transformed bacteria will survive and form colonies.</li>
+                        <li><strong>Medical Applications:</strong> The mass production of human insulin (treating Type 1 Diabetes) and Human Growth Hormone using genetically modified <em>E. coli</em> bacteria. Eliminates the risk of immune rejection or disease transfer from animal-derived hormones.</li>
+                        <li><strong>Agricultural Applications:</strong> Genetically modifying crops for pest resistance (e.g., inserting the Bt toxin gene into cotton), herbicide tolerance, or enhanced nutritional profiles (e.g., Golden Rice enriched with Vitamin A precursors).</li>
+                        <li><strong>Environmental & Industrial:</strong> Engineering bacteria capable of bioremediation (e.g., breaking down crude oil spills or plastics) and optimizing microorganisms for large-scale biogas production.</li>
+                    </ul>
+
+                    <!-- CONCLUSION -->
+                    <h2 class="notes-section-title reveal fade-up" id="conclusion">Concluding Directives</h2>
+                    <p class="reveal fade-up">A-Level Biology is not merely a test of memory; it is a test of systems thinking. You must be able to connect the ultrastructure of a cell to its physiological function, and environmental pressures to genetic evolution. Use the AI Assistant below to ask questions about any specific mechanism or cycle you struggle to visualize.</p>
+                    
+                    <div class="note-end-buttons reveal fade-up">
+                        <a href="study-notes.html" class="btn btn-primary-outline"><i class="fas fa-book"></i> Back to All Notes</a>
+                        <a href="past-papers.html" class="btn btn-secondary-outline"><i class="fas fa-file-alt"></i> Execute Past Papers</a>
+                    </div>
+                </div>
+                 
+            </div>
+        </section>
+
+        <section class="cta-section section-padding bg-image-cta reveal fade-up" style="background-image: url('images/cta-main-bg.jpg');">
+            <div class="cta-overlay"></div>
+            <div class="container cta-content">
+                <h2 class="section-title text-light">Ready to Master Biology?</h2>
+                <p>Register with MohAcademy today for personalized guidance, expert insights, and a supportive learning community that helps you ace your A/L exams.</p>
+                <a href="signup.html" class="btn btn-lg-outline animate-fade-in-up">Register for Free Today!</a>
+            </div>
+        </section>
+    </main>
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Hello there! Welcome to the Biology Notes Vault. Need a specific mechanism explained, like the Krebs Cycle or DNA Replication?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Photosynthesis')">Photosynthesis</span>
+                <span class="preset-chip" onclick="triggerPreset('Genetics')">Genetics</span>
+            </div>
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH anything...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/notes-subject.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

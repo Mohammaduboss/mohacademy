@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Study Guides & Tactics - MohAcademy</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Unique Styles for the Guides Page -->
+    <style>
+        .guides-hero-section {
+            position: relative;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 160px 0 100px 0;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        .guides-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://images.unsplash.com/photo-1506452305024-9d3f02d1c9b5?auto=format&fit=crop&w=1920&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .guides-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .guides-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Tactical Pillars Grid */
+        .tactical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .tactical-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+        .tactical-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .tactical-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            background: rgba(0, 123, 255, 0.1);
+            width: 70px; height: 70px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+        }
+        .tactical-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        .tactical-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Timeline */
+        .roadmap-section {
+            background-color: #f8fafc;
+            padding: 100px 0;
+        }
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 60px auto 0 auto;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 30px;
+            height: 100%; width: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+        .timeline-node {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 50px;
+        }
+        .timeline-node:last-child { margin-bottom: 0; }
+        .timeline-marker {
+            position: absolute;
+            left: 17px; top: 0;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-family: 'Poppins', sans-serif;
+            box-shadow: 0 0 0 6px #f8fafc;
+        }
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+        .timeline-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .timeline-content .phase-duration {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Subject Blueprints */
+        .subject-blueprints {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .blueprint-card {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .blueprint-color-bar {
+            width: 12px;
+            flex-shrink: 0;
+        }
+        .blueprint-details {
+            padding: 25px;
+        }
+        .blueprint-details h4 { margin-bottom: 10px; font-size: 1.2rem; }
+        .blueprint-details ul {
+            list-style: none; padding: 0; margin-top: 15px;
+        }
+        .blueprint-details ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        .blueprint-details ul li::before {
+            content: '\f058'; /* FontAwesome check-circle */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0; top: 2px;
+            color: #10b981;
+        }
+
+        @media (max-width: 768px) {
+            .guides-hero-content h1 { font-size: 2.5rem; }
+            .subject-blueprints { grid-template-columns: 1fr; }
+            .timeline-container::before { left: 20px; }
+            .timeline-node { padding-left: 60px; }
+            .timeline-marker { left: 7px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STANDARD HEADER -->
+    <header class="header" id="main-header">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-atom logo-icon"></i> <span class="site-name">MohAcademy</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <!-- 1. Home -->
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    
+                    <!-- 2. Subjects Core -->
+                    <li class="dropdown">
+                        <a href="subjects.html" class="nav-link dropdown-toggle">Subjects <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="physics.html">Physics A/L</a></li>
+                            <li><a href="chemistry.html">Chemistry A/L</a></li>
+                            <li><a href="biology.html">Biology A/L</a></li>
+                            <li><a href="math.html">Pure Mathematics A/L</a></li>
+                            <li><a href="further-math.html">Further Mathematics A/L</a></li>
+                            <li><a href="computer.html">Computer Science A/L</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- 3. Resources Core -->
+                    <li class="dropdown">
+                        <a href="resources.html" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="past-papers.html">Past Papers Vault</a></li>
+                            <li><a href="study-notes.html">Study Notes</a></li>
+                            <li><a href="guides.html">Tactical Guides</a></li>
+                            <li><a href="syllabuses.html">Official Syllabuses</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 4. Interactive Core -->
+                    <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+
+                    <!-- 5. Secondary / Consolidated Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">Explore <i class="fas fa-ellipsis-h" style="font-size: 0.85em; margin-left: 6px; color: var(--secondary-color);"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="forum.html"><i class="fas fa-users" style="color: var(--primary-color); width: 22px;"></i> Community Forum</a></li>
+                            <li><a href="about.html"><i class="fas fa-info-circle" style="color: var(--primary-color); width: 22px;"></i> About Us</a></li>
+                            <li><a href="contact.html"><i class="fas fa-envelope" style="color: var(--primary-color); width: 22px;"></i> Contact Support</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="guides-hero-section">
+            <div class="guides-hero-content reveal fade-up">
+                <h1>Elite Tactical Roadmaps</h1>
+                <p style="font-size: 1.2rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 30px auto; line-height: 1.6;">
+                    GCE Advanced Level Science is not a test of memory; it is a test of structural logic and execution speed. Deploy these scientifically-backed study frameworks to guarantee A* performance.
+                </p>
+                <a href="#framework" class="btn btn-primary" style="background: #4facfe; border-color: #4facfe;"><i class="fas fa-crosshairs"></i> Initialize Protocol</a>
+            </div>
+        </section>
+
+        <!-- THE 4 PILLARS -->
+        <section class="section-padding" id="framework">
+            <div class="container">
+                <div class="text-center reveal fade-up">
+                    <h2 class="section-title">The Four Pillars of High Yield Study</h2>
+                    <p class="section-subtitle">Abandon passive reading. Adopt the psychological frameworks utilized by top-tier engineering and medical students.</p>
+                </div>
+
+                <div class="tactical-grid">
+                    <div class="tactical-card reveal fade-up">
+                        <div class="tactical-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Active Recall</h3>
+                        <p>Reading textbooks is an illusion of competence. True learning only occurs when you force your brain to retrieve information. Close the book, take a blank sheet, and write the entire mechanism from memory. If you fail, find the exact weak link.</p>
+                    </div>
+
+                    <div class="tactical-card reveal fade-up" style="animation-delay: 0.1s;">
+                        <div class="tactical-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Spaced Repetition</h3>
+                        <p>Combat the "Ebbinghaus Forgetting Curve." Review new Physics derivations 1 day after learning, then 3 days, then 1 week, then 1 month. This permanently writes the logic matrix into your long-term memory.</p>
+                    </div>
+
+                    <div class="tactical-card reveal fade-up" style="animation-delay: 0.2s;">
+                        <div class="tactical-icon"><i class="fas fa-stopwatch"></i></div>
+                        <h3>The Pomodoro Paradigm</h3>
+                        <p>Cognitive fatigue destroys accuracy. Study in strict intervals: 50 minutes of absolute, distraction-free deep work, followed by a 10-minute complete mental disconnect. Repeat this cycle to maintain 100% processing power.</p>
+                    </div>
+
+                    <div class="tactical-card reveal fade-up" style="animation-delay: 0.3s;">
+                        <div class="tactical-icon"><i class="fas fa-microscope"></i></div>
+                        <h3>Examiner Psychology</h3>
+                        <p>Do not just solve past papers—reverse engineer them. Study the official Mark Schemes to identify the exact keywords (e.g., "delocalized", "homologous") that trigger points. Learn to write exactly what the examiner is scanning for.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROADMAP TIMELINE -->
+        <section class="roadmap-section">
+            <div class="container">
+                <div class="text-center reveal fade-up">
+                    <h2 class="section-title">The 3-Phase Revision Roadmap</h2>
+                    <p class="section-subtitle">A linear execution timeline to take you from day one of Lower Sixth to the final examination hall.</p>
+                </div>
+
+                <div class="timeline-container">
+                    
+                    <div class="timeline-node reveal fade-up">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <span class="phase-duration">Months 1 to 5</span>
+                            <h4>Phase I: Architecture & Acquisition</h4>
+                            <p>Focus entirely on understanding the core principles. Do not worry about timing. Build your foundational notes using MohAcademy's Study Vaults. Map out complex systems (like the Krebs Cycle or Integrations) visually.</p>
+                            <p style="margin-top: 10px; font-weight: 600; color: #1e293b;"><i class="fas fa-bullseye" style="color: #ef4444;"></i> Goal: Complete syllabus coverage with zero blind spots.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-node reveal fade-up">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <span class="phase-duration">Months 6 to 8</span>
+                            <h4>Phase II: Topical Consolidation</h4>
+                            <p>Shift from textbooks to topical past papers. If you just finished "Organic Chemistry", immediately solve 10 years of specific Organic Chemistry questions. This phase exposes how the GCE board twists standard definitions into complex applied scenarios.</p>
+                            <p style="margin-top: 10px; font-weight: 600; color: #1e293b;"><i class="fas fa-bullseye" style="color: #ef4444;"></i> Goal: Pattern recognition across different question typologies.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-node reveal fade-up">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <span class="phase-duration">Final 60 Days</span>
+                            <h4>Phase III: Strict Execution Parameters</h4>
+                            <p>Abandon topical study. You must now take full, unbroken Past Papers under strict exam conditions. No music, no phone, strict timing. Grade yourself ruthlessly using the Mark Schemes and log every error in a dedicated "Mistake Journal".</p>
+                            <p style="margin-top: 10px; font-weight: 600; color: #1e293b;"><i class="fas fa-bullseye" style="color: #ef4444;"></i> Goal: Psychological endurance and flawless time management.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBJECT BLUEPRINTS -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center reveal fade-up">
+                    <h2 class="section-title">Subject-Specific Execution Protocols</h2>
+                    <p class="section-subtitle">Generic advice fails at the Advanced Level. Here is how to attack each specific scientific domain.</p>
+                </div>
+
+                <div class="subject-blueprints">
+                    
+                    <div class="blueprint-card reveal fade-up">
+                        <div class="blueprint-color-bar" style="background: #007bff;"></div>
+                        <div class="blueprint-details">
+                            <h4 style="color: #007bff;"><i class="fas fa-atom"></i> Physics A/L</h4>
+                            <p>Physics is applied mathematics mapped to reality. Do not memorize formulas blindly; understand the units.</p>
+                            <ul>
+                                <li>Always start calculations with the raw algebraic formula before substituting numbers.</li>
+                                <li>Master Dimensional Analysis to self-verify complex formulas during the exam.</li>
+                                <li>For definitions, state the mathematical equation and define every single term.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="blueprint-card reveal fade-up" style="animation-delay: 0.1s;">
+                        <div class="blueprint-color-bar" style="background: #20c997;"></div>
+                        <div class="blueprint-details">
+                            <h4 style="color: #20c997;"><i class="fas fa-vial"></i> Chemistry A/L</h4>
+                            <p>Chemistry bridges rote memory (Inorganic) with logical puzzles (Organic mechanisms).</p>
+                            <ul>
+                                <li>Draw exact curly arrows originating strictly from lone pairs or bonds in mechanisms.</li>
+                                <li>Memorize standard conditions (Temp, Pressure, Catalyst) for all industrial processes.</li>
+                                <li>Watch out for unit traps in Thermodynamics (Joules vs. Kilojoules).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="blueprint-card reveal fade-up">
+                        <div class="blueprint-color-bar" style="background: #ff9f00;"></div>
+                        <div class="blueprint-details">
+                            <h4 style="color: #ff9f00;"><i class="fas fa-calculator"></i> Pure & Further Math</h4>
+                            <p>Mathematics rewards relentless mechanical repetition and logical step-formatting.</p>
+                            <ul>
+                                <li>Never skip intermediate algebraic steps in proofs; examiners award method marks ($M1$) sequentially.</li>
+                                <li>Draw large, clear diagrams for Mechanics (Forces/Vectors) before calculating.</li>
+                                <li>If you hit a roadblock, re-read the prompt. Usually, a constraint was missed.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="blueprint-card reveal fade-up" style="animation-delay: 0.1s;">
+                        <div class="blueprint-color-bar" style="background: #2ecc71;"></div>
+                        <div class="blueprint-details">
+                            <h4 style="color: #2ecc71;"><i class="fas fa-dna"></i> Biology A/L</h4>
+                            <p>Biology requires extreme precision of language and holistic systems thinking.</p>
+                            <ul>
+                                <li>Use highly specific terminology (e.g., "Water Potential Gradient", not "Concentration").</li>
+                                <li>For essays, draft a 2-minute bulleted skeleton before writing to ensure logical flow.</li>
+                                <li>Link micro-cellular structures directly to their macro-physiological function.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MOH AI CHATBOT -->
+    <div class="moh-fab-container">
+        <div class="moh-chat-window-card" id="chatWindow">
+            <div class="moh-chat-header">
+                <div class="moh-chat-title-info">
+                    <h4>MOH Assistant AI</h4>
+                    <small><i class="fas fa-circle" style="color: #2ecc71; font-size: 0.55rem;"></i> Always Responsive</small>
+                </div>
+                <button id="moh-close-panel-btn" title="Close Panel"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="moh-chat-body" id="chatMessages">
+                <div class="system-intro-bubble">
+                    Welcome to the Tactical Center! Need help building a custom study timetable, or want me to quiz you using Active Recall?
+                </div>
+            </div>
+
+            <div class="moh-attachment-preview-bar" id="attachmentPreviewZone" style="display: none;">
+                <div class="preview-thumbnail-wrapper">
+                    <img id="filePreviewRenderer" src="#" alt="Upload Target">
+                    <button id="clearAttachmentBtn" title="Remove File"><i class="fas fa-times-circle"></i></button>
+                </div>
+                <span id="attachmentFileNameDisplay">Worksheet.png</span>
+            </div>
+            
+            <div class="moh-chat-presets">
+                <span class="preset-chip" onclick="triggerPreset('Build me a revision timetable')">Make a Timetable</span>
+                <span class="preset-chip" onclick="triggerPreset('Explain the Pomodoro technique')">Pomodoro Rule</span>
+                <span class="preset-chip" onclick="triggerPreset('Quiz me on Physics formulas')">Physics Quiz</span>
+            </div>
+            
+            <div class="moh-chat-input-row">
+                <input type="file" id="moh-hidden-file-input" accept="image/*" style="display: none;">
+                <button id="moh-attachment-trigger-btn" title="Upload Question or Attempt Sheet">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="text" id="moh-chat-input-field" placeholder="Ask MOH for strategy...">
+                <button id="moh-chat-send-btn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="moh-avatar-badge" id="chatToggle" title="Need help? Talk with MOH!">
+            <div class="online-indicator-dot"></div>
+            <i class="fas fa-robot"></i>
+            <span class="avatar-label-name">MOH</span>
+        </div>
+    </div>
+
+    <!-- STANDARD FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-column footer-about">
+                <h3>MohAcademy</h3>
+                <p>Empowering GCE A/L Science students with premium study resources for academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-gallery">
+                <h3>Gallery</h3>
+                <div class="gallery-thumbs">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 1">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 2">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 3">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=70&q=80" alt="Gallery Image 4">
+                </div>
+            </div>
+
+            <div class="footer-column footer-creator">
+                <h3>Creator</h3>
+                <p>Developed with passion by Mohammadu Mustaphar.</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 MohAcademy. All rights reserved. Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for Science Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script src="js/chatbot.js"></script>
+    
+    <!-- Animation Reveal Logic specific to this page -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            function checkReveal() {
+                const windowHeight = window.innerHeight;
+                const revealPoint = 100;
+                
+                reveals.forEach(reveal => {
+                    const revealTop = reveal.getBoundingClientRect().top;
+                    if (revealTop < windowHeight - revealPoint) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkReveal);
+            checkReveal(); // Trigger on load
+        });
+    </script>
+</body>
+</html>

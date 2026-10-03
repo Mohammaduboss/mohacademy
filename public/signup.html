@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account - MohAcademy</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --accent-ai: #8a2be2;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --neon-green: #2ecc71;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f4f7fc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-container-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            position: relative;
+        }
+
+        .auth-glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 580px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            text-align: center;
+            box-sizing: border-box;
+            animation: formFadeIn 0.5s ease-out;
+        }
+
+        .auth-header-node h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .auth-header-node p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .auth-input-group {
+            text-align: left;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .auth-input-group label {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .input-field-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-field-icon-wrapper i.field-icon {
+            position: absolute;
+            left: 16px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .input-field-icon-wrapper input {
+            width: 100%;
+            padding: 14px 16px 14px 46px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+        }
+
+        .input-field-icon-wrapper input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.12);
+        }
+
+        .toggle-password-visibility {
+            position: absolute;
+            right: 16px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+        .toggle-password-visibility:hover { color: var(--primary-color); }
+
+        .subject-pills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .subject-pill-checkbox {
+            position: relative;
+        }
+
+        .subject-pill-checkbox input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .subject-pill-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .subject-pill-checkbox input:checked + .subject-pill-label {
+            background-color: #e0f2fe;
+            border-color: var(--primary-color);
+            color: var(--primary-dark);
+        }
+
+        .auth-action-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2);
+            transition: all 0.25s;
+            margin-top: 15px;
+        }
+
+        .auth-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 123, 255, 0.3);
+        }
+
+        .auth-redirect-footer-lbl {
+            margin-top: 25px;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .auth-redirect-footer-lbl a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .auth-redirect-footer-lbl a:hover { text-decoration: underline; }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 576px) {
+            .auth-glass-card { padding: 25px 20px; }
+            .subject-pills-grid { grid-template-columns: 1fr; }
+            .auth-header-node h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header style="background-color: #0f172a; padding: 18px 30px; width: 100%; box-sizing: border-box;">
+        <a href="index.html" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
+            <i class="fas fa-atom" style="color: #2ecc71; margin-right: 10px;"></i> MohAcademy
+        </a>
+    </header>
+
+    <main class="auth-container-wrapper">
+        <div class="auth-glass-card">
+            <div class="auth-header-node">
+                <h1>Join MohAcademy</h1>
+                <p>Register to unlock premium GCE A-Level science evaluation suites and virtual materials.</p>
+            </div>
+
+            <form id="signUpMasterForm" onsubmit="handleRegistrationEvent(event)">
+                <div class="auth-input-group">
+                    <label>Full Name</label>
+                    <div class="input-field-icon-wrapper">
+                        <i class="fas fa-user field-icon"></i>
+                        <input type="text" placeholder="e.g., Mohammadu Mustaphar" required id="reg_name">
+                    </div>
+                </div>
+
+                <div class="auth-input-group">
+                    <label>Email Address</label>
+                    <div class="input-field-icon-wrapper">
+                        <i class="fas fa-envelope field-icon"></i>
+                        <input type="email" placeholder="student@domain.com" required id="reg_email">
+                    </div>
+                </div>
+
+                <div class="auth-input-group">
+                    <label>Syllabus Subject Focus</label>
+                    <div class="subject-pills-grid">
+                        <label class="subject-pill-checkbox">
+                            <input type="checkbox" name="science_subject" value="physics" checked>
+                            <span class="subject-pill-label"><i class="fas fa-atom"></i> Physics</span>
+                        </label>
+                        <label class="subject-pill-checkbox">
+                            <input type="checkbox" name="science_subject" value="chemistry" checked>
+                            <span class="subject-pill-label"><i class="fas fa-vial"></i> Chemistry</span>
+                        </label>
+                        <label class="subject-pill-checkbox">
+                            <input type="checkbox" name="science_subject" value="biology">
+                            <span class="subject-pill-label"><i class="fas fa-dna"></i> Biology</span>
+                        </label>
+                        <label class="subject-pill-checkbox">
+                            <input type="checkbox" name="science_subject" value="mathematics" checked>
+                            <span class="subject-pill-label"><i class="fas fa-calculator"></i> Mathematics</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="auth-input-group">
+                    <label>Create Password</label>
+                    <div class="input-field-icon-wrapper">
+                        <i class="fas fa-lock field-icon"></i>
+                        <input type="password" placeholder="••••••••" required id="reg_password">
+                        <i class="fas fa-eye toggle-password-visibility" onclick="toggleFieldMask('reg_password', this)"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-action-btn">Initialize Profile</button>
+            </form>
+
+            <div class="auth-redirect-footer-lbl">
+                Already registered? <a href="login.html">Access Login Panel</a>
+            </div>
+        </div>
+    </main>
+
+
+    <script>
+        function toggleFieldMask(targetId, iconRef) {
+            const field = document.getElementById(targetId);
+            if(field.type === "password") {
+                field.type = "text";
+                iconRef.className = "fas fa-eye-slash toggle-password-visibility";
+            } else {
+                field.type = "password";
+                iconRef.className = "fas fa-eye toggle-password-visibility";
+            }
+        }
+
+        async function handleRegistrationEvent(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('reg_name').value;
+            const email = document.getElementById('reg_email').value;
+            const password = document.getElementById('reg_password').value;
+
+            // Automatically capitalize subjects to match the Mongoose Schema
+            const subjectCheckboxes = document.querySelectorAll('input[name="science_subject"]:checked');
+            const subjects = Array.from(subjectCheckboxes).map(cb => {
+                return cb.value.charAt(0).toUpperCase() + cb.value.slice(1);
+            });
+
+            const btn = e.target.querySelector('.auth-action-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Initializing Server Engine...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password, subjects })
+                });
+
+                const data = await response.json();
+
+                if (response.status === 201) {
+                    localStorage.setItem('verification_email', email);
+                    alert('Registration initialized! A 6-digit OTP has been sent to your email.');
+                    window.location.href = "otp.html";
+                } else {
+                    alert(`Registration Error: ${data.message}`);
+                }
+            } catch (error) {
+                console.error("Server connection failed:", error);
+                alert("Fatal Error: Could not reach the MohAcademy server.");
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
