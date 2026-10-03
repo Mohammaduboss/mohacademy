@@ -12,6 +12,7 @@ const app = express();
 // This translates the JSON data sent from frontend clients BEFORE it hits your routes
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
 
 // ==========================================
 // 2. DATABASE CONNECTION
@@ -25,13 +26,7 @@ mongoose.connect(process.env.MONGO_URI, {
         process.exit(1);
     });
 
-// ==========================================
-// 3. ROUTES (MUST GO LAST)
-// ==========================================
-// A simple test route
-app.get('/', (req, res) => {
-    res.send('MohAcademy Backend Server is running and database is connected!');
-});
+
 
 // Dynamic Pricing Route (Phase 2 Freemium Architecture)
 const pricingConfig = require('./config/pricing');
