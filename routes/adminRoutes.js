@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import all required database models
-const Student = require('../models/Student'); 
+const Student = require('../models/student'); 
 const Contact = require('../models/Contact');
 const Quiz = require('../models/Quiz');
 const BlogPost = require('../models/BlogPost');

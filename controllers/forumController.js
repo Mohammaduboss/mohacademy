@@ -1,6 +1,6 @@
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
-const Student = require('../models/Student');
+const Student = require('../models/student');
 const { GoogleGenAI } = require('@google/genai'); 
 
 // Initialize the AI securely using your existing .env key

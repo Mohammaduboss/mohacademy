@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const upload = require('../config/multer');
 const ChatSession = require('../models/ChatSession');
-const StudentWeakness = require('../models/StudentWeakness');
+const StudentWeakness = require('../models/studentWeakness');
 const SolutionCache = require('../models/SolutionCache');
-const Student = require('../models/Student');
+const Student = require('../models/student');
 const PRICING = require('../config/pricing');
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

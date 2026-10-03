@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Quiz = require('../models/Quiz');
-const Student = require('../models/Student');
+const Student = require('../models/student');
 const auth = require('../middleware/auth'); // Your existing auth middleware
 const ArenaConfig = require('../models/ArenaConfig');
 

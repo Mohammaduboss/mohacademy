@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth'); 
-const Student = require('../models/Student'); 
+const Student = require('../models/student'); 
 
 // =========================================================
 // 1. FAPSHI DIRECT PAY (LIVE)

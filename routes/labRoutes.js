@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Experiment = require('../models/Experiment'); // Your database model
 const { evaluateLab } = require('../services/geminiEvaluator'); // Import the AI Service
-const Student = require('../models/Student');
+const Student = require('../models/student');
 const auth = require('../middleware/auth');
 const jwt = require('jsonwebtoken');
 

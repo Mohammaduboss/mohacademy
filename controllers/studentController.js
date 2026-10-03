@@ -1,4 +1,4 @@
-const Student = require('../models/Student');
+const Student = require('../models/student');
 const bcrypt = require('bcryptjs');
 
 // @desc    Get current student's fresh profile data (XP, Badges, etc.)
