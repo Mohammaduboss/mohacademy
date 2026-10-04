@@ -12,7 +12,7 @@ const app = express();
 // This translates the JSON data sent from frontend clients BEFORE it hits your routes
 app.use(express.json());
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static('public', { extensions: ['html'] }));
 
 // ==========================================
 // 2. DATABASE CONNECTION

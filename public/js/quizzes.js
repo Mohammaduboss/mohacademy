@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!token) {
         alert("Authentication required. Please log in to access the Evaluation Arena.");
-        window.location.href = "login.html";
+        window.location.href = "login";
         return;
     }
 

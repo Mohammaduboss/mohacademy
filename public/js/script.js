@@ -22,11 +22,11 @@ if (token) {
         profileDropdownLi.id = 'global-nav-dashboard';
         
         profileDropdownLi.innerHTML = `
-            <a href="profile.html" class="nav-link dropdown-toggle" style="color: var(--primary-color); font-weight: 700;">
+            <a href="profile" class="nav-link dropdown-toggle" style="color: var(--primary-color); font-weight: 700;">
                 <i class="fas fa-user-circle"></i> Profile <i class="fas fa-chevron-down dropdown-arrow"></i>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="profile.html" style="font-weight: 500;"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="profile" style="font-weight: 500;"><i class="fas fa-chart-line"></i> Dashboard</a></li>
                 <li><a href="#" id="global-logout-btn" style="color: #e74c3c; font-weight: 600;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         `;

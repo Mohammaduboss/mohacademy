@@ -222,7 +222,7 @@
 <body>
 
     <header style="background-color: #0f172a; padding: 18px 30px; width: 100%; box-sizing: border-box;">
-        <a href="index.html" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
+        <a href="index" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
             <i class="fas fa-atom" style="color: #2ecc71; margin-right: 10px;"></i> MohAcademy
         </a>
     </header>
@@ -286,7 +286,7 @@
             </form>
 
             <div class="auth-redirect-footer-lbl">
-                Already registered? <a href="login.html">Access Login Panel</a>
+                Already registered? <a href="login">Access Login Panel</a>
             </div>
         </div>
     </main>
@@ -334,7 +334,7 @@
                 if (response.status === 201) {
                     localStorage.setItem('verification_email', email);
                     alert('Registration initialized! A 6-digit OTP has been sent to your email.');
-                    window.location.href = "otp.html";
+                    window.location.href = "otp";
                 } else {
                     alert(`Registration Error: ${data.message}`);
                 }

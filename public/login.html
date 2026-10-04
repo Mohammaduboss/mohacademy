@@ -197,7 +197,7 @@
 <body>
 
     <header style="background-color: #0f172a; padding: 18px 30px; width: 100%; box-sizing: border-box;">
-        <a href="index.html" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
+        <a href="index" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
             <i class="fas fa-atom" style="color: #2ecc71; margin-right: 10px;"></i> MohAcademy
         </a>
     </header>
@@ -231,14 +231,14 @@
                     <label class="checkbox-container-label">
                         <input type="checkbox" id="chk_remember"> Keep me logged in
                     </label>
-                    <a href="forgot-password.html" class="forgot-password-anchor">Forgot Password?</a>
+                    <a href="forgot-password" class="forgot-password-anchor">Forgot Password?</a>
                 </div>
 
                 <button type="submit" class="auth-action-btn">Authenticate Entry</button>
             </form>
 
             <div class="auth-redirect-footer-lbl">
-                New to the Academy? <a href="signup.html">Create a Free Account</a>
+                New to the Academy? <a href="signup">Create a Free Account</a>
             </div>
         </div>
     </main>
@@ -281,7 +281,7 @@
                     localStorage.setItem('mohacademy_token', data.token);
                     localStorage.setItem('mohacademy_user', JSON.stringify(data.student));
                     
-                    window.location.href = "profile.html";
+                    window.location.href = "profile";
                 } else {
                     alert(`Authentication Denied: ${data.message}`);
                 }
