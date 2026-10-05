@@ -198,14 +198,60 @@ document.addEventListener('DOMContentLoaded', () => {
     else document.getElementById('dynamic-instructions-container').innerHTML = "<p style='color:#ef4444; font-weight:bold; padding:15px;'>Execution Terminated: Missing active parameter validation reference link.</p>";
 });
 
+function getFallbackBlueprint(code) {
+    // Map the GCE codes directly to their visual engines
+    let engine = "simple_pendulum"; // Default failsafe
+    let title = "Physics Experiment: " + code;
+    
+    if (code === 'M2:05') engine = "average_mass_nails";
+    else if (code === 'M2:06A') engine = "simple_pendulum";
+    else if (code === 'M2:06B') engine = "inclined_plane";
+    else if (code === 'M2:07') engine = "loaded_cantilever";
+    else if (code === 'M2:08') engine = "hookes_law";
+    else if (code === 'M2:09') engine = "thermal_cooling_ice";
+    else if (code === 'H2:01') engine = "thermal_cooling_water";
+    else if (code === 'H2:03') engine = "thermal_heating_candle";
+    else if (code === 'H2:04') engine = "thermal_wax_melting";
+    else if (code === 'H1:10') engine = "calorimetry_mixture";
+    else if (code === 'H3:12') engine = "heat_flow_boundary";
+    else if (code === 'LW4:16') engine = "optical_parallax";
+    else if (code === 'M6:06') engine = "principle_of_moments";
+    else if (code === 'M7:07') engine = "concurrent_forces";
+    else if (code === 'M8:08') engine = "simple_pulley";
+    else if (code === 'SW1:09') engine = "sound_resonance";
+    else if (code === 'B1:25') engine = "mag_flux";
+    else if (code === 'B2:26') engine = "mag_inertia";
+    else if (code === 'E1:20') engine = "elec_resistivity";
+    else if (code === 'E3:22') engine = "elec_emf";
+    else if (code === 'EL2:24') engine = "elec_capacitor";
+    else if (code === 'R1:27') engine = "radio_burette";
+    else if (code === 'R2:28') engine = "radio_cubes";
+    else if (code.startsWith('ST')) engine = "station_diameters"; // Generic station fallback
+
+    return {
+        title: title,
+        instructions: [
+            "Follow the standard procedures outlined in your MohAcademy practical manual.",
+            "Adjust the sliders or buttons in the control panel to manipulate the apparatus.",
+            "Record your readings carefully in the data table provided.",
+            "Use the GCE graph paper tab to plot your results if required."
+        ],
+        simulationSettings: {
+            engineType: engine
+        }
+    };
+}
+
 async function loadLabBlueprint(code) {
     try {
         const res = await fetch(`/api/labs/${code}`);
+        if (!res.ok) throw new Error("Experiment not found in database.");
         globalExperimentBlueprint = await res.json();
         setupLabWorkspace();
     } catch (err) {
-        console.error("Critical core mounting fault:", err);
-        document.getElementById('dynamic-instructions-container').innerHTML = "<p style='color:#ef4444; padding:15px;'>Critical Link Exception: Connection to cloud database failed.</p>";
+        console.warn("Database fetch failed, overriding with Local Router:", err.message);
+        globalExperimentBlueprint = getFallbackBlueprint(code);
+        setupLabWorkspace();
     }
 }
 
