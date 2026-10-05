@@ -53,11 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // 4. THE PRO SWEEPER: If the user is Premium, destroy all upgrade prompts!
-    const userData = JSON.parse(storedData || '{}');
+    const rawData = localStorage.getItem('mohacademy_user') || localStorage.getItem('student') || localStorage.getItem('user');
+    const userData = JSON.parse(rawData || '{}');
     const actualUser = userData.student || userData.user || userData;
 
-    // Handle both true boolean and 'true' string from localStorage
-    if (actualUser.isPremium === true || actualUser.isPremium === 'true') {
+    // Handle both true boolean and 'true' string safely
+    if (actualUser && (actualUser.isPremium === true || actualUser.isPremium === 'true')) {
 
         // Hide all upgrade buttons on the page (Homepage, Modals, Pricing links)
         document.querySelectorAll('a[href="pricing"], a[href="pricing.html"], .btn-upgrade-now, .upgrade-badge').forEach(btn => {
