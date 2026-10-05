@@ -89,7 +89,9 @@ exports.loginStudent = async (req, res) => {
                     name: student.name,
                     email: student.email,
                     subjects: student.subjects,
-                    xpScore: student.xpScore
+                    xpScore: student.xpScore,
+                    isPremium: student.isPremium,
+                    isVerified: student.isVerified
                 }
             });
         });
@@ -139,7 +141,9 @@ exports.verifyOTP = async (req, res) => {
                     name: student.name,
                     email: student.email,
                     subjects: student.subjects,
-                    xpScore: student.xpScore
+                    xpScore: student.xpScore,
+                    isPremium: student.isPremium,
+                    isVerified: student.isVerified
                 }
             });
         });

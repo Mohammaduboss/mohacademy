@@ -52,6 +52,30 @@ if (token) {
         }
     });
 }
+// 4. THE PRO SWEEPER: If the user is Premium, destroy all upgrade prompts!
+    const userData = JSON.parse(storedData || '{}');
+    const actualUser = userData.student || userData.user || userData; 
+
+    // Handle both true boolean and 'true' string from localStorage
+    if (actualUser.isPremium === true || actualUser.isPremium === 'true') {
+        
+        // Hide all upgrade buttons on the page (Homepage, Modals, Pricing links)
+        document.querySelectorAll('a[href="pricing"], a[href="pricing.html"], .btn-upgrade-now, .upgrade-badge').forEach(btn => {
+            btn.style.display = 'none'; 
+        });
+
+        // Specific fix for the homepage "JOIN FOR FREE" / "CREATE YOUR PROFILE FREE" buttons
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            if (btn.innerText.toUpperCase().includes('FREE')) {
+                btn.style.display = 'none';
+            }
+        });
+
+        // Specific fix for Chatbot limits
+        if (typeof window.userMessageCount !== 'undefined') {
+            window.userMessageCount = -9999; // Unlimited AI queries
+        }
+    }
 
     // --- Global Elements ---
     const header = document.getElementById('main-header');
