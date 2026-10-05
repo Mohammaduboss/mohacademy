@@ -67,7 +67,9 @@ router.post('/initialize', auth, async (req, res) => {
 
         // 3. Handle the final outcome
         if (transactionStatus === 'FAILED' || transactionStatus === 'EXPIRED') {
-            return res.status(400).json({ message: "Transaction failed or was cancelled." });
+            return res.status(400).json({ 
+                message: "Transaction failed. You likely have insufficient balance, or you cancelled the prompt on your phone." 
+            });
         }
         
         if (transactionStatus !== 'SUCCESSFUL') {

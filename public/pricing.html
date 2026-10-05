@@ -206,8 +206,16 @@
                 return;
             }
 
-            btn.innerText = "Initiating Payment...";
+            // 1. Start the loading spinner
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Contacting ${selectedNetwork}...`;
             btn.disabled = true;
+
+            // 2. NEW: Wait 3 seconds to tell them to look at their phone
+            const promptTimeout = setTimeout(() => {
+                btn.innerHTML = `<i class="fas fa-mobile-alt" style="margin-right: 8px;"></i> Check your phone & enter PIN...`;
+                btn.style.background = "#2ecc71"; 
+                btn.style.color = "#fff";
+            }, 3000);
 
             try {
             // Send request to our backend payment route with both header variants
@@ -226,6 +234,11 @@
             });
 
             const data = await response.json();
+            
+            // 3. NEW: Clear the timeout and reset button style when the server responds
+            clearTimeout(promptTimeout);
+            btn.style.background = "linear-gradient(135deg, #ffb703 0%, #fb8500 100%)";
+            btn.style.color = "#000";
 
             if (response.ok) {
                 btn.innerText = "Awaiting MoMo Confirmation...";
