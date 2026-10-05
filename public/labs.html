@@ -576,10 +576,15 @@
     <script>
         let allRealLabs = [];
 
-        // Get the logged-in student's data from localStorage. If they aren't logged in, assume free tier (false).
-        // Pull the correct auth key used by your login and payment systems
-        const storedUser = localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
-        const currentUser = storedUser ? JSON.parse(storedUser) : { isPremium: false };
+        // 0. Get the logged-in student's data and safely parse the nested MERN stack object
+        const storedData = localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
+        let parsedData = storedData ? JSON.parse(storedData) : {};
+        
+        // Safely extract the user object whether it is nested ({ token: "...", user: {...} }) or flat
+        const currentUser = parsedData.user ? parsedData.user : parsedData;
+        
+        // Check for PRO status (handles booleans or strings from the database)
+        const isUserPro = currentUser.isPremium === true || currentUser.isPremium === 'true';
 
         // 1. Fetch Real Data from your Backend
         async function fetchRealLabs() {
@@ -612,7 +617,7 @@
                 const engineLink = `lab-${lab.subject.toLowerCase()}.html?id=${lab.experimentCode}`;
 
                 // CRUCIAL LOGIC: Lock the lab ONLY if the database says it's premium AND the student is not PRO
-                const isLocked = lab.isPremium && !currentUser.isPremium;
+                const isLocked = lab.isPremium && !isUserPro;
 
                 // Create the badges (FREE vs PRO)
                 const badgeHTML = lab.isPremium
