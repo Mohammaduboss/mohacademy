@@ -71,9 +71,9 @@
                 <p>Conquer numbers, equations, and abstract concepts. Comprehensive, topic-wise notes for GCE A/L Pure Mathematics, designed for clarity and problem-solving mastery.</p>
                 <div class="hero-buttons animate-fade-in-up">
                     <a href="#notes-content" class="btn btn-primary">Start Reading Notes</a>
-                    <a href="notes/pure-math/pure-math-notes.pdf" class="btn btn-secondary" download>
-                        <i class="fas fa-download"></i> Download Full Notes
-                    </a>
+                    <button onclick="window.print()" class="btn btn-secondary">
+                        <i class="fas fa-file-pdf"></i> Save / Print Notes as PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -82,7 +82,7 @@
             <div class="container notes-container">
                 <!-- COMPREHENSIVE TABLE OF CONTENTS -->
                 <aside class="notes-sidebar reveal fade-left" id="mobile-toc-sidebar">
-                    <div class="sidebar-header" id="toc-toggle-btn" onclick="document.getElementById('mobile-toc-sidebar').classList.toggle('expanded')">
+                    <div class="sidebar-header" id="toc-toggle-btn">
                         <h3>GCE Pure Math Syllabus</h3>
                         <i class="fas fa-chevron-down toc-icon"></i>
                     </div>

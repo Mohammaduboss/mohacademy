@@ -353,3 +353,30 @@ mjx-container {
     overflow-x: auto;
     overflow-y: hidden;
 }
+
+/* ==========================================================================
+   PRINT / PDF EXPORT STYLING
+   ========================================================================== */
+@media print {
+    /* Hide all navigational and floating UI elements */
+    header, footer, .notes-sidebar, .moh-fab-container, .hero-buttons, .cta-section, #back-to-top {
+        display: none !important;
+    }
+
+    /* Force the main notes content to act like a standard paper document */
+    body, .notes-content-section, .notes-main-content {
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Prevent page breaks inside equations and key lists */
+    .equation, .key-points-list li {
+        break-inside: avoid !important;
+    }
+}

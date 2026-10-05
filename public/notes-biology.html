@@ -71,9 +71,9 @@
                 <p>Explore the wonders of life. Comprehensive, topic-wise notes for GCE A/L Biology, simplifying complex biological processes and systems.</p>
                 <div class="hero-buttons animate-fade-in-up">
                     <a href="#notes-content" class="btn btn-primary">Start Reading Notes</a>
-                    <a href="notes/biology/biology-notes.pdf" class="btn btn-secondary" download>
-                        <i class="fas fa-download"></i> Download Full Notes
-                    </a>
+                    <button onclick="window.print()" class="btn btn-secondary">
+                        <i class="fas fa-file-pdf"></i> Save / Print Notes as PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -83,7 +83,7 @@
                 <!-- Comprehensive Table of Contents -->
                 <aside class="notes-sidebar reveal fade-left" id="mobile-toc-sidebar">
                     <!-- Mobile Toggle Button Header -->
-                    <div class="sidebar-header" id="toc-toggle-btn" onclick="document.getElementById('mobile-toc-sidebar').classList.toggle('expanded')">
+                    <div class="sidebar-header" id="toc-toggle-btn">
                         <h3>GCE 710 Bio Syllabus</h3>
                         <i class="fas fa-chevron-down toc-icon"></i>
                     </div>
