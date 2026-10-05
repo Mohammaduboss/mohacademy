@@ -355,16 +355,52 @@ mjx-container {
 }
 
 /* ==========================================================================
-   PRINT / PDF EXPORT STYLING
+   PRINT / PDF EXPORT ENGINE FIX
    ========================================================================== */
 @media print {
-    /* Hide all navigational and floating UI elements */
-    header, footer, .notes-sidebar, .moh-fab-container, .hero-buttons, .cta-section, #back-to-top {
+    /* 1. CRITICAL: Force ALL scroll-reveal animated elements to be 100% visible */
+    *, *::before, *::after,
+    .reveal, .fade-up, .fade-left, .fade-right, .animate-fade-in-up {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
+    /* 2. Hide all website UI, navigation, chatbot, and buttons */
+    header, footer, .notes-sidebar, .moh-fab-container,
+    .hero-buttons, .cta-section, #back-to-top, .hero-overlay,
+    .sidebar-collapsible-content, .note-end-buttons {
         display: none !important;
     }
 
-    /* Force the main notes content to act like a standard paper document */
-    body, .notes-content-section, .notes-main-content {
+    /* 3. Convert the hero banner into a clean, normal title (stops wasting page 1) */
+    .notes-subject-hero-section {
+        min-height: auto !important;
+        height: auto !important;
+        padding: 10px 0 25px 0 !important;
+        background: none !important;
+        color: #000000 !important;
+        display: block !important;
+        text-align: left !important;
+    }
+
+    .notes-subject-hero-section .hero-content h1 {
+        color: #000000 !important;
+        font-size: 2.2rem !important;
+        text-shadow: none !important;
+        margin-bottom: 8px !important;
+    }
+
+    .notes-subject-hero-section .hero-content p {
+        color: #475569 !important;
+        font-size: 1rem !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* 4. Reset layout wrappers to standard full-width paper */
+    body, .notes-content-section, .notes-container, .notes-main-content {
         background: #ffffff !important;
         color: #000000 !important;
         box-shadow: none !important;
@@ -375,8 +411,33 @@ mjx-container {
         max-width: 100% !important;
     }
 
-    /* Prevent page breaks inside equations and key lists */
-    .equation, .key-points-list li {
+    /* 5. Clean headings and prevent page breaks right after a header */
+    .notes-section-title {
+        color: #0b132b !important;
+        border-bottom: 2px solid #000000 !important;
+        margin-top: 30px !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    .notes-sub-section-title {
+        color: #1e293b !important;
+        margin-top: 20px !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    /* 6. Avoid splitting equations across two pages */
+    .equation, .code-example pre, .formula-list li, .key-points-list li {
+        page-break-inside: avoid !important;
         break-inside: avoid !important;
+        background-color: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #000000 !important;
+    }
+
+    /* 7. Ensure equations and text are fully visible in black */
+    .notes-main-content p, .notes-main-content ul li {
+        color: #0f172a !important;
     }
 }
