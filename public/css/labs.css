@@ -153,3 +153,54 @@ body.simulator-active {
     .data-panel { order: 2; height: auto; min-height: 500px; }
     .calc-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   VIRTUAL LABS MOBILE RESPONSIVENESS PATCH
+   ========================================================================== */
+
+/* 1. Stop the screen from scrolling when a student drags an item */
+.lab-workbench, #lab-canvas, .interactive-apparatus {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 2. Stack the layout on mobile so the canvas is usable */
+@media (max-width: 768px) {
+    .lab-workspace-container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Make the equipment shelf horizontal and scrollable */
+    .lab-sidebar-tools {
+        width: 100% !important;
+        max-height: 140px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        display: flex !important;
+        flex-direction: row !important;
+        border-bottom: 2px solid #e2e8f0;
+        border-right: none !important;
+        padding: 10px !important;
+    }
+    
+    /* Give the actual experiment canvas maximum room */
+    .lab-viewport {
+        width: 100% !important;
+        min-height: 400px !important;
+    }
+
+    /* Recommend landscape mode for tight screens */
+    .lab-workspace-container::before {
+        content: "Rotate phone to landscape for best precision \f021";
+        font-family: 'Poppins', 'Font Awesome 5 Free', sans-serif;
+        font-weight: 600;
+        display: block;
+        background: #ffb703;
+        color: #000;
+        text-align: center;
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+}

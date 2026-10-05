@@ -1,3 +1,48 @@
+/* ==========================================================================
+   MOBILE TOUCH-TO-MOUSE POLYFILL
+   ========================================================================== */
+function enableMobileLabTouch() {
+    // Target the lab workspace
+    const labWorkspace = document.querySelector('.lab-workbench') || document.querySelector('#lab-canvas') || document.body;
+
+    function touch2Mouse(e) {
+        const theTouch = e.changedTouches[0];
+        let mouseEv;
+
+        switch(e.type) {
+            case "touchstart": mouseEv = "mousedown"; break;  
+            case "touchend":   mouseEv = "mouseup"; break;
+            case "touchmove":  mouseEv = "mousemove"; break;
+            default: return;
+        }
+
+        const mouseEvent = new MouseEvent(mouseEv, {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+            clientX: theTouch.clientX,
+            clientY: theTouch.clientY,
+            screenX: theTouch.screenX,
+            screenY: theTouch.screenY
+        });
+
+        theTouch.target.dispatchEvent(mouseEvent);
+        
+        // Prevent default browser scrolling only inside the lab area
+        if (e.cancelable) {
+            e.preventDefault();
+        }
+    }
+
+    // Attach listeners
+    labWorkspace.addEventListener("touchstart", touch2Mouse, { passive: false });
+    labWorkspace.addEventListener("touchmove", touch2Mouse, { passive: false });
+    labWorkspace.addEventListener("touchend", touch2Mouse, { passive: false });
+}
+
+// Run the polyfill when the page loads
+document.addEventListener('DOMContentLoaded', enableMobileLabTouch);
+
 // Function to handle switching between Analytical Tabs
 function switchTab(tabId) {
     // Hide all contents and remove active class from buttons
