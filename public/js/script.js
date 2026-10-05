@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-// ==========================================================================
-// GLOBAL AUTHENTICATION SYNC ENGINE (Fixes the "Amnesia" bug & Cleans UI)
-// ==========================================================================
-const token = localStorage.getItem('mohacademy_token') || localStorage.getItem('token');
-const navMenuUl = document.querySelector('.nav-list');
+    // ==========================================================================
+    // GLOBAL AUTHENTICATION SYNC ENGINE (Fixes the "Amnesia" bug & Cleans UI)
+    // ==========================================================================
+    const token = localStorage.getItem('mohacademy_token') || localStorage.getItem('token');
+    const navMenuUl = document.querySelector('.nav-list');
 
-if (token) {
-    // 1. Hide "Log In" or "Sign Up" links in the navbar globally
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === 'login.html' || href === 'signup.html' || href === 'register.html') {
-            link.parentElement.style.display = 'none';
-        }
-    });
+    if (token) {
+        // 1. Hide "Log In" or "Sign Up" links in the navbar globally
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === 'login.html' || href === 'signup.html' || href === 'register.html') {
+                link.parentElement.style.display = 'none';
+            }
+        });
 
-    // 2. Inject "Profile" Dropdown (containing Dashboard & Logout) into the navbar
-    if (navMenuUl && !document.getElementById('global-nav-dashboard')) {
-        const profileDropdownLi = document.createElement('li');
-        profileDropdownLi.className = 'dropdown'; // Uses your existing CSS dropdown class
-        profileDropdownLi.id = 'global-nav-dashboard';
-        
-        profileDropdownLi.innerHTML = `
+        // 2. Inject "Profile" Dropdown (containing Dashboard & Logout) into the navbar
+        if (navMenuUl && !document.getElementById('global-nav-dashboard')) {
+            const profileDropdownLi = document.createElement('li');
+            profileDropdownLi.className = 'dropdown'; // Uses your existing CSS dropdown class
+            profileDropdownLi.id = 'global-nav-dashboard';
+
+            profileDropdownLi.innerHTML = `
             <a href="profile" class="nav-link dropdown-toggle" style="color: var(--primary-color); font-weight: 700;">
                 <i class="fas fa-user-circle"></i> Profile <i class="fas fa-chevron-down dropdown-arrow"></i>
             </a>
@@ -30,38 +30,38 @@ if (token) {
                 <li><a href="#" id="global-logout-btn" style="color: #e74c3c; font-weight: 600;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         `;
-        navMenuUl.appendChild(profileDropdownLi);
+            navMenuUl.appendChild(profileDropdownLi);
 
-        // Handle Logout Click safely
-        document.getElementById('global-logout-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            localStorage.removeItem('mohacademy_token');
-            localStorage.removeItem('token');
-            window.location.href = 'login.html'; // Instantly lock them out and redirect
+            // Handle Logout Click safely
+            document.getElementById('global-logout-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('mohacademy_token');
+                localStorage.removeItem('token');
+                window.location.href = 'login.html'; // Instantly lock them out and redirect
+            });
+        }
+
+        // 3. Update Global Action Buttons (Hero, CTA, Footers)
+        document.querySelectorAll('.btn').forEach(btn => {
+            const href = btn.getAttribute('href');
+            if (href === 'signup.html' || href === 'login.html' || href === 'register.html') {
+                btn.setAttribute('href', 'profile.html');
+                btn.innerHTML = 'Enter Profile <i class="fas fa-arrow-right"></i>';
+                btn.classList.remove('btn-outline'); // Removes transparent styling
+                btn.classList.add('btn-primary');    // Makes the button solid
+            }
         });
     }
-
-    // 3. Update Global Action Buttons (Hero, CTA, Footers)
-    document.querySelectorAll('.btn').forEach(btn => {
-        const href = btn.getAttribute('href');
-        if (href === 'signup.html' || href === 'login.html' || href === 'register.html') {
-            btn.setAttribute('href', 'profile.html');
-            btn.innerHTML = 'Enter Profile <i class="fas fa-arrow-right"></i>';
-            btn.classList.remove('btn-outline'); // Removes transparent styling
-            btn.classList.add('btn-primary');    // Makes the button solid
-        }
-    });
-}
-// 4. THE PRO SWEEPER: If the user is Premium, destroy all upgrade prompts!
+    // 4. THE PRO SWEEPER: If the user is Premium, destroy all upgrade prompts!
     const userData = JSON.parse(storedData || '{}');
-    const actualUser = userData.student || userData.user || userData; 
+    const actualUser = userData.student || userData.user || userData;
 
     // Handle both true boolean and 'true' string from localStorage
     if (actualUser.isPremium === true || actualUser.isPremium === 'true') {
-        
+
         // Hide all upgrade buttons on the page (Homepage, Modals, Pricing links)
         document.querySelectorAll('a[href="pricing"], a[href="pricing.html"], .btn-upgrade-now, .upgrade-badge').forEach(btn => {
-            btn.style.display = 'none'; 
+            btn.style.display = 'none';
         });
 
         // Specific fix for the homepage "JOIN FOR FREE" / "CREATE YOUR PROFILE FREE" buttons
@@ -92,12 +92,12 @@ if (token) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerHeight = header.offsetHeight;
                 const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - headerHeight - 20; 
+                const offsetPosition = elementPosition - headerHeight - 20;
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -109,7 +109,7 @@ if (token) {
 
     // --- Sticky Header with Shrink Effect & Dynamic Hero Section Padding ---
     function adjustHeaderAndHeroPadding() {
-        const headerHeight = header.offsetHeight; 
+        const headerHeight = header.offsetHeight;
         document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
 
         if (window.scrollY > 50) {
@@ -124,8 +124,8 @@ if (token) {
     }
 
     window.addEventListener('scroll', adjustHeaderAndHeroPadding);
-    window.addEventListener('resize', adjustHeaderAndHeroPadding); 
-    adjustHeaderAndHeroPadding(); 
+    window.addEventListener('resize', adjustHeaderAndHeroPadding);
+    adjustHeaderAndHeroPadding();
 
     // --- Animated Hamburger Menu & Mobile Dropdowns ---
     if (hamburgerMenu && navMenu) {
@@ -141,17 +141,17 @@ if (token) {
 
         dropdownToggles.forEach(toggle => {
             toggle.addEventListener('click', (e) => {
-                if (window.innerWidth <= 767) { 
-                    e.preventDefault(); 
+                if (window.innerWidth <= 767) {
+                    e.preventDefault();
                     const parentLi = toggle.parentElement;
-                    
+
                     dropdownToggles.forEach(otherToggle => {
                         if (otherToggle !== toggle && otherToggle.parentElement.classList.contains('active')) {
                             otherToggle.parentElement.classList.remove('active');
                         }
                     });
-                    
-                    parentLi.classList.toggle('active'); 
+
+                    parentLi.classList.toggle('active');
                 }
             });
         });
@@ -172,7 +172,7 @@ if (token) {
     // --- Hero Slider Functionality ---
     const heroSlides = document.querySelectorAll('.hero-slide');
     let currentHeroSlide = 0;
-    const heroSlideInterval = 7000; 
+    const heroSlideInterval = 7000;
     let heroSliderTimer;
 
     function showHeroSlide(index) {
@@ -200,13 +200,13 @@ if (token) {
                 setTimeout(() => {
                     el.style.opacity = '1';
                     el.style.transform = 'translateY(0)';
-                }, 50); 
+                }, 50);
             });
         }
     }
 
     function startHeroSlider() {
-        clearInterval(heroSliderTimer); 
+        clearInterval(heroSliderTimer);
         heroSliderTimer = setInterval(() => {
             currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
             showHeroSlide(currentHeroSlide);
@@ -219,10 +219,10 @@ if (token) {
     }
 
     // Make dots clickable globally
-    window.jumpToSlide = function(index) {
+    window.jumpToSlide = function (index) {
         currentHeroSlide = index;
         showHeroSlide(currentHeroSlide);
-        
+
         // Reset the timer so it doesn't instantly jump to the next slide
         clearInterval(heroSliderTimer);
         startHeroSlider();
@@ -236,8 +236,8 @@ if (token) {
 
     if (carouselTrack && testimonialCards.length > 0) {
         let currentIndex = 0;
-        let cardWidth = 0; 
-        let visibleCards = 3; 
+        let cardWidth = 0;
+        let visibleCards = 3;
         let autoSlideInterval;
 
         const getCardWidth = () => {
@@ -251,23 +251,23 @@ if (token) {
         };
 
         const updateCarouselVisibility = () => {
-            if (window.innerWidth <= 767) { 
+            if (window.innerWidth <= 767) {
                 visibleCards = 1;
-            } else if (window.innerWidth <= 991) { 
+            } else if (window.innerWidth <= 991) {
                 visibleCards = 2;
             } else {
-                visibleCards = 3; 
+                visibleCards = 3;
             }
             cardWidth = getCardWidth();
-            showTestimonial(currentIndex); 
+            showTestimonial(currentIndex);
         };
 
         const showTestimonial = (index) => {
             if (index < 0) {
-                currentIndex = testimonialCards.length - visibleCards; 
+                currentIndex = testimonialCards.length - visibleCards;
                 if (currentIndex < 0) currentIndex = 0;
             } else if (index >= testimonialCards.length) {
-                currentIndex = 0; 
+                currentIndex = 0;
             } else {
                 currentIndex = index;
             }
@@ -277,31 +277,31 @@ if (token) {
         };
 
         const startAutoSlide = () => {
-            clearInterval(autoSlideInterval); 
+            clearInterval(autoSlideInterval);
             autoSlideInterval = setInterval(() => {
                 let nextIndex = currentIndex + 1;
                 if (nextIndex > testimonialCards.length - visibleCards) {
                     nextIndex = 0;
                 }
                 showTestimonial(nextIndex);
-            }, 8000); 
+            }, 8000);
         };
 
         prevBtn.addEventListener('click', () => {
-            clearInterval(autoSlideInterval); 
+            clearInterval(autoSlideInterval);
             showTestimonial(currentIndex - 1);
-            startAutoSlide(); 
+            startAutoSlide();
         });
 
         nextBtn.addEventListener('click', () => {
-            clearInterval(autoSlideInterval); 
+            clearInterval(autoSlideInterval);
             showTestimonial(currentIndex + 1);
-            startAutoSlide(); 
+            startAutoSlide();
         });
 
         window.addEventListener('resize', updateCarouselVisibility);
-        updateCarouselVisibility(); 
-        startAutoSlide(); 
+        updateCarouselVisibility();
+        startAutoSlide();
     }
 
     // --- Reveal on Scroll Animations ---
@@ -311,24 +311,24 @@ if (token) {
         const windowHeight = window.innerHeight;
         revealElements.forEach(el => {
             const elementTop = el.getBoundingClientRect().top;
-            const revealPoint = 150; 
+            const revealPoint = 150;
 
             if (elementTop < windowHeight - revealPoint) {
                 el.classList.add('active');
-            } 
+            }
         });
     };
 
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); 
+    revealOnScroll();
 
     // --- Active Nav Link Highlight ---
     const highlightActiveLink = () => {
-        const path = window.location.pathname.split('/').pop(); 
+        const path = window.location.pathname.split('/').pop();
         const currentFileName = path === '' ? 'index.html' : path;
 
         navLinks.forEach(link => {
-            const linkHref = link.getAttribute('href')?.split('/').pop(); 
+            const linkHref = link.getAttribute('href')?.split('/').pop();
             if (linkHref === currentFileName) {
                 link.classList.add('active');
             } else {
@@ -342,7 +342,7 @@ if (token) {
     // --- Back to Top Button functionality ---
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) { 
+            if (window.scrollY > 300) {
                 backToTopBtn.classList.add('show');
             } else {
                 backToTopBtn.classList.remove('show');
@@ -379,9 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.toggle('active', !isActive);
             accordionContent.classList.toggle('open', !isActive);
 
-            if (!isActive) { 
+            if (!isActive) {
                 accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
-            } else { 
+            } else {
                 accordionContent.style.maxHeight = "0";
             }
         });
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // --- Number Counter Animation ---
     const statNumbers = document.querySelectorAll('.stat-number');
-    
+
     if (statNumbers.length > 0) {
         const animateStats = (entries, observer) => {
             entries.forEach(entry => {
@@ -402,13 +402,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const target = entry.target;
                     const endValue = parseInt(target.getAttribute('data-target'));
                     const duration = 2000; // 2 seconds total animation
-                    
+
                     // Calculate step time to make it smooth
                     let currentValue = 0;
-                    const increment = Math.ceil(endValue / 50); 
-                    
+                    const increment = Math.ceil(endValue / 50);
+
                     const timer = setInterval(() => {
-                        currentValue += increment; 
+                        currentValue += increment;
                         if (currentValue >= endValue) {
                             target.innerText = endValue + (endValue > 100 ? "+" : "");
                             clearInterval(timer);
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             target.innerText = currentValue;
                         }
                     }, 30); // 30ms step speed
-                    
+
                     observer.unobserve(target); // Stop observing once animated
                 }
             });
