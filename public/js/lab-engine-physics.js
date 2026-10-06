@@ -203,7 +203,13 @@ function getFallbackBlueprint(code) {
     let engine = "simple_pendulum"; // Default failsafe
     let title = "Physics Experiment: " + code;
     
-    if (code === 'M2:05') engine = "average_mass_nails";
+    // ==========================================
+    // LOWER SIXTH MECHANICS & THERMAL
+    // ==========================================
+    if (code === 'M1:01') engine = "relative_density";
+    else if (code === 'M2:02') engine = "rubber_elasticity";
+    else if (code === 'E2:03') engine = "solid_density";
+    else if (code === 'M2:05') engine = "average_mass_nails";
     else if (code === 'M2:06A') engine = "simple_pendulum";
     else if (code === 'M2:06B') engine = "inclined_plane";
     else if (code === 'M2:07') engine = "loaded_cantilever";
@@ -212,21 +218,75 @@ function getFallbackBlueprint(code) {
     else if (code === 'H2:01') engine = "thermal_cooling_water";
     else if (code === 'H2:03') engine = "thermal_heating_candle";
     else if (code === 'H2:04') engine = "thermal_wax_melting";
-    else if (code === 'H1:10') engine = "calorimetry_mixture";
-    else if (code === 'H3:12') engine = "heat_flow_boundary";
-    else if (code === 'LW4:16') engine = "optical_parallax";
+    
+    // ==========================================
+    // UPPER SIXTH ADVANCED MECHANICS & WAVES
+    // ==========================================
+    else if (code === 'M3:03') engine = "cantilever_oscillation";
+    else if (code === 'M4:04') engine = "spring_oscillation";
     else if (code === 'M6:06') engine = "principle_of_moments";
     else if (code === 'M7:07') engine = "concurrent_forces";
     else if (code === 'M8:08') engine = "simple_pulley";
     else if (code === 'SW1:09') engine = "sound_resonance";
+    
+    // ==========================================
+    // UPPER SIXTH THERMAL & OPTICS
+    // ==========================================
+    else if (code === 'H1:10') engine = "calorimetry_mixture";
+    else if (code === 'H2:11') engine = "latent_vaporization";
+    else if (code === 'H3:12') engine = "heat_flow_boundary";
+    else if (code === 'LW5:17') engine = "optical_bench";
+    else if (code === 'LW6:18') engine = "optical_parallax";
+    
+    // ==========================================
+    // ELECTRICITY, MAGNETISM & RADIOACTIVITY
+    // ==========================================
     else if (code === 'B1:25') engine = "mag_flux";
     else if (code === 'B2:26') engine = "mag_inertia";
     else if (code === 'E1:20') engine = "elec_resistivity";
     else if (code === 'E3:22') engine = "elec_emf";
     else if (code === 'EL2:24') engine = "elec_capacitor";
-    else if (code === 'R1:27') engine = "radio_burette";
-    else if (code === 'R2:28') engine = "radio_cubes";
-    else if (code.startsWith('ST')) engine = "station_diameters"; // Generic station fallback
+    else if (code === 'R1:27') engine = "radio_cubes";
+    else if (code === 'R2:28') engine = "radio_burette";
+    
+    // ==========================================
+    // GCE STATION EXPERIMENTS (BATCH 1 - 5)
+    // ==========================================
+    else if (code === 'S3:01') engine = "station_diameters";
+    else if (code === 'S4:02') engine = "station_electrolysis";
+    else if (code === 'S7:03') engine = "station_overflow_density";
+    else if (code === 'S8:04') engine = "station_magnetic_boxes";
+    else if (code === 'S9:05') engine = "station_lens_mirror";
+    else if (code === 'S10:06') engine = "station_evaporation";
+    else if (code === 'S12:07') engine = "station_capillary";
+    else if (code === 'S13:08') engine = "station_utube";
+    else if (code === 'S14:09') engine = "station_elec_calorimetry";
+    else if (code === 'S16:10') engine = "station_thermo_balloon";
+    else if (code === 'S17:11') engine = "station_blackbox_circuits";
+    else if (code === 'S18:12') engine = "station_sand_density";
+    else if (code === 'S19:13') engine = "station_ohmmeter_resistors";
+    else if (code === 'S21:14') engine = "station_build_capacitor";
+    else if (code === 'S22:15') engine = "station_blackbox_series_parallel";
+    
+    // ==========================================
+    // UPPER SIXTH STATION EXPERIMENTS (VOL 2)
+    // ==========================================
+    else if (code === 'S2V1:01') engine = "station_v2_sound";
+    else if (code === 'S2V2:02') engine = "station_v2_resistor_boxes";
+    else if (code === 'S2V3:03') engine = "station_v2_spring_mass";
+    else if (code === 'S2V4:04') engine = "station_v2_wire_density";
+    else if (code === 'S2V5:05') engine = "station_v2_cap_res_boxes";
+    else if (code === 'S2V6:06') engine = "station_v2_youngs_modulus";
+    else if (code === 'S2V7:07') engine = "station_v2_latent_ice";
+    else if (code === 'S2V8:08') engine = "station_v2_thermoelectric";
+    else if (code === 'S2V9:09') engine = "station_v2_mag_compass";
+    else if (code === 'S2V10:10') engine = "station_v2_thermistor_ldr";
+    else if (code === 'S4:01') engine = "station_pipe_diameter";
+    else if (code === 'S4:02_V2') engine = "station_capacitor_energy";
+    else if (code === 'S4:03') engine = "station_earth_magnetic";
+    else if (code === 'S5:01') engine = "station_internal_res";
+    else if (code === 'S5:02') engine = "station_torus_density";
+    else if (code === 'S5:03') engine = "station_component_id";
 
     return {
         title: title,
