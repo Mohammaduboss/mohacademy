@@ -1549,3 +1549,20 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 20%;
     margin-top: 25px;
 }
+
+/* ==========================================================================
+   GLOBAL FIX: PREVENT TEXT OVERLAPPING BUTTONS ON MOBILE CARDS
+   ========================================================================== */
+.lab-card, .subject-card, .resource-card, .experiment-card {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.lab-card p, .subject-card p, .resource-card p, .experiment-card p {
+    margin-bottom: 25px !important; /* Forces a safe gap below the text */
+    flex-grow: 1; /* Allows text to take up available space */
+}
+
+.lab-card .btn, .subject-card .btn, .resource-card .btn, .experiment-card .btn {
+    margin-top: auto !important; /* Magically pushes the button to the absolute bottom */
+}
