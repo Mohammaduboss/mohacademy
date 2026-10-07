@@ -291,7 +291,7 @@ function getFallbackBlueprint(code) {
     return {
         title: title,
         instructions: [
-            "Follow the standard procedures outlined in your MohAcademy practical manual.",
+            "Follow the standard procedures outlined in your practical manual.",
             "Adjust the sliders or buttons in the control panel to manipulate the apparatus.",
             "Record your readings carefully in the data table provided.",
             "Use the GCE graph paper tab to plot your results if required."
