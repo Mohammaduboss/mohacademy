@@ -2079,8 +2079,8 @@ function renderRelativeDensity() {
                     <button onclick="rdSetMedium('oil')" style="width:100%; background:#facc15; color:#0f172a; border:none; padding:10px; border-radius:6px; font-weight:bold; cursor:pointer;">Immerse in Oil</button>
                 </div>
             </div>
-            <div style="flex: 2; min-width: 300px; background: #fff; border-radius: 8px; padding: 10px; display: flex; justify-content: center; position: relative; border: 2px solid #0f172a;">
-                <canvas id="canvas-rd" width="450" height="420"></canvas>
+            <div style="flex: 2; min-width: 200px; width: 100%; box-sizing: border-box; background: #fff; border-radius: 8px; padding: 10px; display: flex; justify-content: center; position: relative; border: 2px solid #0f172a; overflow: hidden;">
+                <canvas id="canvas-rd" width="450" height="420" style="max-width: 100%; height: auto; display: block;"></canvas>
             </div>
         </div>
     `;
@@ -2112,7 +2112,7 @@ function rdLoop() {
 
     // Animate Beaker sliding up High enough to submerge stone
     if (relDensityState.medium !== 'air') {
-        if (relDensityState.animY > 150) relDensityState.animY -= 8;
+        if (relDensityState.animY > 80) relDensityState.animY -= 8;
     } else {
         if (relDensityState.animY < 450) relDensityState.animY += 8;
     }
