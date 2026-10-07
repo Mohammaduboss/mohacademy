@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Inject "Profile" Dropdown (containing Dashboard & Logout) into the navbar
         if (navMenuUl && !document.getElementById('global-nav-dashboard')) {
             const profileDropdownLi = document.createElement('li');
-            profileDropdownLi.className = 'dropdown'; // Uses your existing CSS dropdown class
+            profileDropdownLi.className = 'dropdown'; 
             profileDropdownLi.id = 'global-nav-dashboard';
 
             profileDropdownLi.innerHTML = `
@@ -37,18 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 localStorage.removeItem('mohacademy_token');
                 localStorage.removeItem('token');
-                window.location.href = 'login.html'; // Instantly lock them out and redirect
+                window.location.href = 'login.html'; 
             });
         }
 
-        // 3. Update Global Action Buttons (Hero, CTA, Footers)
-        document.querySelectorAll('.btn').forEach(btn => {
-            const href = btn.getAttribute('href');
-            if (href === 'signup.html' || href === 'login.html' || href === 'register.html') {
-                btn.setAttribute('href', 'profile.html');
-                btn.innerHTML = 'Enter Profile <i class="fas fa-arrow-right"></i>';
-                btn.classList.remove('btn-outline'); // Removes transparent styling
-                btn.classList.add('btn-primary');    // Makes the button solid
+        // 3. TRANSFORM ALL SIGNUP BUTTONS INTO PROFILE BUTTONS
+        // This targets the Hero button and the CTA button on every page
+        const signupLinks = document.querySelectorAll('a[href="signup"], a[href="signup.html"]');
+        signupLinks.forEach(link => {
+            link.style.display = 'inline-block'; // Restores the button if it was hidden
+            link.setAttribute('href', 'profile'); // Routes them to their dashboard
+            link.innerHTML = 'Go to Profile <i class="fas fa-arrow-right"></i>'; // Changes the button text
+            link.classList.remove('btn-outline'); // Removes transparent styling
+            link.classList.add('btn-primary');    // Makes the button solid
+        });
+
+        // 4. UPDATE THE CTA SECTION TEXT GLOBALLY
+        // This fixes the awkward "Register an account" text above the footer
+        const ctaSections = document.querySelectorAll('.cta-content');
+        ctaSections.forEach(cta => {
+            const title = cta.querySelector('h2');
+            const desc = cta.querySelector('p');
+
+            if (title) {
+                title.innerText = "Continue Building Your Success Trajectory!";
+            }
+            
+            if (desc) {
+                desc.innerText = "Head over to your profile to access your premium resources, virtual labs, and past papers.";
             }
         });
     }
