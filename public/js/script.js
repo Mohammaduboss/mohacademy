@@ -93,6 +93,60 @@ document.addEventListener('DOMContentLoaded', () => {
             window.userMessageCount = -9999; // Unlimited AI queries
         }
     }
+    // 5. RANDOM PRO UPGRADE POPUP FOR FREE USERS
+    if (!actualUser || (actualUser.isPremium !== true && actualUser.isPremium !== 'true')) {
+        // 30% chance to show the popup on any page load
+        if (Math.random() < 0.3) {
+            setTimeout(() => {
+                // Prevent duplicate popups
+                if (document.getElementById('pro-upgrade-popup')) return;
+
+                // Create the popup overlay
+                const popupOverlay = document.createElement('div');
+                popupOverlay.id = 'pro-upgrade-popup';
+                popupOverlay.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(5px); opacity:0; transition:opacity 0.4s ease;';
+                
+                // Create the popup content box
+                const popupContent = document.createElement('div');
+                popupContent.style.cssText = 'background:#0f172a; border:2px solid var(--sim-accent); padding:30px; border-radius:12px; max-width:450px; width:90%; text-align:center; box-shadow:0 10px 40px rgba(56,189,248,0.2); transform:translateY(20px); transition:transform 0.4s ease; position:relative;';
+                
+                // Close button
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                closeBtn.style.cssText = 'position:absolute; top:10px; right:15px; background:none; border:none; color:#94a3b8; font-size:1.2rem; cursor:pointer;';
+                closeBtn.onclick = () => {
+                    popupOverlay.style.opacity = '0';
+                    popupContent.style.transform = 'translateY(20px)';
+                    setTimeout(() => popupOverlay.remove(), 400);
+                };
+
+                popupContent.innerHTML = `
+                    <div style="font-size:3rem; color:var(--sim-accent); margin-bottom:15px;"><i class="fas fa-crown"></i></div>
+                    <h3 style="color:#fff; font-family:'Poppins'; margin-bottom:10px;">Unlock Perfect Grades with PRO</h3>
+                    <p style="color:#cbd5e1; font-size:0.95rem; margin-bottom:20px; line-height:1.5;">Get unlimited access to AI grading, 60+ interactive virtual labs, and complete marking guides.</p>
+                    <div style="background:#1e293b; padding:15px; border-radius:8px; margin-bottom:20px; border:1px solid #334155;">
+                        <div style="color:#facc15; font-size:1.5rem; font-weight:800; font-family:'Orbitron';">1,500 FCFA <span style="font-size:0.8rem; color:#94a3b8; font-family:'Poppins';">/ month</span></div>
+                    </div>
+                    <a href="pricing" class="btn btn-primary" style="display:block; width:100%; padding:12px; border-radius:6px; font-weight:bold; font-size:1.1rem; margin-bottom:10px;">Upgrade Now</a>
+                    <button id="maybe-later-btn" style="background:none; border:none; color:#94a3b8; text-decoration:underline; cursor:pointer; font-family:'Poppins'; font-size:0.85rem;">Maybe Later</button>
+                `;
+
+                popupContent.appendChild(closeBtn);
+                popupOverlay.appendChild(popupContent);
+                document.body.appendChild(popupOverlay);
+
+                // Add event listener to the "Maybe Later" button after it's in the DOM
+                document.getElementById('maybe-later-btn').onclick = closeBtn.onclick;
+
+                // Trigger animation
+                requestAnimationFrame(() => {
+                    popupOverlay.style.opacity = '1';
+                    popupContent.style.transform = 'translateY(0)';
+                });
+
+            }, 2500); // Wait 2.5 seconds before popping up so they read the page first
+        }
+    }
 
     // --- Global Elements ---
     const header = document.getElementById('main-header');
