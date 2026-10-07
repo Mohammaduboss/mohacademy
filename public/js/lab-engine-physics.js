@@ -763,8 +763,8 @@ function renderInclinedPlaneWorkspace() {
                     <button onclick="releaseInclineBallBearing()" style="width:100%; margin-top:20px; background:var(--cobalt); color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; font-family:'Poppins'; cursor:pointer;"><i class="fas fa-play"></i> Release Ball Bearing</button>
                 </div>
             </div>
-            <div style="background:#fff; border-radius:8px; padding:10px; display:flex; justify-content:center; border:2px solid #0f172a; overflow:hidden;">
-                <canvas id="canvas-plane" width="520" height="300" style="display:block;"></canvas>
+            <div style="background:#fff; border-radius:8px; padding:10px; display:flex; justify-content:center; border:2px solid #0f172a; overflow:hidden; width:100%; box-sizing:border-box;">
+                <canvas id="canvas-plane" width="520" height="300" style="max-width: 100%; height: auto; display:block;"></canvas>
             </div>
             <div style="color: var(--amber); font-size: 0.8rem; text-align: center; font-family: 'Poppins';"><i class="fas fa-info-circle"></i> Timer activates automatically. Read t and manually evaluate t² for the table.</div>
         </div>
@@ -859,8 +859,8 @@ function renderCantileverWorkspace() {
                 <label style="color:#fff; font-size:0.85rem; display:block; margin-bottom:12px; font-family:'Poppins';">Load Span Offset Link (L): <span id="lbl-cant-l" style="color:var(--sim-accent); font-weight:bold;">20.0 cm</span></label>
                 <input type="range" id="slider-cant-l" min="10" max="100" value="20" step="5" style="width:100%; cursor:pointer;">
             </div>
-            <div style="background:#fff; border-radius:8px; padding:15px; display:flex; justify-content:center; border:2px solid #0f172a; overflow:auto;">
-                <canvas id="canvas-cantilever" width="560" height="320" style="display:block;"></canvas>
+            <div style="background:#fff; border-radius:8px; padding:10px; display:flex; justify-content:center; border:2px solid #0f172a; overflow:hidden; width:100%; box-sizing:border-box;">
+                <canvas id="canvas-cantilever" width="560" height="320" style="max-width: 100%; height: auto; display:block;"></canvas>
             </div>
             <div style="color: var(--amber); font-size: 0.8rem; text-align: center; font-family: 'Poppins';"><i class="fas fa-pencil-alt"></i> Manually read the final clearance height 'h' from the scale and log to table.</div>
         </div>
@@ -2315,8 +2315,8 @@ function renderOscillationEngine(engineType) {
                     <button onclick="triggerOscillation()" style="width:100%; margin-top:15px; background:var(--emerald); color:white; border:none; padding:12px; border-radius:6px; font-weight:bold; cursor:pointer;"><i class="fas fa-hand-pointer"></i> Displace & Release</button>
                 </div>
             </div>
-            <div style="flex: 1.5; min-width: 300px; background: #fff; border-radius: 8px; padding: 10px; display: flex; justify-content: center; position: relative; border: 2px solid #0f172a;">
-                <canvas id="canvas-osc" width="450" height="380"></canvas>
+            <div style="flex: 1.5; min-width: 200px; width: 100%; box-sizing: border-box; background: #fff; border-radius: 8px; padding: 10px; display: flex; justify-content: center; position: relative; border: 2px solid #0f172a; overflow: hidden;">
+                <canvas id="canvas-osc" width="450" height="380" style="max-width: 100%; height: auto; display: block;"></canvas>
             </div>
         </div>
     `;
