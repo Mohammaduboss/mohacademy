@@ -235,8 +235,9 @@ function getFallbackBlueprint(code) {
     else if (code === 'H1:10') engine = "calorimetry_mixture";
     else if (code === 'H2:11') engine = "latent_vaporization";
     else if (code === 'H3:12') engine = "heat_flow_boundary";
+    else if (code === 'LW4:16') engine = "optical_parallax"; // <-- Fixed: Added the missing optical pins route
     else if (code === 'LW5:17') engine = "optical_bench";
-    else if (code === 'LW6:18') engine = "optical_parallax";
+    else if (code === 'LW6:18') engine = "optical_bench";    // <-- Fixed: LW6 uses the optical bench, not parallax
     
     // ==========================================
     // ELECTRICITY, MAGNETISM & RADIOACTIVITY
