@@ -500,3 +500,22 @@ document.addEventListener('DOMContentLoaded', () => {
         statNumbers.forEach(stat => statsObserver.observe(stat));
     }
 });
+
+// ==========================================================================
+// GLOBAL FIX: REMOVE STICKY HOVER/FOCUS COLORS ON BUTTONS AFTER CLICKING
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Instantly remove focus when any button or link is clicked
+    document.querySelectorAll('.btn, button, .nav-link, a').forEach(element => {
+        element.addEventListener('click', function() {
+            this.blur(); // Forces the element to drop its active/hover color state
+        });
+    });
+});
+
+// 2. Clear stuck colors if the user clicks the browser's "Back" arrow
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        document.querySelectorAll('.btn, button, .nav-link, a').forEach(el => el.blur());
+    }
+});
