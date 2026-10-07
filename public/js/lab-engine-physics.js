@@ -1230,8 +1230,8 @@ function renderLiquidDensityWorkspace() {
                 <div style="color: var(--amber); font-size: 0.8rem; text-align: center; font-family: 'Poppins';"><i class="fas fa-exclamation-triangle"></i> You must manually calculate the mass 'm' column!</div>
             </div>
 
-            <div style="flex: 2; min-width: 300px; background: #ffffff; border-radius: 8px; padding: 10px; display: flex; justify-content: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);">
-                <canvas id="canvas-density" width="450" height="420" style="max-width: 100%; height: auto;"></canvas>
+            <div style="flex: 2; min-width: 200px; width: 100%; box-sizing: border-box; background: #ffffff; border-radius: 8px; padding: 10px; display: flex; justify-content: center; position: relative; border: 2px solid #0f172a; overflow: hidden;">
+                <canvas id="canvas-density" width="450" height="420" style="max-width: 100%; height: auto; display: block;"></canvas>
             </div>
         </div>
     `;
