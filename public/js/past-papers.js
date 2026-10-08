@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // We use the raw paper.pdfUrl, not the forced downloadUrl
                 actionButtonHtml = `
                     <a href="viewer.html?file=${encodeURIComponent(paper.pdfUrl)}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
-                        <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution Securely' : 'View Paper Securely'}
+                        <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution' : 'View Paper'}
                     </a>
                 `;
             }
