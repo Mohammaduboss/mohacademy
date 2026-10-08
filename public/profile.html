@@ -898,13 +898,12 @@
             // 1. Completely wipe the browser's memory of the user
             localStorage.removeItem('mohacademy_token');
             localStorage.removeItem('mohacademy_user');
-            
-            // Catch any legacy keys just in case
+            localStorage.removeItem('token');
             localStorage.removeItem('student'); 
             localStorage.removeItem('user');    
 
-            // 2. Redirect back to the login page
-            window.location.href = 'login.html';
+            // 2. Redirect back to the home page
+            window.location.href = 'index.html';
         }
 
         async function handleSettingsUpdateEvent(e) {

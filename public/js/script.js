@@ -32,12 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
             navMenuUl.appendChild(profileDropdownLi);
 
-            // Handle Logout Click safely
+            // Handle Logout Click securely with a nuclear wipe
             document.getElementById('global-logout-btn').addEventListener('click', (e) => {
                 e.preventDefault();
+                // 1. Completely wipe the browser's memory of the user
                 localStorage.removeItem('mohacademy_token');
+                localStorage.removeItem('mohacademy_user');
                 localStorage.removeItem('token');
-                window.location.href = 'login.html'; 
+                localStorage.removeItem('student');
+                localStorage.removeItem('user');    
+
+                // 2. Redirect back to the home page, not the login page
+                window.location.href = 'index.html'; 
             });
         }
 

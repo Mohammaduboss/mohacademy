@@ -282,9 +282,15 @@
                 const data = await response.json();
 
                 if (response.status === 200) {
-                    localStorage.setItem('mohacademy_token', data.token);
-                    localStorage.setItem('mohacademy_user', JSON.stringify(data.student));
+                    localStorage.setItem('token', data.token);
+                    // Force the standard key 'student'
+                    localStorage.setItem('student', JSON.stringify(data.student)); 
                     
+                    // Cleanup legacy keys to prevent conflicts
+                    localStorage.removeItem('mohacademy_token');
+                    localStorage.removeItem('mohacademy_user');
+                    localStorage.removeItem('user');
+
                     // SMART REDIRECT LOGIC
                     const returnUrl = localStorage.getItem('mohacademy_return_url');
                     if (returnUrl) {
