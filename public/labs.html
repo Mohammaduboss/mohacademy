@@ -575,9 +575,8 @@
     <script>
         let allRealLabs = [];
 
-        // Get the logged-in student's data from localStorage. If they aren't logged in, assume free tier (false).
-        // Pull the correct auth key used by your login and payment systems
-        const storedUser = localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
+        // ROCK-SOLID USER PARSING: Look for the 'student' key
+        const storedUser = localStorage.getItem('student') || localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
         const currentUser = storedUser ? JSON.parse(storedUser) : { isPremium: false };
 
         // 1. Fetch Real Data from your Backend

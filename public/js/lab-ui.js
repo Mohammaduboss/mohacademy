@@ -12,7 +12,8 @@ function switchTab(tabId) {
 // AI Grading submission with PRO verification
 function submitLabForGrading() {
     // 1. Enforce Premium Tier Access by checking the correct storage key
-    const currentUser = JSON.parse(localStorage.getItem('mohacademy_user')) || { isPremium: false };
+    const storedUser = localStorage.getItem('student') || localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
+    const currentUser = JSON.parse(storedUser || '{"isPremium": false}');
     
     if (!currentUser.isPremium) {
         alert("AI Lab Grading is a PRO feature. Upgrade to unlock full A-Level derivations and AI evaluation.");
@@ -28,7 +29,8 @@ function submitLabForGrading() {
 // Runs automatically when any lab page loads to prevent direct URL access
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. Get the current user
-    const currentUser = JSON.parse(localStorage.getItem('mohacademy_user')) || { isPremium: false };
+    const storedUser = localStorage.getItem('student') || localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
+    const currentUser = JSON.parse(storedUser || '{"isPremium": false}');
     
     // 2. Get the lab ID from the URL (e.g., ?id=ABT:10)
     const urlParams = new URLSearchParams(window.location.search);

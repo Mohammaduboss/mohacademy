@@ -66,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
             noResultsMessage.style.display = 'none';
         }
 
-        // IMPORTANT: Check if current user is Premium. 
-        // We now use 'mohacademy_user' to match the pricing page exactly
-        const currentUser = JSON.parse(localStorage.getItem('mohacademy_user')) || { isPremium: false };
-        const isUserPremium = currentUser.isPremium;
+        // ROCK-SOLID USER PARSING: Look for the 'student' key
+        const storedUser = localStorage.getItem('student') || localStorage.getItem('mohacademy_user') || localStorage.getItem('user');
+        const currentUser = JSON.parse(storedUser || '{"isPremium": false}');
+        const isUserPremium = (currentUser.isPremium === true || currentUser.isPremium === 'true');
 
         papersToDisplay.forEach((paper, index) => {
             const card = document.createElement('div');
