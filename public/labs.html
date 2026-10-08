@@ -618,10 +618,17 @@
                     ? `<span class="badge-pro"><i class="fas fa-crown"></i> PRO</span>`
                     : `<span class="badge-free"><i class="fas fa-unlock"></i> FREE</span>`;
 
-                // If locked, show a button that triggers the modal. If unlocked, show the real link.
-                const actionButtonHTML = isLocked
-                    ? `<button onclick="openSubscriptionModal('${lab.title.replace(/'/g, "\\'")}')" class="launch-btn locked-btn"><i class="fas fa-lock"></i> Unlock Practical</button>`
-                    : `<a href="${engineLink}" class="launch-btn">Enter Simulator <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>`;
+                // GUEST TRAP & LOCK LOGIC
+                let actionButtonHTML = '';
+                if (isLocked) {
+                    actionButtonHTML = `<button onclick="openSubscriptionModal('${lab.title.replace(/'/g, "\\'")}')" class="launch-btn locked-btn"><i class="fas fa-lock"></i> Unlock Practical</button>`;
+                } else if (!currentUser || !currentUser.email) {
+                    // Guest trap for free labs
+                    actionButtonHTML = `<button onclick="localStorage.setItem('mohacademy_return_url', '${engineLink}'); window.location.href='login.html';" class="launch-btn locked-btn" style="background: var(--primary-color); color: white;"><i class="fas fa-user-lock"></i> Login to Play</button>`;
+                } else {
+                    // Logged in and unlocked
+                    actionButtonHTML = `<a href="${engineLink}" class="launch-btn">Enter Simulator <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>`;
+                }
 
                 container.innerHTML += `
                     <div class="lab-card ${isLocked ? 'locked' : ''}">

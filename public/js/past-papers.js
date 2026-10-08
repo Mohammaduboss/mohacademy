@@ -95,13 +95,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 `;
             } else {
-                // SECURE VAULT ROUTING: Prevents direct device downloads
-                // We use the raw paper.pdfUrl, not the forced downloadUrl
-                actionButtonHtml = `
-                    <a href="viewer.html?file=${encodeURIComponent(paper.pdfUrl)}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
-                        <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution' : 'View Paper'}
-                    </a>
-                `;
+                // SECURE VAULT ROUTING & GUEST TRAP
+                const viewerLink = `viewer.html?file=${encodeURIComponent(paper.pdfUrl)}`;
+                
+                if (!currentUser || !currentUser.email) {
+                    // Guest user trap: Save the link and send to login
+                    actionButtonHtml = `
+                        <button onclick="localStorage.setItem('mohacademy_return_url', '${viewerLink}'); window.location.href='login.html';" class="btn btn-primary">
+                            <i class="fas fa-lock"></i> Login to View
+                        </button>
+                    `;
+                } else {
+                    // Logged-in user: Let them view the file
+                    actionButtonHtml = `
+                        <a href="${viewerLink}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
+                            <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution Securely' : 'View Paper Securely'}
+                        </a>
+                    `;
+                }
             }
 
             card.innerHTML = `

@@ -285,7 +285,14 @@
                     localStorage.setItem('mohacademy_token', data.token);
                     localStorage.setItem('mohacademy_user', JSON.stringify(data.student));
                     
-                    window.location.href = "profile";
+                    // SMART REDIRECT LOGIC
+                    const returnUrl = localStorage.getItem('mohacademy_return_url');
+                    if (returnUrl) {
+                        localStorage.removeItem('mohacademy_return_url'); // Clear the trap
+                        window.location.href = returnUrl;
+                    } else {
+                        window.location.href = "profile"; // Default fallback
+                    }
                 } else {
                     alert(`Authentication Denied: ${data.message}`);
                 }
