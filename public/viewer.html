@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Document Viewer - MohAcademy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #0f172a; font-family: 'Poppins', sans-serif; }
+        
+        /* Header to allow them to go back */
+        .viewer-header { background: #1e293b; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #38bdf8; }
+        .viewer-header a { color: #fff; text-decoration: none; font-weight: 600; background: #ef4444; padding: 8px 15px; border-radius: 6px; }
+        
+        /* The iframe holding the PDF */
+        .pdf-container { width: 100%; height: calc(100% - 60px); position: relative; }
+        iframe { width: 100%; height: 100%; border: none; }
+        
+        /* Invisible shield to block the top right corner where download buttons usually appear */
+        .download-shield { position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: transparent; z-index: 10; }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <!-- Disables Right-Clicking -->
+
+    <div class="viewer-header">
+        <span style="color: #38bdf8; font-weight: bold;"><i class="fas fa-shield-alt"></i> MohAcademy Secure Vault</span>
+        <a href="javascript:history.back()">Close Document</a>
+    </div>
+
+    <div class="pdf-container">
+        <!-- This invisible shield blocks taps/clicks on the hidden download button -->
+        <div class="download-shield"></div>
+        <iframe id="pdf-frame" src=""></iframe>
+    </div>
+
+    <script>
+        // Grab the Cloudinary file URL from the link they clicked
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileUrl = urlParams.get('file');
+
+        if (fileUrl) {
+            // Append #toolbar=0 to tell the browser to hide the download/print buttons
+            document.getElementById('pdf-frame').src = fileUrl + "#toolbar=0&navpanes=0&scrollbar=0";
+        } else {
+            document.querySelector('.pdf-container').innerHTML = "<h2 style='color:white; text-align:center; margin-top:50px;'>Document securely locked or missing.</h2>";
+        }
+    </script>
+</body>
+</html>

@@ -95,10 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 `;
             } else {
-                // Unlocked State: It's a free question, OR the user already paid for premium.
+                // SECURE VAULT ROUTING: Prevents direct device downloads
+                // We use the raw paper.pdfUrl, not the forced downloadUrl
                 actionButtonHtml = `
-                    <a href="${downloadUrl}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
-                        <i class="fas fa-file-download"></i> ${paper.isPremium ? 'Download Solution' : 'View / Download'}
+                    <a href="viewer.html?file=${encodeURIComponent(paper.pdfUrl)}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
+                        <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution Securely' : 'View Paper Securely'}
                     </a>
                 `;
             }
