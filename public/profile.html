@@ -748,12 +748,15 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            let token = localStorage.getItem('mohacademy_token');
+            // Check for the standardized token key
+            let token = localStorage.getItem('token'); 
 
             if (!token || token === 'undefined' || token === 'null' || token.trim() === '') {
-                localStorage.removeItem('mohacademy_token');
+                // Sledgehammer wipe just to be safe
+                localStorage.removeItem('token');
+                localStorage.removeItem('student');
                 alert("Session expired or invalid token. Please log in again.");
-                window.location.href = "login";
+                window.location.href = "login.html";
                 return;
             }
 

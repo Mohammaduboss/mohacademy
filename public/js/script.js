@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // GLOBAL AUTHENTICATION SYNC ENGINE (Fixes the "Amnesia" bug & Cleans UI)
     // ==========================================================================
-    const token = localStorage.getItem('mohacademy_token') || localStorage.getItem('token');
+    // Only look for the standardized token key
+    const token = localStorage.getItem('token');
     const navMenuUl = document.querySelector('.nav-list');
 
     if (token) {
