@@ -250,6 +250,14 @@
     
 
     <script>
+        // AUTHENTICATION GUARD: Prevent logged-in users from seeing the login page
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            if (token && token !== 'undefined' && token !== 'null') {
+                // Using replace() overwrites the history so they don't get stuck in a loop
+                window.location.replace('past-papers'); 
+            }
+        });
         function toggleFieldMask(targetId, iconRef) {
             const field = document.getElementById(targetId);
             if(field.type === "password") {
