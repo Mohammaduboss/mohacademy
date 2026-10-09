@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Logged-in user: Let them view the file
                     actionButtonHtml = `
                         <a href="${viewerLink}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
-                            <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution Securely' : 'View Paper Securely'}
+                            <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution' : 'View Paper'}
                         </a>
                     `;
                 }
