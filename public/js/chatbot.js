@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         appendChatMessage('<i class="fas fa-spinner fa-spin"></i> Processing data arrays...', 'bot');
 
         try {
-            const token = localStorage.getItem('mohacademy_token');
+            const token = localStorage.getItem('token');
             const dataPayload = new FormData();
             
             if (userMsg) dataPayload.append('message', userMsg);

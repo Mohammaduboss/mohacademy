@@ -1690,7 +1690,7 @@ async function submitLabForGrading() {
     const experimentCode = new URLSearchParams(window.location.search).get('id');
 
     try {
-        const token = localStorage.getItem('mohacademy_token');
+        const token = localStorage.getItem('token');
         const response = await fetch(`/api/labs/${experimentCode}/submit`, {
             method: 'POST', 
             headers: { 

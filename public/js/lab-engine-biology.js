@@ -212,7 +212,7 @@ async function submitLabForGrading() {
 
     // 3. Send to your REAL backend route that uses geminiEvaluator
     try {
-        const token = localStorage.getItem('mohacademy_token');
+        const token = localStorage.getItem('token');
         const response = await fetch(`/api/labs/${currentExperiment.experimentCode}/submit`, {
             method: 'POST',
             headers: { 
