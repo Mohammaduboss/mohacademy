@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script>
+        const token = localStorage.getItem('token');
+        if (token && token !== 'undefined' && token !== 'null') {
+            window.location.replace('profile');
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Authentication - MohAcademy</title>
     <meta property="og:title" content="MohAcademy - GCE A/L Revision Vault & AI Assistant">
-    <meta property="og:description" content="Access GCE Past Papers, detailed marking schemes, and 24/7 AI-guided solutions.">
+    <meta property="og:description"
+        content="Access GCE Past Papers, detailed marking schemes, and 24/7 AI-guided solutions.">
     <meta property="og:image" content="https://mohacademy.co/images/hero-image-1.webp">
     <meta property="og:url" content="https://mohacademy.co">
-    
+
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -152,7 +162,10 @@
             text-decoration: none;
             font-weight: 600;
         }
-        .forgot-password-anchor:hover { text-decoration: underline; }
+
+        .forgot-password-anchor:hover {
+            text-decoration: underline;
+        }
 
         .auth-action-btn {
             width: 100%;
@@ -185,23 +198,42 @@
             text-decoration: none;
             font-weight: 600;
         }
-        .auth-redirect-footer-lbl a:hover { text-decoration: underline; }
+
+        .auth-redirect-footer-lbl a:hover {
+            text-decoration: underline;
+        }
 
         @keyframes formFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 576px) {
-            .auth-glass-card { padding: 30px 20px; }
-            .auth-utility-flex-row { flex-direction: column; gap: 12px; align-items: flex-start; }
+            .auth-glass-card {
+                padding: 30px 20px;
+            }
+
+            .auth-utility-flex-row {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <header style="background-color: #0f172a; padding: 18px 30px; width: 100%; box-sizing: border-box;">
-        <a href="index" style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
+        <a href="index"
+            style="text-decoration: none; display: inline-flex; align-items: center; color: #ffffff; font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;">
             <i class="fas fa-atom" style="color: #2ecc71; margin-right: 10px;"></i> MohAcademy
         </a>
     </header>
@@ -227,7 +259,8 @@
                     <div class="input-field-icon-wrapper">
                         <i class="fas fa-lock field-icon"></i>
                         <input type="password" placeholder="••••••••" required id="log_password">
-                        <i class="fas fa-eye toggle-password-visibility" onclick="toggleFieldMask('log_password', this)"></i>
+                        <i class="fas fa-eye toggle-password-visibility"
+                            onclick="toggleFieldMask('log_password', this)"></i>
                     </div>
                 </div>
 
@@ -247,12 +280,12 @@
         </div>
     </main>
 
-    
+
 
     <script>
         function toggleFieldMask(targetId, iconRef) {
             const field = document.getElementById(targetId);
-            if(field.type === "password") {
+            if (field.type === "password") {
                 field.type = "text";
                 iconRef.className = "fas fa-eye-slash toggle-password-visibility";
             } else {
@@ -266,7 +299,7 @@
 
             const email = document.getElementById('log_email').value;
             const password = document.getElementById('log_password').value;
-            
+
             const btn = e.target.querySelector('.auth-action-btn');
             const originalText = btn.innerText;
             btn.innerText = "Authenticating Entry...";
@@ -284,8 +317,8 @@
                 if (response.status === 200) {
                     localStorage.setItem('token', data.token);
                     // Force the standard key 'student'
-                    localStorage.setItem('student', JSON.stringify(data.student)); 
-                    
+                    localStorage.setItem('student', JSON.stringify(data.student));
+
                     // Cleanup legacy keys to prevent conflicts
                     localStorage.removeItem('mohacademy_token');
                     localStorage.removeItem('mohacademy_user');
@@ -312,4 +345,5 @@
         }
     </script>
 </body>
+
 </html>
