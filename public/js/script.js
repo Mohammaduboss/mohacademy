@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3 style="color:#fff; font-family:'Poppins'; margin-bottom:10px;">Unlock Perfect Grades with PRO</h3>
                     <p style="color:#cbd5e1; font-size:0.95rem; margin-bottom:20px; line-height:1.5;">Get unlimited access to AI grading, 60+ interactive virtual labs, and complete marking guides.</p>
                     <div style="background:#1e293b; padding:15px; border-radius:8px; margin-bottom:20px; border:1px solid #334155;">
-                        <div style="color:#facc15; font-size:1.5rem; font-weight:800; font-family:'Orbitron';">1,500 FCFA <span style="font-size:0.8rem; color:#94a3b8; font-family:'Poppins';">/ month</span></div>
+                        <div style="color:#facc15; font-size:1.5rem; font-weight:800; font-family:'Orbitron';">2,000 FCFA <span style="font-size:0.8rem; color:#94a3b8; font-family:'Poppins';">/ month</span></div>
                     </div>
                     <a href="pricing" class="btn btn-primary" style="display:block; width:100%; padding:12px; border-radius:6px; font-weight:bold; font-size:1.1rem; margin-bottom:10px;">Upgrade Now</a>
                     <button id="maybe-later-btn" style="background:none; border:none; color:#94a3b8; text-decoration:underline; cursor:pointer; font-family:'Poppins'; font-size:0.85rem;">Maybe Later</button>
