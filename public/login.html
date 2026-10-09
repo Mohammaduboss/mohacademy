@@ -197,16 +197,6 @@
             .auth-utility-flex-row { flex-direction: column; gap: 12px; align-items: flex-start; }
         }
     </style>
-    <script>
-        // AUTHENTICATION GUARD: Prevent logged-in users from getting stuck on this page
-        document.addEventListener('DOMContentLoaded', () => {
-            const token = localStorage.getItem('token');
-            if (token && token !== 'undefined' && token !== 'null') {
-                // Using replace() instead of href prevents a back-button infinite loop
-                window.location.replace('past-papers'); 
-            }
-        });
-    </script>
 </head>
 <body>
 
