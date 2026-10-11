@@ -84,32 +84,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const documentDescription = paper.isPremium ? 'Official Marking Scheme & Solution' : 'Official Examination Question Paper';
             const downloadUrl = paper.pdfUrl.replace('/upload/', '/upload/fl_attachment/');
 
-            // GATING LOGIC: Hook First, Gate Later
+            // GATING LOGIC: Decide what the button does based on Premium status
             let actionButtonHtml = '';
-            const viewerLink = `viewer.html?file=${encodeURIComponent(paper.pdfUrl)}`;
             
             if (paper.isPremium && !isUserPremium) {
-                // PRO Paper, but user is free or guest
+                // Locked State: User is free, paper is PRO. Show popup button.
+                actionButtonHtml = `
+                    <button onclick="window.location.href='pricing.html'" class="btn btn-primary" style="background-color: #ffb703; border-color: #ffb703; color: #000; width: 100%; cursor: pointer;">
+                        <i class="fas fa-crown"></i> Upgrade to Unlock
+                    </button>
+                `;
+            } else {
+                // SECURE VAULT ROUTING & GUEST TRAP
+                const viewerLink = `viewer.html?file=${encodeURIComponent(paper.pdfUrl)}`;
+                
                 if (!currentUser || !currentUser.email) {
+                    // Guest user trap: Save the link and send to login
                     actionButtonHtml = `
-                        <button onclick="localStorage.setItem('mohacademy_return_url', '${viewerLink}'); window.location.href='signup.html';" class="btn btn-primary" style="background-color: #ffb703; border-color: #000; color: #000; width: 100%; cursor: pointer;">
-                            <i class="fas fa-lock"></i> Create Free Account to Unlock
+                        <button onclick="localStorage.setItem('mohacademy_return_url', '${viewerLink}'); window.location.href='login.html';" class="btn btn-primary">
+                            <i class="fas fa-lock"></i> Login to View
                         </button>
                     `;
                 } else {
+                    // Logged-in user: Let them view the file
                     actionButtonHtml = `
-                        <button onclick="window.location.href='pricing.html'" class="btn btn-primary" style="background-color: #ffb703; border-color: #000; color: #000; width: 100%; cursor: pointer;">
-                            <i class="fas fa-crown"></i> Upgrade to Unlock
-                        </button>
+                        <a href="${viewerLink}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
+                            <i class="fas fa-eye"></i> ${paper.isPremium ? 'View Solution' : 'View Paper'}
+                        </a>
                     `;
                 }
-            } else {
-                // OPEN ACCESS: Standard papers are free for EVERYONE (no login required)
-                actionButtonHtml = `
-                    <a href="${viewerLink}" class="btn btn-primary" style="${paper.isPremium ? 'background-color: #2ecc71; border-color: #2ecc71; color: #fff;' : ''}">
-                        <i class="fas fa-eye"></i> View Paper
-                    </a>
-                `;
             }
 
             card.innerHTML = `

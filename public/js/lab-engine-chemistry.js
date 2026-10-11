@@ -2446,14 +2446,6 @@ function titrationLoop() {
 
 // Override AI Submit to read dynamic inputs
 window.submitLabForGrading = async function() {
-    // FREEMIUM GATE: Stop guests before they scrape data
-    const token = localStorage.getItem('token');
-    if (!token) {
-        alert("Create a free account to have the AI Chief Examiner grade your lab report and record your XP!");
-        window.location.href = '/signup.html';
-        return;
-    }
-
     // 1. Scrape the dynamic table
     let tableData = {};
     document.querySelectorAll('#titration-table .sim-input').forEach(input => {
