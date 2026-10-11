@@ -186,6 +186,14 @@ function switchTab(tabId) {
  * Sends student experimental results to Chief Examiner AI for grading
  */
 async function submitLabForGrading() {
+    // FREEMIUM GATE: Stop guests before they scrape data
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("Create a free account to have the AI Chief Examiner grade your lab report and record your XP!");
+        window.location.href = '/signup.html';
+        return;
+    }
+
     const modal = document.getElementById('ai-modal');
     const feedbackBox = document.getElementById('ai-feedback-content');
     
